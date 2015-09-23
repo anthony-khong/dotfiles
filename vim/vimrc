@@ -1,6 +1,6 @@
 " This is the remote vimrc. The local vimrc should include the following:
-" set runtimepath^=~/Dropbox/dotfiles/vim
-" source ~/Dropbox/dotfiles/vim/vimrc
+" set runtimepath^=~/dotfiles_akk/vim
+" source ~/dotfiles_akk/vim/vimrc
 " NOTE: jedi-vim must be installed in the local machine!
 
 " For tmux colour compatibility

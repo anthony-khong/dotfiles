@@ -11,6 +11,16 @@ set nofoldenable
 
 set noerrorbells visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
+
+" Color scheme
+" mkdir -p ~/.vim/colors && cd ~/.vim/colors
+" wget -O wombat256mod.vim http://www.vim.org/scripts/download_script.php?src_id=13400
+" set t_Co=256
+" colorscheme wombat256mod
+colorscheme molokai
+let g:molokai_original = 1
+let g:rehash256 = 1
+
 "==========================================================================="
 " Key Remaps                                                                "
 "==========================================================================="
@@ -166,12 +176,6 @@ syntax on
 " MUST be inserted BEFORE the colorscheme command
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 au InsertLeave * match ExtraWhitespace /\s\+$/
-
-" Color scheme
-" mkdir -p ~/.vim/colors && cd ~/.vim/colors
-" wget -O wombat256mod.vim http://www.vim.org/scripts/download_script.php?src_id=13400
-set t_Co=256
-colorscheme wombat256mod
 
 " Showing line numbers and length
 set number  " show line numbers

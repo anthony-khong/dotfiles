@@ -238,6 +238,22 @@ set wildignore+=*_build/*
 set wildignore+=*/coverage/*
 nnoremap <Leader>p :CtrlP ~<CR>
 
+" Make ctrlp open a new tab by default
+let g:ctrlp_prompt_mappings = {
+    \ 'AcceptSelection("e")': ['<c-t>'],
+    \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
+    \ }
+
+" Use pymatcher and ag
+let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
+      \ --ignore .git
+      \ --ignore .svn
+      \ --ignore .hg
+      \ --ignore .DS_Store
+      \ --ignore "**/*.pyc"
+      \ -g ""'
+
 " Settings for jedi-vim
 " cd ~/.vim/bundle
 " git clone git://github.com/davidhalter/jedi-vim.git
@@ -254,13 +270,6 @@ let g:indentLine_color_term = 237
 
 " Make supertab scroll from top to bottom
 let g:SuperTabDefaultCompletionType = "<c-n>"
-
-" Make ctrlp open a new tab by default
-let g:ctrlp_prompt_mappings = {
-    \ 'AcceptSelection("e")': ['<c-t>'],
-    \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
-    \ }
-let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 
 " Set EasyMotion trigger
 map <Leader> <Plug>(easymotion-prefix)

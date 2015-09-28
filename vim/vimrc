@@ -259,12 +259,21 @@ if executable('ag')
         \ --ignore .nv
         \ --ignore .config
         \ --ignore .ipython
+        \ --ignore ".cache/*"
+        \ --ignore ".fzf/*"
+        \ --ignore ".pia_manager/*"
+        \ --ignore ".vim/*"
+        \ --ignore "Applications/*"
+        \ --ignore "Desktop/*"
+        \ --ignore "Downloads/*"
         \ --ignore "Dropbox/*"
+        \ --ignore "Lasagne/*"
+        \ --ignore "Library/*"
+        \ --ignore "Music/*"
+        \ --ignore "Pictures/*"
         \ --ignore "anaconda/*"
         \ --ignore "pylearn2/*"
-        \ --ignore "Downloads/*"
-        \ --ignore ".cache/*"
-        \ --ignore ".vim/*"
+        \ --ignore "xgboost/*"
         \ -g ""'
 endif
 nnoremap <Leader>p :CtrlP ~<CR>

@@ -236,9 +236,10 @@ let g:ctrlp_max_height = 30
 set wildignore+=*.pyc
 set wildignore+=*_build/*
 set wildignore+=*/coverage/*
-nnoremap <Leader>p :CtrlP ~<CR>
+set wildignore+=*.theano/*
 
 " Make ctrlp open a new tab by default
+let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
 let g:ctrlp_prompt_mappings = {
     \ 'AcceptSelection("e")': ['<c-t>'],
     \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
@@ -246,13 +247,27 @@ let g:ctrlp_prompt_mappings = {
 
 " Use pymatcher and ag
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
-let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
-      \ --ignore .git
-      \ --ignore .svn
-      \ --ignore .hg
-      \ --ignore .DS_Store
-      \ --ignore "**/*.pyc"
-      \ -g ""'
+if executable('ag')
+    let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
+        \ --ignore .git
+        \ --ignore .svn
+        \ --ignore .hg
+        \ --ignore .DS_Store
+        \ --ignore "**/*.pyc"
+        \ --ignore .dropbox
+        \ --ignore .theano
+        \ --ignore .nv
+        \ --ignore .config
+        \ --ignore .ipython
+        \ --ignore "Dropbox/*"
+        \ --ignore "anaconda/*"
+        \ --ignore "pylearn2/*"
+        \ --ignore "Downloads/*"
+        \ --ignore ".cache/*"
+        \ --ignore ".vim/*"
+        \ -g ""'
+endif
+nnoremap <Leader>p :CtrlP ~<CR>
 
 " Settings for jedi-vim
 " cd ~/.vim/bundle

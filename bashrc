@@ -223,6 +223,9 @@ function gpa() {
     git pull;
     cd;
 }
+function sbash() {
+    source ~/.bash_profile
+}
 
 export PS1="\[\033[36m\]\u\[\033[m\]:\[\033[33;1m\]\W\[\033[m\]$ "
 . /etc/profile.d/vte.sh

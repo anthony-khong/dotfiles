@@ -264,6 +264,7 @@ if executable('ag')
         \ --ignore ".fzf/*"
         \ --ignore ".pia_manager/*"
         \ --ignore ".vim/*"
+        \ --ignore ".Trash/*"
         \ --ignore "Applications/*"
         \ --ignore "Desktop/*"
         \ --ignore "Downloads/*"

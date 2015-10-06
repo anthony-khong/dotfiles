@@ -22,10 +22,24 @@ export JARWIN="ssh -4 akkhong@jarwinjkt.no-ip.biz"
 
 export user=akk_mac
 
-# Tell vim to us macvim (to enable clipboard)
+# Tell vim to use macvim (to enable clipboard)
 alias vim="mvim -v"
 
 # Miscellaneous functions
+function gpa() {
+    cd ~/applied_modelling;
+    git pull;
+    cd ~/hrvalue;
+    git pull;
+    cd ~/dotfiles_akk;
+    git pull;
+    cd;
+}
+
+function sbash() {
+    source ~/.bash_profile
+}
+
 function roll() {
     python ~/roll_die.py
 }
@@ -102,3 +116,5 @@ export PYTHONDONTWRITEBYTECODE=1
 
 # fzf settings
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+export TERM=xterm-256color

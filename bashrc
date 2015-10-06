@@ -214,6 +214,15 @@ function check_my_ip() {
 function stream_webcam() {
     vlc v4l2:///dev/video0
 }
+function gpa() {
+    cd ~/applied_modelling;
+    git pull;
+    cd ~/hrvalue;
+    git pull;
+    cd ~/dotfiles_akk;
+    git pull;
+    cd;
+}
 
 export PS1="\[\033[36m\]\u\[\033[m\]:\[\033[33;1m\]\W\[\033[m\]$ "
 . /etc/profile.d/vte.sh

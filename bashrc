@@ -221,8 +221,11 @@ function gpa() {
     git pull;
     cd ~/dotfiles_akk;
     git pull;
+    git submodule init;
+    git submodule update;
     cd;
 }
+
 function sbash() {
     source ~/.bash_profile
 }

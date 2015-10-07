@@ -226,6 +226,15 @@ function gpa() {
 function sbash() {
     source ~/.bash_profile
 }
+function clone_dotfiles() {
+    git clone git@github.com:anthony-khong/dotfiles_akk.git;
+    cd dotfiles_akk;
+    git submodule init;
+    git submodule update;
+    cd vim/bundle/jedi-vim;
+    git submodule init;
+    git submodule update;
+}
 
 export PS1="\[\033[36m\]\u\[\033[m\]:\[\033[33;1m\]\W\[\033[m\]$ "
 . /etc/profile.d/vte.sh

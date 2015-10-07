@@ -35,6 +35,15 @@ function gpa() {
     git pull;
     cd;
 }
+function clone_dotfiles() {
+    git clone git@github.com:anthony-khong/dotfiles_akk.git;
+    cd dotfiles_akk;
+    git submodule init;
+    git submodule update;
+    cd vim/bundle/jedi-vim;
+    git submodule init;
+    git submodule update;
+}
 
 function sbash() {
     source ~/.bash_profile

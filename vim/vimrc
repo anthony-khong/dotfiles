@@ -1,3 +1,5 @@
+call pathogen#infect()
+
 " This is the remote vimrc. The local vimrc should include the following:
 " set runtimepath^=~/dotfiles_akk/vim
 " source ~/dotfiles_akk/vim/vimrc
@@ -21,8 +23,8 @@ au InsertLeave * match ExtraWhitespace /\s\+$/
 " mkdir -p ~/.vim/colors && cd ~/.vim/colors
 " wget -O wombat256mod.vim http://www.vim.org/scripts/download_script.php?src_id=13400
 " set t_Co=256
-" colorscheme wombat256mod
-colorscheme molokai
+colorscheme wombat256i
+" colorscheme badwolf
 " let g:molokai_original = 1
 let g:rehash256 = 1
 
@@ -215,12 +217,6 @@ set nobackup
 set nowritebackup
 set noswapfile
 
-" Setup Pathogen to manage your plugins
-" mkdir -p ~/.vim/autoload ~/.vim/bundle
-" curl -so ~/.vim/autoload/pathogen.vim https://raw.githubusercontent.com/tpope/vim-pathogen/master/autoload/pathogen.vim
-" Now you can install any plugin into a .vim/bundle/plugin-name/ folder
-call pathogen#infect()
-
 " =========================================================================="
 " Python IDE Setup                                                          "
 " =========================================================================="
@@ -326,3 +322,6 @@ let g:airline_right_sep = '«'
 
 " Fugitive shortcut
 map <Leader>gd :Gdiff<CR>
+
+" Git gutter no longer interferes with gutter width
+let g:gitgutter_sign_column_always = 1

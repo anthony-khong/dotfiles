@@ -23,7 +23,7 @@ au InsertLeave * match ExtraWhitespace /\s\+$/
 " mkdir -p ~/.vim/colors && cd ~/.vim/colors
 " wget -O wombat256mod.vim http://www.vim.org/scripts/download_script.php?src_id=13400
 " set t_Co=256
-colorscheme wombat256i
+colorscheme wombat256mod
 " colorscheme badwolf
 " let g:molokai_original = 1
 let g:rehash256 = 1

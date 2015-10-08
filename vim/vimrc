@@ -188,7 +188,7 @@ set tw=79   " width of document (used by gd)
 set nowrap  " don't automatically wrap on load
 set fo-=t   " don't automatically wrap text when typing
 au BufNewFile,BufFilePre,BufRead *.py set colorcolumn=80
-au BufNewFile,BufFilePre,BufRead *.py highlight ColorColumn ctermbg=233
+au BufNewFile,BufFilePre,BufRead *.py highlight ColorColumn ctermbg=234
 
 " easier formatting of paragraphs
 vmap Q gq

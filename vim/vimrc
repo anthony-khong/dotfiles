@@ -313,7 +313,7 @@ highlight SyntasticWarning NONE
 highlight SyntasticError NONE
 
 " Airline configs
-let g:airline_theme = 'dark'
+let g:airline_theme = 'badwolf'
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif

@@ -32,7 +32,7 @@ let g:rehash256 = 1
 " Key Remaps                                                                "
 "==========================================================================="
 let mapleader = ","
-nmap <Space> ,
+map <Space> ,
 
 " Five line buffer
 set so=5

@@ -1,3 +1,4 @@
+alias pi='THEANO_FLAGS="device=cpu" ipython -i'
 alias py='THEANO_FLAGS="device=cpu" ipython -i'
 alias gpy='THEANO_FLAGS="device=gpu0" ipython -i'
 alias gpy0='THEANO_FLAGS="device=gpu0" ipython -i'

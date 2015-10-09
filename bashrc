@@ -1,12 +1,6 @@
 # source ~/dotfiles_akk/bashrc
-
-alias pi='THEANO_FLAGS="device=cpu" ipython -i'
-alias py='THEANO_FLAGS="device=cpu" ipython -i'
-alias gpy='THEANO_FLAGS="device=gpu0" ipython -i'
-alias gpy0='THEANO_FLAGS="device=gpu0" ipython -i'
-alias gpy1='THEANO_FLAGS="device=gpu1" ipython -i'
-alias gpy2='THEANO_FLAGS="device=gpu2" ipython -i'
-alias gpy3='THEANO_FLAGS="device=gpu3" ipython -i'
+# source ~/dotfiles_akk/bash_shortcuts
+# source ~/dotfiles_akk/bash_preferences
 
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
@@ -122,135 +116,31 @@ if ! shopt -oq posix; then
   fi
 fi
 
+
 export OPENBLAS_HOME=/home/akkhong
-export CUDA_HOME=/usr/local/cuda-7.0
-export LD_LIBRARY_PATH=${CUDA_HOME}/lib64
 export PYLEARN2_DATA_PATH=/data/lisa/data
+if [ ! -f /usr/local/cuda-7.0 ]; then
+    export CUDA_HOME=/usr/local/cuda-7.0
+    export LD_LIBRARY_PATH=/usr/local/cuda-7.0/lib64:$LD_LIBRARY_PATH
+else
+    export CUDA_HOME=/usr/local/cuda-7.5
+    export LD_LIBRARY_PATH=/usr/local/cuda-7.5/lib64:$LD_LIBRARY_PATH
+fi
+export LD_LIBRARY_PATH=${CUDA_HOME}/lib64
 
 PATH=${CUDA_HOME}/bin:${PATH}
 export PATH
 
 # added by Anaconda 2.1.0 installer
-export PATH="/home/akkhong/anaconda/bin:$PATH"
+if [ ! -f /home/akkhong/anaconda ]; then
+    export PATH="/home/akkhong/anaconda/bin:$PATH"
+else
+    export PATH="/home/mbk/anaconda/bin:$PATH"
+fi
 
+export user=akk_linux
 export PYTHONPATH=/home/akkhong/
 export PYTHONPATH=$PYTHONPATH:/home/akkhong/pylearn2/
 export PYTHONPATH=$PYTHONPATH:/home/akkhong/xgboost/wrapper/
 export PYTHONPATH=$PYTHONPATH:/home/akkhong/xgboost/python-package/
 export PYTHONPATH=$PYTHONPATH:/home/akkhong/applied_modelling/
-export user=akk_linux
-
-# SSH to other computers
-export CUFFY="ssh -4 akk@ilikezcoffe.no-ip.biz"
-export JARWIN="ssh -4 akkhong@jarwinjkt.no-ip.biz"
-
-function fastpush() {
-    git add -u;
-    git commit -m "$*";
-    git push;
-}
-
-# For tmux colours
-export TERM="xterm-256color"
-
-function fastpush() {
-    git add -u;
-    git commit -m "$*";
-    git push;
-}
-
-function compile_md() {
-    pandoc -V geometry:margin=2cm -o $1 $2
-}
-
-
-# Functions to navigate through directories
-function dropbox_hr_value() {
-    cd ~/Dropbox/am_records/hr_value
-}
-function gpy() {
-    cd ~/Dropbox/tutorials/gpy
-}
-function papers() {
-    cd ~/Dropbox/Interesting\ Papers/
-}
-function bayes_ml() {
-    cd ~/Dropbox/Interesting\ Papers/Bayesian\ Machine\ Learning/
-}
-function deep() {
-    cd ~/Dropbox/Interesting\ Papers/Deep\ Learning/
-}
-function ensembles() {
-    cd ~/Dropbox/Interesting\ Papers/Ensemble\ Methods/
-}
-function mcm() {
-    cd ~/Dropbox/Interesting\ Papers/Monte\ Carlo\ Methods/
-}
-function fvalue() {
-    cd ~/applied_modelling/football_value/
-}
-
-# Functions for networking
-function jarwin() {
-    ssh -4 akkhong@jarwinjkt.no-ip.biz
-}
-function cuffy() {
-    ssh -4 akk@ilikezcoffe.no-ip.biz
-}
-function servox() {
-    ssh -p2222 akkhong@servox.no-ip.biz
-}
-
-function local_jarwin() {
-    ssh akkhong@192.168.1.107
-}
-function local_jarwinX() {
-    ssh -X akkhong@192.168.1.107
-}
-function samhan() {
-    ssh akkhong@192.168.1.109
-}
-function samhanX() {
-    ssh -X akkhong@192.168.1.109
-}
-
-function check_my_ip() {
-    curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/<.*$//'
-}
-function stream_webcam() {
-    vlc v4l2:///dev/video0
-}
-function gpa() {
-    cd ~/applied_modelling;
-    git pull;
-    cd ~/hrvalue;
-    git pull;
-    cd ~/dotfiles_akk;
-    git pull;
-    git submodule init;
-    git submodule update;
-    cd;
-}
-
-function sbash() {
-    source ~/.bash_profile
-}
-function clone_dotfiles() {
-    git clone git@github.com:anthony-khong/dotfiles_akk.git;
-    cd dotfiles_akk;
-    git submodule init;
-    git submodule update;
-    cd vim/bundle/jedi-vim;
-    git submodule init;
-    git submodule update;
-}
-
-export PS1="\[\033[36m\]\u\[\033[m\]:\[\033[33;1m\]\W\[\033[m\]$ "
-. /etc/profile.d/vte.sh
-
-umask 000
-
-# added by Anaconda 2.3.0 installer
-export PATH="/home/akkhong/anaconda/bin:$PATH"
-
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash

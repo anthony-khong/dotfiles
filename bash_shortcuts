@@ -1,0 +1,101 @@
+# Bash shortcuts
+function sbash() {
+    source ~/.bash_profile
+}
+
+# Pandoc shortcuts
+function compile_md() {
+    pandoc -V geometry:margin=2cm -o $1 $2
+}
+
+# Python shortcuts
+alias pi='THEANO_FLAGS="device=cpu" ipython -i'
+alias py='THEANO_FLAGS="device=cpu" ipython -i'
+alias gpy='THEANO_FLAGS="device=gpu0" ipython -i'
+alias gpy0='THEANO_FLAGS="device=gpu0" ipython -i'
+alias gpy1='THEANO_FLAGS="device=gpu1" ipython -i'
+alias gpy2='THEANO_FLAGS="device=gpu2" ipython -i'
+alias gpy3='THEANO_FLAGS="device=gpu3" ipython -i'
+
+# Git shortcuts
+function fastpush() {
+    git add -u;
+    git commit -m "$*";
+    git push;
+}
+function gpa() {
+    cd ~/applied_modelling;
+    git pull;
+    cd ~/hrvalue;
+    git pull;
+    cd ~/dotfiles_akk;
+    git pull;
+    git submodule init;
+    git submodule update;
+    cd;
+}
+function clone_dotfiles() {
+    git clone git@github.com:anthony-khong/dotfiles_akk.git;
+    cd dotfiles_akk;
+    git submodule init;
+    git submodule update;
+    cd vim/bundle/jedi-vim;
+    git submodule init;
+    git submodule update;
+}
+
+# Navigation shortcuts
+function dropbox_hr_value() {
+    cd ~/Dropbox/am_records/hr_value
+}
+function gpy() {
+    cd ~/Dropbox/tutorials/gpy
+}
+function papers() {
+    cd ~/Dropbox/Interesting\ Papers/
+}
+function bayes_ml() {
+    cd ~/Dropbox/Interesting\ Papers/Bayesian\ Machine\ Learning/
+}
+function deep() {
+    cd ~/Dropbox/Interesting\ Papers/Deep\ Learning/
+}
+function ensembles() {
+    cd ~/Dropbox/Interesting\ Papers/Ensemble\ Methods/
+}
+function mcm() {
+    cd ~/Dropbox/Interesting\ Papers/Monte\ Carlo\ Methods/
+}
+function fvalue() {
+    cd ~/applied_modelling/football_value/
+}
+
+# Networking shortcuts
+function jarwin() {
+    ssh -4 akkhong@jarwinjkt.no-ip.biz
+}
+function cuffy() {
+    ssh -4 akk@ilikezcoffe.no-ip.biz
+}
+function servox() {
+    ssh -p2222 akkhong@servox.no-ip.biz
+}
+
+function local_jarwin() {
+    ssh akkhong@192.168.1.107
+}
+function local_jarwinX() {
+    ssh -X akkhong@192.168.1.107
+}
+function samhan() {
+    ssh akkhong@192.168.1.109
+}
+function samhanX() {
+    ssh -X akkhong@192.168.1.109
+}
+function check_my_ip() {
+    curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/<.*$//'
+}
+function stream_webcam() {
+    vlc v4l2:///dev/video0
+}

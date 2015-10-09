@@ -144,3 +144,6 @@ export PYTHONPATH=$PYTHONPATH:/home/akkhong/pylearn2/
 export PYTHONPATH=$PYTHONPATH:/home/akkhong/xgboost/wrapper/
 export PYTHONPATH=$PYTHONPATH:/home/akkhong/xgboost/python-package/
 export PYTHONPATH=$PYTHONPATH:/home/akkhong/applied_modelling/
+
+# Stop Python from generating .pyc files
+export PYTHONDONTWRITEBYTECODE=1

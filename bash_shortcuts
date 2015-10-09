@@ -93,9 +93,14 @@ function samhan() {
 function samhanX() {
     ssh -X akkhong@192.168.1.109
 }
-function check_my_ip() {
-    curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/<.*$//'
-}
 function stream_webcam() {
     vlc v4l2:///dev/video0
+}
+function flush_dns_cache() {
+    sudo dscacheutil -flushcache
+    sudo killall -HUP mDNSResponder
+    say cache flushed
+}
+function check_my_ip() {
+    curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/<.*$//'
 }

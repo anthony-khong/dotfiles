@@ -34,6 +34,11 @@ let g:rehash256 = 1
 let mapleader = ","
 map <Space> ,
 
+" Delete and send to the blackhole register
+" (Delete a line in normal mode, but delete the selection in visual mode)
+nmap <space>d "_dd
+vmap <space>d "_d
+
 " Five line buffer
 set so=5
 

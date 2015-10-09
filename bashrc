@@ -1,3 +1,5 @@
+# source ~/dotfiles_akk/bashrc
+
 alias pi='THEANO_FLAGS="device=cpu" ipython -i'
 alias py='THEANO_FLAGS="device=cpu" ipython -i'
 alias gpy='THEANO_FLAGS="device=gpu0" ipython -i'
@@ -194,6 +196,9 @@ function jarwin() {
 }
 function cuffy() {
     ssh -4 akk@ilikezcoffe.no-ip.biz
+}
+function servox() {
+    ssh -p2222 akkhong@servox.no-ip.biz
 }
 
 function local_jarwin() {

@@ -1,3 +1,5 @@
+# source ~/dotfiles_akk/bash_profile
+
 alias pi='THEANO_FLAGS="device=cpu" ipython -i'
 alias py='THEANO_FLAGS="device=cpu" ipython -i'
 alias gpy='THEANO_FLAGS="device=gpu0" ipython -i'
@@ -85,6 +87,13 @@ function local_jarwinX() {
 function jarwin() {
     ssh -4 akkhong@jarwinjkt.no-ip.biz
 }
+function cuffy() {
+    ssh -4 akk@ilikezcoffe.no-ip.biz
+}
+function servox() {
+    ssh -p2222 akkhong@servox.no-ip.biz
+}
+
 function jarwinX() {
     ssh -X akkhong@jarwinjkt.no-ip.biz
 }
@@ -95,9 +104,6 @@ function samhanX() {
     ssh -X akkhong@192.168.1.109
 }
 
-function cuffy() {
-    ssh -4 akk@ilikezcoffe.no-ip.biz
-}
 
 function check_my_ip() {
     curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/<.*$//'

@@ -7,6 +7,9 @@ function sbash() {
 function compile_md() {
     pandoc -V geometry:margin=2cm -o $1 $2
 }
+function compile_md_long() {
+    pandoc -V geometry:margin=4cm -o $1 $2
+}
 
 # Python shortcuts
 alias pi='THEANO_FLAGS="device=cpu" ipython -i'

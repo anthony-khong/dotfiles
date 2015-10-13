@@ -10,6 +10,9 @@ function compile_md() {
 function compile_md_long() {
     pandoc -V geometry:margin=4cm -o $1 $2
 }
+function md_to_wiki() {
+    pandoc -r markdown $1 -t mediawiki -o $2
+}
 
 # Python shortcuts
 alias pi='THEANO_FLAGS="device=cpu" ipython -i'

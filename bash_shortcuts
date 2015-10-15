@@ -20,6 +20,9 @@ alias gpy1='THEANO_FLAGS="device=gpu1" ipython -i'
 alias gpy2='THEANO_FLAGS="device=gpu2" ipython -i'
 alias gpy3='THEANO_FLAGS="device=gpu3" ipython -i'
 
+# Vim shortcuts
+alias vi='vim'
+
 # Git shortcuts
 function fastpush() {
     git add -u;

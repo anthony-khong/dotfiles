@@ -1,3 +1,6 @@
+nnoremap <Space>m :so ~/dotfiles_akk/others/mbk_vimrc<CR>:echo 'Changed to MBK'<CR>
+nnoremap <Space>a :so ~/dotfiles_akk/vim/vimrc<CR>:echo 'Changed to AKK'<CR>
+
 call pathogen#infect()
 
 " This is the remote vimrc. The local vimrc should include the following:
@@ -80,7 +83,6 @@ nnoremap <Leader>' :q<CR>
 
 " Jump to escape mode
 ino hh <esc>
-ino kk <esc>
 ino jj <esc>
 
 " Moving between search hits
@@ -118,7 +120,7 @@ nnoremap <Leader>5 i#<esc>70.b
 
 " If Markdown, don't include line break after 80 characters
 " Source: https://www.piware.de/2014/07/vim-config-for-markdownlatex-pandoc-editing/
-function s:md_settings()
+" function s:md_settings()
     " inoremap <buffer> <Leader>n \note[item]{}<Esc>i
     " noremap <buffer> <Leader>b :! pandoc -t beamer % -o %<.pdf<CR><CR>
     " noremap <buffer> <Leader>l :! pandoc -t latex % -o %<.pdf<CR>
@@ -131,8 +133,8 @@ function s:md_settings()
     " syntax region Statement matchgroup=Delimiter start="\\begin{.*}" end="\\end{.*}" contains=Statement
     "   commands:
     " syntax region Statement matchgroup=Delimiter start="{" end="}" contains=Statement
-    nnoremap <buffer> <Leader>p :!pandoc -V geometry:margin=2cm -o "%:r.pdf" %<CR><CR>
-endfunction
+    " nnoremap <buffer> <Leader>p :!pandoc -V geometry:margin=2cm -o "%:r.pdf" %<CR><CR>
+" endfunction
 autocmd BufRead,BufNewFile *.md setfiletype markdown
 autocmd FileType markdown :call <SID>md_settings()
 au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
@@ -306,9 +308,9 @@ map <Leader>f <Plug>(easymotion-f)
 map <Leader>F <Plug>(easymotion-F)
 
 " Syntastic configs
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1

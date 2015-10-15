@@ -1,0 +1,69 @@
+" Make sure the copying works
+set clipboard=unnamed
+:set mouse=nicr
+
+set omnifunc=syntaxcomplete#Complete
+
+" Showing line numbers and length
+set number  " show line numbers
+set tw=79   " width of document (used by gd)
+set nowrap  " don't automatically wrap on load
+set fo-=t   " don't automatically wrap text when typing
+set colorcolumn=80
+highlight ColorColumn ctermbg=234
+
+
+" Real programmers don't use TABs but spaces
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set shiftround
+set expandtab
+
+filetype indent on
+
+" Making sure we can use jj rather than <Esc>.
+:imap jj <Esc>
+:imap JJ <Esc>
+:imap jJ <Esc>
+:imap Jj <Esc>
+ino kk <Esc>:w<CR>
+" Making sure we can save with control + s
+nmap <c-s> :w<CR>
+vmap <c-s> <Esc><c-s>gv
+imap <c-s> <Esc><c-s>
+
+" Making sure the cursor stays in the center
+set so=5
+
+set laststatus=2
+
+set rtp+={repository_root}/powerline/bindings/vim
+
+vnoremap < <gv
+vnoremap > >gv
+
+"""" Added for tab completion
+let g:SuperTabDefaultCompletionType = "<c-n>"
+
+" Make ctrlp open a new tab by default
+let g:ctrlp_prompt_mappings = {
+    \ 'AcceptSelection("e")': ['<c-t>'],
+    \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
+    \ }
+let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+
+"" For jedivim
+" settings for jedi-vim
+" cd ~/.vim/bundle
+" " git clone git://github.com/davidhalter/jedi-vim.git
+let g:jedi#usages_command = "<leader>;"
+let g:jedi#popup_on_dot = 0
+let g:jedi#popup_select_first = 0
+let g:jedi#completions_command = "<Leader>c"
+let g:jedi#smart_auto_mappings = 0
+let g:jedi#show_call_signatures = 1
+
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=grey   ctermbg=3
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4

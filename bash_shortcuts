@@ -29,6 +29,10 @@ function fastpush() {
     git commit -m "$*";
     git push;
 }
+function gsu() {
+    git submodule init;
+    git submodule update;
+}
 function gpa() {
     cd ~/applied_modelling;
     git pull;

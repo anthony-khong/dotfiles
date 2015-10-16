@@ -135,8 +135,8 @@ nnoremap <Leader>5 i#<esc>70.b
     " syntax region Statement matchgroup=Delimiter start="{" end="}" contains=Statement
     " nnoremap <buffer> <Leader>p :!pandoc -V geometry:margin=2cm -o "%:r.pdf" %<CR><CR>
 " endfunction
+" autocmd FileType markdown :call <SID>md_settings()
 autocmd BufRead,BufNewFile *.md setfiletype markdown
-autocmd FileType markdown :call <SID>md_settings()
 au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 au BufNewFile,BufFilePre,BufRead *.md set textwidth=0
 au BufNewFile,BufFilePre,BufRead *.md set colorcolumn=0

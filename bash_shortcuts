@@ -84,6 +84,9 @@ function fvalue() {
 function jarwin() {
     ssh -4 akkhong@jarwinjkt.no-ip.biz
 }
+function jarwinX() {
+    ssh -4 -X akkhong@jarwinjkt.no-ip.biz
+}
 function cuffy() {
     ssh -4 akk@ilikezcoffe.no-ip.biz
 }

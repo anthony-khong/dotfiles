@@ -35,12 +35,11 @@ let g:rehash256 = 1
 " Key Remaps                                                                "
 "==========================================================================="
 let mapleader = ","
-map <Space> ,
 
 " Delete and send to the blackhole register
 " (Delete a line in normal mode, but delete the selection in visual mode)
-nmap <space>d "_dd
-vmap <space>d "_d
+nmap <Space>d "_dd
+vmap <Space>d "_d
 
 " Five line buffer
 set so=5
@@ -52,7 +51,7 @@ nnoremap <Leader>s :update<CR>
 :nnoremap <silent> <C-w> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
 " Will's equals sign idea
-nnoremap <Leader>= i<del><space><esc>gelcw<space>=<space><esc>
+nnoremap <Leader>= i<del><Space><esc>gelcw<Space>=<Space><esc>
 
 " Page up and down, then centers the cursor
 " nnoremap = <S-Up>zz
@@ -108,10 +107,15 @@ nnoremap k gk
 
 " Run current Python script
 nnoremap <Leader><Space> :!ipython -i %<CR>
+
 " Python shortcuts
 map <Leader>t Oimport pdb; pdb.set_trace() # BREAKPOINT<C-c>
 map <Leader>m Oimport matplotlib.pyplot as plt<C-c>
 map <C-t> opass # TODO<C-c>
+
+" Wrap a block/line with a try except block
+vnoremap <Space>te >gvdOtry:<C-c>mqo<BS>except Exception as msg:<C-c>oprint msg<CR>import pdb; pdb.set_trace() # BREAKPOINT<C-C>kkP'q
+nnoremap <Space>te V>gvdOtry:<C-c>mqo<BS>except Exception as msg:<C-c>oprint msg<CR>import pdb; pdb.set_trace() # BREAKPOINT<C-C>kkP'q
 
 " Get a line of #'s
 nnoremap <Leader>3 i#<esc>78.b
@@ -167,19 +171,10 @@ set clipboard=unnamed
 set mouse=a  " on OSX press ALT and click
 set bs=2     " make backspace behave like normal again
 
-" bind Ctrl+<movement> keys to move around the windows, instead of using Ctrl+w + <movement>
-" Every unnecessary keystroke that can be saved is good for your health :)
-"" map <c-j> <c-w>j
-"" map <c-k> <c-w>k
-"" map <c-l> <c-w>l
-"" map <c-h> <c-w>h
-
 " map sort function to a key
-"" vnoremap <Leader>s :sort<CR>
+vnoremap <Space>s :sort<CR>
 
-" easier moving of code blocks
-" Try to go into visual mode (v), thenselect several lines of code here and
-" then press ``>`` several times.
+" Easier moving of code blocks
 vnoremap < <gv  " better indentation
 vnoremap > >gv  " better indentation
 

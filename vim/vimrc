@@ -316,7 +316,9 @@ highlight SyntasticWarning NONE
 highlight SyntasticError NONE
 
 " Airline configs
-let g:airline_theme = 'badwolf'
+" let g:airline_theme = 'badwolf' # with badwolf
+" let g:airline_theme = 'powerlineish' # with wombat256mod
+let g:airline_theme = 'understated'
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif

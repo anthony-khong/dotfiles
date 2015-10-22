@@ -138,7 +138,7 @@ else
     export PATH="/home/mbk/anaconda/bin:$PATH"
 fi
 
-export user=akk_linux
+# export user=akk_linux
 export PYTHONPATH=/home/akkhong/
 export PYTHONPATH=$PYTHONPATH:/home/akkhong/pylearn2/
 export PYTHONPATH=$PYTHONPATH:/home/akkhong/xgboost/wrapper/

@@ -1,13 +1,23 @@
 # Bash shortcuts
 function sbash() {
-    source ~/.bash_profile
+    if [ "$(uname)" == "Darwin" ]; then
+        echo 'bash_profile reloaded!'
+        source ~/.bash_profile;
+    elif [ "$(uname)" == "Linux" ]; then
+        echo 'bashrc reloaded!'
+        source ~/.bashrc;
+    fi
 }
 
 # Tmux shortcut
 function tm() {
     tmux ls;
     sleep 0.25s;
-    tmux attach || tmux new;
+    if [ -z "$1" ]; then
+        tmux attach || tmux new -s 'unnamed_ession';
+    else
+        tmux attach || tmux new -s $1;
+    fi
 }
 
 # Pandoc shortcuts

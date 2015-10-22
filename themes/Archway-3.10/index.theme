@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=Archway-3.10
+Type=X-GNOME-Metatheme
+Comment= A modification of Zen-nokto by cedle
+
+[X-GNOME-Metatheme]
+GtkTheme=Archway-3.10
+MetacityTheme=alinea
+IconTheme=default
+GtkColorScheme=base_color:#303030,fg_color:#1992CF,tooltip_fg_color:#FFFFFF,selected_bg_color:#212121,selected_fg_color:#FFFFFF,text_color:#1992CF,bg_color:#242424,tooltip_bg_color:#212121
+CursorTheme=default
+CursorSize=18
+NotificationTheme=slider

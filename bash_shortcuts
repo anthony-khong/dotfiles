@@ -14,7 +14,7 @@ function tm() {
     tmux ls;
     sleep 0.25s;
     if [ -z "$1" ]; then
-        tmux attach || tmux new -s 'unnamed_ession';
+        tmux attach || tmux new -s 'unnamed_session';
     else
         tmux attach || tmux new -s $1;
     fi

@@ -220,6 +220,10 @@ set nobackup
 set nowritebackup
 set noswapfile
 
+" Make vim transparent to the background
+hi Normal ctermbg=none
+highlight NonText ctermbg=none
+
 " =========================================================================="
 " Python IDE Setup                                                          "
 " =========================================================================="

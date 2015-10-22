@@ -262,6 +262,7 @@ if executable('ag')
         \ --ignore ".cache/*"
         \ --ignore ".fzf/*"
         \ --ignore ".pia_manager/*"
+        \ --ignore ".themes/*"
         \ --ignore ".vim/*"
         \ --ignore ".Trash/*"
         \ --ignore "Applications/*"

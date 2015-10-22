@@ -3,6 +3,13 @@ function sbash() {
     source ~/.bash_profile
 }
 
+# Tmux shortcut
+function tm() {
+    tmux ls;
+    sleep 0.25s;
+    tmux attach || tmux new;
+}
+
 # Pandoc shortcuts
 function md_to_pdf() {
     pandoc -V geometry:margin="$1"cm -o $3 $2

@@ -138,7 +138,11 @@ else
     export PATH="/home/mbk/anaconda/bin:$PATH"
 fi
 
-# export user=akk_linux
+if [ "$(uname)" == "Darwin" ]; then
+    export user=akk_mac
+elif [ "$(uname)" == "Linux" ]; then
+    export user=akk_linux
+fi
 export PYTHONPATH=/home/akkhong/
 export PYTHONPATH=$PYTHONPATH:/home/akkhong/pylearn2/
 export PYTHONPATH=$PYTHONPATH:/home/akkhong/xgboost/wrapper/

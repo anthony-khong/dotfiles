@@ -1,11 +1,11 @@
 # Bash shortcuts
 function sbash() {
     if [ "$(uname)" == "Darwin" ]; then
-        echo 'bash_profile reloaded!'
         source ~/.bash_profile;
+        echo 'bash_profile reloaded!'
     elif [ "$(uname)" == "Linux" ]; then
-        echo 'bashrc reloaded!'
         source ~/.bashrc;
+        echo 'bashrc reloaded!'
     fi
 }
 

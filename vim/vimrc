@@ -1,6 +1,12 @@
 nnoremap <Space>m :so ~/dotfiles_akk/others/mbk_vimrc<CR>:echo 'Changed to MBK'<CR>
 nnoremap <Space>a :so ~/dotfiles_akk/vim/vimrc<CR>:echo 'Changed to AKK'<CR>
 
+" Enable syntax highlighting
+" You need to reload this file for the change to apply
+filetype off
+filetype plugin indent on
+syntax on
+
 call pathogen#infect()
 
 " This is the remote vimrc. The local vimrc should include the following:
@@ -31,6 +37,10 @@ au InsertLeave * match ExtraWhitespace /\s\+$/
 colorscheme iceberg
 " let g:molokai_original = 1
 let g:rehash256 = 1
+
+" Make vim transparent to the background
+hi Normal ctermbg=none
+highlight NonText ctermbg=none
 
 "==========================================================================="
 " Key Remaps                                                                "
@@ -179,11 +189,6 @@ vnoremap <Space>s :sort<CR>
 vnoremap < <gv  " better indentation
 vnoremap > >gv  " better indentation
 
-" Enable syntax highlighting
-" You need to reload this file for the change to apply
-filetype off
-filetype plugin indent on
-syntax on
 
 " Showing line numbers and length
 set number  " show line numbers
@@ -219,10 +224,6 @@ set smartcase
 set nobackup
 set nowritebackup
 set noswapfile
-
-" Make vim transparent to the background
-hi Normal ctermbg=none
-highlight NonText ctermbg=none
 
 " =========================================================================="
 " Python IDE Setup                                                          "

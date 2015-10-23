@@ -116,23 +116,6 @@ vnoremap <Leader>c "+y
 nnoremap j gj
 nnoremap k gk
 
-" Run current Python script
-nnoremap <Leader><Space> :!ipython -i %<CR>
-
-" Python shortcuts
-map <Leader>t Oimport pdb; pdb.set_trace() # BREAKPOINT<C-c>
-map <Leader>m Oimport matplotlib.pyplot as plt<C-c>
-map <C-t> opass # TODO<C-c>
-
-" Wrap a block/line with a try except block
-vnoremap <Space>te >gvdOtry:<C-c>mqo<BS>except Exception as msg:<C-c>oprint msg<CR>import pdb; pdb.set_trace() # BREAKPOINT<C-C>kkP'q
-nnoremap <Space>te V>gvdOtry:<C-c>mqo<BS>except Exception as msg:<C-c>oprint msg<CR>import pdb; pdb.set_trace() # BREAKPOINT<C-C>kkP'q
-
-" Get a line of #'s
-nnoremap <Leader>3 i#<esc>78.b
-nnoremap <Leader>4 i#<esc>74.b
-nnoremap <Leader>5 i#<esc>70.b
-
 " If Markdown, don't include line break after 80 characters
 " Source: https://www.piware.de/2014/07/vim-config-for-markdownlatex-pandoc-editing/
 " function s:md_settings()
@@ -339,3 +322,6 @@ map <Leader>gd :Gdiff<CR>
 " Git gutter no longer interferes with gutter width
 let g:gitgutter_sign_column_always = 1
 map <Leader>gg :GitGutter<CR>
+
+" FuzzySearch shortcut
+map <Space>/ :FuzzySearch<CR>

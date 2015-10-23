@@ -58,3 +58,6 @@
 [submodule "tmux/tpm"]
 	path = tmux/tpm
 	url = https://github.com/tmux-plugins/tpm
+[submodule "vim/bundle/vim-fuzzysearch"]
+	path = vim/bundle/vim-fuzzysearch
+	url = https://github.com/ggVGc/vim-fuzzysearch

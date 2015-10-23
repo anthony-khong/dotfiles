@@ -9,6 +9,10 @@ function sbash() {
     fi
 }
 
+function remove_pyc() {
+    find . -name "*.pyc" -exec rm -rf {} \;
+}
+
 # Tmux shortcut
 function tm() {
     tmux ls;

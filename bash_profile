@@ -24,3 +24,6 @@ alias vim="mvim -v"
 
 # Load RVM into a shell session *as a function*
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
+# Stop Python from generating .pyc files
+export PYTHONDONTWRITEBYTECODE=1

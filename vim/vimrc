@@ -1,18 +1,24 @@
-nnoremap <Space>m :so ~/dotfiles_akk/others/mbk_vimrc<CR>:echo 'Changed to MBK'<CR>
-nnoremap <Space>a :so ~/dotfiles_akk/vim/vimrc<CR>:echo 'Changed to AKK'<CR>
-
-" Enable syntax highlighting
-" You need to reload this file for the change to apply
-filetype off
-filetype plugin indent on
-syntax on
-
-call pathogen#infect()
-
 " This is the remote vimrc. The local vimrc should include the following:
 " set runtimepath^=~/dotfiles_akk/vim
 " source ~/dotfiles_akk/vim/vimrc
-" NOTE: jedi-vim must be installed in the local machine!
+
+"==========================================================================="
+" Shortcuts for Pair Programming                                            "
+"==========================================================================="
+nnoremap <Space>m :so ~/dotfiles_akk/others/mbk_vimrc<CR>:echo 'Changed to MBK'<CR>
+nnoremap <Space>a :so ~/dotfiles_akk/vim/vimrc<CR>:echo 'Changed to AKK'<CR>
+
+"==========================================================================="
+" General Settings                                                          "
+"==========================================================================="
+
+" Enable plugins
+call pathogen#infect()
+
+" Enable syntax highlighting
+filetype off
+syntax on
+filetype plugin indent on
 
 " For tmux colour compatibility
 set term=screen-256color
@@ -20,144 +26,14 @@ set term=screen-256color
 " Disable folding so that the key 'f' can be used for movement
 set nofoldenable
 
+" The bells can be distracting in OSX
 set noerrorbells visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
-
-" Show whitespace
-" MUST be inserted BEFORE the colorscheme command
-autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
-au InsertLeave * match ExtraWhitespace /\s\+$/
-
-" Color scheme
-" mkdir -p ~/.vim/colors && cd ~/.vim/colors
-" wget -O wombat256mod.vim http://www.vim.org/scripts/download_script.php?src_id=13400
-" set t_Co=256
-" colorscheme wombat256mod
-" colorscheme badwolf
-colorscheme iceberg
-" let g:molokai_original = 1
-let g:rehash256 = 1
-
-" Make vim transparent to the background
-hi Normal ctermbg=none
-highlight NonText ctermbg=none
-
-"==========================================================================="
-" Key Remaps                                                                "
-"==========================================================================="
-let mapleader = ","
-
-" Delete and send to the blackhole register
-" (Delete a line in normal mode, but delete the selection in visual mode)
-nmap <Space>d "_dd
-vmap <Space>d "_d
 
 " Five line buffer
 set so=5
 
-" Save current script
-nnoremap <Leader>s :update<CR>
-
-" Remove trailing whitespace
-:nnoremap <silent> <C-w> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
-
-" Will's equals sign idea
-nnoremap <Leader>= i<del><Space><esc>gelcw<Space>=<Space><esc>
-
-" Page up and down, then centers the cursor
-" nnoremap = <S-Up>zz
-" nnoremap \ <S-Down>zz
-" vnoremap = <S-Up>zz
-" vnoremap \ <S-Down>zz
-noremap <C-u> <S-Up>zz
-noremap <C-d> <S-Down>zz
-
-" Centers screen after jumping to mark???
-map <expr> M printf('`%c zz',getchar())
-map <expr> M printf('\'%c zz',getchar())
-
-nnoremap G Gzz
-:nnoremap n nzz
-:nnoremap N Nzz
-
-" Split pane horizontally
-nnoremap <Leader>v <C-w>v
-" Move between panes
-nnoremap <Leader>z <C-w>w
-
-" Jumping between tabs
-map <Leader>, <esc>:tabprevious<CR>
-map <Leader>. <esc>:tabnext<CR>
-" Close current tab
-nnoremap <Leader>' :q<CR>
-
-" Jump to escape mode
-ino hh <esc>
-ino jj <esc>
-
-" Moving between search hits
-inoremap <Leader>n <C-n>
-" inoremap <Leader>p <C-p>
-" Turn off search highlights
-nnoremap <C-x> :nohlsearch<CR>
-
-" Copy the entire script to the clipboard
-nnoremap <Leader>l mwggVG"+y'wzz
-" Copy from current line to the top
-nnoremap <Leader>k mwggV'w"+y'wzz
-" Copy from current line to the bottom
-nnoremap <Leader>j mwGV'w"+y'wzz
-" Copy entire line to the clipboard
-nnoremap <Leader>y V"+y
-" Copy selection to the clipboard
-vnoremap <Leader>c "+y
-
-" Moving up and down physical lines - useful for .txt/.md editing
-nnoremap j gj
-nnoremap k gk
-
-" If Markdown, don't include line break after 80 characters
-" Source: https://www.piware.de/2014/07/vim-config-for-markdownlatex-pandoc-editing/
-" function s:md_settings()
-    " inoremap <buffer> <Leader>n \note[item]{}<Esc>i
-    " noremap <buffer> <Leader>b :! pandoc -t beamer % -o %<.pdf<CR><CR>
-    " noremap <buffer> <Leader>l :! pandoc -t latex % -o %<.pdf<CR>
-    " noremap <buffer> <Leader>v :! evince %<.pdf 2>&1 >/dev/null &<CR><CR>
-
-    " adjust syntax highlighting for LaTeX parts
-    "   inline formulas:
-    " syntax region Statement oneline matchgroup=Delimiter start="\$" end="\$"
-    "   environments:
-    " syntax region Statement matchgroup=Delimiter start="\\begin{.*}" end="\\end{.*}" contains=Statement
-    "   commands:
-    " syntax region Statement matchgroup=Delimiter start="{" end="}" contains=Statement
-    " nnoremap <buffer> <Leader>p :!pandoc -V geometry:margin=2cm -o "%:r.pdf" %<CR><CR>
-" endfunction
-" autocmd FileType markdown :call <SID>md_settings()
-autocmd BufRead,BufNewFile *.md setfiletype markdown
-au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
-au BufNewFile,BufFilePre,BufRead *.md set textwidth=0
-au BufNewFile,BufFilePre,BufRead *.md set colorcolumn=0
-au BufNewFile,BufFilePre,BufRead *.md set noexpandtab
-au BufNewFile,BufRead,BufEnter *.md :syn match markdownIgnore "\$.*_.*\$"
-au BufNewFile,BufFilePre,BufRead *.md set wrap
-
-" Enbale CUDA syntax
-au BufNewFile,BufRead *.cu set ft=cu
-au BufNewFile,BufRead *.cuh set ft=cu
-
-"==========================================================================="
-" Sample .vimrc file by Martin Brochhaus                                    "
-" Presented at PyCon APAC 2012                                              "
-" (https://github.com/mbrochh/vim-as-a-python-ide)                          "
-"==========================================================================="
-
-" Automatic reloading of .vimrc
-autocmd! bufwritepost .vimrc source %
-
 " Better copy & paste
-" When you want to paste large blocks of code into vim, press F2 before you
-" paste. At the bottom you should see ``-- INSERT (paste) --``.
 set pastetoggle=<F2>
 set clipboard=unnamed
 
@@ -165,25 +41,11 @@ set clipboard=unnamed
 set mouse=a  " on OSX press ALT and click
 set bs=2     " make backspace behave like normal again
 
-" map sort function to a key
-vnoremap <Space>s :sort<CR>
-
-" Easier moving of code blocks
-vnoremap < <gv  " better indentation
-vnoremap > >gv  " better indentation
-
-
 " Showing line numbers and length
 set number  " show line numbers
 set tw=79   " width of document (used by gd)
 set nowrap  " don't automatically wrap on load
 set fo-=t   " don't automatically wrap text when typing
-au BufNewFile,BufFilePre,BufRead *.py set colorcolumn=80
-au BufNewFile,BufFilePre,BufRead *.py highlight ColorColumn ctermbg=234
-
-" easier formatting of paragraphs
-vmap Q gq
-nmap Q gqap
 
 " Useful settings
 set history=700
@@ -208,32 +70,136 @@ set nobackup
 set nowritebackup
 set noswapfile
 
+
+"==========================================================================="
+" Colourscheme                                                              "
+"==========================================================================="
+" Show whitespace
+" MUST be inserted BEFORE the colourscheme command
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+au InsertLeave * match ExtraWhitespace /\s\+$/
+
+" Colour scheme
+" set t_Co=256
+colorscheme iceberg
+let g:rehash256 = 1
+
+" Some other colour schemes that I previously liked
+" colorscheme wombat256mod
+" colorscheme molokai
+" colorscheme badwolf
+" let g:molokai_original = 1
+
+" Make vim transparent to the background
+hi Normal ctermbg=none
+highlight NonText ctermbg=none
+
+"==========================================================================="
+" Key Remaps                                                                "
+"==========================================================================="
+
+" Set the leader to comma
+let mapleader = ","
+
+" Jump to escape mode
+ino hh <esc>
+ino jj <esc>
+
+" Moving up and down physical lines
+nnoremap j gj
+nnoremap k gk
+
+" Page up and down, then centers the cursor
+noremap <C-u> <S-Up>zz
+noremap <C-d> <S-Down>zz
+
+" Centers screen after jumping to mark
+map <expr> M printf('`%c zz',getchar())
+map <expr> M printf('\'%c zz',getchar())
+
+" Centers screen whenever a search is found
+nnoremap G Gzz
+:nnoremap n nzz
+:nnoremap N Nzz
+
+" Pane movements
+nnoremap <Leader>v <C-w>v
+nnoremap <Leader>z <C-w>w
+
+" Jumping between tabs
+map <Leader>, <esc>:tabprevious<CR>
+map <Leader>. <esc>:tabnext<CR>
+
+" Close current tab
+nnoremap <Leader>' :q<CR>
+
+" Turn off search highlights
+nnoremap <C-x> :nohlsearch<CR>
+
+" Copy the entire script to the clipboard
+nnoremap <Leader>l mwggVG"+y'wzz
+" Copy from current line to the top
+nnoremap <Leader>k mwggV'w"+y'wzz
+" Copy from current line to the bottom
+nnoremap <Leader>j mwGV'w"+y'wzz
+" Copy entire line to the clipboard
+nnoremap <Leader>y V"+y
+" Copy selection to the clipboard
+vnoremap <Leader>c "+y
+
+" Delete and send to the blackhole register
+" (Delete a line in normal mode, but delete the selection in visual mode)
+nmap <Space>d "_dd
+vmap <Space>d "_d
+
+" Save current script
+nnoremap <Leader>s :update<CR>
+
+" Remove trailing whitespace
+:nnoremap <silent> <C-w> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+
+" Will's equals sign idea
+nnoremap <Leader>= i<del><Space><esc>gelcw<Space>=<Space><esc>
+
+" Map sort function to a key
+vnoremap <Space>s :sort<CR>
+
+" Easier moving of code blocks
+vnoremap < <gv  " better indentation
+vnoremap > >gv  " better indentation
+
+"==========================================================================="
+" Generic Autos                                                             "
+"==========================================================================="
+autocmd BufRead,BufNewFile *.md setfiletype markdown
+
+" Enbale CUDA syntax
+au BufNewFile,BufRead *.cu set ft=cu
+au BufNewFile,BufRead *.cuh set ft=cu
+
+" easier formatting of paragraphs
+vmap Q gq
+nmap Q gqap
+
 " =========================================================================="
-" Python IDE Setup                                                          "
+" Plugins                                                                   "
 " =========================================================================="
 
-" Settings for vim-powerline
-" cd ~/.vim/bundle
-" git clone git://github.com/Lokaltog/vim-powerline.git
-set laststatus=2
-
-" Settings for ctrlp
-" cd ~/.vim/bundle
-" git clone https://github.com/kien/ctrlp.vim.git
+" CtrlP
 let g:ctrlp_max_height = 30
 set wildignore+=*.pyc
 set wildignore+=*_build/*
 set wildignore+=*/coverage/*
 set wildignore+=*.theano/*
 
-" Make ctrlp open a new tab by default
+" Make CtrlP open a new tab by default
 let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
 let g:ctrlp_prompt_mappings = {
     \ 'AcceptSelection("e")': ['<c-t>'],
     \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
     \ }
 
-" Use pymatcher and ag
+" Make CtrlP use pymatcher and ag
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 if executable('ag')
     let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
@@ -270,34 +236,28 @@ if executable('ag')
 endif
 nnoremap <Leader>p :CtrlP ~<CR>
 
-" Settings for jedi-vim
-" cd ~/.vim/bundle
-" git clone git://github.com/davidhalter/jedi-vim.git
+" Jedi-Vim
 let g:jedi#usages_command = "<leader>;"
 let g:jedi#popup_on_dot = 0
 let g:jedi#popup_select_first = 0
 let g:jedi#completions_command = "<Leader>c"
 let g:jedi#smart_auto_mappings = 0
 
-" indentLine configs
+" IndentLine
 let g:indentLine_enabled = 1
 let g:indentLine_color_term = 237
-" let g:indentLine_char = '︙'
 
-" Make supertab scroll from top to bottom
+" SuperTab
 let g:SuperTabDefaultCompletionType = "<c-n>"
 
-" Set EasyMotion trigger
+" EasyMotion
 map <Leader> <Plug>(easymotion-prefix)
 map <Leader>w <Plug>(easymotion-w)
 map <Leader>b <Plug>(easymotion-b)
 map <Leader>f <Plug>(easymotion-f)
 map <Leader>F <Plug>(easymotion-F)
 
-" Syntastic configs
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
+" Syntastic
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
@@ -306,9 +266,7 @@ let g:syntastic_loc_list_height=1
 highlight SyntasticWarning NONE
 highlight SyntasticError NONE
 
-" Airline configs
-" let g:airline_theme = 'badwolf' # with badwolf
-" let g:airline_theme = 'powerlineish' # with wombat256mod
+" Airline
 let g:airline_theme = 'understated'
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
@@ -316,12 +274,16 @@ endif
 let g:airline_left_sep = '»'
 let g:airline_right_sep = '«'
 
-" Fugitive shortcut
+" Some old ones I liked
+" let g:airline_theme = 'badwolf' # with badwolf
+" let g:airline_theme = 'powerlineish' # with wombat256mod
+
+" Fugitive
 map <Leader>gd :Gdiff<CR>
 
-" Git gutter no longer interferes with gutter width
+" GitGutter
 let g:gitgutter_sign_column_always = 1
 map <Leader>gg :GitGutter<CR>
 
-" FuzzySearch shortcut
+" FuzzySearch
 map <Space>/ :FuzzySearch<CR>

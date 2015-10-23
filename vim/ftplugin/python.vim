@@ -15,3 +15,7 @@ nnoremap <Leader>3 i#<esc>78.b
 nnoremap <Leader>4 i#<esc>74.b
 nnoremap <Leader>5 i#<esc>70.b
 
+" Set character limiter
+set colorcolumn=80
+highlight ColorColumn ctermbg=234
+

@@ -70,7 +70,6 @@ set nobackup
 set nowritebackup
 set noswapfile
 
-
 "==========================================================================="
 " Colourscheme                                                              "
 "==========================================================================="
@@ -113,6 +112,9 @@ nnoremap k gk
 noremap <C-u> <S-Up>zz
 noremap <C-d> <S-Down>zz
 
+" Jump to next method
+nmap <Space><Space> ]m
+
 " Centers screen after jumping to mark
 map <expr> M printf('`%c zz',getchar())
 map <expr> M printf('\'%c zz',getchar())
@@ -132,6 +134,10 @@ map <Leader>. <esc>:tabnext<CR>
 
 " Close current tab
 nnoremap <Leader>' :q<CR>
+
+" Easier moving of code blocks
+vnoremap < <gv  " better indentation
+vnoremap > >gv  " better indentation
 
 " Turn off search highlights
 nnoremap <C-x> :nohlsearch<CR>
@@ -163,10 +169,6 @@ nnoremap <Leader>= i<del><Space><esc>gelcw<Space>=<Space><esc>
 
 " Map sort function to a key
 vnoremap <Space>s :sort<CR>
-
-" Easier moving of code blocks
-vnoremap < <gv  " better indentation
-vnoremap > >gv  " better indentation
 
 "==========================================================================="
 " Generic Autos                                                             "

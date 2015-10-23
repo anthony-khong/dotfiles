@@ -16,7 +16,6 @@ function remove_pyc() {
 # Tmux shortcut
 function tm() {
     tmux ls;
-    sleep 0.125s;
     if [ -z "$1" ]; then
         tmux attach || tmux new -s 'unnamed';
     else

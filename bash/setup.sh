@@ -1,11 +1,8 @@
-# TODO: install git, install tmux, install vim
-# TODO: install all other stuff from my_setup.md
-
 # Install essentials
 cd;
 if [ "$(uname)" == "Darwin" ]; then
+    # TODO: Anaconda, Chrome, Dropbox, Pandoc, R, Spotify, VLC Vim, htop, iTerm.
     echo 'Setting up Mac...';
-    # TODO: Vim
 
     # Xcode
     xcode-select --install
@@ -19,7 +16,7 @@ if [ "$(uname)" == "Darwin" ]; then
     tlmgr install collection-fontsrecommended
 
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
-    # TODO: Chrome, Dropbox, CUDA, Anaconda
+    # TODO: Anaconda, Antivirus, CUDA, Chrome, Dropbox, RSudio, SSH, VLC, noip2.
     echo 'Setting up Linux...';
 
     sudo apt-get update
@@ -60,6 +57,7 @@ elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
 
 fi
 
+# TODO: setup Python
 
 # Setup dotfiles
 echo 'Cloning dotfiles repo...';

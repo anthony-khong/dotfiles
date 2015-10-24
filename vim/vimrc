@@ -15,6 +15,9 @@ nnoremap <Space>a :so ~/dotfiles_akk/vim/vimrc<CR>:echo 'Changed to AKK'<CR>
 " Enable plugins
 call pathogen#infect()
 
+" This is needed to make Airline work
+set laststatus=2
+
 " Enable syntax highlighting
 filetype off
 syntax on

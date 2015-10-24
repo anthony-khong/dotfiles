@@ -10,7 +10,7 @@
 [submodule "bundle/jedi-vim"]
 	path = vim/bundle/jedi-vim
 	url = https://github.com/davidhalter/jedi-vim.git
-[submodule "jedi"]
+[submodule "bundle/jedi-vim/jedi"]
 	path = vim/bundle/jedi-vim/jedi
 	url = https://github.com/davidhalter/jedi.git
 [submodule "bundle/supertab"]

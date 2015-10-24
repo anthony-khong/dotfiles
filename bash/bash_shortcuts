@@ -13,6 +13,10 @@ function remove_pyc() {
     find . -name "*.pyc" -exec rm -rf {} \;
 }
 
+function diffs() {
+    vim `git ls-files -m` -p;
+}
+
 # Tmux shortcut
 function tm() {
     tmux ls;

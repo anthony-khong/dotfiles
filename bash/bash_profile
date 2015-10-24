@@ -6,11 +6,11 @@
 export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
 alias ls='ls -GFh'
-export PATH=/usr/local/bin:$PATH
 export PATH=/usr/bin:$PATH
+export PATH=/usr/local/bin:$PATH
 
 # added by Anaconda 2.3.0 installer
-export PATH="//anaconda/bin:$PATH"
+export PATH="$PATH://anaconda/bin"
 
 export DYLD_FALLBACK_LIBRARY_PATH=$DYLD_FALLBACK_LIBRARY_PATH:/Users/akkhong/anaconda/lib
 export PYTHONPATH=/Users/akkhong

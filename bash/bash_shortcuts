@@ -76,6 +76,24 @@ function clone_dotfiles() {
     cd vim/bundle/jedi-vim;
     git submodule init;
     git submodule update;
+
+    cd;
+    rm .vimrc;
+    echo "set runtimepath^=~/dotfiles_akk/vim" >> .vimrc;
+    echo "source ~/dotfiles_akk/vim/vimrc" >> .vimrc;
+    rm -rf .vim;
+    ln -s ~/dotfiles_akk/vim/ .vim;
+
+    cd;
+    rm .nvimrc;
+    echo "set runtimepath^=~/dotfiles_akk/vim" >> .nvimrc;
+    echo "source ~/dotfiles_akk/vim/vimrc" >> .nvimrc;
+    rm -rf .nvim;
+    ln -s ~/dotfiles_akk/vim/ .nvim;
+}
+function fix_nvim_tmux_navigator () {
+    infocmp $TERM | sed 's/kbs=^[hH]/kbs=\\177/' > $TERM.ti
+    tic $TERM.ti
 }
 
 # Navigation shortcuts

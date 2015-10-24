@@ -25,7 +25,9 @@ filetype plugin indent on
 
 " This does not seem to work with NeoVim
 " For tmux colour compatibility
-" set term=screen-256color
+if has('vim')
+    set term=screen-256color
+endif
 
 " Disable folding so that the key 'f' can be used for movement
 set nofoldenable

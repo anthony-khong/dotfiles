@@ -17,6 +17,17 @@ function diffs() {
     vim `git ls-files -m` -p;
 }
 
+function install_neovim() {
+    if [ "$(uname)" == "Darwin" ]; then
+        brew tap neovim/neovim
+        brew install --HEAD neovim
+    elif [ "$(uname)" == "Linux" ]; then
+        sudo add-apt-repository ppa:neovim-ppa/unstable
+        sudo apt-get update
+        sudo apt-get install neovim
+    fi
+}
+
 # Tmux shortcut
 function tm() {
     tmux ls;

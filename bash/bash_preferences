@@ -12,3 +12,6 @@ fi
 # Will's request
 umask 000
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+alias vi=nvim
+alias vim=nvim

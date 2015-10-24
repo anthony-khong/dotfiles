@@ -1,6 +1,6 @@
-# source ~/dotfiles_akk/bash_profile
-# source ~/dotfiles_akk/bash_shortcuts
-# source ~/dotfiles_akk/bash_preferences
+# source ~/dotfiles_akk/bash/bash_profile
+# source ~/dotfiles_akk/bash/bash_shortcuts
+# source ~/dotfiles_akk/bash/bash_preferences
 
 # Terminal colouring
 export CLICOLOR=1

@@ -61,3 +61,9 @@
 [submodule "vim/bundle/vim-fuzzysearch"]
 	path = vim/bundle/vim-fuzzysearch
 	url = https://github.com/ggVGc/vim-fuzzysearch
+[submodule "vim/bundle/goyo.vim"]
+	path = vim/bundle/goyo.vim
+	url = https://github.com/junegunn/goyo.vim.git
+[submodule "vim/bundle/limelight.vim"]
+	path = vim/bundle/limelight.vim
+	url = https://github.com/junegunn/limelight.vim

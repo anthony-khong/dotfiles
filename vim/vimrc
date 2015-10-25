@@ -243,13 +243,13 @@ if executable('ag')
         \ --ignore "xgboost/*"
         \ -g ""'
 endif
-nnoremap <Leader>p :CtrlP ~<CR>
+nnoremap <Space>p :CtrlP ~<CR>
 
 " Jedi-Vim
-let g:jedi#usages_command = "<leader>;"
+let g:jedi#usages_command = "<Space>;"
 let g:jedi#popup_on_dot = 0
 let g:jedi#popup_select_first = 0
-let g:jedi#completions_command = "<Leader>c"
+let g:jedi#completions_command = "<Space>c"
 let g:jedi#smart_auto_mappings = 0
 
 " IndentLine
@@ -261,10 +261,10 @@ let g:SuperTabDefaultCompletionType = "<c-n>"
 
 " EasyMotion
 map <Leader> <Plug>(easymotion-prefix)
-map <Leader>w <Plug>(easymotion-w)
-map <Leader>b <Plug>(easymotion-b)
-map <Leader>f <Plug>(easymotion-f)
-map <Leader>F <Plug>(easymotion-F)
+map <Space>w <Plug>(easymotion-w)
+map <Space>b <Plug>(easymotion-b)
+map <Space>f <Plug>(easymotion-f)
+map <Space>F <Plug>(easymotion-F)
 
 " Syntastic
 let g:syntastic_always_populate_loc_list = 1
@@ -288,11 +288,11 @@ let g:airline_right_sep = '«'
 " let g:airline_theme = 'powerlineish' # with wombat256mod
 
 " Fugitive
-map <Leader>gd :Gdiff<CR>
+map <Space>gd :Gdiff<CR>
 
 " GitGutter
 let g:gitgutter_sign_column_always = 1
-map <Leader>gg :GitGutter<CR>
+map <Space>gg :GitGutter<CR>
 
 " FuzzySearch
 map <Space>/ :FuzzySearch<CR>
@@ -323,5 +323,11 @@ else
   map <C-l> <C-w>l
 endif
 
-" This seems to be required to use Tmux Navigator with NeoVim
-map <C-h> :TmuxNavigateLeft<CR>
+" Goyo
+nmap <Space>gy :Goyo<CR>
+
+" LimeLight
+let g:limelight_conceal_ctermfg = 'gray'
+let g:limelight_conceal_ctermfg = 240
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!

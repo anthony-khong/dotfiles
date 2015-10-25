@@ -1,8 +1,9 @@
-# Mac Mode (=m)
+# My Kinesis Settings
 
-# Remaps (Progrm + F12)
-* <ctrl> to <caps>
-* <tab> to <ctrl>
-* <esc> to <end>
-
-# Turn off Tones (Progrm + -)
+* Mac Mode (=m)
+* Remaps (Progrm + F12)
+	* Ctrl to Caps
+	* Tab to Ctrl
+	* Esc to End
+* Volumes (=n)
+* Turn off Tones (Progrm + -)

@@ -120,7 +120,7 @@ noremap <C-u> <S-Up>zz
 noremap <C-d> <S-Down>zz
 
 " Jump to next method
-nmap <Space><Space> ]m
+nnoremap <Space><Space> ]m
 
 " Centers screen after jumping to mark
 map <expr> M printf('`%c zz',getchar())
@@ -162,8 +162,8 @@ vnoremap <Leader>c "+y
 
 " Delete and send to the blackhole register
 " (Delete a line in normal mode, but delete the selection in visual mode)
-nmap <Space>d "_dd
-vmap <Space>d "_d
+nmap <Leader>d "_dd
+vmap <Leader>d "_d
 
 " Save current script
 nnoremap <Leader>s :update<CR>
@@ -246,10 +246,10 @@ endif
 nnoremap <Space>p :CtrlP ~<CR>
 
 " Jedi-Vim
-let g:jedi#usages_command = "<Space>;"
+" let g:jedi#usages_command = "<Space>;"
 let g:jedi#popup_on_dot = 0
 let g:jedi#popup_select_first = 0
-let g:jedi#completions_command = "<Space>c"
+" let g:jedi#completions_command = "<Space>c"
 let g:jedi#smart_auto_mappings = 0
 
 " IndentLine
@@ -261,10 +261,10 @@ let g:SuperTabDefaultCompletionType = "<c-n>"
 
 " EasyMotion
 map <Leader> <Plug>(easymotion-prefix)
-map <Space>w <Plug>(easymotion-w)
-map <Space>b <Plug>(easymotion-b)
-map <Space>f <Plug>(easymotion-f)
-map <Space>F <Plug>(easymotion-F)
+nnoremap <Space>w <Plug>(easymotion-w)
+nnoremap <Space>b <Plug>(easymotion-b)
+nnoremap <Space>f <Plug>(easymotion-f)
+nnoremap <Space>F <Plug>(easymotion-F)
 
 " Syntastic
 let g:syntastic_always_populate_loc_list = 1
@@ -288,14 +288,14 @@ let g:airline_right_sep = '«'
 " let g:airline_theme = 'powerlineish' # with wombat256mod
 
 " Fugitive
-map <Space>gd :Gdiff<CR>
+nnoremap <Space>gd :Gdiff<CR>
 
 " GitGutter
 let g:gitgutter_sign_column_always = 1
-map <Space>gg :GitGutter<CR>
+nnoremap <Space>gg :GitGutter<CR>
 
 " FuzzySearch
-map <Space>/ :FuzzySearch<CR>
+nnoremap <Space>/ :FuzzySearch<CR>
 
 " Tmux Navigator
 if exists('$TMUX')
@@ -324,7 +324,7 @@ else
 endif
 
 " Goyo
-nmap <Space>gy :Goyo<CR>:GitGutterEnable<CR>
+nnoremap <Space>gy :Goyo<CR>:GitGutterEnable<CR>
 
 " LimeLight
 let g:limelight_conceal_ctermfg = 'gray'
@@ -337,6 +337,6 @@ augroup rainbow_python
   autocmd!
   autocmd FileType python RainbowParentheses
 augroup END
-nmap <Space>rp :RainbowParentheses!!<CR>
+nnoremap <Space>rp :RainbowParentheses!!<CR>
 let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
 let g:rainbow#blacklist = [109, 110, 242, 252]

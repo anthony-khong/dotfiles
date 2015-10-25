@@ -120,7 +120,7 @@ noremap <C-u> <S-Up>zz
 noremap <C-d> <S-Down>zz
 
 " Jump to next method
-nnoremap <Space><Space> ]m
+nmap <Space><Space> ]m
 
 " Centers screen after jumping to mark
 map <expr> M printf('`%c zz',getchar())
@@ -243,7 +243,7 @@ if executable('ag')
         \ --ignore "xgboost/*"
         \ -g ""'
 endif
-nnoremap <Space>p :CtrlP ~<CR>
+nmap <Space>p :CtrlP ~<CR>
 
 " Jedi-Vim
 " let g:jedi#usages_command = "<Space>;"
@@ -261,10 +261,14 @@ let g:SuperTabDefaultCompletionType = "<c-n>"
 
 " EasyMotion
 map <Leader> <Plug>(easymotion-prefix)
-nnoremap <Space>w <Plug>(easymotion-w)
-nnoremap <Space>b <Plug>(easymotion-b)
-nnoremap <Space>f <Plug>(easymotion-f)
-nnoremap <Space>F <Plug>(easymotion-F)
+nmap <Space>w <Plug>(easymotion-w)
+nmap <Space>b <Plug>(easymotion-b)
+nmap <Space>f <Plug>(easymotion-f)
+nmap <Space>F <Plug>(easymotion-F)
+vmap <Space>w <Plug>(easymotion-w)
+vmap <Space>b <Plug>(easymotion-b)
+vmap <Space>f <Plug>(easymotion-f)
+vmap <Space>F <Plug>(easymotion-F)
 
 " Syntastic
 let g:syntastic_always_populate_loc_list = 1
@@ -288,14 +292,14 @@ let g:airline_right_sep = '«'
 " let g:airline_theme = 'powerlineish' # with wombat256mod
 
 " Fugitive
-nnoremap <Space>gd :Gdiff<CR>
+nmap <Space>gd :Gdiff<CR>
 
 " GitGutter
 let g:gitgutter_sign_column_always = 1
-nnoremap <Space>gg :GitGutter<CR>
+nmap <Space>gg :GitGutter<CR>
 
 " FuzzySearch
-nnoremap <Space>/ :FuzzySearch<CR>
+nmap <Space>/ :FuzzySearch<CR>
 
 " Tmux Navigator
 if exists('$TMUX')
@@ -324,7 +328,7 @@ else
 endif
 
 " Goyo
-nnoremap <Space>gy :Goyo<CR>:GitGutterEnable<CR>
+nmap <Space>gy :Goyo<CR>:GitGutterEnable<CR>
 
 " LimeLight
 let g:limelight_conceal_ctermfg = 'gray'
@@ -337,6 +341,6 @@ augroup rainbow_python
   autocmd!
   autocmd FileType python RainbowParentheses
 augroup END
-nnoremap <Space>rp :RainbowParentheses!!<CR>
+nmap <Space>rp :RainbowParentheses!!<CR>
 let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
 let g:rainbow#blacklist = [109, 110, 242, 252]

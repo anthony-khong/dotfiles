@@ -254,7 +254,7 @@ let g:jedi#smart_auto_mappings = 0
 
 " IndentLine
 let g:indentLine_enabled = 1
-let g:indentLine_color_term = 237
+let g:indentLine_color_term = 235
 
 " SuperTab
 let g:SuperTabDefaultCompletionType = "<c-n>"

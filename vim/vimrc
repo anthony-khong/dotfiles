@@ -324,7 +324,7 @@ else
 endif
 
 " Goyo
-nmap <Space>gy :Goyo<CR>
+nmap <Space>gy :Goyo<CR>:GitGutterEnable<CR>
 
 " LimeLight
 let g:limelight_conceal_ctermfg = 'gray'

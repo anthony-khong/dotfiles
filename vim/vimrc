@@ -331,3 +331,12 @@ let g:limelight_conceal_ctermfg = 'gray'
 let g:limelight_conceal_ctermfg = 240
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
+
+" Rainbow Parentheses
+augroup rainbow_python
+  autocmd!
+  autocmd FileType python RainbowParentheses
+augroup END
+nmap <Space>rp :RainbowParentheses!!<CR>
+let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
+let g:rainbow#blacklist = [109, 110, 242, 252]

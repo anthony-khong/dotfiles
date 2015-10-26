@@ -262,10 +262,12 @@ let g:SuperTabDefaultCompletionType = "<c-n>"
 " EasyMotion
 map <Leader> <Plug>(easymotion-prefix)
 nmap <Space>w <Plug>(easymotion-w)
+nmap <Space>e <Plug>(easymotion-e)
 nmap <Space>b <Plug>(easymotion-b)
 nmap <Space>f <Plug>(easymotion-f)
 nmap <Space>F <Plug>(easymotion-F)
 vmap <Space>w <Plug>(easymotion-w)
+vmap <Space>e <Plug>(easymotion-e)
 vmap <Space>b <Plug>(easymotion-b)
 vmap <Space>f <Plug>(easymotion-f)
 vmap <Space>F <Plug>(easymotion-F)

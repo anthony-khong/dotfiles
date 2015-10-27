@@ -37,6 +37,10 @@ function tm() {
         tmux attach || tmux new -s $1;
     fi
 }
+function tnew {
+    tmux new-session -As `basename $PWD`
+}
+
 
 # Pandoc shortcuts
 function md_to_pdf() {

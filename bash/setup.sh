@@ -10,15 +10,27 @@ if [ "$(uname)" == "Darwin" ]; then
     # Homebrew
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
+    # Essentials
     brew install wget
-    brew install tmux
-
+    brew install htop
     tlmgr install collection-fontsrecommended
+
+    # Vim
+    brew install macvim --override-system-vim
+    brew linkapps
+
+    # NeoVim
+    brew tap neovim/neovim
+    brew install --HEAD neovim
+
+    # Tmux
+    brew install tmux
 
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     # TODO: Anaconda, Antivirus, CUDA, Chrome, Dropbox, RSudio, SSH, VLC, noip2.
     echo 'Setting up Linux...';
 
+    # Essentials
     sudo apt-get update
     sudo apt-get install build-essential
     sudo apt-get install gnome-tweak-tool
@@ -33,6 +45,11 @@ elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     # Vim with clipboard
     sudo apt-get update
     sudo apt-get install vim-gtk
+
+    # NeoVim
+    sudo add-apt-repository ppa:neovim-ppa/unstable
+    sudo apt-get update
+    sudo apt-get install neovim
 
     # Latest Tmux
     sudo apt-get install -y python-software-properties software-properties-common
@@ -80,6 +97,7 @@ echo "set runtimepath^=~/dotfiles_akk/vim
 source ~/dotfiles_akk/vim/vimrc" >> .vimrc;
 
 cd;
+cp ~/dotfiles_akk/bash/inputrc ~/.inputrc
 if [ "$(uname)" == "Darwin" ]; then
     rm .bash_profile
     echo "source ~/dotfiles_akk/bash/bash_profile" >> .bash_profile
@@ -91,5 +109,3 @@ elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     echo "source ~/dotfiles_akk/bash/bash_shortcuts" >> .bashrc
     echo "source ~/dotfiles_akk/bash/bash_preferences" >> .bashrc
 fi
-
-

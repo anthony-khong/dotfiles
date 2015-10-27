@@ -194,6 +194,9 @@ nmap Q gqap
 " Plugins                                                                   "
 " =========================================================================="
 
+" NERDTree toggle
+nmap <Space>n :NERDTreeToggle<CR>
+
 " CtrlP
 let g:ctrlp_max_height = 30
 set wildignore+=*.pyc
@@ -245,16 +248,11 @@ if executable('ag')
 endif
 nmap <Space>p :CtrlP ~<CR>
 
-" Jedi-Vim
-" let g:jedi#usages_command = "<Space>;"
-let g:jedi#popup_on_dot = 0
-let g:jedi#popup_select_first = 0
-" let g:jedi#completions_command = "<Space>c"
-let g:jedi#smart_auto_mappings = 0
-
 " IndentLine
 let g:indentLine_enabled = 1
 let g:indentLine_color_term = 235
+let g:indentLine_leadingSpaceEnabled = 1
+let g:indentLine_leadingSpaceChar = '.'
 
 " SuperTab
 let g:SuperTabDefaultCompletionType = "<c-n>"

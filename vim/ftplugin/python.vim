@@ -19,3 +19,10 @@ nnoremap <Leader>5 i#<esc>70.b
 set colorcolumn=80
 highlight ColorColumn ctermbg=234
 
+" Jedi-Vim
+" let g:jedi#usages_command = "<Space>;"
+let g:jedi#popup_on_dot = 0
+let g:jedi#popup_select_first = 0
+" let g:jedi#completions_command = "<Space>c"
+let g:jedi#smart_auto_mappings = 0
+

@@ -73,3 +73,6 @@
 [submodule "vim/bundle/vim-sensible"]
 	path = vim/bundle/vim-sensible
 	url = https://github.com/tpope/vim-sensible
+[submodule "vim/bundle/vim-tmux-focus-events"]
+	path = vim/bundle/vim-tmux-focus-events
+	url = git://github.com/tmux-plugins/vim-tmux-focus-events.git

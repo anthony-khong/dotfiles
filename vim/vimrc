@@ -49,10 +49,11 @@ set mouse=a  " on OSX press ALT and click
 set bs=2     " make backspace behave like normal again
 
 " Showing line numbers and length
-set number  " show line numbers
-set tw=79   " width of document (used by gd)
-set nowrap  " don't automatically wrap on load
-set fo-=t   " don't automatically wrap text when typing
+set number          " show line numbers
+set relativenumber  " but show relative numbers by default
+set tw=79           " width of document (used by gd)
+set nowrap          " don't automatically wrap on load
+set fo-=t           " don't automatically wrap text when typing
 
 " Useful settings
 set history=700
@@ -176,6 +177,9 @@ nnoremap <Leader>= i<del><Space><esc>gelcw<Space>=<Space><esc>
 
 " Map sort function to a key
 vnoremap <Leader>o :sort<CR>
+
+" Switch back and forth between relative and absolute number
+nnoremap <Leader>n :set relativenumber!<CR>
 
 "==========================================================================="
 " Generic Autos                                                             "

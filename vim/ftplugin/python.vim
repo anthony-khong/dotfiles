@@ -20,9 +20,12 @@ set colorcolumn=80
 highlight ColorColumn ctermbg=234
 
 " Jedi-Vim
-" let g:jedi#usages_command = "<Space>;"
 let g:jedi#popup_on_dot = 0
 let g:jedi#popup_select_first = 0
-" let g:jedi#completions_command = "<Space>c"
 let g:jedi#smart_auto_mappings = 0
 
+let g:jedi#usages_command = "<Space>jus"
+let g:jedi#completions_command = "<Space>jc"
+let g:jedi#goto_definitions_command = "<Space>jd"
+let g:jedi#documentation_command = "<Space>jk"
+let g:jedi#rename = "<Space>jr"

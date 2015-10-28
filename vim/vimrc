@@ -120,7 +120,7 @@ noremap <C-u> <S-Up>zz
 noremap <C-d> <S-Down>zz
 
 " Jump to next method
-nmap <Space><Space> ]m
+nmap }} ]m
 
 " Centers screen after jumping to mark
 map <expr> M printf('`%c zz',getchar())
@@ -169,13 +169,13 @@ vmap <Leader>d "_d
 nnoremap <Leader>s :update<CR>
 
 " Remove trailing whitespace
-:nnoremap <silent> <C-w> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+:nnoremap <silent> <Leader>w :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
 " Will's equals sign idea
 nnoremap <Leader>= i<del><Space><esc>gelcw<Space>=<Space><esc>
 
 " Map sort function to a key
-vnoremap <Space>s :sort<CR>
+vnoremap <Leader>o :sort<CR>
 
 "==========================================================================="
 " Generic Autos                                                             "
@@ -258,7 +258,7 @@ let g:indentLine_leadingSpaceChar = '.'
 let g:SuperTabDefaultCompletionType = "<c-n>"
 
 " EasyMotion
-map <Leader> <Plug>(easymotion-prefix)
+map <Space><Space>em <Plug>(easymotion-prefix)
 nmap <Space>w <Plug>(easymotion-w)
 nmap <Space>e <Plug>(easymotion-e)
 nmap <Space>b <Plug>(easymotion-b)

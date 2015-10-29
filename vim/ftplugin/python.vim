@@ -25,8 +25,8 @@ let g:jedi#popup_select_first = 0
 let g:jedi#smart_auto_mappings = 0
 
 " If space is used here, you get an annoying delay while typing
-let g:jedi#usages_command = "<C-j>us"
-let g:jedi#completions_command = "<C-j>c"
-let g:jedi#goto_definitions_command = "<C-j>d"
-let g:jedi#documentation_command = "<C-j>k"
-let g:jedi#rename = "<C-j>r"
+let g:jedi#usages_command = "<Esc>jus"
+let g:jedi#completions_command = "<Esc>jc"
+let g:jedi#goto_definitions_command = "<Esc>jd"
+let g:jedi#documentation_command = "<Esc>jk"
+let g:jedi#rename = "<Esc>jr"

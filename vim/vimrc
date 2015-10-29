@@ -301,6 +301,10 @@ nmap <Space>gd :Gdiff<CR>
 " GitGutter
 let g:gitgutter_sign_column_always = 1
 nmap <Space>gg :GitGutter<CR>
+nmap <Space>] <Plug>GitGutterPrevHunk
+nmap <Space>[ <Plug>GitGutterNextHunk
+nmap <Space>hs <Plug>GitGutterStageHunk
+nmap <Space>hr <Plug>GitGutterRevertHunk
 
 " FuzzySearch
 nmap <Space>/ :FuzzySearch<CR>

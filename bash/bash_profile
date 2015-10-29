@@ -27,3 +27,6 @@ alias vim="mvim -v"
 
 # Stop Python from generating .pyc files
 export PYTHONDONTWRITEBYTECODE=1
+
+# Make Elinks read HTML
+export VMAIL_HTML_PART_READER='elinks -dump'

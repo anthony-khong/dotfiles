@@ -123,8 +123,8 @@ au InsertLeave * match ExtraWhitespace /\s\+$/
 
 " Colour scheme
 " set t_Co=256
-colorscheme iceberg
-let g:rehash256 = 1
+silent! colorscheme iceberg
+silent! let g:rehash256 = 1
 
 " Some other colour schemes that I previously liked
 " colorscheme wombat256mod

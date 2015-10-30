@@ -6,10 +6,6 @@ map <Leader>t Oimport pdb; pdb.set_trace() # BREAKPOINT<C-c>
 map <Leader>m Oimport matplotlib.pyplot as plt<C-c>
 map <C-t> opass # TODO<C-c>
 
-" Wrap a block/line with a try except block
-nnoremap <Leader>te V>gvdOtry:<C-c>mqo<BS>except Exception as msg:<C-c>oprint msg<CR>import pdb; pdb.set_trace() # BREAKPOINT<C-C>kkP'q
-vnoremap <Leader>te >gvVo<BS>except Exception as msg:<C-c>oprint msg<CR>import pdb; pdb.set_trace() # BREAKPOINT<C-c>gvoVOtry:<C-c>
-
 " Get a line of #'s
 nnoremap <Leader>3 i#<esc>78.b
 nnoremap <Leader>4 i#<esc>74.b

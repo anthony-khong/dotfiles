@@ -3,6 +3,43 @@
 " source ~/dotfiles_akk/vim/vimrc
 
 "==========================================================================="
+" Plugins Settings                                                          "
+"==========================================================================="
+
+" Enable plugins
+" call pathogen#infect()
+call plug#begin('~/dotfiles_akk/vim/bundle')
+
+Plug 'FelikZ/ctrlp-py-matcher'
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'Yggdroot/indentLine'
+Plug 'airblade/vim-gitgutter'
+Plug 'bling/vim-airline'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'davidhalter/jedi-vim'
+Plug 'easymotion/vim-easymotion'
+Plug 'ervandew/supertab'
+Plug 'flazz/vim-colorschemes'
+Plug 'flazz/vim-colorschemes'
+Plug 'ggVGc/vim-fuzzysearch'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
+Plug 'junegunn/rainbow_parentheses.vim'
+Plug 'kien/ctrlp.vim'
+Plug 'plasticboy/vim-markdown'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/syntastic'
+Plug 'tmux-plugins/vim-tmux-focus-events'
+Plug 'tomtom/tlib_vim'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-surround'
+
+" Add plugins to &runtimepath
+call plug#end()
+
+"==========================================================================="
 " Shortcuts for Pair Programming                                            "
 "==========================================================================="
 nnoremap <Space>m :so ~/dotfiles_akk/others/mbk_vimrc<CR>:echo 'Changed to MBK'<CR>
@@ -11,9 +48,6 @@ nnoremap <Space>a :so ~/dotfiles_akk/vim/vimrc<CR>:echo 'Changed to AKK'<CR>
 "==========================================================================="
 " General Settings                                                          "
 "==========================================================================="
-
-" Enable plugins
-call pathogen#infect()
 
 " This is needed to make Airline work
 set laststatus=2

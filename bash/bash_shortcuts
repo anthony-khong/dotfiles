@@ -104,6 +104,7 @@ function clone_dotfiles() {
     ln -s ~/dotfiles_akk/vim/ .nvim;
 
     nvim +PlugUpdate +qall
+    nvim +PlugUpdate +qall
 }
 function fix_nvim_tmux_navigator () {
     infocmp $TERM | sed 's/kbs=^[hH]/kbs=\\177/' > $TERM.ti

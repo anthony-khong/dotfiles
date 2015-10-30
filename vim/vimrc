@@ -38,7 +38,7 @@ Plug 'tpope/vim-surround'
 
 " Add plugins to &runtimepath
 call plug#end()
-nnoremap <Space>I :PlugInstall<CR>
+nnoremap <Space>I :PlugUpdate<CR>
 
 "==========================================================================="
 " Shortcuts for Pair Programming                                            "

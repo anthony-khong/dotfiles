@@ -8,7 +8,7 @@
 
 " Enable plugins
 " call pathogen#infect()
-call plug#begin('~/dotfiles_akk/vim/bundle')
+call plug#begin()
 
 Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'MarcWeber/vim-addon-mw-utils'

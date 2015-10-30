@@ -10,10 +10,12 @@
 " call pathogen#infect()
 call plug#begin()
 
+" Plug 'scrooloose/syntastic'
 Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'Yggdroot/indentLine'
 Plug 'airblade/vim-gitgutter'
+Plug 'benekastah/neomake'
 Plug 'bling/vim-airline'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'davidhalter/jedi-vim'
@@ -28,7 +30,6 @@ Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'kien/ctrlp.vim'
 Plug 'plasticboy/vim-markdown'
 Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/syntastic'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tomtom/tlib_vim'
 Plug 'tpope/vim-commentary'
@@ -310,13 +311,23 @@ vmap <Space>f <Plug>(easymotion-f)
 vmap <Space>F <Plug>(easymotion-F)
 
 " Syntastic
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_loc_list_height=1
-highlight SyntasticWarning NONE
-highlight SyntasticError NONE
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 0
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
+" let g:syntastic_loc_list_height=1
+" highlight SyntasticWarning NONE
+" highlight SyntasticError NONE
+
+" NeoMake
+autocmd! BufWritePost * Neomake
+let g:neomake_verbose = 0
+let g:neomake_error_sign = {
+    \ 'text': '>>',
+    \ 'texthl': 'ErrorMsg',
+    \ }
+hi ErrorMsg ctermbg=235 ctermfg=1
+let g:neomake_python_enabled_makers = ['pyflakes']
 
 " Airline
 let g:airline_theme = 'understated'

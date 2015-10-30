@@ -72,15 +72,22 @@ function gsu() {
     git submodule init;
     git submodule update;
 }
+
+function update_dots() {
+    cd ~/dotfiles_akk;
+    git pull;
+    git submodule init;
+    git submodule update;
+    echo 'Updating plugins, this will take at least a second!'
+    nvim +PlugInstall +qall
+}
+
 function gpa() {
     cd ~/applied_modelling;
     git pull;
     cd ~/hrvalue;
     git pull;
-    cd ~/dotfiles_akk;
-    git pull;
-    git submodule init;
-    git submodule update;
+    update_dots;
     cd;
 }
 function clone_dotfiles() {
@@ -103,8 +110,7 @@ function clone_dotfiles() {
     rm -rf .nvim;
     ln -s ~/dotfiles_akk/vim/ .nvim;
 
-    nvim +PlugUpdate +qall
-    nvim +PlugUpdate +qall
+    nvim +PlugInstall +qall
 }
 function fix_nvim_tmux_navigator () {
     infocmp $TERM | sed 's/kbs=^[hH]/kbs=\\177/' > $TERM.ti

@@ -104,12 +104,6 @@ function clone_dotfiles() {
     ln -s ~/dotfiles_akk/vim/vimrc .vimrc
     ln -s ~/dotfiles_akk/vim/ .vim;
 
-    cd;
-    rm .nvimrc;
-    rm -rf .nvim;
-    ln -s ~/dotfiles_akk/vim/vimrc .nvimrc;
-    ln -s ~/dotfiles_akk/vim/ .nvim;
-
     mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config}
     ln -s ~/dotfiles_akk/vim $XDG_CONFIG_HOME/nvim
 

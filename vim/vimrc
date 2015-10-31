@@ -10,10 +10,6 @@
 " call pathogen#infect()
 call plug#begin()
 
-" Plug 'FelikZ/ctrlp-py-matcher'
-" Plug 'kien/ctrlp.vim'
-" Plug 'scrooloose/syntastic'
-" Plug 'zenorocha/dracula-theme', {'rtp': 'vim'}
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'SirVer/ultisnips'
 Plug 'Yggdroot/indentLine'
@@ -40,6 +36,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
+Plug 'zenorocha/dracula-theme', {'rtp': 'vim'}
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -415,3 +412,6 @@ vmap <Space>te <Tab>try<Tab>
 " FZF
 nnoremap <Space>p :FZF ~<CR>
 nnoremap <C-p> :FZF <CR>
+let g:fzf_action = {
+      \ 'enter': 'tabedit',
+      \ }

@@ -80,7 +80,6 @@ function update_dots() {
     git pull;
     git submodule init;
     git submodule update;
-    echo 'Updating plugins, this will take at least a second!'
     nvim +PlugInstall +qall
 }
 

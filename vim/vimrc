@@ -43,12 +43,6 @@ nnoremap <Space>I :PlugInstall<CR>
 nnoremap <Space>U :PlugUpdate<CR>
 
 "==========================================================================="
-" Shortcuts for Pair Programming                                            "
-"==========================================================================="
-nnoremap <Space>m :so ~/dotfiles_akk/others/mbk_vimrc<CR>:echo 'Changed to MBK'<CR>
-nnoremap <Space>a :so ~/dotfiles_akk/vim/vimrc<CR>:echo 'Changed to AKK'<CR>
-
-"==========================================================================="
 " General Settings                                                          "
 "==========================================================================="
 
@@ -144,6 +138,11 @@ highlight NonText ctermbg=none
 
 " Set the leader to comma
 let mapleader = ","
+
+" Shortuct to reload vimrc
+nnoremap <Leader>r :so ~/.nvimrc<CR>:echo '.nvimrc reloaded!'<CR>
+nnoremap <Space>m :so ~/dotfiles_akk/others/mbk_vimrc<CR>:echo 'Changed to MBK'<CR>
+nnoremap <Space>a :so ~/dotfiles_akk/vim/vimrc<CR>:echo 'Changed to AKK'<CR>
 
 " Jump to escape mode
 ino hh <esc>
@@ -266,7 +265,6 @@ if executable('ag')
         \ --ignore .nv
         \ --ignore .config
         \ --ignore .ipython
-        \ --ignore "*plugins/tpm/*"
         \ --ignore "*vim/plugged/*"
         \ --ignore ".Skype/*"
         \ --ignore ".Trash/*"
@@ -278,6 +276,7 @@ if executable('ag')
         \ --ignore ".ssh/*"
         \ --ignore ".texmf*"
         \ --ignore ".themes/*"
+        \ --ignore ".tmux/plugins/*"
         \ --ignore ".vim/*"
         \ --ignore "Applications/*"
         \ --ignore "Desktop/*"
@@ -287,6 +286,7 @@ if executable('ag')
         \ --ignore "Library/*"
         \ --ignore "Music/*"
         \ --ignore "Pictures/*"
+        \ --ignore "R/*"
         \ --ignore "anaconda/*"
         \ --ignore "pycuda-2015.1.2/*"
         \ --ignore "pylearn2/*"

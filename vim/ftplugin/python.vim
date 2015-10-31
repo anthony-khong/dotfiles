@@ -26,3 +26,7 @@ let g:jedi#completions_command = "<Esc>jc"
 let g:jedi#goto_definitions_command = "<Esc>jd"
 let g:jedi#documentation_command = "<Esc>jk"
 let g:jedi#rename = "<Esc>jr"
+
+" UltiSnips
+vmap <Space>te <Tab>visual_te<Tab><Esc><Esc>
+vmap <Space>td <Tab>visual_td<Tab><Esc><Esc>

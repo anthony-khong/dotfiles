@@ -138,7 +138,7 @@ highlight NonText ctermbg=none
 let mapleader = ","
 
 " Shortuct to reload vimrc
-nmap <Leader>R :so ~/.nvimrc<CR>:echo '.nvimrc reloaded!'<CR>
+nmap <Leader>R :so ~/.config/nvim/init.vim<CR>:echo '.nvimrc reloaded!'<CR>
 nmap <Leader>M :so ~/dotfiles_akk/others/mbk_vimrc<CR>:echo 'Changed to MBK'<CR>
 nmap <Leader>A :so ~/dotfiles_akk/vim/vimrc<CR>:echo 'Changed to AKK'<CR>
 
@@ -400,11 +400,10 @@ let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
 let g:rainbow#blacklist = [109, 110, 242, 252]
 
 " UltiSnips
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
-vmap <Space>te <Tab>try<Tab>
+let g:UltiSnipsExpandTrigger = "<Tab>"
+let g:UltiSnipsJumpForwardTrigger = "<C-b>"
+let g:UltiSnipsJumpBackwardTrigger = "<C-z>"
+let g:UltiSnipsSnippetDirectories = ["UltiSnips", "custom_snippets"]
 
 " FZF
 nnoremap <Space>p :FZF ~<CR>

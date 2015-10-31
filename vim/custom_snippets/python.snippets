@@ -1,0 +1,30 @@
+snippet te "Try / Except" b
+try:
+	${1:${VISUAL:pass}}
+except ${2:Exception} as ${3:msg}:
+	print msg
+	import pdb; pdb.set_trace() # BREAKPOINT
+endsnippet
+
+snippet td
+# TODO: ${1:message}
+# By `echo $USER` on `!v strftime("%c")`
+endsnippet
+
+###############################################################################
+
+snippet visual_te "Try / Except" b
+try:
+	${VISUAL:}
+except Exception as msg:
+	print msg
+	import pdb; pdb.set_trace() # BREAKPOINT
+endsnippet
+
+snippet visual_td
+# TODO${1: }
+# By `echo $USER` on `!v strftime("%c")`
+"""
+${VISUAL:}
+"""
+endsnippet

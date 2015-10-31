@@ -178,6 +178,7 @@ map <Leader>. <esc>:tabnext<CR>
 
 " Close current tab
 nnoremap <Leader>' :q<CR>
+vnoremap <Leader>' :q<CR>
 
 " Easier moving of code blocks
 vnoremap < <gv  " better indentation
@@ -271,6 +272,7 @@ if executable('ag')
         \ --ignore ".cache/*"
         \ --ignore ".fzf/*"
         \ --ignore ".gem/*"
+        \ --ignore ".local/*"
         \ --ignore ".mozilla/*"
         \ --ignore ".npm/*"
         \ --ignore ".nvim/*"

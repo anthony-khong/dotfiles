@@ -114,6 +114,7 @@ function clone_dotfiles() {
     ln -s ~/dotfiles_akk/vim $XDG_CONFIG_HOME/nvim
 
     nvim +PlugInstall +qall
+    nvim +PlugInstall +qall
     nvim +PlugUpdate +qall
 }
 function fix_nvim_tmux_navigator () {

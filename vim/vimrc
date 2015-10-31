@@ -122,7 +122,7 @@ au InsertLeave * match ExtraWhitespace /\s\+$/
 
 " Colour scheme
 " set t_Co=256
-silent! colorscheme dracula
+silent! colorscheme iceberg
 silent! let g:rehash256 = 1
 
 " Some other colour schemes that I previously liked

@@ -11,6 +11,7 @@
 call plug#begin()
 
 " Plug 'scrooloose/syntastic'
+Plug 'zenorocha/dracula-theme', {'rtp': 'vim'}
 Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'SirVer/ultisnips'
@@ -121,7 +122,7 @@ au InsertLeave * match ExtraWhitespace /\s\+$/
 
 " Colour scheme
 " set t_Co=256
-silent! colorscheme iceberg
+silent! colorscheme dracula
 silent! let g:rehash256 = 1
 
 " Some other colour schemes that I previously liked

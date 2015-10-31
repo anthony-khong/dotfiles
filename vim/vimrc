@@ -36,7 +36,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
-Plug 'zenorocha/dracula-theme', {'rtp': 'vim'}
+" Plug 'zenorocha/dracula-theme', {'rtp': 'vim'}
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -120,7 +120,7 @@ au InsertLeave * match ExtraWhitespace /\s\+$/
 
 " Colour scheme
 " set t_Co=256
-silent! colorscheme iceberg
+silent! colorscheme dracula
 silent! let g:rehash256 = 1
 
 " Some other colour schemes that I previously liked
@@ -333,7 +333,7 @@ hi ErrorMsg ctermbg=235 ctermfg=1
 let g:neomake_python_enabled_makers = ['pyflakes']
 
 " Airline
-let g:airline_theme = 'understated'
+let g:airline_theme = 'monochrome'
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif

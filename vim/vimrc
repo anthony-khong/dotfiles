@@ -1,10 +1,7 @@
-" This is the remote vimrc. The local vimrc should include the following:
-" set runtimepath^=~/dotfiles_akk/vim
-" source ~/dotfiles_akk/vim/vimrc
-
 "==========================================================================="
 " Plugins Settings                                                          "
 "==========================================================================="
+set runtimepath^=~/dotfiles_akk/vim
 
 " Enable plugins
 " call pathogen#infect()

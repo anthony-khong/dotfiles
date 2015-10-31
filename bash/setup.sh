@@ -86,15 +86,38 @@ cd vim/bundle/jedi-vim/;
 git submodule init;
 git submodule update;
 
+
+#############################################################################
 # Make dotfiles source from the repo
 echo 'Making dotfiles source from dotfiles_akk...';
 cd;
 
+# Tmux configurations
 rm .tmux.conf;
 echo "source-file ~/dotfiles_akk/tmux/tmux.conf" >> .tmux.conf;
+tmux send -t sbash
+
+# Vim setups
+cd;
 rm .vimrc;
-echo "set runtimepath^=~/dotfiles_akk/vim
-source ~/dotfiles_akk/vim/vimrc" >> .vimrc;
+rm -rf .vim;
+ln -s ~/dotfiles_akk/vim/vimrc .vimrc
+ln -s ~/dotfiles_akk/vim/ .vim;
+
+cd;
+rm .nvimrc;
+rm -rf .nvim;
+ln -s ~/dotfiles_akk/vim/vimrc .nivmrc
+ln -s ~/dotfiles_akk/vim/ .nvim;
+
+mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config}
+ln -s ~/dotfiles_akk/vim/vimrc $XDG_CONFIG_HOME/nvim
+ln -s ~/dotfiles_akk/vim/ $XDG_CONFIG_HOME/nvim/init.vim
+
+nvim +PlugInstall +qall
+nvim +PlugUpdate +qall
+
+#############################################################################
 
 cd;
 cp ~/dotfiles_akk/bash/inputrc ~/.inputrc
@@ -109,3 +132,5 @@ elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     echo "source ~/dotfiles_akk/bash/bash_shortcuts" >> .bashrc
     echo "source ~/dotfiles_akk/bash/bash_preferences" >> .bashrc
 fi
+
+#############################################################################

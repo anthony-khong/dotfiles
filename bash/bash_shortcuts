@@ -100,17 +100,19 @@ function clone_dotfiles() {
 
     cd;
     rm .vimrc;
-    echo "set runtimepath^=~/dotfiles_akk/vim" >> .vimrc;
-    echo "source ~/dotfiles_akk/vim/vimrc" >> .vimrc;
     rm -rf .vim;
+    ln -s ~/dotfiles_akk/vim/vimrc .vimrc
     ln -s ~/dotfiles_akk/vim/ .vim;
 
     cd;
     rm .nvimrc;
-    echo "set runtimepath^=~/dotfiles_akk/vim" >> .nvimrc;
-    echo "source ~/dotfiles_akk/vim/vimrc" >> .nvimrc;
     rm -rf .nvim;
+    ln -s ~/dotfiles_akk/vim/vimrc .nivmrc
     ln -s ~/dotfiles_akk/vim/ .nvim;
+
+    mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config}
+    ln -s ~/dotfiles_akk/vim/vimrc $XDG_CONFIG_HOME/nvim
+    ln -s ~/dotfiles_akk/vim/ $XDG_CONFIG_HOME/nvim/init.vim
 
     nvim +PlugInstall +qall
     nvim +PlugUpdate +qall

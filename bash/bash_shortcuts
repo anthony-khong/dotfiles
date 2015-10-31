@@ -62,7 +62,7 @@ alias gpy3='THEANO_FLAGS="device=gpu3" ipython -i'
 # Vim shortcuts
 alias vi=nvim
 alias vim=nvim
-alias vcp="nvim +'CtrlP ~'"
+alias vcp="nvim +'FZF ~'"
 
 # Git shortcuts
 function fastpush() {

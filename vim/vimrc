@@ -13,6 +13,7 @@ call plug#begin()
 " Plug 'scrooloose/syntastic'
 Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'SirVer/ultisnips'
 Plug 'Yggdroot/indentLine'
 Plug 'airblade/vim-gitgutter'
 Plug 'benekastah/neomake'
@@ -24,6 +25,7 @@ Plug 'ervandew/supertab'
 Plug 'flazz/vim-colorschemes'
 Plug 'flazz/vim-colorschemes'
 Plug 'ggVGc/vim-fuzzysearch'
+Plug 'honza/vim-snippets'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/rainbow_parentheses.vim'
@@ -409,3 +411,8 @@ augroup END
 nmap <Space>rp :RainbowParentheses!!<CR>
 let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
 let g:rainbow#blacklist = [109, 110, 242, 252]
+
+" UltiSnips
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"

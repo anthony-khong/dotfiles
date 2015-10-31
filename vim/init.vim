@@ -1,1 +1,1 @@
-/Users/akkhong/dotfiles_akk/vimrc
+vimrc

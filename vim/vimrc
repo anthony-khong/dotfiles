@@ -333,7 +333,7 @@ hi ErrorMsg ctermbg=235 ctermfg=1
 let g:neomake_python_enabled_makers = ['pyflakes']
 
 " Airline
-let g:airline_theme = 'monochrome'
+let g:airline_theme = 'behelit'
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif

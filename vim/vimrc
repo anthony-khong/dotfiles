@@ -266,14 +266,19 @@ if executable('ag')
         \ --ignore .nv
         \ --ignore .config
         \ --ignore .ipython
-        \ --ignore ".cache/*"
-        \ --ignore ".fzf/*"
-        \ --ignore ".pia_manager/*"
-        \ --ignore ".themes/*"
-        \ --ignore ".texmf*"
-        \ --ignore ".vim/*"
+        \ --ignore "*plugins/tpm/*"
+        \ --ignore "*vim/plugged/*"
         \ --ignore ".Skype/*"
         \ --ignore ".Trash/*"
+        \ --ignore ".cache/*"
+        \ --ignore ".fzf/*"
+        \ --ignore ".mozilla/*"
+        \ --ignore ".nvim/*"
+        \ --ignore ".pia_manager/*"
+        \ --ignore ".ssh/*"
+        \ --ignore ".texmf*"
+        \ --ignore ".themes/*"
+        \ --ignore ".vim/*"
         \ --ignore "Applications/*"
         \ --ignore "Desktop/*"
         \ --ignore "Downloads/*"
@@ -283,6 +288,7 @@ if executable('ag')
         \ --ignore "Music/*"
         \ --ignore "Pictures/*"
         \ --ignore "anaconda/*"
+        \ --ignore "pycuda-2015.1.2/*"
         \ --ignore "pylearn2/*"
         \ --ignore "xgboost/*"
         \ -g ""'

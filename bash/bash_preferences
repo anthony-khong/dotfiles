@@ -12,3 +12,16 @@ fi
 # Will's request
 umask 000
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# Make FZF search faster
+export FZF_CTRL_T_COMMAND="ag -l -g ''"
+export FZF_DEFAULT_COMMAND="ag -l -g '' \
+                            --ignore-dir='Applications'\
+                            --ignore-dir='Library'\
+                            --ignore-dir='Pictures'\
+                            --ignore-dir='Desktop'\
+                            --ignore-dir='Movies'\
+                            --ignore-dir='Music'\
+                            --ignore-dir='node_modules'\
+                            --ignore-dir='Dropbox' \
+                            "

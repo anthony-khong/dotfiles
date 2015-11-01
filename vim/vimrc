@@ -28,14 +28,20 @@ Plug 'junegunn/limelight.vim'
 Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'plasticboy/vim-markdown'
+Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tomtom/tlib_vim'
-Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
-" Plug 'zenorocha/dracula-theme', {'rtp': 'vim'}
+
+if has("unix")
+  let s:uname = system("uname")
+  if s:uname == "Darwin\n"
+        Plug 'junegunn/vim-xmark', { 'do': 'make' }
+  endif
+endif
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -235,132 +241,6 @@ nmap Q gqap
 " Plugins                                                                   "
 " =========================================================================="
 
-" NERDTree toggle
-nmap <Space>n :NERDTreeToggle<CR>
-
-" CtrlP
-" let g:ctrlp_max_height = 30
-" set wildignore+=*.pyc
-" set wildignore+=*_build/*
-" set wildignore+=*/coverage/*
-" set wildignore+=*.theano/*
-
-" Make CtrlP open a new tab by default
-" let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
-" let g:ctrlp_prompt_mappings = {
-"     \ 'AcceptSelection("e")': ['<c-t>'],
-"     \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
-"     \ }
-
-" Make CtrlP use pymatcher and ag
-" let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
-" if executable('ag')
-"     let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
-"         \ --ignore .git
-"         \ --ignore .svn
-"         \ --ignore .hg
-"         \ --ignore .DS_Store
-"         \ --ignore "**/*.pyc"
-"         \ --ignore .dropbox
-"         \ --ignore .theano
-"         \ --ignore .nv
-"         \ --ignore .config
-"         \ --ignore .ipython
-"         \ --ignore "*vim/plugged/*"
-"         \ --ignore ".Skype/*"
-"         \ --ignore ".Trash/*"
-"         \ --ignore ".cache/*"
-"         \ --ignore ".fzf/*"
-"         \ --ignore ".gem/*"
-"         \ --ignore ".local/*"
-"         \ --ignore ".mozilla/*"
-"         \ --ignore ".npm/*"
-"         \ --ignore ".nvim/*"
-"         \ --ignore ".pia_manager/*"
-"         \ --ignore ".ssh/*"
-"         \ --ignore ".texmf*"
-"         \ --ignore ".themes/*"
-"         \ --ignore ".tmux/plugins/*"
-"         \ --ignore ".vim/*"
-"         \ --ignore "Applications/*"
-"         \ --ignore "Desktop/*"
-"         \ --ignore "Downloads/*"
-"         \ --ignore "Dropbox/*"
-"         \ --ignore "Lasagne/*"
-"         \ --ignore "Library/*"
-"         \ --ignore "Music/*"
-"         \ --ignore "Pictures/*"
-"         \ --ignore "R/*"
-"         \ --ignore "anaconda/*"
-"         \ --ignore "pycuda-2015.1.2/*"
-"         \ --ignore "pylearn2/*"
-"         \ --ignore "xgboost/*"
-"         \ -g ""'
-" endif
-" nmap <Space>p :CtrlP ~<CR>
-
-" IndentLine
-let g:indentLine_enabled = 1
-let g:indentLine_color_term = 235
-let g:indentLine_leadingSpaceEnabled = 1
-let g:indentLine_leadingSpaceChar = '.'
-
-" SuperTab
-let g:SuperTabDefaultCompletionType = "<c-n>"
-
-" EasyMotion
-let g:EasyMotion_smartcase = 1
-map <Space><Space>em <Plug>(easymotion-prefix)
-" nmap <Space>e <Plug>(easymotion-e)
-" nmap <Space>f <Plug>(easymotion-f)
-" nmap <Space>F <Plug>(easymotion-F)
-" vmap <Space>e <Plug>(easymotion-e)
-" vmap <Space>f <Plug>(easymotion-f)
-" vmap <Space>F <Plug>(easymotion-F)
-
-nmap <Space>w <Plug>(easymotion-w)
-vmap <Space>w <Plug>(easymotion-w)
-nmap <Space>b <Plug>(easymotion-b)
-vmap <Space>b <Plug>(easymotion-b)
-nmap <Space>s <Plug>(easymotion-s)
-vmap <Space>s <Plug>(easymotion-s)
-
-" NeoMake
-autocmd! BufWritePost * Neomake
-let g:neomake_verbose = 0
-let g:neomake_error_sign = {
-    \ 'text': '>>',
-    \ 'texthl': 'ErrorMsg',
-    \ }
-hi ErrorMsg ctermbg=235 ctermfg=1
-let g:neomake_python_enabled_makers = ['pyflakes']
-
-" Airline
-let g:airline_theme = 'behelit'
-if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-endif
-let g:airline_left_sep = '»'
-let g:airline_right_sep = '«'
-
-" Some old ones I liked
-" let g:airline_theme = 'badwolf' # with badwolf
-" let g:airline_theme = 'powerlineish' # with wombat256mod
-
-" Fugitive
-nmap <Space>gd :Gdiff<CR>
-
-" GitGutter
-let g:gitgutter_sign_column_always = 1
-nmap <Space>gg :GitGutter<CR>
-nmap <Space>] <Plug>GitGutterPrevHunk
-nmap <Space>[ <Plug>GitGutterNextHunk
-nmap <Space>hs <Plug>GitGutterStageHunk
-nmap <Space>hr <Plug>GitGutterRevertHunk
-
-" FuzzySearch
-nmap <Space>/ :FuzzySearch<CR>
-
 " Tmux Navigator
 if exists('$TMUX')
   function! TmuxOrSplitSwitch(wincmd, tmuxdir)
@@ -387,14 +267,16 @@ else
   map <C-l> <C-w>l
 endif
 
-" Goyo
-nmap <Space>gy :Goyo<CR>:GitGutterEnable<CR>
-
-" LimeLight
-let g:limelight_conceal_ctermfg = 'gray'
-let g:limelight_conceal_ctermfg = 240
-autocmd! User GoyoEnter Limelight
-autocmd! User GoyoLeave Limelight!
+" Airline
+" Some old ones I liked
+" let g:airline_theme = 'badwolf' # with badwolf
+" let g:airline_theme = 'powerlineish' # with wombat256mod
+let g:airline_theme = 'behelit'
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+let g:airline_left_sep = '»'
+let g:airline_right_sep = '«'
 
 " Rainbow Parentheses
 augroup rainbow_python
@@ -405,11 +287,65 @@ nmap <Space>rp :RainbowParentheses!!<CR>
 let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
 let g:rainbow#blacklist = [109, 110, 242, 252]
 
-" UltiSnips
-let g:UltiSnipsExpandTrigger = "<Tab>"
-let g:UltiSnipsJumpForwardTrigger = "<C-b>"
-let g:UltiSnipsJumpBackwardTrigger = "<C-z>"
-let g:UltiSnipsSnippetDirectories = ["UltiSnips", "custom_snippets"]
+" IndentLine
+let g:indentLine_enabled = 1
+let g:indentLine_color_term = 235
+let g:indentLine_leadingSpaceEnabled = 1
+let g:indentLine_leadingSpaceChar = '.'
+
+" Goyo
+nmap <Space>gy :Goyo<CR>:GitGutterEnable<CR>
+
+" LimeLight
+let g:limelight_conceal_ctermfg = 'gray'
+let g:limelight_conceal_ctermfg = 240
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
+
+" GitGutter
+let g:gitgutter_sign_column_always = 1
+nmap <Space>gg :GitGutter<CR>
+nmap <Space>] <Plug>GitGutterPrevHunk
+nmap <Space>[ <Plug>GitGutterNextHunk
+nmap <Space>hs <Plug>GitGutterStageHunk
+nmap <Space>hr <Plug>GitGutterRevertHunk
+
+" NeoMake
+autocmd! BufWritePost * Neomake
+let g:neomake_verbose = 0
+let g:neomake_error_sign = {
+    \ 'text': '>>',
+    \ 'texthl': 'ErrorMsg',
+    \ }
+hi ErrorMsg ctermbg=235 ctermfg=1
+let g:neomake_python_enabled_makers = ['pyflakes']
+
+" Fugitive
+nmap <Space>gd :Gdiff<CR>
+
+" NERDTree toggle
+nmap <Space>n :NERDTreeToggle<CR>
+
+" NERDCommenter
+let g:NERDCreateDefaultMappings = 0
+nmap <Space>c <plug>NERDCommenterComment
+vmap <Space>c <plug>NERDCommenterComment
+
+" SuperTab
+let g:SuperTabDefaultCompletionType = "<c-n>"
+
+" EasyMotion
+let g:EasyMotion_smartcase = 1
+map <Space><Space>em <Plug>(easymotion-prefix)
+nmap <Space>w <Plug>(easymotion-w)
+vmap <Space>w <Plug>(easymotion-w)
+nmap <Space>b <Plug>(easymotion-b)
+vmap <Space>b <Plug>(easymotion-b)
+nmap <Space>s <Plug>(easymotion-s)
+vmap <Space>s <Plug>(easymotion-s)
+
+" FuzzySearch
+nmap <Space>/ :FuzzySearch<CR>
 
 " FZF
 nnoremap <Space>p :FZF ~<CR>
@@ -419,3 +355,9 @@ let g:fzf_action = {'enter': 'tabedit'}
 " Easy Align
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
+
+" UltiSnips
+let g:UltiSnipsExpandTrigger = "<Tab>"
+let g:UltiSnipsJumpForwardTrigger = "<C-b>"
+let g:UltiSnipsJumpBackwardTrigger = "<C-z>"
+let g:UltiSnipsSnippetDirectories = ["UltiSnips", "custom_snippets"]

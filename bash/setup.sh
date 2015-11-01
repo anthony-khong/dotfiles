@@ -26,6 +26,9 @@ if [ "$(uname)" == "Darwin" ]; then
     # Tmux
     brew install tmux
 
+    # Ag
+    brew install the_silver_searcher
+
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     # TODO: Anaconda, Antivirus, CUDA, Chrome, Dropbox, RSudio, SSH, VLC, noip2.
     echo 'Setting up Linux...';
@@ -71,6 +74,9 @@ elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     # R
     sudo apt-get update
     sudo apt-get install r-base
+
+    # Ag
+    sudo apt-get install silversearcher-ag
 
 fi
 

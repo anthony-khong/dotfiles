@@ -17,11 +17,18 @@ umask 000
 export FZF_CTRL_T_COMMAND="ag -l -g ''"
 export FZF_DEFAULT_COMMAND="ag -l -g '' \
                             --ignore-dir='Applications'\
-                            --ignore-dir='Library'\
-                            --ignore-dir='Pictures'\
                             --ignore-dir='Desktop'\
+                            --ignore-dir='Dropbox' \
+                            --ignore-dir='Lasagne'\
+                            --ignore-dir='Library'\
                             --ignore-dir='Movies'\
                             --ignore-dir='Music'\
+                            --ignore-dir='Pictures'\
+                            --ignore-dir='Templates'\
+                            --ignore-dir='Videos'\
+                            --ignore-dir='anaconda'\
                             --ignore-dir='node_modules'\
-                            --ignore-dir='Dropbox' \
+                            --ignore-dir='pycuda-2015.1.2' \
+                            --ignore-dir='pylearn2' \
+                            --ignore-dir='xgboost' \
                             "

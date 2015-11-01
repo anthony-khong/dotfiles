@@ -73,8 +73,8 @@ set nofoldenable
 set noerrorbells visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
 
-" Five line buffer
-set so=5
+" More line buffer
+set so=3
 
 " Better copy & paste
 set pastetoggle=<F2>
@@ -284,8 +284,8 @@ augroup rainbow_python
   autocmd FileType python RainbowParentheses
 augroup END
 nmap <Space>rp :RainbowParentheses!!<CR>
-let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
-let g:rainbow#blacklist = [109, 110, 242, 252]
+"let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
+"let g:rainbow#blacklist = [109, 110, 242, 252]
 
 " IndentLine
 let g:indentLine_enabled = 1
@@ -336,6 +336,7 @@ let g:SuperTabDefaultCompletionType = "<c-n>"
 
 " EasyMotion
 let g:EasyMotion_smartcase = 1
+let g:EasyMotion_keys = "aoeui'l;z,rqv.cjwyfxbdhtns"
 map <Space><Space>em <Plug>(easymotion-prefix)
 nmap <Space>w <Plug>(easymotion-w)
 vmap <Space>w <Plug>(easymotion-w)

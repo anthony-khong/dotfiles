@@ -307,17 +307,21 @@ let g:indentLine_leadingSpaceChar = '.'
 let g:SuperTabDefaultCompletionType = "<c-n>"
 
 " EasyMotion
+let g:EasyMotion_smartcase = 1
 map <Space><Space>em <Plug>(easymotion-prefix)
+" nmap <Space>e <Plug>(easymotion-e)
+" nmap <Space>f <Plug>(easymotion-f)
+" nmap <Space>F <Plug>(easymotion-F)
+" vmap <Space>e <Plug>(easymotion-e)
+" vmap <Space>f <Plug>(easymotion-f)
+" vmap <Space>F <Plug>(easymotion-F)
+
 nmap <Space>w <Plug>(easymotion-w)
-nmap <Space>e <Plug>(easymotion-e)
-nmap <Space>b <Plug>(easymotion-b)
-nmap <Space>f <Plug>(easymotion-f)
-nmap <Space>F <Plug>(easymotion-F)
 vmap <Space>w <Plug>(easymotion-w)
-vmap <Space>e <Plug>(easymotion-e)
+nmap <Space>b <Plug>(easymotion-b)
 vmap <Space>b <Plug>(easymotion-b)
-vmap <Space>f <Plug>(easymotion-f)
-vmap <Space>F <Plug>(easymotion-F)
+nmap <Space>s <Plug>(easymotion-s)
+vmap <Space>s <Plug>(easymotion-s)
 
 " NeoMake
 autocmd! BufWritePost * Neomake

@@ -1,7 +1,7 @@
 "==========================================================================="
 " Plugins Settings                                                          "
 "==========================================================================="
-set runtimepath^=~/dotfiles_akk/vim
+" set runtimepath^=~/dotfiles_akk/vim
 
 " Enable plugins
 " call pathogen#infect()
@@ -26,6 +26,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/rainbow_parentheses.vim'
+Plug 'junegunn/vim-easy-align'
 Plug 'plasticboy/vim-markdown'
 Plug 'scrooloose/nerdtree'
 Plug 'tmux-plugins/vim-tmux-focus-events'
@@ -410,7 +411,11 @@ let g:UltiSnipsJumpForwardTrigger = "<C-b>"
 let g:UltiSnipsJumpBackwardTrigger = "<C-z>"
 let g:UltiSnipsSnippetDirectories = ["UltiSnips", "custom_snippets"]
 
-"FZF
+" FZF
 nnoremap <Space>p :FZF ~<CR>
 nnoremap <C-p> :FZF <CR>
 let g:fzf_action = {'enter': 'tabedit'}
+
+" Easy Align
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)

@@ -16,9 +16,11 @@ set colorcolumn=80
 highlight ColorColumn ctermbg=234
 
 " Jedi-Vim
+let g:jedi#auto_initialization = 1
 let g:jedi#popup_on_dot = 0
 let g:jedi#popup_select_first = 0
 let g:jedi#smart_auto_mappings = 0
+let g:jedi#show_call_signatures = "1"
 
 " If space is used here, you get an annoying delay while typing
 let g:jedi#usages_command = "<Esc>jus"

@@ -60,7 +60,7 @@ alias gpy2='THEANO_FLAGS="device=gpu2" ipython -i'
 alias gpy3='THEANO_FLAGS="device=gpu3" ipython -i'
 
 # Vim shortcuts
-alias vi=nvim
+# alias vi=nvim
 alias vim=nvim
 alias vcp="nvim +'FZF ~'"
 

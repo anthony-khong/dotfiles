@@ -1,3 +1,5 @@
+pip install --upgrade pip
+
 # Python
 pip install pdbpp
 

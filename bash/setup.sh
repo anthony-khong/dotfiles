@@ -78,31 +78,48 @@ elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     # Ag
     sudo apt-get install silversearcher-ag
 
+    # Anaconda
+    wget https://3230d63b5fc54e62148e-c95ac804525aac4b6dba79b00b39d1d3.ssl.cf1.rackcdn.com/Anaconda-2.3.0-Linux-x86_64.sh
+
+
 fi
 
 # TODO: setup Python
 
+#############################################################################
 # Setup dotfiles
 echo 'Cloning dotfiles repo...';
 git clone https://github.com/anthony-khong/dotfiles_akk.git;
 cd ~/dotfiles_akk;
 git submodule init;
 git submodule update;
-cd vim/bundle/jedi-vim/;
-git submodule init;
-git submodule update;
 
+# Python installs
+~/dotfiles_akk/bash/pip_installs.sh
 
-#############################################################################
-# Make dotfiles source from the repo
-echo 'Making dotfiles source from dotfiles_akk...';
 cd;
+cp ~/dotfiles_akk/bash/inputrc ~/.inputrc
+if [ "$(uname)" == "Darwin" ]; then
+    rm .bash_profile
+    echo "source ~/dotfiles_akk/bash/bash_profile" >> .bash_profile
+    echo "source ~/dotfiles_akk/bash/bash_shortcuts" >> .bash_profile
+    echo "source ~/dotfiles_akk/bash/bash_preferences" >> .bash_profile
+    source .bash_profile
+elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+    rm .bashrc
+    echo "source ~/dotfiles_akk/bash/bashrc" >> .bashrc
+    echo "source ~/dotfiles_akk/bash/bash_shortcuts" >> .bashrc
+    echo "source ~/dotfiles_akk/bash/bash_preferences" >> .bashrc
+    source .bashrc
+fi
 
 # Tmux configurations
+cd;
 rm .tmux.conf;
 echo "source-file ~/dotfiles_akk/tmux/tmux.conf" >> .tmux.conf;
 tmux send -t sbash
 
+#############################################################################
 # Vim setups
 cd;
 rm .vimrc;
@@ -122,21 +139,5 @@ ln -s ~/dotfiles_akk/vim/ $XDG_CONFIG_HOME/nvim/init.vim
 
 nvim +PlugInstall +qall
 nvim +PlugUpdate +qall
-
-#############################################################################
-
-cd;
-cp ~/dotfiles_akk/bash/inputrc ~/.inputrc
-if [ "$(uname)" == "Darwin" ]; then
-    rm .bash_profile
-    echo "source ~/dotfiles_akk/bash/bash_profile" >> .bash_profile
-    echo "source ~/dotfiles_akk/bash/bash_shortcuts" >> .bash_profile
-    echo "source ~/dotfiles_akk/bash/bash_preferences" >> .bash_profile
-elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
-    rm .bashrc
-    echo "source ~/dotfiles_akk/bash/bashrc" >> .bashrc
-    echo "source ~/dotfiles_akk/bash/bash_shortcuts" >> .bashrc
-    echo "source ~/dotfiles_akk/bash/bash_preferences" >> .bashrc
-fi
 
 #############################################################################

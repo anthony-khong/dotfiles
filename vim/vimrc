@@ -175,8 +175,8 @@ nnoremap G Gzz
 :nnoremap N Nzz
 
 " Pane movements
-nnoremap <Leader>v <C-w>v
-nnoremap <Leader>z <C-w>w
+nnoremap <Leader>hs :split<CR>
+nnoremap <Leader>vs :vsplit<CR>
 
 " Jumping between tabs
 map <Leader>, <esc>:tabprevious<CR>

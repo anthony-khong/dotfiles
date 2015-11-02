@@ -183,8 +183,8 @@ map <Leader>, <esc>:tabprevious<CR>
 map <Leader>. <esc>:tabnext<CR>
 
 " Close current tab
-nnoremap <Leader>' :q<CR>
-vnoremap <Leader>' :q<CR>
+nnoremap <Leader>e :q<CR>
+vnoremap <Leader>e :q<CR>
 
 " Easier moving of code blocks
 vnoremap < <gv  " better indentation

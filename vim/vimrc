@@ -1,7 +1,7 @@
 "==========================================================================="
 " Plugins Settings                                                          "
 "==========================================================================="
-set runtimepath^=~/dotfiles_akk/vim
+set runtimepath^=~/.config/nvim
 
 " Enable plugins
 " call pathogen#infect()
@@ -63,7 +63,7 @@ filetype plugin indent on
 " This does not seem to work with NeoVim
 " For tmux colour compatibility
 if has('vim')
-    set term=screen-256color
+set term=screen-256color
 endif
 
 " Disable folding so that the key 'f' can be used for movement
@@ -151,8 +151,8 @@ nmap <Leader>M :so ~/dotfiles_akk/others/mbk_vimrc<CR>:echo 'Changed to MBK'<CR>
 nmap <Leader>A :so ~/dotfiles_akk/vim/vimrc<CR>:echo 'Changed to AKK'<CR>
 
 " Jump to escape mode
-ino hh <esc>
-ino jj <esc>
+" ino hh <esc>
+" ino jj <esc>
 
 " Moving up and down physical lines
 nnoremap j gj
@@ -243,28 +243,28 @@ nmap Q gqap
 
 " Tmux Navigator
 if exists('$TMUX')
-  function! TmuxOrSplitSwitch(wincmd, tmuxdir)
-    let previous_winnr = winnr()
-    silent! execute "wincmd " . a:wincmd
-    if previous_winnr == winnr()
-      call system("tmux select-pane -" . a:tmuxdir)
-      redraw!
-    endif
-  endfunction
+function! TmuxOrSplitSwitch(wincmd, tmuxdir)
+let previous_winnr = winnr()
+silent! execute "wincmd " . a:wincmd
+if previous_winnr == winnr()
+    call system("tmux select-pane -" . a:tmuxdir)
+    redraw!
+endif
+endfunction
 
-  let previous_title = substitute(system("tmux display-message -p '#{pane_title}'"), '\n', '', '')
-  let &t_ti = "\<Esc>]2;vim\<Esc>\\" . &t_ti
-  let &t_te = "\<Esc>]2;". previous_title . "\<Esc>\\" . &t_te
+let previous_title = substitute(system("tmux display-message -p '#{pane_title}'"), '\n', '', '')
+let &t_ti = "\<Esc>]2;vim\<Esc>\\" . &t_ti
+let &t_te = "\<Esc>]2;". previous_title . "\<Esc>\\" . &t_te
 
-  nnoremap <silent> <C-h> :call TmuxOrSplitSwitch('h', 'L')<cr>
-  nnoremap <silent> <C-j> :call TmuxOrSplitSwitch('j', 'D')<cr>
-  nnoremap <silent> <C-k> :call TmuxOrSplitSwitch('k', 'U')<cr>
-  nnoremap <silent> <C-l> :call TmuxOrSplitSwitch('l', 'R')<cr>
+nnoremap <silent> <C-h> :call TmuxOrSplitSwitch('h', 'L')<cr>
+nnoremap <silent> <C-j> :call TmuxOrSplitSwitch('j', 'D')<cr>
+nnoremap <silent> <C-k> :call TmuxOrSplitSwitch('k', 'U')<cr>
+nnoremap <silent> <C-l> :call TmuxOrSplitSwitch('l', 'R')<cr>
 else
-  map <C-h> <C-w>h
-  map <C-j> <C-w>j
-  map <C-k> <C-w>k
-  map <C-l> <C-w>l
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
 endif
 
 " Airline
@@ -273,15 +273,15 @@ endif
 " let g:airline_theme = 'powerlineish' # with wombat256mod
 let g:airline_theme = 'behelit'
 if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
+let g:airline_symbols = {}
 endif
 let g:airline_left_sep = '»'
 let g:airline_right_sep = '«'
 
 " Rainbow Parentheses
 augroup rainbow_python
-  autocmd!
-  autocmd FileType python RainbowParentheses
+autocmd!
+autocmd FileType python RainbowParentheses
 augroup END
 nmap <Space>rp :RainbowParentheses!!<CR>
 "let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
@@ -314,9 +314,9 @@ nmap <Space>hr <Plug>GitGutterRevertHunk
 autocmd! BufWritePost * Neomake
 let g:neomake_verbose = 0
 let g:neomake_error_sign = {
-    \ 'text': '>>',
-    \ 'texthl': 'ErrorMsg',
-    \ }
+\ 'text': '>>',
+\ 'texthl': 'ErrorMsg',
+\ }
 hi ErrorMsg ctermbg=235 ctermfg=1
 let g:neomake_python_enabled_makers = ['pyflakes']
 
@@ -328,8 +328,10 @@ nmap <Space>n :NERDTreeToggle<CR>
 
 " NERDCommenter
 let g:NERDCreateDefaultMappings = 0
-nmap <Space>c <plug>NERDCommenterComment
-vmap <Space>c <plug>NERDCommenterComment
+nmap <Space>c <Plug>NERDCommenterComment
+vmap <Space>c <Plug>NERDCommenterComment
+nmap <Space>C <Plug>NERDCommenterUncomment
+vmap <Space>C <Plug>NERDCommenterUncomment
 
 " SuperTab
 let g:SuperTabDefaultCompletionType = "<c-n>"

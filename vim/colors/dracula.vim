@@ -19,6 +19,10 @@ endif
 
 let g:colors_name = "Dracula"
 
+hi TabLineFill ctermfg=234 ctermbg=234
+hi TabLine ctermfg=69 ctermbg=234
+hi TabLineSel ctermfg=233 ctermbg=68 gui=bold
+
 hi Cursor ctermfg=17 ctermbg=231 cterm=NONE guifg=#282a36 guibg=#f8f8f0 gui=NONE
 hi Visual ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=#44475a gui=NONE
 hi CursorLine ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=#3d3f49 gui=NONE

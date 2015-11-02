@@ -1,7 +1,7 @@
 "==========================================================================="
 " Plugins Settings                                                          "
 "==========================================================================="
-" set runtimepath^=~/dotfiles_akk/vim
+set runtimepath^=~/dotfiles_akk/vim
 
 " Enable plugins
 " call pathogen#infect()

@@ -13,6 +13,10 @@ fi
 umask 000
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
+# Make Neovim the default editor
+export VISUAL=nvim
+export EDITOR="$VISUAL"
+
 # Make FZF search faster
 export FZF_CTRL_T_COMMAND="ag -l -g ''"
 export FZF_DEFAULT_COMMAND="ag -l -g '' \

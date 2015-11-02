@@ -29,6 +29,9 @@ if [ "$(uname)" == "Darwin" ]; then
     # Ag
     brew install the_silver_searcher
 
+    # Anaconda
+    read -p "Install Anacanda now. Press [Enter] to continue..."
+
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     # TODO: Anaconda, Antivirus, CUDA, Chrome, Dropbox, RSudio, SSH, VLC, noip2.
     echo 'Setting up Linux...';
@@ -79,8 +82,9 @@ elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     sudo apt-get install silversearcher-ag
 
     # Anaconda
-    wget https://3230d63b5fc54e62148e-c95ac804525aac4b6dba79b00b39d1d3.ssl.cf1.rackcdn.com/Anaconda-2.3.0-Linux-x86_64.sh
-
+    sudo wget https://3230d63b5fc54e62148e-c95ac804525aac4b6dba79b00b39d1d3.ssl.cf1.rackcdn.com/Anaconda-2.3.0-Linux-x86_64.sh
+    sudo chmod +x Ana*
+    sudo bash Ana*.sh
 
 fi
 

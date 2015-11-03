@@ -125,7 +125,7 @@ au InsertLeave * match ExtraWhitespace /\s\+$/
 
 " Colour scheme
 " set t_Co=256
-silent! colorscheme dracula
+silent! colorscheme badwolf
 silent! let g:rehash256 = 1
 
 " Some other colour schemes that I previously liked
@@ -147,7 +147,7 @@ let mapleader = ","
 
 " Shortuct to reload vimrc
 nmap <Leader>R :so ~/.config/nvim/init.vim<CR>:echo '.nvimrc reloaded!'<CR>
-nmap <Leader>M :so ~/dotfiles_akk/others/mbk_vimrc<CR>:echo 'Changed to MBK'<CR>
+nmap <Leader>M :so ~/dotfiles_akk/vim/others/mbk_vimrc<CR>:echo 'Changed to MBK'<CR>
 nmap <Leader>A :so ~/dotfiles_akk/vim/vimrc<CR>:echo 'Changed to AKK'<CR>
 
 " Jump to escape mode

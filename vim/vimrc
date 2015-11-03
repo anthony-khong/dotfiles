@@ -127,7 +127,7 @@ au InsertLeave * match ExtraWhitespace /\s\+$/
 
 " Colour scheme
 " set t_Co=256
-silent! colorscheme dracula-akk
+silent! colorscheme gruvbox-akk
 silent! let g:rehash256 = 1
 
 " Some other colour schemes that I previously liked
@@ -153,8 +153,8 @@ nmap <Leader>M :so ~/dotfiles_akk/vim/others/mbk_vimrc<CR>:echo 'Changed to MBK'
 nmap <Leader>A :so ~/dotfiles_akk/vim/vimrc<CR>:echo 'Changed to AKK'<CR>
 
 " Jump to escape mode
-" ino hh <esc>
-" ino jj <esc>
+ino hh <esc>
+ino jj <esc>
 
 " Moving up and down physical lines
 nnoremap j gj
@@ -273,7 +273,7 @@ endif
 " Some old ones I liked
 " let g:airline_theme = 'badwolf' # with badwolf
 " let g:airline_theme = 'powerlineish' # with wombat256mod
-let g:airline_theme = 'behelit'
+let g:airline_theme = 'bubblegum'
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
@@ -316,10 +316,10 @@ nmap <Space>hr <Plug>GitGutterRevertHunk
 autocmd! BufWritePost * Neomake
 let g:neomake_verbose = 0
 let g:neomake_error_sign = {
-\ 'text': '>>',
-\ 'texthl': 'ErrorMsg',
-\ }
-hi ErrorMsg ctermbg=235 ctermfg=1
+    \ 'text': '>>',
+    \ 'texthl': 'ErrorMsg',
+    \ }
+hi ErrorMsg ctermbg=234 ctermfg=9
 let g:neomake_python_enabled_makers = ['pyflakes']
 
 " Fugitive
@@ -354,6 +354,7 @@ nmap <Space>/ :FuzzySearch<CR>
 
 " FZF
 nnoremap <Space>p :FZF ~<CR>
+nnoremap vcp :FZF ~<CR>
 nnoremap <C-p> :FZF <CR>
 let g:fzf_action = {'enter': 'tabedit'}
 

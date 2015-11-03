@@ -18,7 +18,6 @@ Plug 'davidhalter/jedi-vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'ervandew/supertab'
 Plug 'flazz/vim-colorschemes'
-Plug 'flazz/vim-colorschemes'
 Plug 'ggVGc/vim-fuzzysearch'
 Plug 'honza/vim-snippets'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -51,6 +50,9 @@ nnoremap <Space>U :PlugUpdate<CR>
 "==========================================================================="
 " General Settings                                                          "
 "==========================================================================="
+
+" It looks nicer in some colour schemes
+set background=dark
 
 " This is needed to make Airline work
 set laststatus=2
@@ -125,7 +127,7 @@ au InsertLeave * match ExtraWhitespace /\s\+$/
 
 " Colour scheme
 " set t_Co=256
-silent! colorscheme badwolf
+silent! colorscheme dracula-akk
 silent! let g:rehash256 = 1
 
 " Some other colour schemes that I previously liked
@@ -273,7 +275,7 @@ endif
 " let g:airline_theme = 'powerlineish' # with wombat256mod
 let g:airline_theme = 'behelit'
 if !exists('g:airline_symbols')
-let g:airline_symbols = {}
+    let g:airline_symbols = {}
 endif
 let g:airline_left_sep = '»'
 let g:airline_right_sep = '«'

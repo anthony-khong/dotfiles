@@ -1,6 +1,9 @@
 # For tmux colours
 export TERM="xterm-256color"
 
+# Stop Python from generating .pyc files
+export PYTHONDONTWRITEBYTECODE=1
+
 # Short PS1
 # export PS1="\[\033[36m\]\u\[\033[m\]:\[\033[33;1m\]\W\[\033[m\]$ "
 export PS1='\[\e[0;32m\]\u\[\e[m\]:\[\e[1;34m\]\W\[\033[m\]$ '
@@ -9,15 +12,12 @@ if [ "$(uname)" == "Linux" ]; then
     . /etc/profile.d/vte.sh
 fi
 
-# Will's request
-umask 000
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
 # Make Neovim the default editor
 export VISUAL=nvim
 export EDITOR="$VISUAL"
 
 # Make FZF search faster
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export FZF_CTRL_T_COMMAND="ag -l -g ''"
 export FZF_DEFAULT_COMMAND="ag -l -g '' \
                             --ignore-dir='Applications'\

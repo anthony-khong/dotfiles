@@ -1,38 +1,47 @@
-"==========================================================================="
-" Plugins Settings                                                          "
-"==========================================================================="
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                               Plugin Settings                               "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set runtimepath^=~/.config/nvim
 
 " Enable plugins
 " call pathogen#infect()
 call plug#begin()
 
+" Editing
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'SirVer/ultisnips'
-Plug 'Yggdroot/indentLine'
-Plug 'airblade/vim-gitgutter'
-Plug 'benekastah/neomake'
-Plug 'bling/vim-airline'
-Plug 'christoomey/vim-tmux-navigator'
 Plug 'davidhalter/jedi-vim'
-Plug 'easymotion/vim-easymotion'
 Plug 'ervandew/supertab'
-Plug 'flazz/vim-colorschemes'
-Plug 'ggVGc/vim-fuzzysearch'
 Plug 'honza/vim-snippets'
+Plug 'junegunn/vim-easy-align'
+Plug 'scrooloose/nerdcommenter'
+
+" Motions
+Plug 'easymotion/vim-easymotion'
+Plug 'ggVGc/vim-fuzzysearch'
+
+" Colour Schemes
+Plug 'flazz/vim-colorschemes'
+
+" Utilities
+Plug 'christoomey/vim-tmux-navigator'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
-Plug 'junegunn/rainbow_parentheses.vim'
-Plug 'junegunn/vim-easy-align'
-Plug 'plasticboy/vim-markdown'
-Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tomtom/tlib_vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sensible'
+
+" Visualisation
+Plug 'Yggdroot/indentLine'
+Plug 'airblade/vim-gitgutter'
+Plug 'benekastah/neomake'
+Plug 'bling/vim-airline'
+Plug 'junegunn/rainbow_parentheses.vim'
+Plug 'plasticboy/vim-markdown'
 Plug 'tpope/vim-surround'
 
 if has("unix")
@@ -47,16 +56,9 @@ call plug#end()
 nnoremap <Space>I :PlugInstall<CR>
 nnoremap <Space>U :PlugUpdate<CR>
 
-"==========================================================================="
-" General Settings                                                          "
-"==========================================================================="
-
-" It looks nicer in some colour schemes
-set background=dark
-
-" This is needed to make Airline work
-set laststatus=2
-
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                            Vim General Settings                             "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable syntax highlighting
 filetype off
 syntax on
@@ -117,13 +119,15 @@ set nobackup
 set nowritebackup
 set noswapfile
 
-"==========================================================================="
-" Colourscheme                                                              "
-"==========================================================================="
-" Show whitespace
-" MUST be inserted BEFORE the colourscheme command
-autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
-au InsertLeave * match ExtraWhitespace /\s\+$/
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                                Colour Scheme                                "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" It looks nicer in some colour schemes
+set background=dark
+
+" This is needed to make Airline work
+set laststatus=2
 
 " Colour scheme
 " set t_Co=256
@@ -140,10 +144,9 @@ silent! let g:rehash256 = 1
 hi Normal ctermbg=none
 highlight NonText ctermbg=none
 
-"==========================================================================="
-" Key Remaps                                                                "
-"==========================================================================="
-
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                                Vim Bindings                                 "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set the leader to comma
 let mapleader = ","
 
@@ -226,22 +229,19 @@ vnoremap <Leader>o :sort<CR>
 " Switch back and forth between relative and absolute number
 nnoremap <Leader>n :set relativenumber!<CR>
 
-"==========================================================================="
-" Generic Autos                                                             "
-"==========================================================================="
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                                Generic Autos                                "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 autocmd BufRead,BufNewFile *.md setfiletype markdown
 
 " Enbale CUDA syntax
 au BufNewFile,BufRead *.cu set ft=cu
 au BufNewFile,BufRead *.cuh set ft=cu
 
-" easier formatting of paragraphs
-vmap Q gq
-nmap Q gqap
-
-" =========================================================================="
-" Plugins                                                                   "
-" =========================================================================="
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                                   Plugins                                   "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Tmux Navigator
 if exists('$TMUX')
@@ -270,9 +270,6 @@ map <C-l> <C-w>l
 endif
 
 " Airline
-" Some old ones I liked
-" let g:airline_theme = 'badwolf' # with badwolf
-" let g:airline_theme = 'powerlineish' # with wombat256mod
 let g:airline_theme = 'bubblegum'
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}

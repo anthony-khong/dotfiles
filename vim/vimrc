@@ -119,10 +119,13 @@ set nobackup
 set nowritebackup
 set noswapfile
 
+" Tab management
+set splitright
+set splitbelow
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                Colour Scheme                                "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 " It looks nicer in some colour schemes
 set background=dark
 
@@ -353,7 +356,10 @@ nmap <Space>/ :FuzzySearch<CR>
 nnoremap <Space>p :FZF ~<CR>
 nnoremap vcp :FZF ~<CR>
 nnoremap <C-p> :FZF <CR>
-let g:fzf_action = {'enter': 'tabedit'}
+let g:fzf_action = {
+            \'enter': 'tabedit',
+            \'ctrl-v': 'vsplit',
+            \'ctrl-t': 'tabedit'}
 
 " Easy Align
 xmap ga <Plug>(EasyAlign)

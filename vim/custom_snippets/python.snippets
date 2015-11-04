@@ -8,21 +8,25 @@ endsnippet
 
 snippet td
 # TODO: ${1:message}
-# By `echo $USER` on `!v strftime("%+")`
+# By `echo $USER` on `!v strftime("%A %d %B %Y %R %Z")`
 endsnippet
 
 snippet tdd
 # TODO: docstrings
-# By `echo $USER` on `!v strftime("%+")`
+# By `echo $USER` on `!v strftime("%A %d %B %Y %R %Z")`
 endsnippet
 
 snippet nt
 # NOTE: ${1:message}
-# By `echo $USER` on `!v strftime("%+")`
+# By `echo $USER` on `!v strftime("%A %d %B %Y %R %Z")`
 endsnippet
 
 snippet ps
-pass # TODO - by `echo $USER` on `!v strftime("%+")`
+pass # TODO - by `echo $USER` on `!v strftime("%A %d %B %Y %R %Z")`
+endsnippet
+
+snippet dtt "Date and time with a T separator" w
+`!v strftime('%z')`
 endsnippet
 ###############################################################################
 

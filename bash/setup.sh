@@ -9,11 +9,13 @@ if [ "$(uname)" == "Darwin" ]; then
 
     # Homebrew
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    brew install caskroom/cask/brew-cask
 
     # Essentials
     brew install wget
     brew install htop
     tlmgr install collection-fontsrecommended
+    brew cask install karabiner
 
     # Vim
     brew install macvim --override-system-vim

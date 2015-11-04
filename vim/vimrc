@@ -163,8 +163,8 @@ nmap <Leader>M :so ~/dotfiles_akk/vim/others/mbk_vimrc<CR>:echo 'Changed to MBK'
 nmap <Leader>A :so ~/dotfiles_akk/vim/vimrc<CR>:echo 'Changed to AKK'<CR>
 
 " Jump to escape mode
-ino hh <esc>
-ino jj <esc>
+"ino hh <C-c>
+"ino jj <C-c>
 
 " Moving up and down physical lines
 nnoremap j gj
@@ -225,7 +225,7 @@ vmap <Leader>d "_d
 nnoremap <Leader>s :update<CR>
 
 " Remove trailing whitespace
-nnoremap <silent> <Leader>w :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+nnoremap <silent> <Leader>w :keeppatterns %s/\s\+$//<CR>
 
 " Will's equals sign idea
 nnoremap <Leader>= i<del><Space><esc>gelcw<Space>=<Space><esc>

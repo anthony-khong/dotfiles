@@ -44,6 +44,21 @@ elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     sudo apt-get install htop
     sudo apt-get install lm-sensors
 
+    # Xcape and Caps behaviour
+    sudo apt-get install git gcc make pkg-config libx11-dev libxtst-dev libxi-dev
+    git clone https://github.com/alols/xcape.git
+    cd xcape
+    make
+    sudo make install
+
+    setxkbmap -option 'caps:ctrl_modifier'
+    xcape -e 'Caps_Lock=Escape;Control_L=Escape;Control_R=Escape'
+
+    echo "\n" >> ~/.profile
+    echo "# Mapping to make caps lock behave well" >> ~/.profile
+    echo "setxkbmap -option 'caps:ctrl_modifier'" >> ~/.profile
+    echo "xcape -e 'Caps_Lock=Escape;Control_L=Escape;Control_R=Escape'" >> ~/.profile
+
     # Git
     sudo apt-get update
     sudo apt-get install git

@@ -163,8 +163,8 @@ nmap <Leader>M :so ~/dotfiles_akk/vim/others/mbk_vimrc<CR>:echo 'Changed to MBK'
 nmap <Leader>A :so ~/dotfiles_akk/vim/vimrc<CR>:echo 'Changed to AKK'<CR>
 
 " Jump to escape mode
-ino hh <esc>
-ino jj <esc>
+ino hh <C-c>
+ino jj <C-c>
 
 " Moving up and down physical lines
 nnoremap j gj

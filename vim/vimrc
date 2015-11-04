@@ -80,27 +80,27 @@ autocmd GUIEnter * set visualbell t_vb=
 " More line buffer
 set so=3
 
-" Better copy & paste
+" Better copy and paste
 set pastetoggle=<F2>
 set clipboard=unnamed
 set clipboard+=unnamedplus
 
 " Mouse and backspace
-set mouse=a  " on OSX press ALT and click
-set bs=2     " make backspace behave like normal again
+set mouse=a
+set bs=2
 
 " Showing line numbers and length
-set number          " show line numbers
-set relativenumber  " but show relative numbers by default
-set tw=79           " width of document (used by gd)
-set nowrap          " don't automatically wrap on load
-set fo-=t           " don't automatically wrap text when typing
+set number
+set relativenumber
+set tw=79
+set nowrap
+set fo-=t
 
 " Useful settings
 set history=700
 set undolevels=700
 
-" Real programmers don't use TABs but spaces
+" Use spaces instead of tabs
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
@@ -122,6 +122,10 @@ set noswapfile
 " Tab management
 set splitright
 set splitbelow
+
+" Foldings
+set foldmethod=indent
+set foldlevelstart=99
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                Colour Scheme                                "
@@ -179,8 +183,8 @@ map <expr> M printf('\'%c zz',getchar())
 
 " Centers screen whenever a search is found
 nnoremap G Gzz
-:nnoremap n nzz
-:nnoremap N Nzz
+nnoremap n nzz
+nnoremap N Nzz
 
 " Pane movements
 nnoremap <Leader>hs :split<CR>
@@ -221,7 +225,7 @@ vmap <Leader>d "_d
 nnoremap <Leader>s :update<CR>
 
 " Remove trailing whitespace
-:nnoremap <silent> <Leader>w :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+nnoremap <silent> <Leader>w :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
 " Will's equals sign idea
 nnoremap <Leader>= i<del><Space><esc>gelcw<Space>=<Space><esc>
@@ -231,6 +235,9 @@ vnoremap <Leader>o :sort<CR>
 
 " Switch back and forth between relative and absolute number
 nnoremap <Leader>n :set relativenumber!<CR>
+
+" Fold Toggle
+nnoremap <Leader>f za
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                Generic Autos                                "
@@ -279,6 +286,20 @@ if !exists('g:airline_symbols')
 endif
 let g:airline_left_sep = '»'
 let g:airline_right_sep = '«'
+let g:airline_mode_map = {
+    \ '__' : '-',
+    \ 'n'  : 'N',
+    \ 'i'  : 'I',
+    \ 'R'  : 'R',
+    \ 'c'  : 'C',
+    \ 'v'  : 'V',
+    \ 'V'  : 'V',
+    \ '' : 'V',
+    \ 's'  : 'S',
+    \ 'S'  : 'S',
+    \ '' : 'S',
+    \ }
+let g:airline_section_y = ''
 
 " Rainbow Parentheses
 augroup rainbow_python

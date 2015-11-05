@@ -2,8 +2,7 @@
 
 * Mac Mode (=m)
 * Remaps (Progrm + F12)
-	* Ctrl to Caps
-	* Tab to Ctrl
-	* Esc to End
+    * Tab to Page Down
+    * Alt to End
 * Volumes (=n)
 * Turn off Tones (Progrm + -)

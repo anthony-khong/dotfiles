@@ -15,6 +15,7 @@ Plug 'ervandew/supertab'
 Plug 'honza/vim-snippets'
 Plug 'junegunn/vim-easy-align'
 Plug 'scrooloose/nerdcommenter'
+Plug 'hynek/vim-python-pep8-indent', { 'for': 'python' }
 
 " Motions
 Plug 'easymotion/vim-easymotion'

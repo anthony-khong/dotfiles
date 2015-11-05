@@ -89,6 +89,8 @@ function gpa() {
     cd ~/hrvalue;
     git pull;
     update_dots;
+    cd ~/wiki;
+    git pull;
     cd;
 }
 function clone_dotfiles() {

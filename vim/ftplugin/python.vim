@@ -25,8 +25,9 @@ let g:jedi#completions_enabled = 0
 let g:jedi#show_call_signatures_delay = 1
 
 " Jedi is really annoying
-ino hh <C-c>:call jedi#configure_call_signatures()<CR>
-ino jj <C-c>:call jedi#configure_call_signatures()<CR>
+inoremap hh <C-c>:call jedi#configure_call_signatures()<CR>
+inoremap jj <C-c>:call jedi#configure_call_signatures()<CR>
+inoremap <Esc> <Esc>:call jedi#configure_call_signatures()<CR>
 
 " If space is used here, you get an annoying delay while typing
 let g:jedi#usages_command = "<Esc>jus"

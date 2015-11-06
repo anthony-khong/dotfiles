@@ -13,9 +13,9 @@ Plug 'SirVer/ultisnips'
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 Plug 'ervandew/supertab'
 Plug 'honza/vim-snippets'
+Plug 'hynek/vim-python-pep8-indent', { 'for': 'python' }
 Plug 'junegunn/vim-easy-align'
 Plug 'scrooloose/nerdcommenter'
-Plug 'hynek/vim-python-pep8-indent', { 'for': 'python' }
 
 " Motions
 Plug 'easymotion/vim-easymotion'
@@ -357,7 +357,7 @@ let g:NERDCreateDefaultMappings = 0
 "nmap <Space>C <Plug>NERDCommenterUncomment
 "vmap <Space>C <Plug>NERDCommenterUncomment
 nmap gcc <Plug>NERDCommenterToggle
-vmap cc <Plug>NERDCommenterToggle
+vmap gcc <Plug>NERDCommenterToggle
 
 " SuperTab
 let g:SuperTabDefaultCompletionType = "<c-n>"

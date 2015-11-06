@@ -352,10 +352,8 @@ nmap <Space>n :NERDTreeToggle<CR>
 
 " NERDCommenter
 let g:NERDCreateDefaultMappings = 0
-"nmap <Space>c <Plug>NERDCommenterComment
-"vmap <Space>c <Plug>NERDCommenterComment
-"nmap <Space>C <Plug>NERDCommenterUncomment
-"vmap <Space>C <Plug>NERDCommenterUncomment
+nmap <Space>c <Plug>NERDCommenterToggle
+vmap <Space>c <Plug>NERDCommenterToggle
 nmap gcc <Plug>NERDCommenterToggle
 vmap gcc <Plug>NERDCommenterToggle
 

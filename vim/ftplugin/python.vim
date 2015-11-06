@@ -1,6 +1,3 @@
-" Run current Python script
-nnoremap <Leader><Space> :!ipython -i %<CR>
-
 " Python shortcuts
 map <Leader>t Oimport pdb; pdb.set_trace() # BREAKPOINT<C-c>
 map <Leader>m Oimport matplotlib.pyplot as plt<C-c>

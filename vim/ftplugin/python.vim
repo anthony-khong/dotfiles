@@ -12,6 +12,13 @@ nnoremap <Leader>5 i#<esc>70.b
 set colorcolumn=80
 highlight ColorColumn ctermbg=234
 
+" Foldings
+set foldmethod=indent
+set foldlevel=99
+
+" Simpyl Fold
+let g:SimpylFold_docstring_preview = 1
+
 " Jedi-Vim
 let g:jedi#auto_initialization = 1
 let g:jedi#popup_on_dot = 0

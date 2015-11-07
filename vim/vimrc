@@ -44,6 +44,7 @@ Plug 'bling/vim-airline'
 Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'plasticboy/vim-markdown'
 Plug 'tpope/vim-surround'
+Plug 'tmhedberg/SimpylFold'
 
 if has("unix")
   let s:uname = system("uname")
@@ -123,10 +124,6 @@ set noswapfile
 " Tab management
 set splitright
 set splitbelow
-
-" Foldings
-set foldmethod=indent
-set foldlevelstart=99
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                Colour Scheme                                "

@@ -75,22 +75,27 @@ function gsu() {
     git submodule update;
 }
 
-function update_dots() {
-    cd ~/dotfiles_akk;
+
+function echo_and_pull() {
+    printf 'Pulling the repository %s...\n' "${PWD##*/}";
     git pull;
+}
+function update_dots() {
+    cd ~/dotfiles_akk && echo_and_pull;
     git submodule init;
     git submodule update;
     nvim +PlugInstall +qall
 }
-
+function gpe() {
+    cd ~/applied_modelling && echo_and_pull;
+    cd ~/hrvalue && echo_and_pull;
+}
 function gpa() {
-    cd ~/applied_modelling;
-    git pull;
-    cd ~/hrvalue;
-    git pull;
     update_dots;
-    cd ~/wiki;
-    git pull;
+    cd ~/applied_modelling && echo_and_pull;
+    cd ~/hrvalue && echo_and_pull;
+    cd ~/wiki && echo_and_pull;
+    cd ~/tensorflow_examples && echo_and_pull;
     cd;
 }
 function clone_dotfiles() {

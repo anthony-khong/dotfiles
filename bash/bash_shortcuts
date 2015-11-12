@@ -160,31 +160,22 @@ function dots() {
 
 # Networking shortcuts
 function jarwin() {
-    ssh -4 akkhong@jarwinjkt.no-ip.biz
-}
-function jarwinX() {
     ssh -4 -X akkhong@jarwinjkt.no-ip.biz
 }
 function cuffy() {
-    ssh -4 akk@ilikezcoffe.no-ip.biz
+    ssh -4 -X akk@ilikezcoffe.no-ip.biz
 }
 function servox() {
-    ssh -p2222 akkhong@servox.no-ip.biz
+    ssh -p2222 -X akkhong@servox.no-ip.biz
 }
 
 function local_jarwin() {
-    ssh akkhong@192.168.1.107
-}
-function local_jarwinX() {
     ssh -X akkhong@192.168.1.107
 }
 function bealach() {
-    ssh akkhong@192.168.1.110
+    ssh -X akkhong@192.168.1.110
 }
 function samhan() {
-    ssh akkhong@192.168.1.109
-}
-function samhanX() {
     ssh -X akkhong@192.168.1.109
 }
 function stream_webcam() {

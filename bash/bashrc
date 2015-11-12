@@ -132,11 +132,7 @@ PATH=${CUDA_HOME}/bin:${PATH}
 export PATH
 
 # added by Anaconda 2.1.0 installer
-if [ ! -f /home/akkhong/anaconda ]; then
-    export PATH="/home/akkhong/anaconda/bin:$PATH"
-else
-    export PATH="/home/mbk/anaconda/bin:$PATH"
-fi
+export PATH="/opt/anaconda/bin:$PATH"
 
 if [ "$(uname)" == "Darwin" ]; then
     export user=akk_mac

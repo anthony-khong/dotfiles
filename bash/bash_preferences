@@ -36,3 +36,9 @@ export FZF_DEFAULT_COMMAND="ag -l -g '' \
                             --ignore-dir='pylearn2' \
                             --ignore-dir='xgboost' \
                             "
+
+# Vim shortcuts
+alias vi="/usr/bin/vim -p"
+alias vim="nvim -p"
+alias vcp="nvim +'FZF ~'"
+

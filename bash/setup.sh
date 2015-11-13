@@ -1,5 +1,8 @@
 # Install essentials
 cd;
+source ~/dotfiles_akk/bash/bash_shortcuts
+source ~/dotfiles_akk/bash/bash_preferences
+
 if [ "$(uname)" == "Darwin" ]; then
     # TODO: Anaconda, Chrome, Dropbox, Pandoc, R, Spotify, VLC Vim, htop, iTerm.
     echo 'Setting up Mac...';
@@ -33,6 +36,10 @@ if [ "$(uname)" == "Darwin" ]; then
 
     # Anaconda
     read -p "Install Anacanda now. Press [Enter] to continue..."
+
+    # Create link to themes
+    ln -s Dropbox/Others II/ubuntu_themes .themes
+    ln -s Dropbox/Others II/Backgrounds Backgrounds
 
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     # TODO: Anaconda, Antivirus, CUDA, Chrome, Dropbox, RSudio, SSH, VLC, noip2.

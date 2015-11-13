@@ -11,11 +11,12 @@ call plug#begin()
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'SirVer/ultisnips'
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
-Plug 'ervandew/supertab'
+"Plug 'ervandew/supertab'
 Plug 'honza/vim-snippets'
 Plug 'hynek/vim-python-pep8-indent', { 'for': 'python' }
 Plug 'junegunn/vim-easy-align'
 Plug 'scrooloose/nerdcommenter'
+Plug 'junegunn/vim-peekaboo'
 
 " Motions
 Plug 'easymotion/vim-easymotion'
@@ -61,8 +62,12 @@ nnoremap <Space>U :PlugUpdate<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                            Vim General Settings                             "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Enable omnicompletion
+filetype plugin on
+set omnifunc=syntaxcomplete#Complete
+
 " Enable syntax highlighting
-filetype off
 syntax on
 filetype plugin indent on
 
@@ -201,7 +206,7 @@ vnoremap < <gv  " better indentation
 vnoremap > >gv  " better indentation
 
 " Turn off search highlights
-nnoremap <C-x> :nohlsearch<CR>
+nnoremap <Leader>x :nohlsearch<CR>
 
 " Copy the entire script to the clipboard
 nnoremap <Leader>l mwggVG"+y'wzz
@@ -236,6 +241,9 @@ nnoremap <Leader>n :set relativenumber!<CR>
 
 " Fold Toggle
 nnoremap <Leader>f za
+
+" Since <C-a> is the Tmux prefix, we replace <C-a> with <C-o>
+inoremap <C-o> <C-a>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                Generic Autos                                "
@@ -355,7 +363,7 @@ nmap gcc <Plug>NERDCommenterToggle
 vmap gcc <Plug>NERDCommenterToggle
 
 " SuperTab
-let g:SuperTabDefaultCompletionType = "<c-n>"
+"let g:SuperTabDefaultCompletionType = "<c-n>"
 
 " EasyMotion
 let g:EasyMotion_smartcase = 1
@@ -374,9 +382,9 @@ nmap <Space>: <Plug>(easymotion-next)
 nmap <Space>/ :FuzzySearch<CR>
 
 " FZF
+nnoremap <C-t> :FZF ~<CR>
 nnoremap <Space>p :FZF ~<CR>
-nnoremap vcp :FZF ~<CR>
-nnoremap <C-p> :FZF <CR>
+nnoremap <Space>f :FZF<CR>
 let g:fzf_action = {
             \'enter': 'tabedit',
             \'ctrl-v': 'vsplit',

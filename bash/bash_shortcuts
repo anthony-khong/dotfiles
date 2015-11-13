@@ -184,3 +184,8 @@ function flush_dns_cache() {
 function check_my_ip() {
     curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/<.*$//'
 }
+
+# Vim shortcuts
+alias vi="/usr/bin/vim -p"
+alias vim="nvim -p"
+alias vff="nvim +'FZF ~'"

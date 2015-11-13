@@ -25,8 +25,7 @@ let g:jedi#popup_on_dot = 0
 let g:jedi#popup_select_first = 0
 let g:jedi#smart_auto_mappings = 0
 let g:jedi#show_call_signatures = "1"
-let g:jedi#completions_enabled = 0
-let g:jedi#show_call_signatures_delay = 1
+let g:jedi#completions_enabled = 1
 
 " Jedi is really annoying
 inoremap hh <C-c>:call jedi#configure_call_signatures()<CR>

@@ -108,6 +108,9 @@ function clone_dotfiles() {
     mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config}
     ln -s ~/dotfiles_akk/vim $XDG_CONFIG_HOME/nvim
 
+    rm .tmux.conf;
+    ln -s ~/dotfiles_akk/tmux/tmux.conf .tmux.conf;
+
     nvim +PlugInstall +qall
     nvim +PlugInstall +qall
     nvim +PlugUpdate +qall

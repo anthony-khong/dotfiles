@@ -11,12 +11,12 @@ call plug#begin()
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'SirVer/ultisnips'
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
-"Plug 'ervandew/supertab'
+Plug 'ervandew/supertab'
 Plug 'honza/vim-snippets'
 Plug 'hynek/vim-python-pep8-indent', { 'for': 'python' }
 Plug 'junegunn/vim-easy-align'
-Plug 'scrooloose/nerdcommenter'
 Plug 'junegunn/vim-peekaboo'
+Plug 'scrooloose/nerdcommenter'
 
 " Motions
 Plug 'easymotion/vim-easymotion'
@@ -313,8 +313,8 @@ autocmd!
 autocmd FileType python RainbowParentheses
 augroup END
 nmap <Space>rp :RainbowParentheses!!<CR>
-"let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
-"let g:rainbow#blacklist = [109, 110, 242, 252]
+let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
+"let g:rainbow#blacklist = [107, 110, 242, 252]
 
 " IndentLine
 let g:indentLine_enabled = 1
@@ -363,7 +363,7 @@ nmap gcc <Plug>NERDCommenterToggle
 vmap gcc <Plug>NERDCommenterToggle
 
 " SuperTab
-"let g:SuperTabDefaultCompletionType = "<c-n>"
+let g:SuperTabDefaultCompletionType = "<c-n>"
 
 " EasyMotion
 let g:EasyMotion_smartcase = 1

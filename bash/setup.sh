@@ -110,6 +110,22 @@ elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     sudo chmod +x Ana*
     sudo bash Ana*.sh
 
+    # Mutt
+    # https://help.ubuntu.com/community/MuttAndGmail
+    #sudo apt-get install mutt
+    #touch ~/.muttrc
+    #sudo chmod 600 ~/.muttrc
+    #sudo apt-get install openssl ca-certificates
+    #sudo apt-get install msmtp
+    #touch $HOME/.msmtprc
+    #touch $HOME/.msmtp.log
+    #sudo chmod 0600 $HOME/.msmtprc
+    #rm ~/.msmtprc
+    #ln -s dotfiles_akk/msmtprc ~/.msmtprc
+    #sudo apt-get install fetchmail
+    #rm ~/.fetchmailrc
+    #ln -s dotfiles_akk/fetchmailrc ~/.fetchmailrc
+
 fi
 
 # TODO: setup Python

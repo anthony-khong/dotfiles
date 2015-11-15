@@ -9,12 +9,12 @@ nnoremap <Leader>4 i#<esc>74.b
 nnoremap <Leader>5 i#<esc>70.b
 
 " Set character limiter
-set colorcolumn=80
+setlocal colorcolumn=80
 highlight ColorColumn ctermbg=234
 
 " Foldings
-set foldmethod=indent
-set foldlevel=99
+setlocal foldmethod=indent
+setlocal foldlevel=99
 
 " Simpyl Fold
 let g:SimpylFold_docstring_preview = 1

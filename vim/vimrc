@@ -13,7 +13,6 @@ Plug 'SirVer/ultisnips'
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 Plug 'ervandew/supertab'
 Plug 'honza/vim-snippets'
-Plug 'hynek/vim-python-pep8-indent', { 'for': 'python' }
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/vim-peekaboo'
 Plug 'scrooloose/nerdcommenter'
@@ -107,13 +106,6 @@ set fo-=t
 set history=700
 set undolevels=700
 
-" Use spaces instead of tabs
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set shiftround
-set expandtab
-
 " Make search case insensitive
 set hlsearch
 set incsearch
@@ -129,6 +121,14 @@ set noswapfile
 " Tab management
 set splitright
 set splitbelow
+
+" Use spaces instead of tabs
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set shiftround
+set smarttab
+set expandtab
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                Colour Scheme                                "
@@ -202,8 +202,8 @@ nnoremap <Leader>e :q<CR>
 vnoremap <Leader>e :q<CR>
 
 " Easier moving of code blocks
-vnoremap < <gv  " better indentation
-vnoremap > >gv  " better indentation
+vnoremap < <gv
+vnoremap > >gv
 
 " Turn off search highlights
 nnoremap <Leader>x :nohlsearch<CR>

@@ -103,6 +103,15 @@ function clone_dotfiles() {
     git submodule update;
 
     cd;
+    if [ "$(uname)" == "Darwin" ]; then
+        rm .bash_profile;
+        ln -s dotfiles_akk/bash/bash_profile .bash_profile;
+    elif [ "$(uname)" == "Linux" ]; then
+        rm .bashrc
+        ln -s dotfiles_akk/bash/bashrc .bashrc;
+    fi
+
+    cd;
     rm .vimrc;
     rm -rf .vim;
     ln -s ~/dotfiles_akk/vim/vimrc .vimrc
@@ -115,8 +124,8 @@ function clone_dotfiles() {
     ln -s ~/dotfiles_akk/tmux/tmux.conf .tmux.conf;
 
     nvim +PlugInstall +qall
-    nvim +PlugInstall +qall
     nvim +PlugUpdate +qall
+    nvim +PlugInstall +qall
 }
 function fix_nvim_tmux_navigator () {
     infocmp $TERM | sed 's/kbs=^[hH]/kbs=\\177/' > $TERM.ti

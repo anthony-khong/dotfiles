@@ -1,11 +1,2 @@
 set show-all-if-ambiguous on
 TAB: menu-complete
-
-# Want vi to be the default editor for readline
-set editing-mode vi
-
-# vi settings
-$if mode=vi
-    set keymap vi-insert
-    "jj": vi-movement-mode # remap escape
-$endif

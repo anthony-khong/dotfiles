@@ -85,7 +85,7 @@ function gpe() {
     cwd=$(pwd);
     cd ~/applied_modelling && echo_and_pull;
     cd ~/hrvalue && echo_and_pull;
-    cd $(cwd);
+    cd $cwd;
 }
 function gpa() {
     cwd=$(pwd)
@@ -94,7 +94,7 @@ function gpa() {
     cd ~/hrvalue && echo_and_pull;
     cd ~/wiki && echo_and_pull;
     cd ~/tensorflow_examples && echo_and_pull;
-    cd $(cwd);
+    cd $cwd;
 }
 function clone_dotfiles() {
     git clone git@github.com:anthony-khong/dotfiles_akk.git;

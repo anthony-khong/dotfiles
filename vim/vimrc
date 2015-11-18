@@ -9,7 +9,7 @@ call plug#begin()
 
 " Editing
 Plug 'MarcWeber/vim-addon-mw-utils'
-Plug 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips', { 'on': [] }
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 Plug 'ervandew/supertab'
 Plug 'honza/vim-snippets'
@@ -57,6 +57,12 @@ endif
 call plug#end()
 nnoremap <Space>I :PlugInstall<CR>
 nnoremap <Space>U :PlugUpdate<CR>
+
+" Lazy loading for UltiSnips
+augroup load_ultisnips
+  autocmd!
+  autocmd InsertEnter * call plug#load('ultisnips') | autocmd! load_ultisnips
+augroup END
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                            Vim General Settings                             "

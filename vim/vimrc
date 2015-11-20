@@ -68,6 +68,9 @@ augroup END
 "                            Vim General Settings                             "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" Faster scrolling
+set lazyredraw
+
 " Enable omnicompletion
 filetype plugin on
 set omnifunc=syntaxcomplete#Complete

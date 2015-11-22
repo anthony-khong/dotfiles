@@ -93,7 +93,7 @@ function gpa() {
     cd ~/applied_modelling && echo_and_pull;
     cd ~/hrvalue && echo_and_pull;
     cd ~/wiki && echo_and_pull;
-    cd ~/tensorflow_examples && echo_and_pull;
+    cd ~/tfnets && echo_and_pull;
     cd $cwd;
 }
 function clone_dotfiles() {

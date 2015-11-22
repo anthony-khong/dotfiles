@@ -6,3 +6,4 @@
     * Alt to End
 * Volumes (=n)
 * Turn off Tones (Progrm + -)
+* Turn off Clicks (Progrm + \)

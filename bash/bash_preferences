@@ -22,6 +22,7 @@ export FZF_CTRL_T_COMMAND="ag -l -g ''"
 export FZF_DEFAULT_COMMAND="ag -l -g '' \
                             --ignore-dir='Applications'\
                             --ignore-dir='Desktop'\
+                            --ignore-dir='Downloads'\
                             --ignore-dir='Dropbox' \
                             --ignore-dir='Lasagne'\
                             --ignore-dir='Library'\

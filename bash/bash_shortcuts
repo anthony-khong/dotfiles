@@ -92,6 +92,7 @@ function gpa() {
     update_dots;
     cd ~/applied_modelling && echo_and_pull;
     cd ~/hrvalue && echo_and_pull;
+    cd ~/fvalue && echo_and_pull;
     cd ~/wiki && echo_and_pull;
     cd ~/tfnets && echo_and_pull;
     cd $cwd;

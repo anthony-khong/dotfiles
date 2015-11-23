@@ -28,6 +28,11 @@ function install_neovim() {
     fi
 }
 
+HISTCONTROL=ignoreboth
+HISTIGNORE='ls:bg:fg:history:hh'
+alias hh=history
+alias clear_history='cat /dev/null > ~/.bash_history && history -c'
+
 # Tmux shortcut
 function tm() {
     tmux ls;
@@ -209,3 +214,6 @@ function check_my_ip() {
 alias vi="/usr/bin/vim -p"
 alias vim="nvim -p"
 alias vff="nvim +'FZF ~'"
+function eff() {
+    vim $(fzf)
+}

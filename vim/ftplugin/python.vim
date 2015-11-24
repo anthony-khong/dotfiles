@@ -33,11 +33,11 @@ let g:jedi#completions_enabled = 1
 inoremap <Esc> <C-c>:call jedi#configure_call_signatures()<CR>:IndentLinesReset<CR>
 
 " If space is used here, you get an annoying delay while typing
-let g:jedi#usages_command = "<Space>jus"
-let g:jedi#completions_command = "<Space>jc"
-let g:jedi#goto_definitions_command = "<Space>jd"
-let g:jedi#documentation_command = "<Space>jk"
-let g:jedi#rename = "<Space>jr"
+let g:jedi#usages_command = "<Alt>jus"
+let g:jedi#completions_command = "<Alt>jc"
+let g:jedi#goto_definitions_command = "<Alt>jd"
+let g:jedi#documentation_command = "<Alt>jk"
+let g:jedi#rename = "<Alt>jr"
 
 " UltiSnips
 vmap <Space>te <Tab>visual_te<Tab><Esc><Esc>

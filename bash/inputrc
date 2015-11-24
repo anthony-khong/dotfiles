@@ -1,2 +1,3 @@
 set show-all-if-ambiguous on
-TAB: menu-complete
+Tab:complete
+Control-n: menu-complete

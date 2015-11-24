@@ -9,14 +9,6 @@ function sbash() {
     fi
 }
 
-function remove_pyc() {
-    find . -name "*.pyc" -exec rm -rf {} \;
-}
-
-function diffs() {
-    vim `git ls-files -m` -p;
-}
-
 function install_neovim() {
     if [ "$(uname)" == "Darwin" ]; then
         brew tap neovim/neovim
@@ -68,34 +60,45 @@ function mkinit() {
     echo '' >> __init__.py
 }
 
+function remove_pyc() {
+    find . -name "*.pyc" -exec rm -rf {} \;
+}
+
 # Git shortcuts
 function fastpush() {
     git add -u;
     git commit -m "$*";
     git push;
 }
+
 function gsu() {
     git submodule init;
     git submodule update;
 }
 
+function diffs() {
+    vim `git ls-files -m` -p;
+}
 
 function echo_and_pull() {
     printf 'Pulling the repository %s...\n' "${PWD##*/}";
     git pull;
 }
+
+# Dotfiles shortucts
 function update_dots() {
     cd ~/dotfiles_akk && echo_and_pull;
-    git submodule init;
-    git submodule update;
+    gsu;
     nvim +PlugInstall +qall
 }
+
 function gpe() {
     cwd=$(pwd);
     cd ~/applied_modelling && echo_and_pull;
     cd ~/hrvalue && echo_and_pull;
     cd $cwd;
 }
+
 function gpa() {
     cwd=$(pwd)
     update_dots;
@@ -106,12 +109,8 @@ function gpa() {
     cd ~/tfnets && echo_and_pull;
     cd $cwd;
 }
-function clone_dotfiles() {
-    git clone git@github.com:anthony-khong/dotfiles_akk.git;
-    cd dotfiles_akk;
-    git submodule init;
-    git submodule update;
 
+function recreate_symbolic_links() {
     cd;
     if [ "$(uname)" == "Darwin" ]; then
         rm .bash_profile;
@@ -120,6 +119,7 @@ function clone_dotfiles() {
         rm .bashrc;
         ln -s dotfiles_akk/bash/bashrc .bashrc;
     fi
+
     rm .inputrc;
     ln -s dotfiles_akk/bash/inputrc .inputr;
 
@@ -130,15 +130,30 @@ function clone_dotfiles() {
     ln -s ~/dotfiles_akk/vim/ .vim;
 
     mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config};
+    rm $XDG_CONFIG_HOME/nvim;
     ln -s ~/dotfiles_akk/vim $XDG_CONFIG_HOME/nvim;
 
     rm .tmux.conf;
     ln -s ~/dotfiles_akk/tmux/tmux.conf .tmux.conf;
+}
 
+function setup_nvim() {
     nvim +PlugInstall +qall;
     nvim +PlugUpdate +qall;
     nvim +PlugInstall +qall;
 }
+
+function clone_dotfiles() {
+    git clone git@github.com:anthony-khong/dotfiles_akk.git;
+    cd dotfiles_akk;
+    gsu;
+
+    recreate_symbolic_links;
+
+    setup_nvim;
+    sbash;
+}
+
 function fix_nvim_tmux_navigator () {
     infocmp $TERM | sed 's/kbs=^[hH]/kbs=\\177/' > $TERM.ti
     tic $TERM.ti
@@ -148,34 +163,44 @@ function fix_nvim_tmux_navigator () {
 function dropbox_hr_value() {
     cd ~/Dropbox/am_records/hr_value
 }
+
 function gpy() {
     cd ~/Dropbox/tutorials/gpy
 }
+
 function papers() {
     cd ~/Dropbox/Interesting\ Papers/
 }
+
 function bayes_ml() {
     cd ~/Dropbox/Interesting\ Papers/Bayesian\ Machine\ Learning/
 }
+
 function deep() {
     cd ~/Dropbox/Interesting\ Papers/Deep\ Learning/
 }
+
 function ensembles() {
     cd ~/Dropbox/Interesting\ Papers/Ensemble\ Methods/
 }
+
 function mcm() {
     cd ~/Dropbox/Interesting\ Papers/Monte\ Carlo\ Methods/
 }
 
+
 function am() {
     cd ~/applied_modelling/
 }
+
 function fv() {
     cd ~/applied_modelling/football_value/
 }
+
 function hrv() {
     cd ~/hrvalue/
 }
+
 function dots() {
     cd ~/dotfiles_akk/
 }
@@ -184,30 +209,38 @@ function dots() {
 function jarwin() {
     ssh -4 -X akkhong@jarwinjkt.no-ip.biz
 }
+
 function cuffy() {
     ssh -4 -X akk@ilikezcoffe.no-ip.biz
 }
+
 function servox() {
     ssh -p2222 -X akkhong@servox.no-ip.biz
 }
 
+
 function local_jarwin() {
     ssh -X akkhong@192.168.1.107
 }
+
 function bealach() {
     ssh -X akkhong@192.168.1.110
 }
+
 function samhan() {
     ssh -X akkhong@192.168.1.109
 }
+
 function stream_webcam() {
     vlc v4l2:///dev/video0
 }
+
 function flush_dns_cache() {
     sudo dscacheutil -flushcache
     sudo killall -HUP mDNSResponder
     say cache flushed
 }
+
 function check_my_ip() {
     curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/<.*$//'
 }

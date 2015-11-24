@@ -154,7 +154,7 @@ set laststatus=2
 " Colour scheme
 " set t_Co=256
 silent! colorscheme gruvbox
-let g:gruvbox_contrast_dark='soft'
+let g:gruvbox_contrast_dark='hard'
 silent! let g:rehash256 = 1
 
 if has("unix")

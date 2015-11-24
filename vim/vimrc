@@ -22,7 +22,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'ggVGc/vim-fuzzysearch'
 
 " Colour Schemes
-Plug 'flazz/vim-colorschemes'
+Plug 'morhetz/gruvbox'
 
 " Utilities
 Plug 'christoomey/vim-tmux-navigator'
@@ -153,8 +153,16 @@ set laststatus=2
 
 " Colour scheme
 " set t_Co=256
-silent! colorscheme gruvbox-akk
+silent! colorscheme gruvbox
+let g:gruvbox_contrast_dark='soft'
 silent! let g:rehash256 = 1
+
+if has("unix")
+  let s:uname = system("uname")
+  if s:uname == "Darwin\n"
+        " let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  endif
+endif
 
 " Some other colour schemes that I previously liked
 " colorscheme wombat256mod
@@ -163,8 +171,9 @@ silent! let g:rehash256 = 1
 " let g:molokai_original = 1
 
 " Make vim transparent to the background
-hi Normal ctermbg=none
+highlight Normal ctermbg=none
 highlight NonText ctermbg=none
+highlight clear SignColumn
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                Vim Bindings                                 "

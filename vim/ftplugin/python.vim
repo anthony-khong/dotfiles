@@ -28,16 +28,16 @@ let g:jedi#show_call_signatures = "1"
 let g:jedi#completions_enabled = 1
 
 " Jedi is really annoying
-inoremap hh <C-c>:call jedi#configure_call_signatures()<CR>:IndentLinesReset<CR>
-inoremap jj <C-c>:call jedi#configure_call_signatures()<CR>
-inoremap <Esc> <Esc>:call jedi#configure_call_signatures()<CR>
+"inoremap hh <C-c>:call jedi#configure_call_signatures()<CR>:IndentLinesReset<CR>
+"inoremap jj <C-c>:call jedi#configure_call_signatures()<CR>
+inoremap <Esc> <C-c>:call jedi#configure_call_signatures()<CR>:IndentLinesReset<CR>
 
 " If space is used here, you get an annoying delay while typing
-let g:jedi#usages_command = "<Esc>jus"
-let g:jedi#completions_command = "<Esc>jc"
-let g:jedi#goto_definitions_command = "<Esc>jd"
-let g:jedi#documentation_command = "<Esc>jk"
-let g:jedi#rename = "<Esc>jr"
+let g:jedi#usages_command = "<Space>jus"
+let g:jedi#completions_command = "<Space>jc"
+let g:jedi#goto_definitions_command = "<Space>jd"
+let g:jedi#documentation_command = "<Space>jk"
+let g:jedi#rename = "<Space>jr"
 
 " UltiSnips
 vmap <Space>te <Tab>visual_te<Tab><Esc><Esc>

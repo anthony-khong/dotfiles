@@ -34,7 +34,6 @@ Plug 'scrooloose/nerdtree'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tomtom/tlib_vim'
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-sensible'
 
 " Visualisation
 Plug 'Yggdroot/indentLine'
@@ -67,6 +66,10 @@ augroup END
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                            Vim General Settings                             "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" No more weird characters when pressing <Esc>
+set ttimeout
+set ttimeoutlen=0
 
 " Faster scrolling
 set lazyredraw
@@ -175,8 +178,8 @@ nmap <Leader>M :so ~/dotfiles_akk/vim/others/mbk_vimrc<CR>:echo 'Changed to MBK'
 nmap <Leader>A :so ~/dotfiles_akk/vim/vimrc<CR>:echo 'Changed to AKK'<CR>
 
 " Jump to escape mode
-ino hh <C-c>
-ino jj <C-c>
+" ino hh <C-c>
+" ino jj <C-c>
 
 " Moving up and down physical lines
 nnoremap j gj

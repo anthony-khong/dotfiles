@@ -55,6 +55,7 @@ alias gpy0='THEANO_FLAGS="device=gpu0" ipython -i'
 alias gpy1='THEANO_FLAGS="device=gpu1" ipython -i'
 alias gpy2='THEANO_FLAGS="device=gpu2" ipython -i'
 alias gpy3='THEANO_FLAGS="device=gpu3" ipython -i'
+alias pylab='ipython --pylab'
 
 function mkinit() {
     echo '' >> __init__.py

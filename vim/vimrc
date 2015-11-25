@@ -157,12 +157,12 @@ silent! colorscheme gruvbox
 let g:gruvbox_contrast_dark='medium'
 silent! let g:rehash256 = 1
 
-"if has("unix")
-  "let s:uname = system("uname")
-  "if s:uname == "Darwin\n"
-        "let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-  "endif
-"endif
+if has("unix")
+  let s:uname = system("uname")
+  if s:uname == "Darwin\n"
+        let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  endif
+endif
 
 " Some other colour schemes that I previously liked
 " colorscheme wombat256mod
@@ -173,6 +173,8 @@ silent! let g:rehash256 = 1
 " Make vim transparent to the background
 highlight Normal ctermbg=none
 highlight NonText ctermbg=none
+highlight Normal guibg=none
+highlight NonText guibg=none
 highlight clear SignColumn
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

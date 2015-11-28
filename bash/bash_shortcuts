@@ -9,6 +9,11 @@ function sbash() {
     fi
 }
 
+function remap_caps() {
+    setxkbmap -option 'caps:ctrl_modifier'
+    xcape -t 150 -e 'Caps_Lock=Escape;Control_L=Escape;Control_R=Escape'
+}
+
 function install_neovim() {
     if [ "$(uname)" == "Darwin" ]; then
         brew tap neovim/neovim

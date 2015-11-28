@@ -148,3 +148,5 @@ export PYTHONDONTWRITEBYTECODE=1
 
 source ~/dotfiles_akk/bash/bash_shortcuts
 source ~/dotfiles_akk/bash/bash_preferences
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

@@ -191,7 +191,7 @@ nmap <Leader>A :so ~/dotfiles_akk/vim/vimrc<CR>:echo 'Changed to AKK'<CR>
 " Jump to escape mode
 ino hh <C-c>
 ino jj <C-c>
-ino jk <C-c>
+ino ht <C-c>
 
 " Moving up and down physical lines
 nnoremap j gj
@@ -250,6 +250,7 @@ vmap <Leader>d "_d
 
 " Save current script
 nnoremap <Leader>s :update<CR>
+nnoremap <C-s> :update<CR>
 
 " Remove trailing whitespace
 nnoremap <silent> <Leader>w :keeppatterns %s/\s\+$//<CR>

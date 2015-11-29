@@ -30,7 +30,7 @@ let g:jedi#completions_enabled = 1
 " Jedi is really annoying
 inoremap hh <C-c>:call jedi#configure_call_signatures()<CR>:IndentLinesReset<CR>
 inoremap jj <C-c>:call jedi#configure_call_signatures()<CR>:IndentLinesReset<CR>
-inoremap ht <C-c>:call jedi#configure_call_signatures()<CR>:IndentLinesReset<CR>
+inoremap <Esc> <C-c>:call jedi#configure_call_signatures()<CR>:IndentLinesReset<CR>
 
 " If space is used here, you get an annoying delay while typing
 let g:jedi#usages_command = "<Alt>jus"

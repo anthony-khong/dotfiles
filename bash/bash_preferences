@@ -1,3 +1,27 @@
+# Don't put duplicate lines or lines starting with space in the history.
+# See bash(1) for more options
+HISTCONTROL=ignoreboth:ignoredups:erasedups
+HISTSIZE=1000
+HISTFILESIZE=2000
+
+# When the shell exits, append to the history file instead of overwriting it
+shopt -s histappend
+
+# History sync
+_bash_history_sync() {
+  builtin history -a         #1
+  HISTFILESIZE=$HISTSIZE     #2
+  builtin history -c         #3
+  builtin history -r         #4
+}
+
+history() {                  #5
+  _bash_history_sync
+  builtin history "$@"
+}
+
+PROMPT_COMMAND=_bash_history_sync
+
 # For tmux colours
 export TERM="xterm-256color"
 
@@ -39,4 +63,3 @@ export FZF_DEFAULT_COMMAND="ag -l -g '' \
                             "
 export FZF_TMUX=1
 export FZF_TMUX_HEIGHT=20
-

@@ -42,6 +42,34 @@ snippet ifm
 if __name__ == '__main__':
 	${1:main()}
 endsnippet
+
+snippet pdb
+import pdb; pdb.set_trace() # BREAKPOINT
+endsnippet
+
+###############################################################################
+snippet plt
+import matplotlib.pyplot as plt
+endsnippet
+
+snippet aplt
+# This allows figures to be saved through SSH
+import matplotlib
+matplotlib.use('Agg')
+endsnippet
+
+snippet np
+import numpy as np
+endsnippet
+
+snippet pd
+import pandas as pd
+endsnippet
+
+snippet tools
+from applied_modelling import tools
+endsnippet
+
 ###############################################################################
 
 snippet visual_te "Try / Except" b

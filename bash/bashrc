@@ -137,3 +137,8 @@ source ~/dotfiles_akk/bash/bash_shortcuts
 source ~/dotfiles_akk/bash/bash_preferences
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# Linuxbrew Path
+export PATH="$HOME/.linuxbrew/bin:$PATH"
+export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
+export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"

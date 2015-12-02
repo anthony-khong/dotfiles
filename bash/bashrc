@@ -127,6 +127,7 @@ elif [ "$(uname)" == "Linux" ]; then
     export user=akk_linux
 fi
 export PYTHONPATH=/home/akkhong/
+export PYTHONPATH=/home/akkhong/cmls
 export PYTHONPATH=$PYTHONPATH:/home/akkhong/xgboost/python-package/
 
 # Stop Python from generating .pyc files

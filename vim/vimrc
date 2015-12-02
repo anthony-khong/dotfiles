@@ -95,6 +95,9 @@ set nofoldenable
 set noerrorbells visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
 
+" Gets rid of weird character in new GNOME terminal
+set novisualbell
+
 " More line buffer
 set so=3
 
@@ -156,13 +159,7 @@ set laststatus=2
 silent! colorscheme gruvbox
 let g:gruvbox_contrast_dark='medium'
 silent! let g:rehash256 = 1
-
-if has("unix")
-  let s:uname = system("uname")
-  if s:uname == "Darwin\n"
-        let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-  endif
-endif
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 " Some other colour schemes that I previously liked
 " colorscheme wombat256mod

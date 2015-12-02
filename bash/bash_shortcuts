@@ -14,42 +14,15 @@ function remap_caps() {
     xcape -t 150 -e 'Caps_Lock=Escape;Control_L=Escape;Control_R=Escape'
 }
 
-function install_neovim() {
-    if [ "$(uname)" == "Darwin" ]; then
-        brew tap neovim/neovim
-        brew install --HEAD neovim
-    elif [ "$(uname)" == "Linux" ]; then
-        sudo add-apt-repository ppa:neovim-ppa/unstable
-        sudo apt-get update
-        sudo apt-get install neovim
-    fi
-}
-
-function install_terminal_with_24bit_support() {
-    sudo add-apt-repository ppa:gnome3-team/gnome3-staging
-    sudo apt-get update
-    sudo apt-get install gnome-terminal
-    sudo add-apt-repository -r ppa:gnome3-team/gnome3-staging
-    }
-
 HISTCONTROL=ignoreboth
 HISTIGNORE='ls:bg:fg:history:hh'
 alias hh=history
 alias clear_history='cat /dev/null > ~/.bash_history && history -c'
 
 # Tmux shortcut
-function tm() {
-    tmux ls;
-    if [ -z "$1" ]; then
-        tmux attach || tmux new -s 'unnamed';
-    else
-        tmux attach || tmux new -s $1;
-    fi
-}
 function tnew {
     tmux new-session -As `basename $PWD`
 }
-
 
 # Pandoc shortcuts
 function md_to_pdf() {
@@ -121,7 +94,6 @@ function gpa() {
     cd ~/tfnets && echo_and_pull;
     cd $cwd;
 }
-
 
 function recreate_symbolic_links() {
     cd;

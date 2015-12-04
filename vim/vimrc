@@ -96,7 +96,12 @@ set noerrorbells visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
 
 " Gets rid of weird character in new GNOME terminal
-set novisualbell
+if has("unix")
+  let s:uname = system("uname")
+  if s:uname == "Linux\n"
+        set novisualbell
+  endif
+endif
 
 " More line buffer
 set so=3

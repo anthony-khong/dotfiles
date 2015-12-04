@@ -80,7 +80,6 @@ function update_dots() {
 
 function update_cmls() {
     cd ~/cmls/seamless && echo_and_pull;
-    cd ~/cmls/models && echo_and_pull;
     cd ~/cmls/hrvalue && echo_and_pull;
     cd ~/cmls/fvalue && echo_and_pull;
     cd ~/cmls/wiki && echo_and_pull;

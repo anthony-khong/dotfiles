@@ -108,7 +108,7 @@ export OPENBLAS_HOME=/home/akkhong
 export PYLEARN2_DATA_PATH=/data/lisa/data
 
 # CUDA Settings
-source cmls/seamless/utils/cuda_settings
+source ~/cmls/seamless/utils/cuda_settings
 
 # added by Anaconda 2.1.0 installer
 export PATH="/opt/anaconda/bin:$PATH"

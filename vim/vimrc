@@ -42,8 +42,8 @@ Plug 'benekastah/neomake'
 Plug 'bling/vim-airline'
 Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'plasticboy/vim-markdown'
-Plug 'tpope/vim-surround'
 Plug 'tmhedberg/SimpylFold'
+Plug 'tpope/vim-surround'
 
 if has("unix")
   let s:uname = system("uname")

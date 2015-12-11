@@ -106,17 +106,9 @@ fi
 
 export OPENBLAS_HOME=/home/akkhong
 export PYLEARN2_DATA_PATH=/data/lisa/data
-if [ ! -f /usr/local/cuda-7.0 ]; then
-    export CUDA_HOME=/usr/local/cuda-7.0
-    export LD_LIBRARY_PATH=/usr/local/cuda-7.0/lib64:$LD_LIBRARY_PATH
-else
-    export CUDA_HOME=/usr/local/cuda-7.5
-    export LD_LIBRARY_PATH=/usr/local/cuda-7.5/lib64:$LD_LIBRARY_PATH
-fi
-export LD_LIBRARY_PATH=${CUDA_HOME}/lib64
 
-PATH=${CUDA_HOME}/bin:${PATH}
-export PATH
+# CUDA Settings
+source cmls/seamless/utils/cuda_settings
 
 # added by Anaconda 2.1.0 installer
 export PATH="/opt/anaconda/bin:$PATH"

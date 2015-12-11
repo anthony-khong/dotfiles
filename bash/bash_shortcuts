@@ -105,7 +105,7 @@ function recreate_symbolic_links() {
     fi
 
     rm .inputrc;
-    ln -s dotfiles_akk/bash/inputrc .inputr;
+    ln -s dotfiles_akk/bash/inputrc .inputrc;
 
     cd;
     rm .vimrc;

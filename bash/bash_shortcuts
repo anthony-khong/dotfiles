@@ -42,6 +42,7 @@ alias gpy2='THEANO_FLAGS="device=gpu2" ipython -i'
 alias gpy3='THEANO_FLAGS="device=gpu3" ipython -i'
 alias pylab='ipython --pylab'
 alias pt='py.test'
+alias python='/anaconda/bin/python'
 
 function mkinit() {
     echo '' >> __init__.py

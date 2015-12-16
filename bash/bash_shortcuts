@@ -204,6 +204,10 @@ function servox() {
     ssh -p2222 -X akkhong@servox.no-ip.biz
 }
 
+function linode1() {
+    ssh root@85.159.211.149
+}
+
 
 function local_jarwin() {
     ssh -X akkhong@192.168.1.107
@@ -238,3 +242,6 @@ alias vff="nvim +'FZF ~'"
 function eff() {
     vim $(fzf)
 }
+
+# Karabiner
+alias karabiner="/Applications/Karabiner.app/Contents/Library/bin/karabiner"

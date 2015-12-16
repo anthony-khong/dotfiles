@@ -193,6 +193,7 @@ nmap <Leader>A :so ~/dotfiles_akk/vim/vimrc<CR>:echo 'Changed to AKK'<CR>
 " Jump to escape mode
 ino hh <C-c>
 ino jj <C-c>
+ino kk <C-c>
 ino <Esc> <C-c>
 
 " Moving up and down physical lines

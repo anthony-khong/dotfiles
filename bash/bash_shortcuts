@@ -84,8 +84,15 @@ function update_cmls() {
     cd ~/cmls/seamless && echo_and_pull;
     cd ~/cmls/hrvalue && echo_and_pull;
     cd ~/cmls/fvalue && echo_and_pull;
+    cd ~/cmls/finance_research && echo_and_pull;
     cd ~/cmls/wiki && echo_and_pull;
     cd ~/cmls;
+}
+
+function update_third_party() {
+    cd ~/third_party/xgboost && echo_and_pull;
+    cd ~/third_party/tensorflow && echo_and_pull;
+    cd ~/third_party;
 }
 
 function gpa() {

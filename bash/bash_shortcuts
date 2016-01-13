@@ -181,16 +181,16 @@ function mcm() {
 }
 
 
-function am() {
-    cd ~/applied_modelling/
+function seamless() {
+    cd ~/cmls/seamless/
 }
 
 function fv() {
-    cd ~/applied_modelling/football_value/
+    cd ~/cmls/fvalue/
 }
 
 function hrv() {
-    cd ~/hrvalue/
+    cd ~/cmls/hrvalue/
 }
 
 function dots() {

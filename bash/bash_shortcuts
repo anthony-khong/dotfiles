@@ -84,15 +84,21 @@ function update_cmls() {
     cd ~/cmls/seamless && echo_and_pull;
     cd ~/cmls/hrvalue && echo_and_pull;
     cd ~/cmls/fvalue && echo_and_pull;
+    cd ~/cmls/finance_research && echo_and_pull;
     cd ~/cmls/wiki && echo_and_pull;
     cd ~/cmls;
+}
+
+function update_third_party() {
+    cd ~/third_party/xgboost && echo_and_pull;
+    cd ~/third_party/tensorflow && echo_and_pull;
+    cd ~/third_party;
 }
 
 function gpa() {
     cwd=$(pwd)
     update_dots;
     update_cmls;
-    cd ~/tfnets && echo_and_pull;
     cd $cwd;
 }
 
@@ -175,20 +181,24 @@ function mcm() {
 }
 
 
-function am() {
-    cd ~/applied_modelling/
+function seamless() {
+    cd ~/cmls/seamless/
 }
 
 function fv() {
-    cd ~/applied_modelling/football_value/
+    cd ~/cmls/fvalue/
 }
 
 function hrv() {
-    cd ~/hrvalue/
+    cd ~/cmls/hrvalue/
 }
 
 function dots() {
     cd ~/dotfiles_akk/
+}
+
+function lasagne() {
+    cd ~/third_party/Lasagne/lasagne
 }
 
 # Networking shortcuts
@@ -202,6 +212,10 @@ function cuffy() {
 
 function servox() {
     ssh -p2222 -X akkhong@servox.no-ip.biz
+}
+
+function linode1() {
+    ssh root@85.159.211.149
 }
 
 
@@ -238,3 +252,6 @@ alias vff="nvim +'FZF ~'"
 function eff() {
     vim $(fzf)
 }
+
+# Karabiner
+alias karabiner="/Applications/Karabiner.app/Contents/Library/bin/karabiner"

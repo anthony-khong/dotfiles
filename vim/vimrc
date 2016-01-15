@@ -10,11 +10,13 @@ call plug#begin()
 " Editing
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'SirVer/ultisnips', { 'on': [] }
+Plug 'bps/vim-textobj-python'
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 Plug 'ervandew/supertab'
 Plug 'honza/vim-snippets'
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/vim-peekaboo'
+Plug 'kana/vim-textobj-user'
 Plug 'scrooloose/nerdcommenter'
 
 " Motions
@@ -193,6 +195,7 @@ nmap <Leader>A :so ~/dotfiles_akk/vim/vimrc<CR>:echo 'Changed to AKK'<CR>
 " Jump to escape mode
 ino hh <C-c>
 ino jj <C-c>
+ino kk <C-c>
 ino <Esc> <C-c>
 
 " Moving up and down physical lines

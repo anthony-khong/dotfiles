@@ -184,6 +184,8 @@ function mcm() {
 function seamless() {
     cd ~/cmls/seamless/
 }
+alias sless=seamless
+alias seams=seamless
 
 function fv() {
     cd ~/cmls/fvalue/

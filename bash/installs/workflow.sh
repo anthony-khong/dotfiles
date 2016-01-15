@@ -21,6 +21,10 @@ function install_terminal() {
     fi
     }
 
+function install_linuxbrew() {
+    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/linuxbrew/go/install)"
+    }
+
 function install_tmux() {
     brew install https://raw.githubusercontent.com/choppsv1/homebrew-term24/master/tmux.rb
     }

@@ -120,6 +120,7 @@ elif [ "$(uname)" == "Linux" ]; then
 fi
 export PYTHONPATH=/home/akkhong/
 export PYTHONPATH=$PYTHONPATH:/home/akkhong/cmls
+export PYTHONPATH=$PYTHONPATH:/home/akk/cmls
 export PYTHONPATH=$PYTHONPATH:/home/akkhong/xgboost/python-package/
 
 # Stop Python from generating .pyc files

@@ -9,8 +9,27 @@ nnoremap <Leader>4 i#<esc>74.b
 nnoremap <Leader>5 i#<esc>70.b
 
 " Set character limiter
-setlocal colorcolumn=80
-highlight ColorColumn ctermbg=234
+" Taken from: https://github.com/thoughtstream/Damian-Conway-s-Vim-Setup/blob/master/.vimrc
+highlight ColorColumn ctermbg=red
+highlight ColorColumn guibg=red
+function! MarkMargin (on)
+    if exists('b:MarkMargin')
+        try
+            call matchdelete(b:MarkMargin)
+        catch /./
+        endtry
+        unlet b:MarkMargin
+    endif
+    if a:on
+        let b:MarkMargin = matchadd('ColorColumn', '\%81v', 100)
+    endif
+endfunction
+
+augroup MarkMargin
+    autocmd!
+    autocmd  BufEnter  *       :call MarkMargin(1)
+    autocmd  BufEnter  *.vp*   :call MarkMargin(0)
+augroup END
 
 " Foldings
 setlocal foldmethod=indent

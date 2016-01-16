@@ -44,6 +44,9 @@ alias pylab='ipython --pylab'
 alias pt='py.test'
 alias python='/anaconda/bin/python'
 
+alias py_=~/third_party/pypy-4.0.1-osx64/bin/ipython
+alias pip_=~/third_party/pypy-4.0.1-osx64/bin/pypy
+
 function mkinit() {
     echo '' >> __init__.py
 }

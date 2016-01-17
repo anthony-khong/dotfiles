@@ -27,7 +27,7 @@ endfunction
 
 augroup MarkMargin
     autocmd!
-    autocmd  BufEnter  *       :call MarkMargin(1)
+    autocmd  BufEnter  *.py    :call MarkMargin(1)
     autocmd  BufEnter  *.vp*   :call MarkMargin(0)
 augroup END
 

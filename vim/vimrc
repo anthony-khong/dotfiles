@@ -38,7 +38,7 @@ Plug 'tomtom/tlib_vim'
 Plug 'tpope/vim-fugitive'
 
 " Visualisation
-Plug 'Yggdroot/indentLine'
+"Plug 'Yggdroot/indentLine'
 Plug 'airblade/vim-gitgutter'
 Plug 'benekastah/neomake'
 Plug 'bling/vim-airline'
@@ -350,10 +350,10 @@ let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
 "let g:rainbow#blacklist = [107, 110, 242, 252]
 
 " IndentLine
-let g:indentLine_enabled = 1
-let g:indentLine_color_term = 235
-let g:indentLine_leadingSpaceEnabled = 1
-let g:indentLine_leadingSpaceChar = '.'
+"let g:indentLine_enabled = 1
+"let g:indentLine_color_term = 235
+"let g:indentLine_leadingSpaceEnabled = 1
+"let g:indentLine_leadingSpaceChar = '.'
 
 " Goyo
 nmap <Space>gy :Goyo<CR>:GitGutterEnable<CR>

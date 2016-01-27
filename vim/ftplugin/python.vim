@@ -21,7 +21,7 @@ function! MarkMargin (on)
         unlet b:MarkMargin
     endif
     if a:on
-        let b:MarkMargin = matchadd('ColorColumn', '\%81v', 100)
+        let b:MarkMargin = matchadd('ColorColumn', '\%91v', 100)
     endif
 endfunction
 
@@ -47,9 +47,9 @@ let g:jedi#show_call_signatures = "1"
 let g:jedi#completions_enabled = 1
 
 " Jedi is really annoying
-inoremap hh <C-c>:call jedi#configure_call_signatures()<CR>:IndentLinesReset<CR>
-inoremap jj <C-c>:call jedi#configure_call_signatures()<CR>:IndentLinesReset<CR>
-inoremap <Esc> <C-c>:call jedi#configure_call_signatures()<CR>:IndentLinesReset<CR>
+inoremap hh <C-c>:call jedi#configure_call_signatures()<CR>
+inoremap jj <C-c>:call jedi#configure_call_signatures()<CR>
+inoremap <Esc> <C-c>:call jedi#configure_call_signatures()<CR>
 
 " If space is used here, you get an annoying delay while typing
 let g:jedi#usages_command = "<Alt>jus"

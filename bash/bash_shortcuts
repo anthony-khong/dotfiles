@@ -199,6 +199,10 @@ function hrv() {
     cd ~/cmls/hrvalue/
 }
 
+function tv() {
+    cd ~/cmls/tvalue/
+}
+
 function dots() {
     cd ~/dotfiles_akk/
 }

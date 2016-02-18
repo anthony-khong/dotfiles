@@ -51,6 +51,16 @@ snippet rdep
 raise DeprecationWarning, "By `echo $USER` on `!v strftime("%A %d %B %Y %R %Z")`"
 endsnippet
 
+snippet dump
+with open(${1:path}, 'wb') as f:
+	cPickle.dump(${2:obj}, f, protocol=cPickle.HIGHEST_PROTOCOL)
+endsnippet
+
+snippet load
+with open(${1:path}, 'rb') as f:
+	${2:obj} = cPickle.load(f)
+endsnippet
+
 ###############################################################################
 snippet plt
 import matplotlib.pyplot as plt

@@ -41,7 +41,7 @@ alias gpy1='THEANO_FLAGS="device=gpu1" ipython -i'
 alias gpy2='THEANO_FLAGS="device=gpu2" ipython -i'
 alias gpy3='THEANO_FLAGS="device=gpu3" ipython -i'
 alias pylab='ipython --pylab'
-alias pt='py.test'
+alias pt='py.test -s --pdb'
 alias python='/anaconda/bin/python'
 
 alias py_=~/third_party/pypy-4.0.1-osx64/bin/ipython
@@ -75,6 +75,12 @@ function echo_and_pull() {
     printf 'Pulling the repository %s...\n' "${PWD##*/}";
     git pull;
 }
+
+alias gst='git status'
+alias gpl='git pull'
+alias gps='git push'
+alias gco='git commit'
+alias gb='git branch'
 
 # Dotfiles shortucts
 function update_dots() {

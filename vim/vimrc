@@ -279,6 +279,9 @@ inoremap <C-o> <C-a>
 " Change all instances of applied_modelling to seamless
 nnoremap <Space>am :%s/applied_modelling/seamless<CR>
 
+" Repeat dot on multiple lines
+vnoremap . :normal .<CR>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                Generic Autos                                "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

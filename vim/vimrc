@@ -409,6 +409,8 @@ nmap <Space>b <Plug>(easymotion-b)
 vmap <Space>b <Plug>(easymotion-b)
 nmap <Space>s <Plug>(easymotion-s)
 vmap <Space>s <Plug>(easymotion-s)
+nmap <Space><Space> <Plug>(easymotion-s)
+vmap <Space><Space> <Plug>(easymotion-s)
 nmap <Space>; <Plug>(easymotion-next)
 nmap <Space>: <Plug>(easymotion-next)
 

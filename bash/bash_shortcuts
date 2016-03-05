@@ -217,6 +217,7 @@ function dots() {
 function lasagne() {
     cd ~/third_party/Lasagne/lasagne
 }
+alias nnet='cd ~/cmls/seamless/models/nnet'
 
 # Networking shortcuts
 function jarwin() {

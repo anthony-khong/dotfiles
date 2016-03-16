@@ -13,6 +13,15 @@ function remap_caps() {
     setxkbmap -option 'caps:ctrl_modifier'
     xcape -t 150 -e 'Caps_Lock=Escape;Control_L=Escape;Control_R=Escape'
 }
+if [ $HOSTNAME = "jarwin" ]; then
+    remap_caps
+fi
+
+function setup_devilspie() {
+    sudo apt-get install devilspie
+    mkdir ~/.devilspie
+    echo -e '(if\n\t(matches (window_name) "Terminal")\n\t(opacity 90)\n)' >> ~/.devilspie/terminal-opacity.ds
+}
 
 HISTCONTROL=ignoreboth
 HISTIGNORE='ls:bg:fg:history:hh'

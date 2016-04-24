@@ -47,6 +47,7 @@ Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'plasticboy/vim-markdown'
 Plug 'tmhedberg/SimpylFold'
 Plug 'tpope/vim-surround'
+Plug 'vim-scripts/textutil.vim'
 
 if has("unix")
   let s:uname = system("uname")
@@ -196,7 +197,6 @@ nmap <Leader>A :so ~/dotfiles_akk/vim/vimrc<CR>:echo 'Changed to AKK'<CR>
 " Jump to escape mode
 ino hh <C-c>
 ino jj <C-c>
-ino kk <C-c>
 ino <Esc> <C-c>
 
 " Moving up and down physical lines
@@ -281,6 +281,9 @@ nnoremap <Space>am :%s/applied_modelling/seamless<CR>
 
 " Repeat dot on multiple lines
 vnoremap . :normal .<CR>
+
+" Digraph trigger
+inoremap kk <C-k>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                Generic Autos                                "

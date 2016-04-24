@@ -104,7 +104,6 @@ function update_cmls() {
     cd ~/cmls/hrvalue && echo_and_pull;
     cd ~/cmls/fvalue && echo_and_pull;
     cd ~/cmls/tvalue && echo_and_pull;
-    cd ~/cmls/finance_research && echo_and_pull;
     cd ~/cmls/wiki && echo_and_pull;
     cd ~/cmls;
 }
@@ -283,6 +282,9 @@ alias vff="nvim +'FZF ~'"
 function eff() {
     vim $(fzf)
 }
+
+# Jekyll
+alias jserve="bundle exec jekyll serve --drafts --watch"
 
 # Karabiner
 alias karabiner="/Applications/Karabiner.app/Contents/Library/bin/karabiner"

@@ -1,7 +1,7 @@
 # Install essentials
 cd;
-source ~/dotfiles_akk/bash/bash_shortcuts
-source ~/dotfiles_akk/bash/bash_preferences
+source ~/dotfiles/bash/bash_shortcuts
+source ~/dotfiles/bash/bash_preferences
 
 if [ "$(uname)" == "Darwin" ]; then
     # TODO: Anaconda, Chrome, Dropbox, Pandoc, R, Spotify, VLC Vim, htop, iTerm.
@@ -121,10 +121,10 @@ elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     #touch $HOME/.msmtp.log
     #sudo chmod 0600 $HOME/.msmtprc
     #rm ~/.msmtprc
-    #ln -s dotfiles_akk/msmtprc ~/.msmtprc
+    #ln -s dotfiles/msmtprc ~/.msmtprc
     #sudo apt-get install fetchmail
     #rm ~/.fetchmailrc
-    #ln -s dotfiles_akk/fetchmailrc ~/.fetchmailrc
+    #ln -s dotfiles/fetchmailrc ~/.fetchmailrc
 
 fi
 
@@ -133,34 +133,34 @@ fi
 #############################################################################
 # Setup dotfiles
 echo 'Cloning dotfiles repo...';
-git clone https://github.com/anthony-khong/dotfiles_akk.git;
-cd ~/dotfiles_akk;
+git clone https://github.com/anthony-khong/dotfiles.git;
+cd ~/dotfiles;
 git submodule init;
 git submodule update;
 
 # Python installs
-~/dotfiles_akk/bash/pip_installs.sh
+~/dotfiles/bash/pip_installs.sh
 
 cd;
-cp ~/dotfiles_akk/bash/inputrc ~/.inputrc
+cp ~/dotfiles/bash/inputrc ~/.inputrc
 if [ "$(uname)" == "Darwin" ]; then
     rm .bash_profile
-    echo "source ~/dotfiles_akk/bash/bash_profile" >> .bash_profile
-    echo "source ~/dotfiles_akk/bash/bash_shortcuts" >> .bash_profile
-    echo "source ~/dotfiles_akk/bash/bash_preferences" >> .bash_profile
+    echo "source ~/dotfiles/bash/bash_profile" >> .bash_profile
+    echo "source ~/dotfiles/bash/bash_shortcuts" >> .bash_profile
+    echo "source ~/dotfiles/bash/bash_preferences" >> .bash_profile
     source .bash_profile
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     rm .bashrc
-    echo "source ~/dotfiles_akk/bash/bashrc" >> .bashrc
-    echo "source ~/dotfiles_akk/bash/bash_shortcuts" >> .bashrc
-    echo "source ~/dotfiles_akk/bash/bash_preferences" >> .bashrc
+    echo "source ~/dotfiles/bash/bashrc" >> .bashrc
+    echo "source ~/dotfiles/bash/bash_shortcuts" >> .bashrc
+    echo "source ~/dotfiles/bash/bash_preferences" >> .bashrc
     source .bashrc
 fi
 
 # Tmux configurations
 cd;
 rm .tmux.conf;
-echo "source-file ~/dotfiles_akk/tmux/tmux.conf" >> .tmux.conf;
+echo "source-file ~/dotfiles/tmux/tmux.conf" >> .tmux.conf;
 tmux send -t sbash
 
 #############################################################################
@@ -168,18 +168,18 @@ tmux send -t sbash
 cd;
 rm .vimrc;
 rm -rf .vim;
-ln -s ~/dotfiles_akk/vim/vimrc .vimrc
-ln -s ~/dotfiles_akk/vim/ .vim;
+ln -s ~/dotfiles/vim/vimrc .vimrc
+ln -s ~/dotfiles/vim/ .vim;
 
 cd;
 rm .nvimrc;
 rm -rf .nvim;
-ln -s ~/dotfiles_akk/vim/vimrc .nivmrc
-ln -s ~/dotfiles_akk/vim/ .nvim;
+ln -s ~/dotfiles/vim/vimrc .nivmrc
+ln -s ~/dotfiles/vim/ .nvim;
 
 mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config}
-ln -s ~/dotfiles_akk/vim/vimrc $XDG_CONFIG_HOME/nvim
-ln -s ~/dotfiles_akk/vim/ $XDG_CONFIG_HOME/nvim/init.vim
+ln -s ~/dotfiles/vim/vimrc $XDG_CONFIG_HOME/nvim
+ln -s ~/dotfiles/vim/ $XDG_CONFIG_HOME/nvim/init.vim
 
 nvim +PlugInstall +qall
 nvim +PlugUpdate +qall

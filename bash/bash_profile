@@ -23,5 +23,5 @@ export VMAIL_HTML_PART_READER='elinks -dump'
 # Stop Python from generating .pyc files
 export PYTHONDONTWRITEBYTECODE=1
 
-source ~/dotfiles_akk/bash/bash_shortcuts
-source ~/dotfiles_akk/bash/bash_preferences
+source ~/dotfiles/bash/bash_shortcuts
+source ~/dotfiles/bash/bash_preferences

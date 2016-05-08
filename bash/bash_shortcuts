@@ -288,3 +288,7 @@ alias jserve="bundle exec jekyll serve --drafts --watch"
 
 # Karabiner
 alias karabiner="/Applications/Karabiner.app/Contents/Library/bin/karabiner"
+
+function fix_cuda_compile() {
+    sudo ldconfig /usr/local/cuda/lib64
+}

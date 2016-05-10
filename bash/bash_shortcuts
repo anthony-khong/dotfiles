@@ -104,7 +104,7 @@ function update_cmls() {
     cd ~/cmls/hrvalue && echo_and_pull;
     cd ~/cmls/fvalue && echo_and_pull;
     cd ~/cmls/tvalue && echo_and_pull;
-    cd ~/cmls/wiki && echo_and_pull;
+    cd ~/cmls/notes && echo_and_pull;
     cd ~/cmls;
 }
 

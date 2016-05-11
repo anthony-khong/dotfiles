@@ -11,7 +11,7 @@ function sbash() {
 
 function remap_caps() {
     setxkbmap -option 'caps:ctrl_modifier'
-    xcape -t 150 -e 'Caps_Lock=Escape;Control_L=Escape;Control_R=Escape'
+    xcape -t 100 -e 'Caps_Lock=Escape;Control_L=Escape;Control_R=Escape'
 }
 if [ $HOSTNAME = "jarwin" ]; then
     remap_caps
@@ -291,4 +291,8 @@ alias karabiner="/Applications/Karabiner.app/Contents/Library/bin/karabiner"
 
 function fix_cuda_compile() {
     sudo ldconfig /usr/local/cuda/lib64
+}
+
+function slack() {
+    google-chrome https://cmls.slack.com/messages/general_/
 }

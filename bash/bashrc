@@ -105,19 +105,11 @@ if ! shopt -oq posix; then
   fi
 fi
 
-
 export OPENBLAS_HOME=/home/akkhong
 export PYLEARN2_DATA_PATH=/data/lisa/data
 
 # CUDA Settings
 source ~/cmls/seamless/utils/cuda_bash_settings
-
-# added by Anaconda 2.1.0 installer
-if [ "$(hostname)" == "servox" ]; then
-    export PATH="/home/akkhong/anaconda2/bin:$PATH"
-else
-    export PATH="/opt/anaconda/bin:$PATH"
-fi
 
 if [ "$(uname)" == "Darwin" ]; then
     export user=akk_mac
@@ -143,4 +135,7 @@ source ~/dotfiles_akk/bash/bash_preferences
 export PATH="$HOME/.linuxbrew/bin:$PATH"
 export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
 export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
+
+# added by Anaconda 2.1.0 installer
+export PATH="/opt/anaconda/bin:$PATH"
 

@@ -11,7 +11,7 @@ function sbash() {
 
 function remap_caps() {
     setxkbmap -option 'caps:ctrl_modifier'
-    xcape -t 150 -e 'Caps_Lock=Escape;Control_L=Escape;Control_R=Escape'
+    xcape -t 100 -e 'Caps_Lock=Escape;Control_L=Escape;Control_R=Escape'
 }
 if [ $HOSTNAME = "jarwin" ]; then
     remap_caps
@@ -94,7 +94,7 @@ alias gch='git checkout'
 
 # Dotfiles shortucts
 function update_dots() {
-    cd ~/dotfiles_akk && echo_and_pull;
+    cd ~/dotfiles && echo_and_pull;
     gsu;
     nvim +PlugInstall +qall
 }
@@ -104,7 +104,7 @@ function update_cmls() {
     cd ~/cmls/hrvalue && echo_and_pull;
     cd ~/cmls/fvalue && echo_and_pull;
     cd ~/cmls/tvalue && echo_and_pull;
-    cd ~/cmls/wiki && echo_and_pull;
+    cd ~/cmls/notes && echo_and_pull;
     cd ~/cmls;
 }
 
@@ -125,27 +125,27 @@ function recreate_symbolic_links() {
     cd;
     if [ "$(uname)" == "Darwin" ]; then
         rm .bash_profile;
-        ln -s dotfiles_akk/bash/bash_profile .bash_profile;
+        ln -s dotfiles/bash/bash_profile .bash_profile;
     elif [ "$(uname)" == "Linux" ]; then
         rm .bashrc;
-        ln -s dotfiles_akk/bash/bashrc .bashrc;
+        ln -s dotfiles/bash/bashrc .bashrc;
     fi
 
     rm .inputrc;
-    ln -s dotfiles_akk/bash/inputrc .inputrc;
+    ln -s dotfiles/bash/inputrc .inputrc;
 
     cd;
     rm .vimrc;
     rm -rf .vim;
-    ln -s ~/dotfiles_akk/vim/vimrc .vimrc;
-    ln -s ~/dotfiles_akk/vim/ .vim;
+    ln -s ~/dotfiles/vim/vimrc .vimrc;
+    ln -s ~/dotfiles/vim/ .vim;
 
     mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config};
     rm $XDG_CONFIG_HOME/nvim;
-    ln -s ~/dotfiles_akk/vim $XDG_CONFIG_HOME/nvim;
+    ln -s ~/dotfiles/vim $XDG_CONFIG_HOME/nvim;
 
     rm .tmux.conf;
-    ln -s ~/dotfiles_akk/tmux/tmux.conf .tmux.conf;
+    ln -s ~/dotfiles/tmux/tmux.conf .tmux.conf;
 }
 
 function setup_nvim() {
@@ -155,8 +155,8 @@ function setup_nvim() {
 }
 
 function clone_dotfiles() {
-    git clone git@github.com:anthony-khong/dotfiles_akk.git;
-    cd dotfiles_akk;
+    git clone git@github.com:anthony-khong/dotfiles.git;
+    cd dotfiles;
     gsu;
 
     recreate_symbolic_links;
@@ -219,7 +219,7 @@ function tv() {
 }
 
 function dots() {
-    cd ~/dotfiles_akk/
+    cd ~/dotfiles/
 }
 
 function lasagne() {
@@ -288,3 +288,11 @@ alias jserve="bundle exec jekyll serve --drafts --watch"
 
 # Karabiner
 alias karabiner="/Applications/Karabiner.app/Contents/Library/bin/karabiner"
+
+function fix_cuda_compile() {
+    sudo ldconfig /usr/local/cuda/lib64
+}
+
+function slack() {
+    google-chrome https://cmls.slack.com/messages/general_/
+}

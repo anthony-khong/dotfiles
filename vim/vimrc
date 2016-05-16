@@ -191,8 +191,8 @@ let mapleader = ","
 
 " Shortuct to reload vimrc
 nmap <Leader>R :so ~/.config/nvim/init.vim<CR>:echo '.nvimrc reloaded!'<CR>
-nmap <Leader>M :so ~/dotfiles_akk/vim/others/mbk_vimrc<CR>:echo 'Changed to MBK'<CR>
-nmap <Leader>A :so ~/dotfiles_akk/vim/vimrc<CR>:echo 'Changed to AKK'<CR>
+nmap <Leader>M :so ~/dotfiles/vim/others/mbk_vimrc<CR>:echo 'Changed to MBK'<CR>
+nmap <Leader>A :so ~/dotfiles/vim/vimrc<CR>:echo 'Changed to AKK'<CR>
 
 " Jump to escape mode
 ino hh <C-c>

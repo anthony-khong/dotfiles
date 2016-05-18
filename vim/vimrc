@@ -8,6 +8,7 @@ set runtimepath^=~/.config/nvim
 call plug#begin()
 
 " Editing
+Plug 'FooSoft/vim-argwrap'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'SirVer/ultisnips', { 'on': [] }
 Plug 'bps/vim-textobj-python'
@@ -285,6 +286,15 @@ vnoremap . :normal .<CR>
 " Digraph trigger
 inoremap kk <C-k>
 
+" Adds numbered jumps to jump list
+nnoremap <expr> k (v:count > 1 ? "m'" . v:count : '') . 'k'
+nnoremap <expr> j (v:count > 1 ? "m'" . v:count : '') . 'j'
+
+" Make Ctrl-e jump to the end of the current line in the insert mode. This is
+" handy when you are in the middle of a line and would like to go to its end
+" without switching to the normal mode.
+inoremap <C-e> <C-o>$
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                Generic Autos                                "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -441,3 +451,6 @@ let g:UltiSnipsExpandTrigger = "<Tab>"
 let g:UltiSnipsJumpForwardTrigger = "<C-b>"
 let g:UltiSnipsJumpBackwardTrigger = "<C-z>"
 let g:UltiSnipsSnippetDirectories = ["UltiSnips", "custom_snippets"]
+
+" Arg-Wrap
+nnoremap <silent> <Space>a :ArgWrap<CR>

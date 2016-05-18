@@ -24,3 +24,7 @@ syn match math '\$[^$].\{-}\$'
 
 " actually highlight the region we defined as "math"
 hi link math Statement
+
+" Moving up and down physical lines
+nnoremap j gj
+nnoremap k gk

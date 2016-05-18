@@ -61,3 +61,6 @@ let g:jedi#rename = "<Alt>jr"
 " UltiSnips
 vmap <Space>te <Tab>visual_te<Tab><Esc><Esc>
 vmap <Space>td <Tab>visual_td<Tab><Esc><Esc>
+
+" ArgWrap
+let g:argwrap_line_prefix = '  '

@@ -11,7 +11,7 @@ function sbash() {
 
 function remap_caps() {
     setxkbmap -option 'caps:ctrl_modifier'
-    xcape -t 100 -e 'Caps_Lock=Escape;Control_L=Escape;Control_R=Escape'
+    xcape -t 120 -e 'Caps_Lock=Escape;Control_L=Escape;Control_R=Escape'
 }
 if [ $HOSTNAME = "jarwin" ]; then
     remap_caps

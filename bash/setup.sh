@@ -180,8 +180,8 @@ elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     sudo bash Ana*.sh
 fi
 
-setup_python
 setup_dotfiles
+setup_python
 setup_tmux
 
 setup_nvim

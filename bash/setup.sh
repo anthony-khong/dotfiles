@@ -4,9 +4,6 @@
 function setup_python() {
     pip install --upgrade pip
 
-    # Python
-    pip install pdbpp
-
     # Machine Learning
     pip install Theano
     echo "[global]" >> .theanorc
@@ -22,6 +19,7 @@ function setup_python() {
     pip install ggplot
     pip install jedi
     pip install neovim
+    pip install pdbpp
     pip install scikit-learn
     pip install selenium
     pip install speedtest-cli
@@ -68,9 +66,10 @@ function setup_tmux() {
 ###############################################################################
 if [ "$(uname)" == "Darwin" ]; then
     # Install the following manually:
-    # Chrome, Dropbox, Texmaker, R, Spotify, VLC, iTerm, Skype, Sublime Text,
+    # Chrome, Dropbox, Texmaker, R, RStudio, Spotify, VLC, iTerm, Skype,
     # Transmission, Air Display, Google Drive, iStat Menus, Kindle, Line,
-    # Mendeley.
+    # Mendeley, Private Internet Access, Sublime Text, Slack, Microsoft Office
+    # Optional: OpenBLAS
     echo 'Setting up Mac...';
 
     # Xcode

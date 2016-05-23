@@ -11,14 +11,10 @@ export DYLD_FALLBACK_LIBRARY_PATH=/usr/local/opt/openblas/lib/libopenblasp-r0.2.
 export DYLD_FALLBACK_LIBRARY_PATH=$DYLD_FALLBACK_LIBRARY_PATH:/Users/akkhong/anaconda/lib
 export PYTHONPATH=/Users/akkhong
 export PYTHONPATH=$PYTHONPATH:/Users/akkhong/cmls
-export PYTHONPATH=$PYTHONPATH:/Users/akkhong/cmls/finance_research
 export user=akk_mac
 
 # Load RVM into a shell session *as a function*
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-
-# Make Elinks read HTML
-export VMAIL_HTML_PART_READER='elinks -dump'
 
 # Stop Python from generating .pyc files
 export PYTHONDONTWRITEBYTECODE=1

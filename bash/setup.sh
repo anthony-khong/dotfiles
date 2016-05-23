@@ -1,10 +1,73 @@
-# Install essentials
-cd;
-source ~/dotfiles/bash/bash_shortcuts
-source ~/dotfiles/bash/bash_preferences
+###############################################################################
+#                            Bundled Installations                            #
+###############################################################################
+function setup_python() {
+    pip install --upgrade pip
 
+    # Python
+    pip install pdbpp
+
+    # Machine Learning
+    pip install Theano
+    echo "[global]" >> .theanorc
+    echo "floatX = float32" >> .theanorc
+    echo "" >> .theanorc
+    echo "[nvcc]" >> .theanorc
+    echo "fastmath = True" >> .theanorc
+
+    conda install pydot
+    pip install Lasagne
+    pip install ggplot
+
+    # Others
+    pip install fuzzywuzzy
+    pip install jedi
+    pip install neovim
+    pip install selenium
+    pip install speedtest-cli
+    pip install splinter
+    pip install youtube-dl
+}
+
+function setup_dotfiles() {
+    echo 'Cloning dotfiles repo...'
+    git clone https://github.com/anthony-khong/dotfiles.git
+    cd ~/dotfiles
+    git submodule init
+    git submodule update
+
+    cd;
+    cp ~/dotfiles/bash/inputrc ~/.inputrc
+    if [ "$(uname)" == "Darwin" ]; then
+        rm .bash_profile
+        echo "source ~/dotfiles/bash/bash_profile" >> .bash_profile
+        echo "source ~/dotfiles/bash/bash_shortcuts" >> .bash_profile
+        echo "source ~/dotfiles/bash/bash_preferences" >> .bash_profile
+        source .bash_profile
+    elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+        rm .bashrc
+        echo "source ~/dotfiles/bash/bashrc" >> .bashrc
+        echo "source ~/dotfiles/bash/bash_shortcuts" >> .bashrc
+        echo "source ~/dotfiles/bash/bash_preferences" >> .bashrc
+        source .bashrc
+    fi
+}
+
+function setup_tmux() {
+    cd;
+    rm .tmux.conf;
+    echo "source-file ~/dotfiles/tmux/tmux.conf" >> .tmux.conf;
+    tmux send -t sbash
+}
+
+###############################################################################
+#                                  Installs                                   #
+###############################################################################
 if [ "$(uname)" == "Darwin" ]; then
-    # TODO: Anaconda, Chrome, Dropbox, Pandoc, R, Spotify, VLC Vim, htop, iTerm.
+    # Install the following manually:
+    # Chrome, Dropbox, Texmaker, R, Spotify, VLC, iTerm, Skype, Sublime Text,
+    # Transmission, Air Display, Google Drive, iStat Menus, Kindle, Line,
+    # Mendeley.
     echo 'Setting up Mac...';
 
     # Xcode
@@ -17,6 +80,7 @@ if [ "$(uname)" == "Darwin" ]; then
     # Essentials
     brew install wget
     brew install htop
+    brew install pandoc
     tlmgr install collection-fontsrecommended
     brew cask install karabiner
 
@@ -28,6 +92,10 @@ if [ "$(uname)" == "Darwin" ]; then
     brew tap neovim/neovim
     brew install --HEAD neovim
 
+    # FZF
+    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+    ~/.fzf/install
+
     # Tmux
     brew install tmux
 
@@ -36,10 +104,9 @@ if [ "$(uname)" == "Darwin" ]; then
 
     # Anaconda
     read -p "Install Anacanda now. Press [Enter] to continue..."
-
-    # Create link to themes
-    ln -s Dropbox/Others II/ubuntu_themes .themes
-    ln -s Dropbox/Others II/Backgrounds Backgrounds
+    sudo wget http://repo.continuum.io/archive/Anaconda2-4.0.0-MacOSX-x86_64.sh -O ~/Downloads/anaconda.sh
+    sudo chmod +x anaconda.sh
+    sudo bash anaconda.sh
 
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     # TODO: Anaconda, Antivirus, CUDA, Chrome, Dropbox, RSudio, SSH, VLC, noip2.
@@ -109,79 +176,11 @@ elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     sudo wget https://3230d63b5fc54e62148e-c95ac804525aac4b6dba79b00b39d1d3.ssl.cf1.rackcdn.com/Anaconda-2.3.0-Linux-x86_64.sh
     sudo chmod +x Ana*
     sudo bash Ana*.sh
-
-    # Mutt
-    # https://help.ubuntu.com/community/MuttAndGmail
-    #sudo apt-get install mutt
-    #touch ~/.muttrc
-    #sudo chmod 600 ~/.muttrc
-    #sudo apt-get install openssl ca-certificates
-    #sudo apt-get install msmtp
-    #touch $HOME/.msmtprc
-    #touch $HOME/.msmtp.log
-    #sudo chmod 0600 $HOME/.msmtprc
-    #rm ~/.msmtprc
-    #ln -s dotfiles/msmtprc ~/.msmtprc
-    #sudo apt-get install fetchmail
-    #rm ~/.fetchmailrc
-    #ln -s dotfiles/fetchmailrc ~/.fetchmailrc
-
 fi
 
-# TODO: setup Python
+setup_python
+setup_dotfiles
+setup_tmux
 
-#############################################################################
-# Setup dotfiles
-echo 'Cloning dotfiles repo...';
-git clone https://github.com/anthony-khong/dotfiles.git;
-cd ~/dotfiles;
-git submodule init;
-git submodule update;
-
-# Python installs
-~/dotfiles/bash/pip_installs.sh
-
-cd;
-cp ~/dotfiles/bash/inputrc ~/.inputrc
-if [ "$(uname)" == "Darwin" ]; then
-    rm .bash_profile
-    echo "source ~/dotfiles/bash/bash_profile" >> .bash_profile
-    echo "source ~/dotfiles/bash/bash_shortcuts" >> .bash_profile
-    echo "source ~/dotfiles/bash/bash_preferences" >> .bash_profile
-    source .bash_profile
-elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
-    rm .bashrc
-    echo "source ~/dotfiles/bash/bashrc" >> .bashrc
-    echo "source ~/dotfiles/bash/bash_shortcuts" >> .bashrc
-    echo "source ~/dotfiles/bash/bash_preferences" >> .bashrc
-    source .bashrc
-fi
-
-# Tmux configurations
-cd;
-rm .tmux.conf;
-echo "source-file ~/dotfiles/tmux/tmux.conf" >> .tmux.conf;
-tmux send -t sbash
-
-#############################################################################
-# Vim setups
-cd;
-rm .vimrc;
-rm -rf .vim;
-ln -s ~/dotfiles/vim/vimrc .vimrc
-ln -s ~/dotfiles/vim/ .vim;
-
-cd;
-rm .nvimrc;
-rm -rf .nvim;
-ln -s ~/dotfiles/vim/vimrc .nivmrc
-ln -s ~/dotfiles/vim/ .nvim;
-
-mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config}
-ln -s ~/dotfiles/vim/vimrc $XDG_CONFIG_HOME/nvim
-ln -s ~/dotfiles/vim/ $XDG_CONFIG_HOME/nvim/init.vim
-
-nvim +PlugInstall +qall
-nvim +PlugUpdate +qall
-
-#############################################################################
+setup_nvim
+recreate_symbolic_links

@@ -14,19 +14,22 @@ function setup_python() {
     echo "" >> .theanorc
     echo "[nvcc]" >> .theanorc
     echo "fastmath = True" >> .theanorc
-
     conda install pydot
-    pip install Lasagne
-    pip install ggplot
 
     # Others
+    pip install Lasagne
     pip install fuzzywuzzy
+    pip install ggplot
     pip install jedi
     pip install neovim
+    pip install scikit-learn
     pip install selenium
     pip install speedtest-cli
     pip install splinter
+    pip install xgboost
     pip install youtube-dl
+
+    pip install --upgrade https://storage.googleapis.com/tensorflow/mac/tensorflow-0.8.0-py2-none-any.whl
 }
 
 function setup_dotfiles() {

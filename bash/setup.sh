@@ -65,10 +65,13 @@ function setup_tmux() {
 #                                  Installs                                   #
 ###############################################################################
 if [ "$(uname)" == "Darwin" ]; then
+    # Put dock to the left
+
     # Install the following manually:
     # Chrome, Dropbox, Texmaker, R, RStudio, Spotify, VLC, iTerm, Skype,
     # Transmission, Air Display, Google Drive, iStat Menus, Kindle, Line,
-    # Mendeley, Private Internet Access, Sublime Text, Slack, Microsoft Office
+    # Mendeley, Private Internet Access, Sublime Text, Slack, Microsoft Office,
+    # BetterSnap
     # Optional: OpenBLAS
     echo 'Setting up Mac...';
 
@@ -103,6 +106,10 @@ if [ "$(uname)" == "Darwin" ]; then
 
     # Ag
     brew install the_silver_searcher
+
+    # R
+    brew tap homebrew/science
+    brew install r
 
     # Anaconda
     read -p "Install Anacanda now. Press [Enter] to continue..."

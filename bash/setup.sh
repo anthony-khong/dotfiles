@@ -38,20 +38,8 @@ function setup_dotfiles() {
     git submodule update
 
     cd;
-    cp ~/dotfiles/bash/inputrc ~/.inputrc
-    if [ "$(uname)" == "Darwin" ]; then
-        rm .bash_profile
-        echo "source ~/dotfiles/bash/bash_profile" >> .bash_profile
-        echo "source ~/dotfiles/bash/bash_shortcuts" >> .bash_profile
-        echo "source ~/dotfiles/bash/bash_preferences" >> .bash_profile
-        source .bash_profile
-    elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
-        rm .bashrc
-        echo "source ~/dotfiles/bash/bashrc" >> .bashrc
-        echo "source ~/dotfiles/bash/bash_shortcuts" >> .bashrc
-        echo "source ~/dotfiles/bash/bash_preferences" >> .bashrc
-        source .bashrc
-    fi
+    source ~/dotfiles/bash/bash_shortcuts
+    recreate_symbolic_links
 }
 
 function setup_tmux() {
@@ -65,10 +53,13 @@ function setup_tmux() {
 #                                  Installs                                   #
 ###############################################################################
 if [ "$(uname)" == "Darwin" ]; then
+    # Put dock to the left
+
     # Install the following manually:
     # Chrome, Dropbox, Texmaker, R, RStudio, Spotify, VLC, iTerm, Skype,
     # Transmission, Air Display, Google Drive, iStat Menus, Kindle, Line,
-    # Mendeley, Private Internet Access, Sublime Text, Slack, Microsoft Office
+    # Mendeley, Private Internet Access, Sublime Text, Slack, Microsoft Office,
+    # BetterSnap
     # Optional: OpenBLAS
     echo 'Setting up Mac...';
 
@@ -77,14 +68,15 @@ if [ "$(uname)" == "Darwin" ]; then
 
     # Homebrew
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-    brew install caskroom/cask/brew-cask
+    brew install caskroom/cask/brew-cask # No cask to install?
 
     # Essentials
     brew install wget
     brew install htop
     brew install pandoc
-    tlmgr install collection-fontsrecommended
+    # tlmgr install collection-fontsrecommended # This requires LaTex
     brew cask install karabiner
+    brew cask install seil
 
     # Vim
     brew install macvim --override-system-vim
@@ -103,6 +95,10 @@ if [ "$(uname)" == "Darwin" ]; then
 
     # Ag
     brew install the_silver_searcher
+
+    # R
+    brew tap homebrew/science
+    brew install r
 
     # Anaconda
     read -p "Install Anacanda now. Press [Enter] to continue..."

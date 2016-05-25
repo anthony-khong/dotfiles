@@ -24,6 +24,8 @@ function setup_python() {
     pip install selenium
     pip install speedtest-cli
     pip install splinter
+    pip install tabulate
+    pip install tqdm
     pip install xgboost
     pip install youtube-dl
 
@@ -40,13 +42,6 @@ function setup_dotfiles() {
     cd;
     source ~/dotfiles/bash/bash_shortcuts
     recreate_symbolic_links
-}
-
-function setup_tmux() {
-    cd;
-    rm .tmux.conf;
-    echo "source-file ~/dotfiles/tmux/tmux.conf" >> .tmux.conf;
-    tmux send -t sbash
 }
 
 ###############################################################################

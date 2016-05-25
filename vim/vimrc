@@ -169,7 +169,6 @@ set laststatus=2
 silent! colorscheme gruvbox
 let g:gruvbox_contrast_dark='medium'
 silent! let g:rehash256 = 1
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 " Some other colour schemes that I previously liked
 " colorscheme wombat256mod

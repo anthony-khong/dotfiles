@@ -26,10 +26,19 @@ function setup_python() {
     pip install splinter
     pip install tabulate
     pip install tqdm
-    pip install xgboost
     pip install youtube-dl
 
+    # Tensorflow
     pip install --upgrade https://storage.googleapis.com/tensorflow/mac/tensorflow-0.8.0-py2-none-any.whl
+
+    # XGB
+    cd cmls
+    git clone --recursive https://github.com/dmlc/xgboost
+    if [ "$(uname)" == "Darwin" ]; then
+        brew install gcc --without-multilib
+        cp make/minimum.mk ./config.mk
+    fi
+    make -j4
 }
 
 function setup_dotfiles() {

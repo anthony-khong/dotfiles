@@ -235,10 +235,9 @@ function dots() {
     cd ~/dotfiles/
 }
 
-function lasagne() {
-    cd ~/third_party/Lasagne/lasagne
+function norsk() {
+    cd ~/Dropbox/languages/Norwegian/
 }
-alias nnet='cd ~/cmls/seamless/models/nnet'
 
 # Networking shortcuts
 function jarwin() {
@@ -309,3 +308,4 @@ function fix_cuda_compile() {
 function slack() {
     google-chrome https://cmls.slack.com/messages/general_/
 }
+

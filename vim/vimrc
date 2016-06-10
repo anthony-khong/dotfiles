@@ -4,7 +4,6 @@
 set runtimepath^=~/.config/nvim
 
 " Enable plugins
-" call pathogen#infect()
 call plug#begin()
 
 " Editing
@@ -23,6 +22,7 @@ Plug 'scrooloose/nerdcommenter'
 " Motions
 Plug 'easymotion/vim-easymotion'
 Plug 'ggVGc/vim-fuzzysearch'
+Plug 'justinmk/vim-sneak'
 
 " Colour Schemes
 Plug 'morhetz/gruvbox'
@@ -39,7 +39,6 @@ Plug 'tomtom/tlib_vim'
 Plug 'tpope/vim-fugitive'
 
 " Visualisation
-"Plug 'Yggdroot/indentLine'
 Plug 'airblade/vim-gitgutter'
 Plug 'benekastah/neomake'
 Plug 'vim-airline/vim-airline'
@@ -78,6 +77,7 @@ set ttimeoutlen=0
 
 " Faster scrolling
 set lazyredraw
+set ttyfast
 
 " Enable omnicompletion
 filetype plugin on
@@ -90,7 +90,7 @@ filetype plugin indent on
 " This does not seem to work with NeoVim
 " For tmux colour compatibility
 if has('vim')
-set term=screen-256color
+    set term=screen-256color
 endif
 
 " Disable folding so that the key 'f' can be used for movement
@@ -167,14 +167,9 @@ set laststatus=2
 " Colour scheme
 " set t_Co=256
 silent! colorscheme gruvbox
-let g:gruvbox_contrast_dark='medium'
+let g:gruvbox_contrast_dark='hard'
+let g:gruvbox_contrast_light='hard'
 silent! let g:rehash256 = 1
-
-" Some other colour schemes that I previously liked
-" colorscheme wombat256mod
-" colorscheme molokai
-" colorscheme badwolf
-" let g:molokai_original = 1
 
 " Make vim transparent to the background
 highlight Normal ctermbg=none
@@ -261,9 +256,6 @@ nnoremap <C-s> :update<CR>
 " Remove trailing whitespace
 nnoremap <silent> <Leader>w :keeppatterns %s/\s\+$//<CR>
 
-" Will's equals sign idea
-nnoremap <Leader>= i<del><Space><esc>gelcw<Space>=<Space><esc>
-
 " Map sort function to a key
 vnoremap <Leader>o :sort<CR>
 
@@ -281,9 +273,6 @@ nnoremap <Space>am :%s/applied_modelling/seamless<CR>
 
 " Repeat dot on multiple lines
 vnoremap . :normal .<CR>
-
-" Digraph trigger
-inoremap kk <C-k>
 
 " Adds numbered jumps to jump list
 nnoremap <expr> k (v:count > 1 ? "m'" . v:count : '') . 'k'
@@ -310,28 +299,28 @@ au BufNewFile,BufRead *.cuh set ft=cu
 
 " Tmux Navigator
 if exists('$TMUX')
-function! TmuxOrSplitSwitch(wincmd, tmuxdir)
-let previous_winnr = winnr()
-silent! execute "wincmd " . a:wincmd
-if previous_winnr == winnr()
-    call system("tmux select-pane -" . a:tmuxdir)
-    redraw!
-endif
-endfunction
+    function! TmuxOrSplitSwitch(wincmd, tmuxdir)
+    let previous_winnr = winnr()
+    silent! execute "wincmd " . a:wincmd
+    if previous_winnr == winnr()
+        call system("tmux select-pane -" . a:tmuxdir)
+        redraw!
+    endif
+    endfunction
 
-let previous_title = substitute(system("tmux display-message -p '#{pane_title}'"), '\n', '', '')
-let &t_ti = "\<Esc>]2;vim\<Esc>\\" . &t_ti
-let &t_te = "\<Esc>]2;". previous_title . "\<Esc>\\" . &t_te
+    let previous_title = substitute(system("tmux display-message -p '#{pane_title}'"), '\n', '', '')
+    let &t_ti = "\<Esc>]2;vim\<Esc>\\" . &t_ti
+    let &t_te = "\<Esc>]2;". previous_title . "\<Esc>\\" . &t_te
 
-nnoremap <silent> <C-h> :call TmuxOrSplitSwitch('h', 'L')<cr>
-nnoremap <silent> <C-j> :call TmuxOrSplitSwitch('j', 'D')<cr>
-nnoremap <silent> <C-k> :call TmuxOrSplitSwitch('k', 'U')<cr>
-nnoremap <silent> <C-l> :call TmuxOrSplitSwitch('l', 'R')<cr>
+    nnoremap <silent> <C-h> :call TmuxOrSplitSwitch('h', 'L')<cr>
+    nnoremap <silent> <C-j> :call TmuxOrSplitSwitch('j', 'D')<cr>
+    nnoremap <silent> <C-k> :call TmuxOrSplitSwitch('k', 'U')<cr>
+    nnoremap <silent> <C-l> :call TmuxOrSplitSwitch('l', 'R')<cr>
 else
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
+    map <C-h> <C-w>h
+    map <C-j> <C-w>j
+    map <C-k> <C-w>k
+    map <C-l> <C-w>l
 endif
 
 " Airline
@@ -363,13 +352,6 @@ autocmd FileType python RainbowParentheses
 augroup END
 nmap <Space>rp :RainbowParentheses!!<CR>
 let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
-"let g:rainbow#blacklist = [107, 110, 242, 252]
-
-" IndentLine
-"let g:indentLine_enabled = 1
-"let g:indentLine_color_term = 235
-"let g:indentLine_leadingSpaceEnabled = 1
-"let g:indentLine_leadingSpaceChar = '.'
 
 " Goyo
 nmap <Space>gy :Goyo<CR>:GitGutterEnable<CR>

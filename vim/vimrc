@@ -205,10 +205,6 @@ noremap <C-d> <S-Down>zz
 " Jump to next method
 nmap }} ]m
 
-" Centers screen after jumping to mark
-map <expr> M printf('`%c zz',getchar())
-map <expr> M printf('\'%c zz',getchar())
-
 " Centers screen whenever a search is found
 nnoremap G Gzz
 nnoremap n nzz
@@ -382,6 +378,7 @@ let g:neomake_python_enabled_makers = ['pyflakes']
 
 " Fugitive
 nmap <Space>gd :Gdiff<CR>
+nmap <Space>gb :Gblame<CR>
 
 " NERDTree toggle
 nmap <Space>n :NERDTreeToggle<CR>
@@ -399,20 +396,14 @@ let g:SuperTabDefaultCompletionType = "<c-n>"
 " EasyMotion
 let g:EasyMotion_smartcase = 1
 let g:EasyMotion_keys = "aoeui'l;z,rqv.cjwyfxbdhtns"
-map <Space><Space>em <Plug>(easymotion-prefix)
-nmap <Space>w <Plug>(easymotion-w)
-vmap <Space>w <Plug>(easymotion-w)
-nmap <Space>b <Plug>(easymotion-b)
-vmap <Space>b <Plug>(easymotion-b)
-nmap <Space>s <Plug>(easymotion-s)
-vmap <Space>s <Plug>(easymotion-s)
 nmap <Space><Space> <Plug>(easymotion-s)
 vmap <Space><Space> <Plug>(easymotion-s)
-nmap <Space>; <Plug>(easymotion-next)
-nmap <Space>: <Plug>(easymotion-next)
+
+" Vim-Sneak
+nmap z <Plug>Sneak_s
 
 " FuzzySearch
-nmap <Space>/ :FuzzySearch<CR>
+nmap ? :FuzzySearch<CR>
 
 " FZF
 nnoremap <C-t> :FZF ~<CR>

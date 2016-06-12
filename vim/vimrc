@@ -396,6 +396,8 @@ let g:SuperTabDefaultCompletionType = "<c-n>"
 " EasyMotion
 let g:EasyMotion_smartcase = 1
 let g:EasyMotion_keys = "aoeui'l;z,rqv.cjwyfxbdhtns"
+" This is to get rid of awful <Leader><Leader> default
+map <Space><Space>em <Plug>(easymotion-prefix)
 nmap <Space><Space> <Plug>(easymotion-s)
 vmap <Space><Space> <Plug>(easymotion-s)
 

@@ -401,7 +401,8 @@ nmap <Space><Space> <Plug>(easymotion-s)
 vmap <Space><Space> <Plug>(easymotion-s)
 
 " Vim-Sneak
-nmap z <Plug>Sneak_s
+nmap S <Plug>Sneak_s
+nmap Z <Plug>Sneak_S
 
 " FuzzySearch
 nmap ? :FuzzySearch<CR>

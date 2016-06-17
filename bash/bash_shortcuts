@@ -27,10 +27,9 @@ function setup_cmls() {
     cd;
     mkdir cmls;
     git clone git@bitbucket.org:seamless_team/seamless.git;
-    git clone git@bitbucket.org:seamless_team/fvalue.git;
-    git clone git@bitbucket.org:seamless_team/hrvalue.git;
-    git clone git@bitbucket.org:seamless_team/tvalue.git;
-    git clone git@bitbucket.org:seamless_team/notes.git;
+    git clone git@bitbucket.org:seamless_team/fball.git;
+    git clone git@bitbucket.org:seamless_team/horse.git;
+    git clone git@bitbucket.org:seamless_team/tennis.git;
     git clone https://github.com/anthony-khong/anthony-khong.github.io;
     git clone https://github.com/anthony-khong/mls;
 }
@@ -114,9 +113,9 @@ function update_dots() {
 
 function update_cmls() {
     cd ~/cmls/seamless && echo_and_pull;
-    cd ~/cmls/hrvalue && echo_and_pull;
-    cd ~/cmls/fvalue && echo_and_pull;
-    cd ~/cmls/tvalue && echo_and_pull;
+    cd ~/cmls/horse && echo_and_pull;
+    cd ~/cmls/fball && echo_and_pull;
+    cd ~/cmls/tennis && echo_and_pull;
     cd ~/cmls/notes && echo_and_pull;
     cd ~/cmls;
 }
@@ -220,15 +219,15 @@ alias sless=seamless
 alias seams=seamless
 
 function fv() {
-    cd ~/cmls/fvalue/
+    cd ~/cmls/fball/
 }
 
 function hrv() {
-    cd ~/cmls/hrvalue/
+    cd ~/cmls/horse/
 }
 
 function tv() {
-    cd ~/cmls/tvalue/
+    cd ~/cmls/tennis/
 }
 
 function dots() {

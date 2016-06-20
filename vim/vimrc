@@ -76,7 +76,7 @@ set ttimeout
 set ttimeoutlen=0
 
 " Faster scrolling
-set lazyredraw
+"set lazyredraw
 set ttyfast
 
 " Enable omnicompletion

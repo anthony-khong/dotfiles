@@ -218,15 +218,15 @@ function seamless() {
 alias sless=seamless
 alias seams=seamless
 
-function fv() {
+function fball() {
     cd ~/cmls/fball/
 }
 
-function hrv() {
+function horse() {
     cd ~/cmls/horse/
 }
 
-function tv() {
+function tennis() {
     cd ~/cmls/tennis/
 }
 

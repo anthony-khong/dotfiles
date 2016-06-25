@@ -103,11 +103,11 @@ if &background == "dark"
   let s:red             = s:light_red
   let s:visual          = s:lighter_black
 else
-  let s:bg              = s:white
-  let s:bg_subtle       = s:light_gray
-  let s:bg_very_subtle  = s:lighter_gray
-  let s:norm            = s:light_black
-  let s:norm_subtle     = s:lighter_black
+  let s:bg              = s:lighter_gray
+  let s:bg_subtle       = s:medium_gray
+  let s:bg_very_subtle  = s:light_gray
+  let s:norm            = s:black
+  let s:norm_subtle     = s:light_black
   let s:purple          = s:dark_purple
   let s:cyan            = s:dark_cyan
   let s:green           = s:dark_green

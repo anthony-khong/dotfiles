@@ -1,3 +1,5 @@
+let dark_background = 0
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                               Plugin Settings                               "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -26,6 +28,7 @@ Plug 'justinmk/vim-sneak'
 
 " Colour Schemes
 Plug 'morhetz/gruvbox'
+Plug 'reedes/vim-colors-pencil'
 
 " Utilities
 Plug 'christoomey/vim-tmux-navigator'
@@ -159,24 +162,25 @@ set expandtab
 "                                Colour Scheme                                "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " It looks nicer in some colour schemes
-set background=dark
+if dark_background
+    set background=dark
+    silent! colorscheme gruvbox
+    let g:gruvbox_contrast_dark='hard'
+
+    " Make vim transparent to the background
+    highlight Normal ctermbg=none
+    highlight NonText ctermbg=none
+    highlight Normal guibg=none
+    highlight NonText guibg=none
+    highlight clear SignColumn
+else
+    silent! colorscheme pencil-akk
+    let g:pencil_neutral_code_bg=1
+    let g:pencil_higher_contrast_ui=1
+endif
 
 " This is needed to make Airline work
 set laststatus=2
-
-" Colour scheme
-" set t_Co=256
-silent! colorscheme gruvbox
-let g:gruvbox_contrast_dark='hard'
-let g:gruvbox_contrast_light='hard'
-silent! let g:rehash256 = 1
-
-" Make vim transparent to the background
-highlight Normal ctermbg=none
-highlight NonText ctermbg=none
-highlight Normal guibg=none
-highlight NonText guibg=none
-highlight clear SignColumn
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                Vim Bindings                                 "
@@ -320,7 +324,11 @@ else
 endif
 
 " Airline
-let g:airline_theme = 'bubblegum'
+if dark_background
+    let g:airline_theme = 'bubblegum'
+else
+    let g:airline_theme = 'pencil'
+endif
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif

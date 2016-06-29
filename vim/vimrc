@@ -283,6 +283,10 @@ nnoremap <expr> j (v:count > 1 ? "m'" . v:count : '') . 'j'
 " without switching to the normal mode.
 inoremap <C-e> <C-o>$
 
+" Set colour column shortcut
+nnoremap <Leader>8 :set colorcolumn=80<CR>
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                Generic Autos                                "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

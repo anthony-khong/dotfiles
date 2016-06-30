@@ -45,22 +45,16 @@ let g:jedi#popup_select_first = 0
 let g:jedi#smart_auto_mappings = 0
 let g:jedi#show_call_signatures = "1"
 let g:jedi#completions_enabled = 1
+let g:jedi#use_tabs_not_buffers = 1
 
 " Jedi is really annoying
-inoremap hh <C-c>:call jedi#configure_call_signatures()<CR>
-inoremap jj <C-c>:call jedi#configure_call_signatures()<CR>
-inoremap <Esc> <C-c>:call jedi#configure_call_signatures()<CR>
+"inoremap hh <C-c>:call jedi#configure_call_signatures()<CR>
+"inoremap jj <C-c>:call jedi#configure_call_signatures()<CR>
+"inoremap <Esc> <C-c>:call jedi#configure_call_signatures()<CR>
 
 " If space is used here, you get an annoying delay while typing
-let g:jedi#usages_command = "<Alt>jus"
-let g:jedi#completions_command = "<Alt>jc"
-let g:jedi#goto_definitions_command = "<Alt>jd"
-let g:jedi#documentation_command = "<Alt>jk"
-let g:jedi#rename = "<Alt>jr"
-
-" UltiSnips
-vmap <Space>te <Tab>visual_te<Tab><Esc><Esc>
-vmap <Space>td <Tab>visual_td<Tab><Esc><Esc>
-
-" ArgWrap
-let g:argwrap_line_prefix = '  '
+"let g:jedi#usages_command = "<Alt>jus"
+"let g:jedi#completions_command = "<Alt>jc"
+"let g:jedi#goto_definitions_command = "<Alt>jd"
+"let g:jedi#documentation_command = "<Alt>jk"
+"let g:jedi#rename = "<Alt>jr"

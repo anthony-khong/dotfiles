@@ -9,7 +9,6 @@ set runtimepath^=~/.config/nvim
 call plug#begin()
 
 " Editing
-Plug 'FooSoft/vim-argwrap'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'SirVer/ultisnips', { 'on': [] }
 Plug 'bps/vim-textobj-python'
@@ -17,7 +16,6 @@ Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 Plug 'ervandew/supertab'
 Plug 'honza/vim-snippets'
 Plug 'junegunn/vim-easy-align'
-Plug 'junegunn/vim-peekaboo'
 Plug 'kana/vim-textobj-user'
 Plug 'scrooloose/nerdcommenter'
 
@@ -34,8 +32,6 @@ Plug 'reedes/vim-colors-pencil'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tomtom/tlib_vim'
@@ -48,7 +44,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'plasticboy/vim-markdown'
-Plug 'tmhedberg/SimpylFold'
 Plug 'tpope/vim-surround'
 Plug 'vim-scripts/textutil.vim'
 
@@ -361,15 +356,6 @@ augroup END
 nmap <Space>rp :RainbowParentheses!!<CR>
 let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
 
-" Goyo
-nmap <Space>gy :Goyo<CR>:GitGutterEnable<CR>
-
-" LimeLight
-let g:limelight_conceal_ctermfg = 'gray'
-let g:limelight_conceal_ctermfg = 240
-autocmd! User GoyoEnter Limelight
-autocmd! User GoyoLeave Limelight!
-
 " GitGutter
 let g:gitgutter_sign_column_always = 1
 nmap <Space>gg :GitGutter<CR>
@@ -438,6 +424,3 @@ let g:UltiSnipsExpandTrigger = "<Tab>"
 let g:UltiSnipsJumpForwardTrigger = "<C-b>"
 let g:UltiSnipsJumpBackwardTrigger = "<C-z>"
 let g:UltiSnipsSnippetDirectories = ["UltiSnips", "custom_snippets"]
-
-" Arg-Wrap
-nnoremap <silent> <Space>a :ArgWrap<CR>

@@ -1,4 +1,4 @@
-let dark_background = 0
+let dark_background = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                               Plugin Settings                               "
@@ -349,14 +349,12 @@ let g:airline_mode_map = {
 let g:airline_section_y = ''
 
 " Rainbow Parentheses
-if dark_background
-    augroup rainbow_python
-    autocmd!
-    autocmd FileType python RainbowParentheses
-    augroup END
-    nmap <Space>rp :RainbowParentheses!!<CR>
-    let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
-endif
+augroup rainbow_python
+autocmd!
+autocmd FileType python RainbowParentheses
+augroup END
+nmap <Space>rp :RainbowParentheses!!<CR>
+let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
 
 " GitGutter
 let g:gitgutter_sign_column_always = 1

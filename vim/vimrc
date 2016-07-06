@@ -1,4 +1,4 @@
-let dark_background = 1
+let dark_background = 0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                               Plugin Settings                               "
@@ -170,7 +170,7 @@ if dark_background
     highlight clear SignColumn
 else
     silent! colorscheme pencil-akk
-    let g:pencil_neutral_code_bg=1
+    let g:pencil_neutral_headings=1
     let g:pencil_higher_contrast_ui=1
 endif
 
@@ -349,12 +349,14 @@ let g:airline_mode_map = {
 let g:airline_section_y = ''
 
 " Rainbow Parentheses
-augroup rainbow_python
-autocmd!
-autocmd FileType python RainbowParentheses
-augroup END
-nmap <Space>rp :RainbowParentheses!!<CR>
-let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
+if dark_background
+    augroup rainbow_python
+    autocmd!
+    autocmd FileType python RainbowParentheses
+    augroup END
+    nmap <Space>rp :RainbowParentheses!!<CR>
+    let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
+endif
 
 " GitGutter
 let g:gitgutter_sign_column_always = 1

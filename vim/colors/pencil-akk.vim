@@ -112,7 +112,7 @@ else
   let s:cyan            = s:dark_cyan
   let s:green           = s:dark_green
   let s:red             = s:dark_red
-  let s:visual          = s:light_blue
+  let s:visual          = s:dark_blue
 endif
 
 if g:pencil_neutral_headings == 1
@@ -148,17 +148,17 @@ call s:h("Normal",        {"bg": s:bg, "fg": s:norm})
 call s:h("Cursor",        {"bg": s:blue, "fg": s:norm })
 call s:h("Comment",       {"fg": s:medium_gray, "gui": "italic", "cterm": "italic"})
 
-call s:h("Constant",      {"fg": s:cyan})
+call s:h("Constant",      {"fg": s:dark_blue})
 hi! link String           Constant
 hi! link Character        Constant
 hi! link Number           Constant
 hi! link Boolean          Constant
 hi! link Float            Constant
 
-call s:h("Identifier",    {"fg": s:dark_blue})
+call s:h("Identifier",    {"fg": s:darker_blue})
 hi! link Function         Identifier
 
-call s:h("Statement",     {"fg": s:green})
+call s:h("Statement",     {"fg": s:dark_green})
 hi! link Conditonal       Statement
 hi! link Repeat           Statement
 hi! link Label            Statement
@@ -166,18 +166,18 @@ hi! link Operator         Statement
 hi! link Keyword          Statement
 hi! link Exception        Statement
 
-call s:h("PreProc",       {"fg": s:red})
+call s:h("PreProc",       {"fg": s:dark_red})
 hi! link Include          PreProc
 hi! link Define           PreProc
 hi! link Macro            PreProc
 hi! link PreCondit        PreProc
 
-call s:h("Type",          {"fg": s:purple})
+call s:h("Type",          {"fg": s:dark_purple})
 hi! link StorageClass     Type
 hi! link Structure        Type
 hi! link Typedef          Type
 
-call s:h("Special",       {"fg": s:pink})
+call s:h("Special",       {"fg": s:light_red})
 hi! link SpecialChar      Special
 hi! link Tag              Special
 hi! link Delimiter        Special

@@ -42,7 +42,6 @@ Plug 'airblade/vim-gitgutter'
 Plug 'benekastah/neomake'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'plasticboy/vim-markdown'
 Plug 'tpope/vim-surround'
 Plug 'vim-scripts/textutil.vim'
@@ -158,20 +157,9 @@ set expandtab
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " It looks nicer in some colour schemes
 if dark_background
-    set background=dark
-    silent! colorscheme gruvbox
-    let g:gruvbox_contrast_dark='hard'
-
-    " Make vim transparent to the background
-    highlight Normal ctermbg=none
-    highlight NonText ctermbg=none
-    highlight Normal guibg=none
-    highlight NonText guibg=none
-    highlight clear SignColumn
+    silent! colorscheme akk_dark
 else
-    silent! colorscheme pencil-akk
-    let g:pencil_neutral_headings=1
-    let g:pencil_higher_contrast_ui=1
+    silent! colorscheme akk_light
 endif
 
 " This is needed to make Airline work
@@ -281,7 +269,6 @@ inoremap <C-e> <C-o>$
 " Set colour column shortcut
 nnoremap <Leader>8 :set colorcolumn=80<CR>
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                Generic Autos                                "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -323,11 +310,7 @@ else
 endif
 
 " Airline
-if dark_background
-    let g:airline_theme = 'bubblegum'
-else
-    let g:airline_theme = 'pencil'
-endif
+let g:airline_theme = 'distinguished'
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
@@ -347,14 +330,6 @@ let g:airline_mode_map = {
     \ '' : 'S',
     \ }
 let g:airline_section_y = ''
-
-" Rainbow Parentheses
-augroup rainbow_python
-autocmd!
-autocmd FileType python RainbowParentheses
-augroup END
-nmap <Space>rp :RainbowParentheses!!<CR>
-let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
 
 " GitGutter
 let g:gitgutter_sign_column_always = 1

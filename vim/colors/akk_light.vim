@@ -22,9 +22,9 @@ hi Statement                ctermfg=232 ctermbg=255 cterm=bold      term=bold
 hi PreProc                  ctermfg=232 ctermbg=255 cterm=bold      term=bold
 hi String                   ctermfg=27  ctermbg=255 cterm=NONE      term=NONE
 hi Comment                  ctermfg=239 ctermbg=254 cterm=NONE      term=NONE
-hi Constant                 ctermfg=17  ctermbg=255 cterm=NONE      term=NONE
+hi Constant                 ctermfg=19  ctermbg=255 cterm=NONE      term=NONE
 hi Type                     ctermfg=232 ctermbg=255 cterm=bold      term=bold
-hi Function                 ctermfg=17  ctermbg=255 cterm=NONE      term=NONE
+hi Function                 ctermfg=19  ctermbg=255 cterm=bold      term=bold
 hi Identifier               ctermfg=232 ctermbg=255 cterm=NONE      term=NONE
 hi Special                  ctermfg=232 ctermbg=255 cterm=NONE      term=NONE
 hi MatchParen               ctermfg=255 ctermbg=232 cterm=NONE      term=NONE

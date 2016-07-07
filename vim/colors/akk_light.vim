@@ -21,7 +21,7 @@ hi LineNr                   ctermfg=248  ctermbg=255 gui=NONE      cterm=NONE   
 hi Statement                ctermfg=232  ctermbg=255 gui=bold      cterm=bold      term=bold
 hi PreProc                  ctermfg=232  ctermbg=255 gui=bold      cterm=bold      term=bold
 hi String                   ctermfg=27   ctermbg=255 gui=NONE      cterm=NONE      term=NONE
-hi Comment                  ctermfg=243  ctermbg=255 gui=NONE      cterm=NONE      term=NONE
+hi Comment                  ctermfg=239  ctermbg=254 gui=NONE      cterm=NONE      term=NONE
 hi Constant                 ctermfg=232  ctermbg=255 gui=NONE      cterm=NONE      term=NONE
 hi Type                     ctermfg=232  ctermbg=255 gui=bold      cterm=bold      term=bold
 hi Function                 ctermfg=232  ctermbg=255 gui=NONE      cterm=NONE      term=NONE
@@ -37,7 +37,7 @@ hi Title                    ctermfg=232  ctermbg=255 gui=bold      cterm=bold   
 hi markdownHeadingDelimiter ctermfg=232  ctermbg=255 gui=bold      cterm=bold      term=bold
 hi markdownHeadingRule      ctermfg=232  ctermbg=255 gui=bold      cterm=bold      term=bold
 hi markdownLinkText         ctermfg=67   ctermbg=255 gui=underline cterm=underline term=underline
-hi Todo                     ctermfg=255  ctermbg=226 gui=bold      cterm=bold      term=bold
+hi Todo                     ctermfg=238  ctermbg=252 gui=bold      cterm=bold      term=bold
 hi Pmenu                    ctermfg=232  ctermbg=67  gui=NONE      cterm=NONE      term=NONE
 hi PmenuSel                 ctermfg=67   ctermbg=232 gui=NONE      cterm=NONE      term=NONE
 hi helpSpecial              ctermfg=232  ctermbg=255 gui=NONE      cterm=NONE      term=NONE

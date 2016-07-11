@@ -27,7 +27,7 @@ hi Type                     ctermfg=15  ctermbg=none cterm=bold      term=bold
 hi Function                 ctermfg=252 ctermbg=none cterm=bold      term=bold
 hi Identifier               ctermfg=252 ctermbg=none cterm=NONE      term=NONE
 hi Special                  ctermfg=252 ctermbg=none cterm=NONE      term=NONE
-hi MatchParen               ctermfg=16  ctermbg=67  cterm=NONE      term=NONE
+hi MatchParen               ctermfg=252  ctermbg=67  cterm=NONE      term=NONE
 hi Search                   ctermfg=15  ctermbg=67   cterm=NONE      term=NONE
 hi Visual                   ctermfg=15  ctermbg=67   cterm=NONE      term=NONE
 hi NonText                  ctermfg=248 ctermbg=none cterm=NONE      term=NONE

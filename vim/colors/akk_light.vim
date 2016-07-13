@@ -27,9 +27,9 @@ hi Type                     ctermfg=232 ctermbg=255 cterm=bold      term=bold
 hi Function                 ctermfg=19  ctermbg=255 cterm=bold      term=bold
 hi Identifier               ctermfg=232 ctermbg=255 cterm=NONE      term=NONE
 hi Special                  ctermfg=232 ctermbg=255 cterm=NONE      term=NONE
-hi MatchParen               ctermfg=255 ctermbg=232 cterm=NONE      term=NONE
+hi MatchParen               ctermfg=232 ctermbg=67 cterm=NONE      term=NONE
 hi pythonEscape             ctermfg=67  ctermbg=255 cterm=NONE      term=NONE
-hi Search                   ctermfg=232 ctermbg=67  cterm=NONE      term=NONE
+hi Search                   ctermfg=232 ctermbg=75  cterm=NONE      term=NONE
 hi Visual                   ctermfg=232 ctermbg=67  cterm=NONE      term=NONE
 hi NonText                  ctermfg=248 ctermbg=255 cterm=NONE      term=NONE
 hi Directory                ctermfg=232 ctermbg=255 cterm=bold      term=bold

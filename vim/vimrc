@@ -1,4 +1,4 @@
-let dark_background = 1
+let dark_background = 0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                               Plugin Settings                               "

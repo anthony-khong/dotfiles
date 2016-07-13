@@ -1,4 +1,4 @@
-export PYTHONPATH=$PYTHONPATH:/Users/akkhong/cmls/xgboost/python-package
+export PYTHONPATH=$PYTHONPATH:/home/akkhong/cmls/xgboost/python-package
 
 # Don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options

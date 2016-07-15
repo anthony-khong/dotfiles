@@ -58,13 +58,6 @@ function setup_dotfiles() {
 ###############################################################################
 if [ "$(uname)" == "Darwin" ]; then
     # Put dock to the left
-
-    # Install the following manually:
-    # Chrome, Dropbox, Texmaker, R, RStudio, Spotify, VLC, iTerm, Skype,
-    # Transmission, Air Display, Google Drive, iStat Menus, Kindle, Line,
-    # Mendeley, Private Internet Access, Sublime Text, Slack, Microsoft Office,
-    # BetterSnap
-    # Optional: OpenBLAS
     echo 'Setting up Mac...';
 
     # Xcode
@@ -182,7 +175,6 @@ fi
 
 setup_dotfiles
 setup_python
-setup_tmux
 
 setup_nvim
 recreate_symbolic_links

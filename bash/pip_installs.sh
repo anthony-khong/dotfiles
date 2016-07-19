@@ -19,6 +19,9 @@ pip install jedi
 pip install neovim
 pip install pdbpp
 pip install speedtest-cli
+pip install tabulate
+pip install tqdm
+pip install unidecode
 pip install youtube-dl
 
 # Tensorflow
@@ -27,8 +30,9 @@ if [ "$(uname)" == "Darwin" ]; then
 fi
 
 # XGB
-cd cmls
+cd ~/cmls
 git clone --recursive https://github.com/dmlc/xgboost
+cd ~/cmls/xgboost
 if [ "$(uname)" == "Darwin" ]; then
     brew install gcc --without-multilib
     cp make/minimum.mk ./config.mk

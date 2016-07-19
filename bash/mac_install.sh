@@ -11,6 +11,7 @@ brew install caskroom/cask/brew-cask # No cask to install?
 brew install wget
 brew install htop
 brew install pandoc
+brew install ssh-copy-id
 brew cask install karabiner
 brew cask install seil
 

@@ -1,4 +1,4 @@
-let dark_background = 0
+let dark_background = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                               Plugin Settings                               "
@@ -202,8 +202,8 @@ nnoremap <Leader>hs :split<CR>
 nnoremap <Leader>vs :vsplit<CR>
 
 " Jumping between tabs
-map <Leader>, <esc>:tabprevious<CR>
-map <Leader>. <esc>:tabnext<CR>
+nnoremap ( :tabprevious<CR>
+nnoremap ) :tabnext<CR>
 
 " Close current tab
 nnoremap <Leader>e :q<CR>

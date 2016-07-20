@@ -39,7 +39,7 @@ Plug 'tpope/vim-fugitive'
 
 " Visualisation
 Plug 'airblade/vim-gitgutter'
-Plug 'benekastah/neomake'
+Plug 'neomake/neomake'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'plasticboy/vim-markdown'
@@ -342,10 +342,7 @@ nmap <Space>hr <Plug>GitGutterRevertHunk
 " NeoMake
 autocmd! BufWritePost * Neomake
 let g:neomake_verbose = 0
-let g:neomake_error_sign = {
-    \ 'text': '>>',
-    \ 'texthl': 'ErrorMsg',
-    \ }
+let g:neomake_error_sign = { 'text': '>>', 'texthl': 'ErrorMsg'}
 hi ErrorMsg ctermbg=234 ctermfg=9
 let g:neomake_python_enabled_makers = ['pyflakes']
 
@@ -383,8 +380,8 @@ nmap ? :FuzzySearch<CR>
 
 " FZF
 nnoremap <C-t> :FZF ~<CR>
-nnoremap <Space>p :FZF ~<CR>
-nnoremap <Space>f :FZF<CR>
+nnoremap <Space>f :FZF ~<CR>
+nnoremap <Space>p :FZF<CR>
 let g:fzf_action = {
             \'enter': 'tabedit',
             \'ctrl-v': 'vsplit',

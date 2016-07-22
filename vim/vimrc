@@ -1,4 +1,4 @@
-let dark_background = 1
+let dark_background = 0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                               Plugin Settings                               "
@@ -180,6 +180,7 @@ nmap <Leader>A :so ~/dotfiles/vim/vimrc<CR>:echo 'Changed to AKK'<CR>
 inoremap hh <C-c>
 inoremap thhh th<C-c>
 inoremap jj <C-c>
+inoremap kk <C-c>
 
 " Moving up and down physical lines
 nnoremap j gj
@@ -214,7 +215,7 @@ vnoremap < <gv
 vnoremap > >gv
 
 " Turn off search highlights
-nnoremap <Leader>x :nohlsearch<CR>
+nnoremap ff :nohlsearch<CR>
 
 " Copy the entire script to the clipboard
 nnoremap <Leader>l mwggVG"+y'wzz

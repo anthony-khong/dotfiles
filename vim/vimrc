@@ -181,6 +181,8 @@ inoremap hh <C-c>
 inoremap thhh th<C-c>
 inoremap jj <C-c>
 inoremap kk <C-c>
+inoremap kke kke
+inoremap kk<Space> kk<Space>
 
 " Moving up and down physical lines
 nnoremap j gj

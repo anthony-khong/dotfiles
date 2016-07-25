@@ -1,6 +1,6 @@
 set show-all-if-ambiguous on
 Tab: menu-complete
-Control-n: complete
+Control-f: complete
 
 #set editing-mode vi
 #set keymap vi

@@ -1,7 +1,7 @@
 " Python shortcuts
-map <Leader>t Oimport pdb; pdb.set_trace() # BREAKPOINT<C-c>
-map <Leader>m Oimport matplotlib.pyplot as plt<C-c>
-map <C-t> opass # TODO<C-c>
+nnoremap db Oimport pdb; pdb.set_trace() # BREAKPOINT<C-c>
+nnoremap <Leader>m Oimport matplotlib.pyplot as plt<C-c>
+nnoremap <C-t> opass # TODO<C-c>
 
 " Get a line of #'s
 nnoremap <Leader>3 i#<esc>78.b

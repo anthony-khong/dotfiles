@@ -112,8 +112,6 @@ set so=3
 
 " Better copy and paste
 set pastetoggle=<F2>
-set clipboard=unnamed
-set clipboard+=unnamedplus
 
 " Mouse and backspace
 set mouse=a
@@ -131,10 +129,8 @@ set history=700
 set undolevels=700
 
 " Make search case insensitive
-set hlsearch
-set incsearch
-set ignorecase
-set smartcase
+" set hlsearch
+" set incsearch
 
 " Disable stupid backup and swap files - they trigger too many events
 " for file system watchers
@@ -162,8 +158,6 @@ set laststatus=2
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                Vim Bindings                                 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Set the leader to comma
-let mapleader = ","
 
 " Shortuct to reload vimrc
 nmap <Leader>R :so ~/.config/nvim/init.vim<CR>:echo '.nvimrc reloaded!'<CR>
@@ -198,10 +192,6 @@ nnoremap N Nzz
 nnoremap <Leader>hs :split<CR>
 nnoremap <Leader>vs :vsplit<CR>
 
-" Close current tab
-nnoremap <Leader>e :q<CR>
-vnoremap <Leader>e :q<CR>
-
 " Copy the entire script to the clipboard
 nnoremap <Leader>l mwggVG"+y'wzz
 " Copy from current line to the top
@@ -217,13 +207,6 @@ vnoremap <Leader>c "+y
 " (Delete a line in normal mode, but delete the selection in visual mode)
 nmap <Leader>d "_dd
 vmap <Leader>d "_d
-
-" Save current script
-nnoremap <Leader>s :update<CR>
-nnoremap <C-s> :update<CR>
-
-" Remove trailing whitespace
-nnoremap <silent> <Leader>w :keeppatterns %s/\s\+$//<CR>
 
 " Map sort function to a key
 vnoremap <Leader>o :sort<CR>

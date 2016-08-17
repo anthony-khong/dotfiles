@@ -1,4 +1,6 @@
-let dark_background = 0
+source ~/cmls/seamless/env/base_init.vim
+
+let dark_background = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                               Plugin Settings                               "
@@ -144,14 +146,6 @@ set noswapfile
 set splitright
 set splitbelow
 
-" Use spaces instead of tabs
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set shiftround
-set smarttab
-set expandtab
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                Colour Scheme                                "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -204,20 +198,9 @@ nnoremap N Nzz
 nnoremap <Leader>hs :split<CR>
 nnoremap <Leader>vs :vsplit<CR>
 
-" Jumping between tabs
-nnoremap ( :tabprevious<CR>
-nnoremap ) :tabnext<CR>
-
 " Close current tab
 nnoremap <Leader>e :q<CR>
 vnoremap <Leader>e :q<CR>
-
-" Easier moving of code blocks
-vnoremap < <gv
-vnoremap > >gv
-
-" Turn off search highlights
-nnoremap ff :nohlsearch<CR>
 
 " Copy the entire script to the clipboard
 nnoremap <Leader>l mwggVG"+y'wzz

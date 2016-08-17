@@ -1,5 +1,4 @@
 " Python shortcuts
-nnoremap db Oimport pdb; pdb.set_trace() # BREAKPOINT<C-c>
 nnoremap <Leader>m Oimport matplotlib.pyplot as plt<C-c>
 nnoremap <C-t> opass # TODO<C-c>
 

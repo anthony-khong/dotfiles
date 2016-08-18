@@ -1,6 +1,5 @@
+let dark_background = 1
 source ~/cmls/seamless/env/base_init.vim
-
-let dark_background = 0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                               Plugin Settings                               "

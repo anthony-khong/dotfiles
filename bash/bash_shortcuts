@@ -240,7 +240,7 @@ function norsk() {
 
 # Networking shortcuts
 function jarwin() {
-    ssh -4 -X akkhong@jarwinjkt.no-ip.biz
+    ssh -4 -X akkhong@jarwinjkt.zapto.org
 }
 
 function cuffy() {

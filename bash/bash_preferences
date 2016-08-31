@@ -1,3 +1,4 @@
+export PYTHONPATH=$PYTHONPATH:~/kaggle
 if [ "$(uname)" == "Darwin" ]; then
     export PYTHONPATH=$PYTHONPATH:/Users/akkhong/cmls/xgboost/python-package
 fi

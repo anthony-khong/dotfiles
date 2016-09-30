@@ -49,6 +49,7 @@ export FZF_DEFAULT_COMMAND="ag -l -g '' \
                             --ignore-dir='Videos'\
                             --ignore-dir='anaconda'\
                             --ignore-dir='backup_seamless'\
+                            --ignore-dir='mxnet'\
                             --ignore-dir='node_modules'\
                             --ignore-dir='pycuda-2015.1.2' \
                             --ignore-dir='pylearn2' \

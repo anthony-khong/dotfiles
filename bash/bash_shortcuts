@@ -17,6 +17,9 @@ if [ $HOSTNAME = "jarwin" ]; then
     remap_caps
 fi
 
+alias renew="sudo ipconfig set en0 BOOTP && sudo ipconfig set en0 DHCP"
+alias hs="runhaskell"
+
 function setup_devilspie() {
     sudo apt-get install devilspie
     mkdir ~/.devilspie

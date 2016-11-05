@@ -1,5 +1,4 @@
 let dark_background = 1
-source ~/cmls/seamless/env/base_init.vim
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                               Plugin Settings                               "
@@ -69,12 +68,50 @@ augroup END
 "                            Vim General Settings                             "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" Set the leader to comma
+let mapleader = ","
+
+" Makes copy and pasting work
+set clipboard=unnamed
+set clipboard+=unnamedplus
+
+" One tab equals to four spaces
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+
+" Use multiple of shiftwidth when indenting with '<' and '>'
+set shiftround
+
+" Expand tab to spaces
+set expandtab
+
+" Search case insensitive when all characters are lower case
+set ignorecase
+set smartcase
+
+" Does not release visual mode during block indentation
+vnoremap < <gv
+vnoremap > >gv
+
+" Turning of highlights (after searching)
+nnoremap ff :nohlsearch <CR>
+
+" Close current tab
+nnoremap <Leader>e :q<CR>
+
+" Save current script
+nnoremap <C-s> :update<CR>
+inoremap <C-s> <C-c>:update<CR>
+
+" Remove trailing whitespace
+nnoremap <silent> <Leader>w :keeppatterns %s/\s\+$//<CR>
+
 " No more weird characters when pressing <Esc>
 set ttimeout
 set ttimeoutlen=0
 
 " Faster scrolling
-"set lazyredraw
 set ttyfast
 
 " Enable omnicompletion
@@ -219,9 +256,6 @@ nnoremap <Leader>f za
 " Since <C-a> is the Tmux prefix, we replace <C-a> with <C-o>
 inoremap <C-o> <C-a>
 
-" Change all instances of applied_modelling to seamless
-nnoremap <Space>am :%s/applied_modelling/seamless<CR>
-
 " Repeat dot on multiple lines
 vnoremap . :normal .<CR>
 
@@ -236,6 +270,10 @@ inoremap <C-e> <C-o>$
 
 " Set colour column shortcut
 nnoremap <Leader>8 :set colorcolumn=80<CR>
+
+" Jumping between tabs
+nnoremap ( :tabprevious<CR>
+nnoremap ) :tabnext<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                Generic Autos                                "

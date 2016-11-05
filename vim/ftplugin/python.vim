@@ -1,6 +1,7 @@
 " Python shortcuts
-nnoremap <Leader>m Oimport matplotlib.pyplot as plt<C-c>
 nnoremap <C-t> opass # TODO<C-c>
+nnoremap <Leader>m Oimport matplotlib.pyplot as plt<C-c>
+nnoremap db Oimport pdb;pdb.set_trace() <C-c>
 
 " Get a line of #'s
 nnoremap <Leader>3 i#<esc>78.b
@@ -45,15 +46,3 @@ let g:jedi#smart_auto_mappings = 0
 let g:jedi#show_call_signatures = "1"
 let g:jedi#completions_enabled = 1
 let g:jedi#use_tabs_not_buffers = 1
-
-" Jedi is really annoying
-"inoremap hh <C-c>:call jedi#configure_call_signatures()<CR>
-"inoremap jj <C-c>:call jedi#configure_call_signatures()<CR>
-"inoremap <Esc> <C-c>:call jedi#configure_call_signatures()<CR>
-
-" If space is used here, you get an annoying delay while typing
-"let g:jedi#usages_command = "<Alt>jus"
-"let g:jedi#completions_command = "<Alt>jc"
-"let g:jedi#goto_definitions_command = "<Alt>jd"
-"let g:jedi#documentation_command = "<Alt>jk"
-"let g:jedi#rename = "<Alt>jr"

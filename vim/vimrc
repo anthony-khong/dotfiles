@@ -11,8 +11,6 @@ call plug#begin()
 " Editing
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'SirVer/ultisnips', { 'on': [] }
-Plug 'bps/vim-textobj-python'
-Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 Plug 'ervandew/supertab'
 Plug 'honza/vim-snippets'
 Plug 'junegunn/vim-easy-align'
@@ -45,6 +43,10 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'plasticboy/vim-markdown'
 Plug 'tpope/vim-surround'
 Plug 'vim-scripts/textutil.vim'
+
+" Python
+Plug 'bps/vim-textobj-python'
+Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 
 if has("unix")
   let s:uname = system("uname")
@@ -350,7 +352,6 @@ autocmd! BufWritePost * Neomake
 let g:neomake_verbose = 0
 let g:neomake_error_sign = { 'text': '>>', 'texthl': 'ErrorMsg'}
 hi ErrorMsg ctermbg=234 ctermfg=9
-let g:neomake_python_enabled_makers = ['pyflakes']
 
 " Fugitive
 nmap <Space>gd :Gdiff<CR>

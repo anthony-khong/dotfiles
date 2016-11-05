@@ -48,6 +48,11 @@ Plug 'vim-scripts/textutil.vim'
 Plug 'bps/vim-textobj-python'
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 
+" Haskell
+ Plug 'nbouscal/vim-stylish-haskell'
+ Plug 'neovimhaskell/haskell-vim'
+ Plug 'eagletmt/ghcmod-vim'
+
 if has("unix")
   let s:uname = system("uname")
   if s:uname == "Darwin\n"
@@ -352,6 +357,8 @@ autocmd! BufWritePost * Neomake
 let g:neomake_verbose = 0
 let g:neomake_error_sign = { 'text': '>>', 'texthl': 'ErrorMsg'}
 hi ErrorMsg ctermbg=234 ctermfg=9
+let g:neomake_warning_sign={'text': '!!', 'texthl': 'NeomakeErrorMsg'}
+hi NeomakeErrorMsg ctermbg=234 ctermfg=11
 
 " Fugitive
 nmap <Space>gd :Gdiff<CR>

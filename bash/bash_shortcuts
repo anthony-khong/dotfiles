@@ -57,6 +57,9 @@ alias pylab='ipython --pylab'
 alias pt='py.test -s --pdb'
 alias python='/anaconda/bin/python'
 
+# Haskell shortcuts
+alias ghci='stack ghci'
+
 function mkinit() {
     echo '' >> __init__.py
 }

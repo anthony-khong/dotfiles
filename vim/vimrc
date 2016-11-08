@@ -28,6 +28,7 @@ Plug 'reedes/vim-colors-pencil'
 
 " Utilities
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'Shougo/vimproc', {'do' : 'make'}
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
@@ -49,9 +50,9 @@ Plug 'bps/vim-textobj-python'
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 
 " Haskell
- Plug 'nbouscal/vim-stylish-haskell'
- Plug 'neovimhaskell/haskell-vim'
- Plug 'eagletmt/ghcmod-vim'
+Plug 'eagletmt/ghcmod-vim'
+Plug 'nbouscal/vim-stylish-haskell'
+Plug 'neovimhaskell/haskell-vim'
 
 if has("unix")
   let s:uname = system("uname")
@@ -243,10 +244,9 @@ nnoremap <Leader>y V"+y
 " Copy selection to the clipboard
 vnoremap <Leader>c "+y
 
-" Delete and send to the blackhole register
-" (Delete a line in normal mode, but delete the selection in visual mode)
-nmap <Leader>d "_dd
-vmap <Leader>d "_d
+" Highlight downwards and upwards within a function
+nnoremap <Leader>u V{
+nnoremap <Leader>d V}
 
 " Map sort function to a key
 vnoremap <Leader>o :sort<CR>
@@ -356,6 +356,7 @@ let g:neomake_error_sign = { 'text': '>>', 'texthl': 'ErrorMsg'}
 hi ErrorMsg ctermbg=234 ctermfg=9
 let g:neomake_warning_sign={'text': '!!', 'texthl': 'NeomakeErrorMsg'}
 hi NeomakeErrorMsg ctermbg=234 ctermfg=11
+setlocal errorformat=%IAt\ %f:%l:,%C%m,%Z,%-G%.%#
 
 " Fugitive
 nmap <Space>gd :Gdiff<CR>
@@ -407,3 +408,6 @@ let g:UltiSnipsExpandTrigger = "<Tab>"
 let g:UltiSnipsJumpForwardTrigger = "<C-b>"
 let g:UltiSnipsJumpBackwardTrigger = "<C-z>"
 let g:UltiSnipsSnippetDirectories = ["UltiSnips", "custom_snippets"]
+
+" Easy-Align
+nmap <Space>= V}oga*=<CR>

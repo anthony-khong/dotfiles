@@ -139,3 +139,6 @@ export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
 # added by Anaconda 2.1.0 installer
 export PATH="/opt/anaconda/bin:$PATH"
 
+# For OpenCV
+export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/lib/x86_64-linux-gnu/pkgconfig/
+

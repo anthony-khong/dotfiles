@@ -17,21 +17,13 @@ if [ $HOSTNAME = "jarwin" ]; then
     remap_caps
 fi
 
+alias renew="sudo ipconfig set en0 BOOTP && sudo ipconfig set en0 DHCP"
+alias hs="runhaskell"
+
 function setup_devilspie() {
     sudo apt-get install devilspie
     mkdir ~/.devilspie
     echo -e '(if\n\t(matches (window_name) "Terminal")\n\t(opacity 90)\n)' >> ~/.devilspie/terminal-opacity.ds
-}
-
-function setup_cmls() {
-    cd;
-    mkdir cmls;
-    git clone git@bitbucket.org:seamless_team/seamless.git;
-    git clone git@bitbucket.org:seamless_team/fball.git;
-    git clone git@bitbucket.org:seamless_team/horse.git;
-    git clone git@bitbucket.org:seamless_team/tennis.git;
-    git clone https://github.com/anthony-khong/anthony-khong.github.io;
-    git clone https://github.com/anthony-khong/mls;
 }
 
 
@@ -65,8 +57,8 @@ alias pylab='ipython --pylab'
 alias pt='py.test -s --pdb'
 alias python='/anaconda/bin/python'
 
-alias py_=~/third_party/pypy-4.0.1-osx64/bin/ipython
-alias pip_=~/third_party/pypy-4.0.1-osx64/bin/pypy
+# Haskell shortcuts
+alias ghci='stack ghci'
 
 function mkinit() {
     echo '' >> __init__.py
@@ -109,21 +101,6 @@ function update_dots() {
     cd ~/dotfiles && echo_and_pull;
     gsu;
     nvim +PlugInstall +qall
-}
-
-function update_cmls() {
-    cd ~/cmls/seamless && echo_and_pull;
-    cd ~/cmls/horse && echo_and_pull;
-    cd ~/cmls/fball && echo_and_pull;
-    cd ~/cmls/tennis && echo_and_pull;
-    cd ~/cmls/notes && echo_and_pull;
-    cd ~/cmls;
-}
-
-function update_third_party() {
-    cd ~/third_party/xgboost && echo_and_pull;
-    cd ~/third_party/tensorflow && echo_and_pull;
-    cd ~/third_party;
 }
 
 function gpa() {
@@ -211,12 +188,6 @@ function mcm() {
     cd ~/Dropbox/Interesting\ Papers/Monte\ Carlo\ Methods/
 }
 
-
-function seamless() {
-    cd ~/cmls/seamless/
-}
-alias sless=seamless
-alias seams=seamless
 
 function fball() {
     cd ~/cmls/fball/

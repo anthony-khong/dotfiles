@@ -109,19 +109,14 @@ export OPENBLAS_HOME=/home/akkhong
 export PYLEARN2_DATA_PATH=/data/lisa/data
 
 # CUDA Settings
-source ~/cmls/seamless/utils/cuda_bash_settings
-
-if [ "$(uname)" == "Darwin" ]; then
-    export user=akk_mac
-elif [ "$(uname)" == "Linux" ]; then
-    export user=akk_linux
+if [ $HOSTNAME = "jarwin" ]; then
+    export PATH=/usr/local/cuda-7.5/bin:$PATH
+    export LD_LIBRARY_PATH=/usr/local/cuda-7.5/lib64:$LD_LIBRARY_PATH
 fi
+
 export PYTHONPATH=/home/akkhong/
 export PYTHONPATH=$PYTHONPATH:/home/akkhong/cmls
 export PYTHONPATH=$PYTHONPATH:/home/akkhong/xgboost/python-package/
-export PYTHONPATH=$PYTHONPATH:/home/akkhong/cmls/finance_research
-export PYTHONPATH=$PYTHONPATH:/home/akkhong/third_party/xgboost/python-package/
-export PYTHONPATH=$PYTHONPATH:/home/akk/cmls
 
 # Stop Python from generating .pyc files
 export PYTHONDONTWRITEBYTECODE=1
@@ -141,4 +136,3 @@ export PATH="/opt/anaconda/bin:$PATH"
 
 # For OpenCV
 export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/lib/x86_64-linux-gnu/pkgconfig/
-

@@ -1,5 +1,4 @@
 let dark_background = 1
-source ~/cmls/seamless/env/base_init.vim
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                               Plugin Settings                               "
@@ -12,8 +11,6 @@ call plug#begin()
 " Editing
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'SirVer/ultisnips', { 'on': [] }
-Plug 'bps/vim-textobj-python'
-Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 Plug 'ervandew/supertab'
 Plug 'honza/vim-snippets'
 Plug 'junegunn/vim-easy-align'
@@ -31,6 +28,7 @@ Plug 'reedes/vim-colors-pencil'
 
 " Utilities
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'Shougo/vimproc', {'do' : 'make'}
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
@@ -46,6 +44,15 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'plasticboy/vim-markdown'
 Plug 'tpope/vim-surround'
 Plug 'vim-scripts/textutil.vim'
+
+" Python
+Plug 'bps/vim-textobj-python'
+Plug 'davidhalter/jedi-vim', { 'for': 'python' }
+
+" Haskell
+Plug 'eagletmt/ghcmod-vim'
+Plug 'nbouscal/vim-stylish-haskell'
+Plug 'neovimhaskell/haskell-vim'
 
 if has("unix")
   let s:uname = system("uname")
@@ -69,12 +76,50 @@ augroup END
 "                            Vim General Settings                             "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" Set the leader to comma
+let mapleader = ","
+
+" Makes copy and pasting work
+set clipboard=unnamed
+set clipboard+=unnamedplus
+
+" One tab equals to four spaces
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+
+" Use multiple of shiftwidth when indenting with '<' and '>'
+set shiftround
+
+" Expand tab to spaces
+set expandtab
+
+" Search case insensitive when all characters are lower case
+set ignorecase
+set smartcase
+
+" Does not release visual mode during block indentation
+vnoremap < <gv
+vnoremap > >gv
+
+" Turning of highlights (after searching)
+nnoremap ff :nohlsearch <CR>
+
+" Close current tab
+nnoremap <Leader>e :q<CR>
+
+" Save current script
+nnoremap <C-s> :update<CR>
+inoremap <C-s> <C-c>:update<CR>
+
+" Remove trailing whitespace
+nnoremap <silent> <Leader>w :keeppatterns %s/\s\+$//<CR>
+
 " No more weird characters when pressing <Esc>
 set ttimeout
 set ttimeoutlen=0
 
 " Faster scrolling
-"set lazyredraw
 set ttyfast
 
 " Enable omnicompletion
@@ -167,9 +212,6 @@ nmap <Leader>A :so ~/dotfiles/vim/vimrc<CR>:echo 'Changed to AKK'<CR>
 inoremap hh <C-c>
 inoremap thhh th<C-c>
 inoremap jj <C-c>
-inoremap kk <C-c>
-inoremap kke kke
-inoremap kk<Space> kk<Space>
 
 " Moving up and down physical lines
 nnoremap j gj
@@ -202,10 +244,9 @@ nnoremap <Leader>y V"+y
 " Copy selection to the clipboard
 vnoremap <Leader>c "+y
 
-" Delete and send to the blackhole register
-" (Delete a line in normal mode, but delete the selection in visual mode)
-nmap <Leader>d "_dd
-vmap <Leader>d "_d
+" Highlight downwards and upwards within a function
+nnoremap <Leader>u V{
+nnoremap <Leader>d V}
 
 " Map sort function to a key
 vnoremap <Leader>o :sort<CR>
@@ -218,9 +259,6 @@ nnoremap <Leader>f za
 
 " Since <C-a> is the Tmux prefix, we replace <C-a> with <C-o>
 inoremap <C-o> <C-a>
-
-" Change all instances of applied_modelling to seamless
-nnoremap <Space>am :%s/applied_modelling/seamless<CR>
 
 " Repeat dot on multiple lines
 vnoremap . :normal .<CR>
@@ -236,6 +274,10 @@ inoremap <C-e> <C-o>$
 
 " Set colour column shortcut
 nnoremap <Leader>8 :set colorcolumn=80<CR>
+
+" Jumping between tabs
+nnoremap ( :tabprevious<CR>
+nnoremap ) :tabnext<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                Generic Autos                                "
@@ -312,7 +354,9 @@ autocmd! BufWritePost * Neomake
 let g:neomake_verbose = 0
 let g:neomake_error_sign = { 'text': '>>', 'texthl': 'ErrorMsg'}
 hi ErrorMsg ctermbg=234 ctermfg=9
-let g:neomake_python_enabled_makers = ['pyflakes']
+let g:neomake_warning_sign={'text': '!!', 'texthl': 'NeomakeErrorMsg'}
+hi NeomakeErrorMsg ctermbg=234 ctermfg=11
+setlocal errorformat=%IAt\ %f:%l:,%C%m,%Z,%-G%.%#
 
 " Fugitive
 nmap <Space>gd :Gdiff<CR>
@@ -364,3 +408,6 @@ let g:UltiSnipsExpandTrigger = "<Tab>"
 let g:UltiSnipsJumpForwardTrigger = "<C-b>"
 let g:UltiSnipsJumpBackwardTrigger = "<C-z>"
 let g:UltiSnipsSnippetDirectories = ["UltiSnips", "custom_snippets"]
+
+" Easy-Align
+nmap <Space>= V}oga*=<CR>

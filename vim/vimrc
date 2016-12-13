@@ -164,8 +164,6 @@ set bs=2
 " Showing line numbers and length
 set number
 set relativenumber
-set tw=79
-set nowrap
 set fo-=t
 
 " Useful settings
@@ -356,6 +354,7 @@ let g:neomake_error_sign = { 'text': '>>', 'texthl': 'ErrorMsg'}
 hi ErrorMsg ctermbg=234 ctermfg=9
 let g:neomake_warning_sign={'text': '!!', 'texthl': 'NeomakeErrorMsg'}
 hi NeomakeErrorMsg ctermbg=234 ctermfg=11
+let g:neomake_python_enabled_makers = ['pyflakes']
 setlocal errorformat=%IAt\ %f:%l:,%C%m,%Z,%-G%.%#
 
 " Fugitive

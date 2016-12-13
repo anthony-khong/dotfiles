@@ -160,54 +160,17 @@ function fix_nvim_tmux_navigator () {
 }
 
 # Navigation shortcuts
-function dropbox_hr_value() {
-    cd ~/Dropbox/am_records/hr_value
-}
-
-function gpy() {
-    cd ~/Dropbox/tutorials/gpy
-}
-
 function papers() {
     cd ~/Dropbox/Interesting\ Papers/
-}
-
-function bayes_ml() {
-    cd ~/Dropbox/Interesting\ Papers/Bayesian\ Machine\ Learning/
-}
-
-function deep() {
-    cd ~/Dropbox/Interesting\ Papers/Deep\ Learning/
-}
-
-function ensembles() {
-    cd ~/Dropbox/Interesting\ Papers/Ensemble\ Methods/
-}
-
-function mcm() {
-    cd ~/Dropbox/Interesting\ Papers/Monte\ Carlo\ Methods/
-}
-
-
-function fball() {
-    cd ~/cmls/fball/
-}
-
-function horse() {
-    cd ~/cmls/horse/
-}
-
-function tennis() {
-    cd ~/cmls/tennis/
 }
 
 function dots() {
     cd ~/dotfiles/
 }
 
-function norsk() {
-    cd ~/Dropbox/languages/Norwegian/
-}
+function atools() {
+    cd ~/Dropbox/mooc/algorithmic_toolbox
+    }
 
 # Networking shortcuts
 function jarwin() {
@@ -279,3 +242,5 @@ function slack() {
     google-chrome https://cmls.slack.com/messages/general_/
 }
 
+# Youtube DL
+alias ytdl_mp3="youtube-dl --extract-audio --audio-format mp3"

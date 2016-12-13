@@ -39,6 +39,7 @@ setlocal foldlevel=99
 let g:SimpylFold_docstring_preview = 1
 
 " Jedi-Vim
+let g:jedi#force_py_version=3
 let g:jedi#auto_initialization = 1
 let g:jedi#popup_on_dot = 0
 let g:jedi#popup_select_first = 0
@@ -46,6 +47,3 @@ let g:jedi#smart_auto_mappings = 0
 let g:jedi#show_call_signatures = "1"
 let g:jedi#completions_enabled = 1
 let g:jedi#use_tabs_not_buffers = 1
-
-" NeoMake
-let g:neomake_python_enabled_makers = ['pyflakes']

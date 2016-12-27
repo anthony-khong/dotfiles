@@ -169,7 +169,7 @@ function dots() {
 }
 
 function atools() {
-    cd ~/Dropbox/mooc/algorithmic_toolbox
+    cd ~/mooc/algorithmic_toolbox
     }
 
 # Networking shortcuts

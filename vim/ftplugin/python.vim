@@ -34,6 +34,7 @@ augroup END
 " Foldings
 setlocal foldmethod=indent
 setlocal foldlevel=99
+setlocal nowrap
 
 " Simpyl Fold
 let g:SimpylFold_docstring_preview = 1

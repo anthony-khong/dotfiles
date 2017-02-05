@@ -3,6 +3,7 @@ let dark_background = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                               Plugin Settings                               "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 set runtimepath^=~/.config/nvim
 
 " Enable plugins
@@ -189,7 +190,7 @@ set splitbelow
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " It looks nicer in some colour schemes
 if dark_background
-    silent! colorscheme akk_dark
+    silent! colorscheme ubuntu
 else
     silent! colorscheme akk_light
 endif

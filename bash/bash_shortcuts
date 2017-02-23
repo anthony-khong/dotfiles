@@ -63,7 +63,7 @@ alias ghci='stack ghci'
 
 # C++ shortucts
 function gpp() {
-    g++ -pipe -O2 -std=c++14 -lm -o temp "$*"
+    g++ -pipe -O2 -std=c++11 -lm -o temp "$*"
     ./temp
     rm temp
 }

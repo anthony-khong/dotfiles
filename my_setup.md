@@ -36,13 +36,12 @@
 1. Python Kit
     * Anaconda
     * iPython
-    * Theano + Pylearn
+    * Theano
     * PyCUDA
-    * Update Sklearn and Pandas
+    * Sklearn and Pandas
     * XGBoost
     * Pdb++
     * Speedtest
-    * ggplot
 1. git
 1. R + RStudio
     * Rcpp

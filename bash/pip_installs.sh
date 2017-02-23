@@ -19,9 +19,6 @@ pip install jedi
 pip install neovim
 pip install pdbpp
 pip install speedtest-cli
-pip install tabulate
-pip install tqdm
-pip install unidecode
 pip install youtube-dl
 
 # Tensorflow

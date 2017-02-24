@@ -78,5 +78,5 @@ bash ~/dotfiles/bash/pip_installs.sh
 # Chrome, Dropbox, Texmaker, R, RStudio, Spotify, VLC, iTerm, Skype,
 # Transmission, Air Display, Google Drive, iStat Menus, Kindle, Latex, Line,
 # Mendeley, Private Internet Access, Sublime Text, Slack, Microsoft Office,
-# BetterSnap
+# BetterSnap, Karabiner-Elements, PIA, Alfred, PyPy
 # Optional: OpenBLAS

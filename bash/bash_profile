@@ -14,3 +14,6 @@ export PYTHONPATH=$PYTHONPATH:/Users/akkhong/cmls
 
 source ~/dotfiles/bash/bash_shortcuts
 source ~/dotfiles/bash/bash_preferences
+
+# added by Anaconda3 4.3.0 installer
+export PATH="/opt/anaconda/bin:$PATH"

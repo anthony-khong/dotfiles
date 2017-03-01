@@ -36,10 +36,10 @@ hi markdownHeadingDelimiter ctermfg=202  ctermbg=none cterm=bold      term=bold
 hi markdownHeadingRule      ctermfg=202  ctermbg=none cterm=bold      term=bold
 hi markdownLinkText         ctermfg=130  ctermbg=none cterm=underline term=underline
 hi Todo                     ctermfg=16  ctermbg=226  cterm=bold      term=bold
-hi Pmenu                    ctermfg=202  ctermbg=130   cterm=NONE      term=NONE
-hi PmenuSel                 ctermfg=130  ctermbg=202   cterm=NONE      term=NONE
+hi Pmenu                    ctermfg=202  ctermbg=26   cterm=NONE      term=NONE
+hi PmenuSel                 ctermfg=26  ctermbg=202   cterm=NONE      term=NONE
 hi helpSpecial              ctermfg=251 ctermbg=none cterm=NONE      term=NONE
-hi helpHyperTextJump        ctermfg=130  ctermbg=none cterm=underline term=underline
+hi helpHyperTextJump        ctermfg=26  ctermbg=none cterm=underline term=underline
 hi helpNote                 ctermfg=251 ctermbg=none cterm=NONE      term=NONE
 hi vimOption                ctermfg=251 ctermbg=none cterm=NONE      term=NONE
 hi vimGroup                 ctermfg=251 ctermbg=none cterm=NONE      term=NONE

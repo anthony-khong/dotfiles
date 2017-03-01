@@ -1,11 +1,6 @@
+export PYTHONPATH=$PYTHONPATH:~/carvil
 export PYTHONPATH=$PYTHONPATH:~/kaggle
 export PYTHONPATH=$PYTHONPATH:~/survival/survival
-export PYTHONPATH=$PYTHONPATH:~/mxnet/python
-export PYTHONPATH=$PYTHONPATH:~/cmls/mattias_sandbox
-
-if [ "$(uname)" == "Darwin" ]; then
-    export PYTHONPATH=$PYTHONPATH:/Users/akkhong/cmls/xgboost/python-package
-fi
 
 # Don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options

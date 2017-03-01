@@ -68,9 +68,12 @@ function gpp() {
         ./temp
     else
         cat "$2" | ./temp
-        
+
     fi
+
     rm temp
+    echo ""
+    rm a.out
 }
 
 function mkinit() {

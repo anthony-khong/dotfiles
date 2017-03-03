@@ -260,3 +260,8 @@ function slack() {
 
 # Youtube DL
 alias ytdl_mp3="youtube-dl --extract-audio --audio-format mp3"
+
+# Carvil
+function revenue() {
+    ipython ~/carvil/revenue.py "$@"
+}

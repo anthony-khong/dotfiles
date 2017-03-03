@@ -3,6 +3,7 @@ export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
 alias ls='ls -GFh'
 
+export PATH="/Users/akkhong:$PATH"
 export PATH="/Users/akkhong/.local/bin:$PATH"
 export PATH="/opt/anaconda/bin:$PATH"
 export DYLD_FALLBACK_LIBRARY_PATH=/usr/local/opt/openblas/lib/libopenblasp-r0.2.15.dylib:$DYLD_FALLBACK_LIBRARY_PATH

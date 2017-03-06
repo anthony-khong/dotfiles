@@ -193,37 +193,8 @@ function jarwin() {
     ssh -4 -X akkhong@jarwinjkt.zapto.org
 }
 
-function cuffy() {
-    ssh -4 -X akk@ilikezcoffe.no-ip.biz
-}
-
-function servox() {
-    ssh -p2222 -X akkhong@servox.no-ip.biz
-}
-
-function servox_as_mbk() {
-    ssh -p2222 -X mbk@servox.no-ip.biz
-}
-
-function linode1() {
-    ssh root@85.159.211.149
-}
-
-
-function local_jarwin() {
-    ssh -X akkhong@192.168.1.107
-}
-
-function bealach() {
-    ssh -X akkhong@192.168.1.110
-}
-
-function samhan() {
-    ssh -X akkhong@192.168.1.109
-}
-
-function stream_webcam() {
-    vlc v4l2:///dev/video0
+function draape() {
+	ssh root@128.199.230.91
 }
 
 function flush_dns_cache() {
@@ -264,4 +235,8 @@ alias ytdl_mp3="youtube-dl --extract-audio --audio-format mp3"
 # Carvil
 function revenue() {
     ipython ~/carvil/revenue.py "$@"
+}
+
+function start_db() {
+    ~/.dropbox-dist/dropboxd
 }

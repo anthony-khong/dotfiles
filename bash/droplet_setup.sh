@@ -1,4 +1,3 @@
-# TODO: Anaconda, Antivirus, CUDA, Chrome, Dropbox, RSudio, SSH, VLC, noip2.
 echo 'Setting up Linux...';
 
 # Essentials
@@ -13,6 +12,7 @@ sudo add-apt-repository ppa:neovim-ppa/unstable
 sudo apt-get -y update
 sudo apt-get install -y neovim
 sudo apt-get install -y tmux
+sudo apt-get install -y xclip
 
 # Workflow: dotfiles
 cd ~

@@ -185,6 +185,11 @@ set noswapfile
 set splitright
 set splitbelow
 
+" Live substitute preview
+ if has('nvim')
+     set inccommand=nosplit
+ endif
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                Colour Scheme                                "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

@@ -48,3 +48,6 @@ sudo apt-get install -y docker-ce
 # Dropbox
 cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
 ~/.dropbox-dist/dropboxd
+
+# Gmail
+pip install --upgrade google-api-python-client

@@ -58,6 +58,10 @@ alias pt='py.test -s --pdb'
 alias python='/opt/anaconda/bin/python'
 alias py3='python3 -i'
 
+function purge_py() {
+    find . | grep -E "(__pycache__|\.pyc|\.pyo$)" | xargs rm -rf
+}
+
 # Haskell shortcuts
 alias ghci='stack ghci'
 
@@ -194,7 +198,7 @@ function jarwin() {
 }
 
 function draape() {
-	ssh root@128.199.230.91
+    ssh root@128.199.230.91
 }
 
 function flush_dns_cache() {
@@ -234,9 +238,10 @@ alias ytdl_mp3="youtube-dl --extract-audio --audio-format mp3"
 
 # Carvil
 function revenue() {
-    ipython ~/carvil/revenue.py "$@"
+    ipython ~/carvil/scripts/revenue_cli.py "$@"
 }
 
 function start_db() {
     ~/.dropbox-dist/dropboxd
 }
+

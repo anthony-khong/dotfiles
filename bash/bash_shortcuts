@@ -245,3 +245,7 @@ function start_db() {
     ~/.dropbox-dist/dropboxd
 }
 
+function check_revenue() {
+    ipython ~/carvil/scripts/revenue_check.py "$@"
+}
+

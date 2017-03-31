@@ -1,0 +1,1 @@
+nnoremap tt va{zf

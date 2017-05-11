@@ -1,4 +1,5 @@
 unset DYLD_FALLBACK_LIBRARY_PATH
+export PYTHONPATH=$PYTHONPATH:~
 export PYTHONPATH=$PYTHONPATH:~/carvil
 export PYTHONPATH=$PYTHONPATH:~/kaggle
 export PYTHONPATH=$PYTHONPATH:~/survival/survival

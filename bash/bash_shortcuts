@@ -65,6 +65,9 @@ function purge_py() {
 # Haskell shortcuts
 alias ghci='stack ghci'
 
+# Scala shortcuts
+alias sc='scala -i'
+
 # C++ shortucts
 function gpp() {
     g++ -pipe -std=c++11 -lm -o temp "$1"

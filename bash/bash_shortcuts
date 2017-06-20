@@ -67,6 +67,14 @@ alias ghci='stack ghci'
 
 # Scala shortcuts
 alias sc='scala -i'
+function scc() {
+    mkdir classes_temp
+    scalac -d classes_temp "$1"
+    cd classes_temp
+    scala "$2" "${@:3}"
+    cd ..
+    rm -rf classes_temp
+}
 
 # C++ shortucts
 function gpp() {

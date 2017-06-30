@@ -76,6 +76,8 @@ function scc() {
     rm -rf classes_temp
 }
 
+alias samm='sbt ammonite:run'
+
 # C++ shortucts
 function gpp() {
     g++ -pipe -std=c++11 -lm -o temp "$1"
@@ -202,6 +204,15 @@ function dots() {
 function atools() {
     cd ~/mooc/algorithmic_toolbox
     }
+
+function ll() {
+    if [ ! -z $1 ]
+    then
+        find "$1" -type f
+    else
+        find . -type f
+    fi
+}
 
 # Networking shortcuts
 function jarwin() {

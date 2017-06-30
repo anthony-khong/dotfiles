@@ -17,6 +17,8 @@ Plug 'honza/vim-snippets'
 Plug 'junegunn/vim-easy-align'
 Plug 'kana/vim-textobj-user'
 Plug 'scrooloose/nerdcommenter'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"Plug 'ensime/ensime-vim'
 
 " Motions
 Plug 'easymotion/vim-easymotion'
@@ -291,6 +293,7 @@ nnoremap ) :tabnext<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 autocmd BufRead,BufNewFile *.md setfiletype markdown
+autocmd BufRead,BufNewFile *.sc setfiletype scala
 
 " Enbale CUDA syntax
 au BufNewFile,BufRead *.cu set ft=cu
@@ -367,7 +370,8 @@ let g:neomake_python_enabled_makers = ['pyflakes']
 setlocal errorformat=%IAt\ %f:%l:,%C%m,%Z,%-G%.%#
 let g:neomake_cpp_enabled_markers=['clang']
 let g:neomake_cpp_clang_args = ["-std=c++11", "-Wextra", "-Wall"]
-let g:neomake_scala_enabled_makers = ['scalac']
+"let g:neomake_scala_enabled_makers = ['fsc', 'scalastyle']
+let g:neomake_scala_enabled_makers = []
 
 " Fugitive
 nmap <Space>gd :Gdiff<CR>
@@ -422,3 +426,14 @@ let g:UltiSnipsSnippetDirectories = ["UltiSnips", "custom_snippets"]
 
 " Easy-Align
 nmap <Space>= V}oga*=<CR>
+
+" Deoplete
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#sources = {}
+let g:deoplete#sources.scala = ['buffer', 'tags', 'omni']
+let g:deoplete#omni#input_patterns = {}
+let g:deoplete#omni#input_patterns.scala = ['[^. *\t0-9]\.\w*',': [A-Z]\w', '[\[\t\( ][A-Za-z]\w*']
+
+" Ensime
+ "autocmd BufWritePost *.scala silent :EnTypeCheck
+ "nnoremap <localleader>t :EnTypeCheck<CR>

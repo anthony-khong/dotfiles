@@ -58,6 +58,11 @@ alias pt='py.test -s --pdb'
 alias python='/opt/anaconda/bin/python'
 alias py3='python3 -i'
 
+function grist_py() {
+    DEST="/grist"
+    docker run -v ~/grist:"$DEST" -it grist_image ipython -i "$DEST/$1"
+}
+
 function purge_py() {
     find . | grep -E "(__pycache__|\.pyc|\.pyo$)" | xargs rm -rf
 }

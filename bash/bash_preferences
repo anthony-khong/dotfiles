@@ -5,6 +5,7 @@ export PYTHONPATH=$PYTHONPATH:~/kaggle
 export PYTHONPATH=$PYTHONPATH:~/survival/survival
 export PYTHONPATH=$PYTHONPATH:~/web_scraping
 export PYTHONPATH=$PYTHONPATH:~/reprod
+export PYTHONPATH=$PYTHONPATH:~/grist
 
 # Don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options

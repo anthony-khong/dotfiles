@@ -107,12 +107,6 @@ function remove_pyc() {
 }
 
 # Git shortcuts
-function fastpush() {
-    git add -u;
-    git commit -m "$*";
-    git push;
-}
-
 function gsu() {
     git submodule init;
     git submodule update;
@@ -244,6 +238,11 @@ alias vim="nvim -p"
 alias vff="nvim +'FZF ~'"
 function eff() {
     vim $(fzf)
+}
+
+# FSWatch
+function do_if_read() {
+    fswatch "$1" | (while read; do eval "$2"; done)
 }
 
 # Jekyll

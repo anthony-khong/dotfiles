@@ -48,7 +48,7 @@ function md_to_wiki() {
 # Python shortcuts
 alias pi='THEANO_FLAGS="device=cpu" ipython -i'
 alias py='THEANO_FLAGS="device=cpu" ipython -i'
-alias gpy='THEANO_FLAGS="device=gpu0" ipython -i'
+#alias gpy='THEANO_FLAGS="device=gpu0" ipython -i'
 alias gpy0='THEANO_FLAGS="device=gpu0" ipython -i'
 alias gpy1='THEANO_FLAGS="device=gpu1" ipython -i'
 alias gpy2='THEANO_FLAGS="device=gpu2" ipython -i'
@@ -58,7 +58,7 @@ alias pt='py.test -s --pdb'
 alias python='/opt/anaconda/bin/python'
 alias py3='python3 -i'
 
-function grist_py() {
+function gpy() {
     DEST="/grist"
     docker run -v ~/grist:"$DEST" -it grist_image ipython -i "$DEST/$1"
 }

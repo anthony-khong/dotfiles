@@ -240,6 +240,12 @@ function eff() {
     vim $(fzf)
 }
 
+function vs() {
+    touch "$1"
+    chmod +x "$1"
+    vim "$1"
+}
+
 # FSWatch
 function do_if_read() {
     fswatch "$1" | (while read; do eval "$2"; done)

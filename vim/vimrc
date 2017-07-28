@@ -288,6 +288,9 @@ nnoremap <Leader>8 :set colorcolumn=80<CR>
 nnoremap ( :tabprevious<CR>
 nnoremap ) :tabnext<CR>
 
+" Force write
+nnoremap <C-w> :w<CR>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                Generic Autos                                "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

@@ -8,7 +8,7 @@ setlocal shiftwidth=4
 setlocal tabstop=4
 setlocal wrap
 setlocal textwidth=0
-setlocal spell
+"setlocal spell
 
 syntax region Statement oneline matchgroup=Delimiter start="\$" end="\$"
 syntax region Statement matchgroup=Delimiter start="\\begin{.*}" end="\\end{.*}" contains=Statement

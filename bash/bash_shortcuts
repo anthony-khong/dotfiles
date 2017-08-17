@@ -81,6 +81,15 @@ function scc() {
     rm -rf classes_temp
 }
 
+alias ss='spark-shell -i'
+function scc() {
+    touch temp.scala
+    echo "{" >> temp.scala
+    cat "$1" >> temp.scala
+    echo "}" >> temp.scala
+    ss temp.scala
+}
+
 alias samm='sbt ammonite:run'
 
 # C++ shortucts

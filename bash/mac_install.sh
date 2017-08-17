@@ -74,9 +74,17 @@ echo 'Installing Tmux plugins...'
 echo 'Install Python packages...'
 bash ~/dotfiles/bash/pip_installs.sh
 
+# Setup Scala, SBT, Spark
+brew install scala
+brew install sbt
+cd ~/Downloads/
+wget https://d3kbcqa49mib13.cloudfront.net/spark-2.2.0-bin-hadoop2.7.tgz
+mv spark-2.2.0-bin-hadoop2.7 ~/opt/spark
+
 # Install the following manually:
 # Chrome, Dropbox, Texmaker, R, RStudio, Spotify, VLC, iTerm, Skype,
 # Transmission, Air Display, Google Drive, iStat Menus, Kindle, Latex, Line,
 # Mendeley, Private Internet Access, Sublime Text, Slack, Microsoft Office,
 # BetterSnap, Karabiner-Elements, PIA, Alfred, PyPy
 # Optional: OpenBLAS
+

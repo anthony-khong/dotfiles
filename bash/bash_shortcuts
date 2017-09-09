@@ -257,7 +257,12 @@ function vs() {
 
 # FSWatch
 function do_if_read() {
-    fswatch "$1" | (while read; do eval "$2"; done)
+    fswatch "$1" | (while read; do eval "$2; echo Last executed $(date)"; done)
+}
+
+function auto_md_to_pdf() {
+    local pdf_path="${1%.*}.pdf"
+    fswatch "$1" | (while read; do eval "md_to_pdf 3 $1 $pdf_path; echo Last compiled: $(date)"; done)
 }
 
 # Jekyll

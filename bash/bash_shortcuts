@@ -83,6 +83,7 @@ function scc() {
 
 alias ss='spark-shell -i'
 function scc() {
+    rm temp.scala
     touch temp.scala
     echo "{" >> temp.scala
     cat "$1" >> temp.scala
@@ -289,4 +290,6 @@ function start_db() {
 function revenue_breakdown() {
     ipython ~/carvil/scripts/revenue_check.py "$@"
 }
+
+alias jpy="jupyter notebook"
 

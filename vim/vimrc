@@ -51,6 +51,7 @@ Plug 'vim-scripts/textutil.vim'
 " Python
 Plug 'bps/vim-textobj-python'
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
+Plug 'manicmaniac/coconut.vim'
 
 " Haskell
 Plug 'eagletmt/ghcmod-vim'

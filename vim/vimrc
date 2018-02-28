@@ -17,6 +17,7 @@ Plug 'honza/vim-snippets'
 Plug 'junegunn/vim-easy-align'
 Plug 'kana/vim-textobj-user'
 Plug 'scrooloose/nerdcommenter'
+Plug 'craigemery/vim-autotag'
 "Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 "Plug 'ensime/ensime-vim'
 
@@ -24,14 +25,15 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'easymotion/vim-easymotion'
 Plug 'ggVGc/vim-fuzzysearch'
 Plug 'justinmk/vim-sneak'
+Plug 'vim-scripts/ctags.vim'
 
 " Colour Schemes
 Plug 'morhetz/gruvbox'
 Plug 'reedes/vim-colors-pencil'
 
 " Utilities
-Plug 'christoomey/vim-tmux-navigator'
 Plug 'Shougo/vimproc', {'do' : 'make'}
+Plug 'christoomey/vim-tmux-navigator'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
@@ -265,6 +267,8 @@ nnoremap <Leader>n :set relativenumber!<CR>
 
 " Fold Toggle
 nnoremap <Leader>f za
+nnoremap <Leader>df zE
+nnoremap <Leader>} zfa}
 
 " Since <C-a> is the Tmux prefix, we replace <C-a> with <C-o>
 inoremap <C-o> <C-a>
@@ -409,7 +413,7 @@ nmap Z <Plug>Sneak_S
 nmap ? :FuzzySearch<CR>
 
 " FZF
-nnoremap <C-t> :FZF ~<CR>
+" nnoremap <C-t> :FZF ~<CR>
 nnoremap <Space>f :FZF ~<CR>
 nnoremap <Space>p :FZF<CR>
 let g:fzf_action = {
@@ -436,6 +440,12 @@ let g:deoplete#sources = {}
 let g:deoplete#sources.scala = ['buffer', 'tags', 'omni']
 let g:deoplete#omni#input_patterns = {}
 let g:deoplete#omni#input_patterns.scala = ['[^. *\t0-9]\.\w*',': [A-Z]\w', '[\[\t\( ][A-Za-z]\w*']
+
+" Ctags
+set tags=./tags;/
+nnoremap <C-[> <C-T>
+"nnoremap <C-T> <C-w><C-]><C-w>T
+nnoremap <C-T> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 
 " Ensime
  "autocmd BufWritePost *.scala silent :EnTypeCheck

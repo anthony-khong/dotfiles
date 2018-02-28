@@ -92,6 +92,23 @@ function scc() {
 }
 
 alias samm='sbt ammonite:run'
+alias sbt="sbt -mem 2048"
+function submit_spark_job() {
+    sbt researchfw/"prod:spark-submit $1"
+}
+function deploy_notebook() {
+    sbt researchfw/prod:"deploy-notebook --conf prod $1"
+}
+function vup() {
+    cd ~/repos/mlskeleton
+    vagrant up
+    vagrant up
+    cd -
+}
+function shoidberg() {
+    ipython ~/shoidberg/run.py
+}
+alias shoid='shoidberg'
 
 # C++ shortucts
 function gpp() {

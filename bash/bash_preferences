@@ -3,6 +3,7 @@ export PYTHONPATH=$PYTHONPATH:~
 export PYTHONPATH=$PYTHONPATH:~/carvil
 export PYTHONPATH=$PYTHONPATH:~/reprod
 export PYTHONPATH=$PYTHONPATH:~/grist
+export PYTHONPATH=$PYTHONPATH:~/repos
 export PATH=$PATH:/opt
 
 # Don't put duplicate lines or lines starting with space in the history.

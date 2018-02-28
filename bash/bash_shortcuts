@@ -64,6 +64,19 @@ function gpy() {
     docker run -v ~/grist:"$DEST" -it grist_image ipython -i "$DEST/$1"
 }
 
+function dock() {
+    docker run -v ~/dotfiles:/root/dotfiles \
+               -v ~/dotfiles/bash/inputrc:/root/.inputrc \
+               -v ~/dotfiles/bash/bashrc:/root/.bashrc \
+               -v ~/dotfiles/vim:/root/.vim \
+               -v ~/dotfiles/vim:/root/.config/nvim \
+               -v ~/dotfiles/vim/vimrc:/root/.vimrc \
+               -v ~/dotfiles/tmux/tmux.conf:/root/.tmux.conf \
+               -v ~/.tmux:/root/.tmux \
+        -it akhong bash
+        #"ln -s /root/dotfiles/tmux/tmux.conf /.tmux.conf; bash"
+}
+
 function purge_py() {
     find . | grep -E "(__pycache__|\.pyc|\.pyo$)" | xargs rm -rf
 }

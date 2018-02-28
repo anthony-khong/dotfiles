@@ -441,3 +441,6 @@ let g:deoplete#omni#input_patterns.scala = ['[^. *\t0-9]\.\w*',': [A-Z]\w', '[\[
 " Ensime
  "autocmd BufWritePost *.scala silent :EnTypeCheck
  "nnoremap <localleader>t :EnTypeCheck<CR>
+ 
+" Jedi
+let g:jedi#force_py_version = 3

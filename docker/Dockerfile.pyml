@@ -1,21 +1,21 @@
 FROM ubuntu:16.04
 
-RUN apt-get update && apt-get install -y build-essential
-
-RUN apt-get install -y wget
+RUN apt-get update && apt-get install -y build-essential wget
 
 RUN wget --quiet https://repo.continuum.io/archive/Anaconda3-5.1.0-Linux-x86_64.sh -O ~/anaconda.sh
 
 RUN /bin/bash ~/anaconda.sh -b -p /opt/conda && rm ~/anaconda.sh
 
-RUN echo "PATH='/opt/conda/bin:$PATH'" >> ~/.bashrc
-
 RUN /opt/conda/bin/pip install \
     coconut \
+    funcy \
     lightgbm \
     pdbpp \
     tabulate \
     xgboost
 
-## Tensorflow
-RUN /opt/conda/bin/pip install --ignore-installed --upgrade https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-1.5.0-cp36-cp36m-linux_x86_64.whl
+RUN /opt/conda/bin/pip install --ignore-installed --upgrade \
+    https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-1.5.0-cp36-cp36m-linux_x86_64.whl
+
+RUN echo "PATH='/opt/conda/bin:$PATH'" >> ~/.bashrc && \
+    echo "PYTHONPATH=/home:$PYTHONNPATH" >> ~/.bashrc

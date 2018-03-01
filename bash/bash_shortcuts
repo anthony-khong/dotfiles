@@ -64,6 +64,12 @@ function gpy() {
     docker run -v ~/grist:"$DEST" -it grist_image ipython -i "$DEST/$1"
 }
 
+function pyml() {
+    SOURCE="$(pwd)/$1"
+    TARGET="${SOURCE/$HOME/}"
+    docker run -v ~/ml:/ml -it pyml opt/conda/bin/ipython -i "$TARGET"
+}
+
 function dock() {
     docker run -v ~/dotfiles:/root/dotfiles \
                -v ~/dotfiles/bash/inputrc:/root/.inputrc \

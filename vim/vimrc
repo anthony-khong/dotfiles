@@ -359,7 +359,7 @@ let g:airline_mode_map = {
 let g:airline_section_y = ''
 
 " GitGutter
-let g:gitgutter_sign_column_always = 1
+set signcolumn=yes
 nmap <Space>gg :GitGutter<CR>
 nmap <Space>] <Plug>GitGutterPrevHunk
 nmap <Space>[ <Plug>GitGutterNextHunk

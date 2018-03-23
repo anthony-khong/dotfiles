@@ -58,10 +58,30 @@ alias pt='py.test -s --pdb'
 alias python='/opt/anaconda/bin/python'
 alias py3='python3 -i'
 alias coco='coconut -t 36'
+alias icoco='coco --ipython console'
 
 function gpy() {
     DEST="/grist"
     docker run -v ~/grist:"$DEST" -it grist_image ipython -i "$DEST/$1"
+}
+
+function pyml() {
+    SOURCE="$(pwd)/$1"
+    TARGET="${SOURCE/$HOME/}"
+    docker run -v ~/ml:/ml -it pyml opt/conda/bin/ipython -i "$TARGET"
+}
+
+function dock() {
+    docker run -v ~/dotfiles:/root/dotfiles \
+               -v ~/dotfiles/bash/inputrc:/root/.inputrc \
+               -v ~/dotfiles/bash/bashrc:/root/.bashrc \
+               -v ~/dotfiles/vim:/root/.vim \
+               -v ~/dotfiles/vim:/root/.config/nvim \
+               -v ~/dotfiles/vim/vimrc:/root/.vimrc \
+               -v ~/dotfiles/tmux/tmux.conf:/root/.tmux.conf \
+               -v ~/.tmux:/root/.tmux \
+        -it akhong bash
+        #"ln -s /root/dotfiles/tmux/tmux.conf /.tmux.conf; bash"
 }
 
 function purge_py() {

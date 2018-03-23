@@ -63,6 +63,9 @@ Plug 'neovimhaskell/haskell-vim'
 " Scala
 Plug 'derekwyatt/vim-scala'
 
+" Docker
+Plug 'ekalinin/Dockerfile.vim'
+
 if has("unix")
   let s:uname = system("uname")
   if s:uname == "Darwin\n"
@@ -451,3 +454,6 @@ nnoremap <C-T> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 " Ensime
  "autocmd BufWritePost *.scala silent :EnTypeCheck
  "nnoremap <localleader>t :EnTypeCheck<CR>
+ 
+" Jedi
+let g:jedi#force_py_version = 3

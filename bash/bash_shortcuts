@@ -250,6 +250,14 @@ function draape() {
     ssh root@128.199.230.91
 }
 
+function hkg() {
+    ssh akhong@hk-mlres-2003
+}
+
+function hkgd() {
+    ssh akhong@hk-mlres-2003 'docker run -it akhong'
+}
+
 function flush_dns_cache() {
     sudo dscacheutil -flushcache
     sudo killall -HUP mDNSResponder

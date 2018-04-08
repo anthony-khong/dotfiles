@@ -82,6 +82,8 @@ augroup load_ultisnips
   autocmd InsertEnter * call plug#load('ultisnips') | autocmd! load_ultisnips
 augroup END
 
+autocmd FileType coconut setlocal commentstring=#\ %s
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                            Vim General Settings                             "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -444,6 +446,6 @@ let g:deoplete#omni#input_patterns.scala = ['[^. *\t0-9]\.\w*',': [A-Z]\w', '[\[
 " Ensime
  "autocmd BufWritePost *.scala silent :EnTypeCheck
  "nnoremap <localleader>t :EnTypeCheck<CR>
- 
+
 " Jedi
 let g:jedi#force_py_version = 3

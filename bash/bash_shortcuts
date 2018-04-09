@@ -288,6 +288,14 @@ function check_my_ip() {
     curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/<.*$//'
 }
 
+function zoidberg() {
+    ssh spark@zoidberg
+}
+
+function alien_zoidberg() {
+    ssh alien_zoidberg@zoidberg
+}
+
 # Vim shortcuts
 alias vi="/usr/bin/vim -p"
 alias vim="nvim -p"

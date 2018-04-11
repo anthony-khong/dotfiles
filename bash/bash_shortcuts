@@ -39,7 +39,7 @@ function tnew {
 
 # Pandoc shortcuts
 function md_to_pdf() {
-    pandoc -V geometry:margin="$1"cm -o $3 $2 --latex-engine=xelatex
+    pandoc -V geometry:margin="$1"cm -o $3 $2 --latex-engine=xelatex --number-sections
 }
 function md_to_wiki() {
     pandoc -r markdown $1 -t mediawiki -o $2

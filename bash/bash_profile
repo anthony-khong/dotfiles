@@ -19,3 +19,25 @@ source ~/dotfiles/bash/bash_preferences
 if [ -d /Users/akkhong/torch ]; then
     . /Users/akkhong/torch/install/bin/torch-activate
 fi
+
+# Vagrant 
+function vzb() {
+    vagrant up;
+    zb "$1"
+}
+
+function zb() {
+    sbt researchfw/prod:"deploy-notebook --conf prod akhong/$1"
+}
+
+function runners() {
+    cd researchfw/src/main/scala/com/agoda/ml/research/deploy/runners
+}
+
+function runners_test() {
+    cd researchfw/src/test/scala/com/agoda/ml/research/deploy
+}
+
+function trivago_bidder() {
+    cd /Users/akhong/repos/trivago/trivago_bidder/src/main/scala/com/agoda/mse/trivago/allocator
+}

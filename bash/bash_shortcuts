@@ -198,6 +198,9 @@ function recreate_symbolic_links() {
 
     rm .tmux.conf;
     ln -s ~/dotfiles/tmux/tmux.conf .tmux.conf;
+
+    rm .ghci;
+    ln -s ~/dotfiles/tmux/ghci .ghci;
 }
 
 function setup_nvim() {
@@ -276,6 +279,9 @@ function vs() {
     chmod +x "$1"
     vim "$1"
 }
+
+# Spacemacs shortcuts
+alias emacs="emacs -nw"
 
 # FSWatch
 function do_if_read() {

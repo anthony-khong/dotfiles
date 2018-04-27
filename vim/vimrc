@@ -55,8 +55,10 @@ Plug 'manicmaniac/coconut.vim'
 Plug 'zchee/deoplete-jedi'
 
 " Haskell
+Plug 'alx741/vim-hindent'
 Plug 'nbouscal/vim-stylish-haskell'
 Plug 'neovimhaskell/haskell-vim'
+Plug 'parsonsmatt/intero-neovim'
 
 " Scala
 Plug 'derekwyatt/vim-scala'
@@ -227,6 +229,7 @@ nmap <Leader>A :so ~/dotfiles/vim/vimrc<CR>:echo 'Changed to AKK'<CR>
 inoremap hh <C-c>
 inoremap thhh th<C-c>
 inoremap jj <C-c>
+tnoremap <Esc> <C-\><C-n>
 
 " Moving up and down physical lines
 nnoremap j gj
@@ -445,3 +448,14 @@ let g:deoplete#omni#input_patterns.scala = ['[^. *\t0-9]\.\w*',': [A-Z]\w', '[\[
 
 " Jedi
 let g:jedi#force_py_version = 3
+
+" Haskell - Taken from: https://blog.jez.io/haskell-development-with-neovim/
+let g:haskell_indent_if = 2
+let g:haskell_indent_before_where = 2
+let g:haskell_indent_case_alternative = 1
+let g:haskell_indent_let_no_in = 0
+let g:ale_linters.haskell = ['stack-ghc-mod', 'hlint']
+let g:intero_use_neomake = 0
+let g:intero_start_immediately = 1
+let g:intero_type_on_hover = 1
+set updatetime=1000

@@ -454,12 +454,15 @@ nnoremap <C-T> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 let g:jedi#force_py_version = 3
 
 " Haskell - Taken from: https://blog.jez.io/haskell-development-with-neovim/
-let g:haskell_indent_if = 2
+let g:ale_linters.haskell = ['stack-ghc-mod', 'hlint']
 let g:haskell_indent_before_where = 2
 let g:haskell_indent_case_alternative = 1
+let g:haskell_indent_if = 2
 let g:haskell_indent_let_no_in = 0
-let g:ale_linters.haskell = ['stack-ghc-mod', 'hlint']
-let g:intero_use_neomake = 0
+let g:hindent_line_length = 100
 let g:intero_start_immediately = 1
 let g:intero_type_on_hover = 1
-set updatetime=1000
+let g:intero_use_neomake = 0
+let g:intero_vertical_split = 1
+let g:intero_window_size = 15
+set updatetime=100

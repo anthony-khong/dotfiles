@@ -311,6 +311,11 @@ function vs() {
     vim "$1"
 }
 
+# Spacemacs
+function macs() {
+    emacs -nw
+}
+
 # FSWatch
 function do_if_read() {
     fswatch "$1" | (while read; do eval "$2; echo Last executed $(date)"; done)

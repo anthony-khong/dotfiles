@@ -39,7 +39,7 @@ function tnew {
 
 # Pandoc shortcuts
 function md_to_pdf() {
-    pandoc -V geometry:margin="$1"cm -o $3 $2 --latex-engine=xelatex --number-sections
+    pandoc -V geometry:margin="$1"cm -o $3 $2 --pdf-engine=xelatex --number-sections
 }
 function md_to_wiki() {
     pandoc -r markdown $1 -t mediawiki -o $2
@@ -91,6 +91,10 @@ function purge_py() {
 
 # Haskell shortcuts
 alias ghci='stack ghci'
+
+function auto_stack_test() {
+    do_if_read "$1" "stack test"
+}
 
 # Scala shortcuts
 alias sc='scala -i'
@@ -325,6 +329,11 @@ function do_if_read() {
 function auto_md_to_pdf() {
     local pdf_path="${1%.*}.pdf"
     fswatch "$1" | (while read; do eval "md_to_pdf 3 $1 $pdf_path; echo Last compiled: $(date)"; done)
+}
+
+function auto_revealjs() {
+    local html_path="${1%.*}.html"
+    fswatch "$1" | (while read; do eval "pandoc -t revealjs -s -o $html_path $1 -V revealjs-url=http://lab.hakim.se/reveal-js; echo Last compiled: $(date)"; done)
 }
 
 # Jekyll

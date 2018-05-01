@@ -41,25 +41,24 @@ function tnew {
 function md_to_pdf() {
     pandoc -V geometry:margin="$1"cm -o $3 $2 --latex-engine=xelatex --number-sections
 }
-function md_to_wiki() {
-    pandoc -r markdown $1 -t mediawiki -o $2
-}
 
 # Python shortcuts
-alias pi='THEANO_FLAGS="device=cpu" ipython -i'
-alias py='THEANO_FLAGS="device=cpu" ipython -i'
-#alias gpy='THEANO_FLAGS="device=gpu0" ipython -i'
-alias gpy0='THEANO_FLAGS="device=gpu0" ipython -i'
-alias gpy1='THEANO_FLAGS="device=gpu1" ipython -i'
-alias gpy2='THEANO_FLAGS="device=gpu2" ipython -i'
-alias gpy3='THEANO_FLAGS="device=gpu3" ipython -i'
-alias pylab='ipython --pylab'
 alias pt='py.test -s --pdb'
 alias python='/opt/anaconda/bin/python'
 alias py3='python3 -i'
 alias coco='coconut -t 36'
 alias icoco='coco --ipython console'
 alias wcoco='coco -t 36 -w'
+alias jpy="jupyter notebook"
+
+function mkinit() {
+    echo '' >> __init__.py
+}
+
+function remove_pyc() {
+    find . -name "*.pyc" -exec rm -rf {} \;
+}
+
 
 function gpy() {
     DEST="/grist"
@@ -94,43 +93,9 @@ alias ghci='stack ghci'
 
 # Scala shortcuts
 alias sc='scala -i'
-function scc() {
-    mkdir classes_temp
-    scalac -d classes_temp "$1"
-    cd classes_temp
-    scala "$2" "${@:3}"
-    cd ..
-    rm -rf classes_temp
-}
-
-alias ss='spark-shell -i'
-function scc() {
-    rm temp.scala
-    touch temp.scala
-    echo "{" >> temp.scala
-    cat "$1" >> temp.scala
-    echo "}" >> temp.scala
-    ss temp.scala
-}
 
 alias samm='sbt ammonite:run'
 alias sbt="sbt -mem 2048"
-function submit_spark_job() {
-    sbt researchfw/"prod:spark-submit $1"
-}
-function deploy_notebook() {
-    sbt researchfw/prod:"deploy-notebook --conf prod $1"
-}
-function vup() {
-    cd ~/repos/mlskeleton
-    vagrant up
-    vagrant up
-    cd -
-}
-function shoidberg() {
-    ipython ~/shoidberg/run.py
-}
-alias shoid='shoidberg'
 
 # C++ shortucts
 function gpp() {
@@ -145,14 +110,6 @@ function gpp() {
     rm temp
     echo ""
     rm a.out
-}
-
-function mkinit() {
-    echo '' >> __init__.py
-}
-
-function remove_pyc() {
-    find . -name "*.pyc" -exec rm -rf {} \;
 }
 
 # Git shortcuts
@@ -274,14 +231,6 @@ function draape() {
     ssh root@128.199.230.91
 }
 
-function hkg() {
-    ssh akhong@hk-mlres-2003
-}
-
-function hkgd() {
-    ssh akhong@hk-mlres-2003 'docker run -it akhong'
-}
-
 function flush_dns_cache() {
     sudo dscacheutil -flushcache
     sudo killall -HUP mDNSResponder
@@ -290,14 +239,6 @@ function flush_dns_cache() {
 
 function check_my_ip() {
     curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/<.*$//'
-}
-
-function zoidberg() {
-    ssh spark@zoidberg
-}
-
-function alien_zoidberg() {
-    ssh alien_zoidberg@zoidberg
 }
 
 # Vim shortcuts
@@ -337,10 +278,6 @@ function fix_cuda_compile() {
     sudo ldconfig /usr/local/cuda/lib64
 }
 
-function slack() {
-    google-chrome https://cmls.slack.com/messages/general_/
-}
-
 # Youtube DL
 alias ytdl_mp3="youtube-dl --extract-audio --audio-format mp3"
 
@@ -356,6 +293,4 @@ function start_db() {
 function revenue_breakdown() {
     ipython ~/carvil/scripts/revenue_check.py "$@"
 }
-
-alias jpy="jupyter notebook"
 

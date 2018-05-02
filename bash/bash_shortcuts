@@ -179,7 +179,7 @@ function recreate_symbolic_links() {
     ln -s ~/dotfiles/tmux/tmux.conf .tmux.conf;
 
     rm .ghci;
-    ln -s ~/dotfiles/tmux/ghci .ghci;
+    ln -s ~/dotfiles/ghci .ghci;
 }
 
 function setup_nvim() {

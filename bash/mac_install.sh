@@ -41,10 +41,10 @@ brew install r
 # Anaconda
 echo 'Setting up Anaconda...'
 read -p "Install Anacanda now. Press [Enter] to continue..."
-sudo wget http://repo.continuum.io/archive/https://repo.continuum.io/archive/Anaconda3-5.1.0-MacOSX-x86_64.sh -O ~/Downloads/anaconda.sh
-sudo chmod +x anaconda.sh
-sudo bash anaconda.sh -b -p /opt/anaconda
-rm ~/anaconda.sh
+sudo wget https://repo.continuum.io/archive/Anaconda3-5.1.0-MacOSX-x86_64.sh -O ~/Downloads/anaconda.sh
+sudo chmod +x ~/Downloads/anaconda.sh
+sudo bash ~/Downloads/anaconda.sh -b -p /opt/anaconda
+rm ~/Downloads/anaconda.sh
 
 # Setup dotfiles
 echo 'Setting up dotfiles...'

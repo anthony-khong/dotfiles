@@ -11,27 +11,27 @@ call plug#begin()
 
 " Editing
 Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'SirVer/ultisnips', { 'on': [] }
 Plug 'ervandew/supertab'
 Plug 'honza/vim-snippets'
 Plug 'junegunn/vim-easy-align'
 Plug 'kana/vim-textobj-user'
 Plug 'scrooloose/nerdcommenter'
-"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-"Plug 'ensime/ensime-vim'
 
 " Motions
 Plug 'easymotion/vim-easymotion'
 Plug 'ggVGc/vim-fuzzysearch'
 Plug 'justinmk/vim-sneak'
+Plug 'vim-scripts/ctags.vim'
 
 " Colour Schemes
 Plug 'morhetz/gruvbox'
 Plug 'reedes/vim-colors-pencil'
 
 " Utilities
-Plug 'christoomey/vim-tmux-navigator'
 Plug 'Shougo/vimproc', {'do' : 'make'}
+Plug 'christoomey/vim-tmux-navigator'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
@@ -41,22 +41,24 @@ Plug 'tpope/vim-fugitive'
 
 " Visualisation
 Plug 'airblade/vim-gitgutter'
-Plug 'neomake/neomake'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'plasticboy/vim-markdown'
 Plug 'tpope/vim-surround'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/textutil.vim'
+Plug 'w0rp/ale'
 
 " Python
 Plug 'bps/vim-textobj-python'
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 Plug 'manicmaniac/coconut.vim'
+Plug 'zchee/deoplete-jedi'
 
 " Haskell
-Plug 'eagletmt/ghcmod-vim'
+Plug 'alx741/vim-hindent'
 Plug 'nbouscal/vim-stylish-haskell'
 Plug 'neovimhaskell/haskell-vim'
+Plug 'parsonsmatt/intero-neovim'
 
 " Scala
 Plug 'derekwyatt/vim-scala'
@@ -81,6 +83,8 @@ augroup load_ultisnips
   autocmd!
   autocmd InsertEnter * call plug#load('ultisnips') | autocmd! load_ultisnips
 augroup END
+
+autocmd FileType coconut setlocal commentstring=#\ %s
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                            Vim General Settings                             "
@@ -225,6 +229,7 @@ nmap <Leader>A :so ~/dotfiles/vim/vimrc<CR>:echo 'Changed to AKK'<CR>
 inoremap hh <C-c>
 inoremap thhh th<C-c>
 inoremap jj <C-c>
+tnoremap <Esc> <C-\><C-n>
 
 " Moving up and down physical lines
 nnoremap j gj
@@ -269,6 +274,8 @@ nnoremap <Leader>n :set relativenumber!<CR>
 
 " Fold Toggle
 nnoremap <Leader>f za
+nnoremap <Leader>df zE
+nnoremap <Leader>} zfa}
 
 " Since <C-a> is the Tmux prefix, we replace <C-a> with <C-o>
 inoremap <C-o> <C-a>
@@ -366,19 +373,15 @@ nmap <Space>[ <Plug>GitGutterNextHunk
 nmap <Space>hs <Plug>GitGutterStageHunk
 nmap <Space>hr <Plug>GitGutterRevertHunk
 
-" NeoMake
-autocmd! BufWritePost * Neomake
-let g:neomake_verbose = 0
-let g:neomake_error_sign = { 'text': '>>', 'texthl': 'ErrorMsg'}
-hi ErrorMsg ctermbg=234 ctermfg=9
-let g:neomake_warning_sign={'text': '!!', 'texthl': 'NeomakeErrorMsg'}
-hi NeomakeErrorMsg ctermbg=234 ctermfg=11
-let g:neomake_python_enabled_makers = ['pyflakes']
-setlocal errorformat=%IAt\ %f:%l:,%C%m,%Z,%-G%.%#
-let g:neomake_cpp_enabled_markers=['clang']
-let g:neomake_cpp_clang_args = ["-std=c++11", "-Wextra", "-Wall"]
-"let g:neomake_scala_enabled_makers = ['fsc', 'scalastyle']
-let g:neomake_scala_enabled_makers = []
+" Ale
+let g:ale_linters = {'python': ['pyflakes'], 'scala': ['scalastyle']}
+let g:ale_completion_enabled = 1
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = '!!'
+hi ALEErrorSign ctermbg=234 ctermfg=9
+hi ALEWarningSign ctermbg=234 ctermfg=11
+hi ALEWarning ctermbg=DarkMagenta
+let g:airline#extensions#ale#enabled = 1
 
 " Fugitive
 nmap <Space>gd :Gdiff<CR>
@@ -413,7 +416,7 @@ nmap Z <Plug>Sneak_S
 nmap ? :FuzzySearch<CR>
 
 " FZF
-nnoremap <C-t> :FZF ~<CR>
+" nnoremap <C-t> :FZF ~<CR>
 nnoremap <Space>f :FZF ~<CR>
 nnoremap <Space>p :FZF<CR>
 let g:fzf_action = {
@@ -441,9 +444,26 @@ let g:deoplete#sources.scala = ['buffer', 'tags', 'omni']
 let g:deoplete#omni#input_patterns = {}
 let g:deoplete#omni#input_patterns.scala = ['[^. *\t0-9]\.\w*',': [A-Z]\w', '[\[\t\( ][A-Za-z]\w*']
 
-" Ensime
- "autocmd BufWritePost *.scala silent :EnTypeCheck
- "nnoremap <localleader>t :EnTypeCheck<CR>
- 
+" Ctags
+set tags=./tags;/
+nnoremap <C-[> <C-T>
+"nnoremap <C-T> <C-w><C-]><C-w>T
+nnoremap <C-T> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+
 " Jedi
 let g:jedi#force_py_version = 3
+
+" Haskell - Taken from: https://blog.jez.io/haskell-development-with-neovim/
+let g:ale_linters.haskell = ['stack-ghc-mod', 'hlint']
+let g:haskell_indent_before_where = 2
+let g:haskell_indent_case_alternative = 1
+let g:haskell_indent_if = 2
+let g:haskell_indent_let_no_in = 0
+let g:hindent_line_length = 100
+let g:hindent_on_save = 0
+let g:intero_start_immediately = 1
+let g:intero_type_on_hover = 1
+let g:intero_use_neomake = 0
+let g:intero_vertical_split = 1
+let g:intero_window_size = 8
+set updatetime=100

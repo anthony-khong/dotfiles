@@ -36,26 +36,24 @@ export EDITOR="$VISUAL"
 
 # Make FZF search faster
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-export FZF_CTRL_T_COMMAND="ag -l -g ''"
-export FZF_DEFAULT_COMMAND="ag -l -g '' \
-                            --ignore-dir='Applications'\
-                            --ignore-dir='Desktop'\
-                            --ignore-dir='Downloads'\
-                            --ignore-dir='Dropbox' \
-                            --ignore-dir='Lasagne'\
-                            --ignore-dir='Library'\
-                            --ignore-dir='Movies'\
-                            --ignore-dir='Music'\
-                            --ignore-dir='Pictures'\
-                            --ignore-dir='Templates'\
-                            --ignore-dir='Videos'\
-                            --ignore-dir='anaconda'\
-                            --ignore-dir='mxnet'\
-                            --ignore-dir='node_modules'\
-                            --ignore-dir='pycuda-2015.1.2' \
-                            --ignore-dir='pylearn2' \
-                            --ignore-dir='tensorflow' \
-                            --ignore-dir='xgboost' \
+
+# This controls what happens in Terminal
+# export FZF_CTRL_T_COMMAND="ag -l -g ''"
+
+# This controls what happens in Vim
+export FZF_DEFAULT_COMMAND="rg --files\
+                            -g '*'\
+                            -g '!*Applications/*'\
+                            -g '!*Desktop/*'\
+                            -g '!*Downloads/*'\
+                            -g '!*Dropbox/*'\
+                            -g '!*Library/*'\
+                            -g '!*Movies/*'\
+                            -g '!*Music/*'\
+                            -g '!*Pictures/*'\
+                            -g '!*Templates/*'\
+                            -g '!*Videos/*'
                             "
 export FZF_TMUX=1
 export FZF_TMUX_HEIGHT=20
+

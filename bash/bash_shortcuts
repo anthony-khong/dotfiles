@@ -43,6 +43,7 @@ function md_to_pdf() {
 }
 
 # Python shortcuts
+alias py='ipython -i'
 alias pt='py.test -s --pdb'
 alias python='/opt/anaconda/bin/python'
 alias py3='python3 -i'

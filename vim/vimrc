@@ -213,7 +213,7 @@ set splitbelow
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " It looks nicer in some colour schemes
 if dark_background
-    silent! colorscheme ubuntu
+    silent! colorscheme oceanic
 else
     silent! colorscheme akk_light
 endif

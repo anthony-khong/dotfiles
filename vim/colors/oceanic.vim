@@ -23,10 +23,10 @@ hi Character                ctermfg=105 ctermbg=none cterm=NONE      term=NONE
 hi Comment                  ctermfg=242 ctermbg=none cterm=NONE      term=NONE
 hi Constant                 ctermfg=251 ctermbg=none cterm=NONE      term=NONE
 hi Type                     ctermfg=69  ctermbg=none cterm=bold      term=bold
-hi Function                 ctermfg=251 ctermbg=none cterm=bold      term=bold
+hi Function                 ctermfg=69 ctermbg=none cterm=bold      term=bold
 hi Identifier               ctermfg=251 ctermbg=none cterm=NONE      term=NONE
-hi Keyword               ctermfg=251 ctermbg=none cterm=NONE      term=NONE
-hi Special                  ctermfg=251 ctermbg=none cterm=NONE      term=NONE
+hi Keyword               ctermfg=69 ctermbg=none cterm=NONE      term=NONE
+hi Special                  ctermfg=105 ctermbg=none cterm=NONE      term=NONE
 hi MatchParen               ctermfg=251  ctermbg=74  cterm=NONE      term=NONE
 hi Search                   ctermfg=255  ctermbg=105   cterm=NONE      term=NONE
 hi Visual                   ctermfg=255  ctermbg=105   cterm=NONE      term=NONE

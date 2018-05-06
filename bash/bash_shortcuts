@@ -91,6 +91,7 @@ function purge_py() {
 
 # Haskell shortcuts
 alias ghci='stack ghci'
+alias ho='hoogle'
 
 function auto_stack_test() {
     do_if_read "$1" "stack test"

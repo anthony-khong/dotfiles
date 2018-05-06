@@ -12,6 +12,7 @@ nnoremap <silent> <Space>ih :InteroHide<CR>
 
 " Send whatever is under the cursor
 nnoremap <silent> <Space>ss :InteroSend <C-r><C-w><CR>
+nnoremap <silent> <Space>go :InteroSend go<CR>
 
 " Reloading (pick one)
 " Automatically reload on save

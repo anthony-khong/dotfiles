@@ -56,14 +56,12 @@ Plug 'zchee/deoplete-jedi'
 
 " Haskell
 Plug 'alx741/vim-hindent'
-"Plug 'autozimu/LanguageClient-neovim', {
-    "\ 'branch': 'next',
-    "\ 'do': './install.sh'
-    "\ }
 Plug 'nbouscal/vim-stylish-haskell'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'parsonsmatt/intero-neovim'
-"Plug 'enomsg/vim-haskellConcealPlus'
+
+" R
+Plug 'jalvesaq/Nvim-R'
 
 " Scala
 Plug 'derekwyatt/vim-scala'
@@ -474,9 +472,3 @@ let g:intero_use_neomake = 0
 let g:intero_vertical_split = 1
 let g:intero_window_size = 8
 set updatetime=100
-
-"let g:LanguageClient_serverCommands = {
-    "\ 'haskell': ['hie', '--lsp']
-    "\ }
-"nnoremap <silent> <Space>h :call LanguageClient#textDocument_hover()<CR>
-"nnoremap <silent> <Space>d :call LanguageClient#textDocument_definition()<CR>

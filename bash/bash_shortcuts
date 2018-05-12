@@ -206,6 +206,11 @@ function fix_nvim_tmux_navigator () {
     tic $TERM.ti
 }
 
+function setup_parinfer_neovim () {
+    cd ~/dotfiles/vim/plugged/parinfer-rust/cparinfer
+    cargo build --release
+}
+
 # Navigation shortcuts
 function papers() {
     cd ~/Dropbox/Interesting\ Papers/

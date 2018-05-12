@@ -33,6 +33,7 @@ brew install reattach-to-user-namespace
 # Ag
 echo 'Setting up Ag...'
 brew install the_silver_searcher
+brew install repgrip
 
 # R
 echo 'Setting up R...'
@@ -62,6 +63,7 @@ echo 'Installing NeoVim plugins...'
 nvim +PlugInstall +qall
 nvim +PlugUpdate +qall
 nvim +PlugInstall +qall
+curl https://sh.rustup.rs -sSf | sh
 
 # Setup Tmux
 echo 'Installing Tmux plugins...'
@@ -80,8 +82,7 @@ wget https://d3kbcqa49mib13.cloudfront.net/spark-2.2.0-bin-hadoop2.7.tgz
 mv spark-2.2.0-bin-hadoop2.7 ~/opt/spark
 
 # Setup Haskell
-brew cask install haskell-platform
-curl -sSL https://get.haskellstack.org/ | sh
+brew install stack
 
 # Install the following manually:
 # Chrome, Dropbox, Texmaker, R, RStudio, Spotify, VLC, iTerm, Skype,

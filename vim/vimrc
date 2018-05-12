@@ -25,10 +25,6 @@ Plug 'ggVGc/vim-fuzzysearch'
 Plug 'justinmk/vim-sneak'
 Plug 'vim-scripts/ctags.vim'
 
-" Colour Schemes
-Plug 'morhetz/gruvbox'
-Plug 'reedes/vim-colors-pencil'
-
 " Utilities
 Plug 'Shougo/vimproc', {'do' : 'make'}
 Plug 'christoomey/vim-tmux-navigator'
@@ -48,17 +44,20 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/textutil.vim'
 Plug 'w0rp/ale'
 
-" Python
-Plug 'bps/vim-textobj-python'
-Plug 'davidhalter/jedi-vim', { 'for': 'python' }
-Plug 'manicmaniac/coconut.vim'
-Plug 'zchee/deoplete-jedi'
+" Clojure
+Plug 'eraserhd/parinfer-rust'
 
 " Haskell
 Plug 'alx741/vim-hindent'
 Plug 'nbouscal/vim-stylish-haskell'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'parsonsmatt/intero-neovim'
+
+" Python
+Plug 'bps/vim-textobj-python'
+Plug 'davidhalter/jedi-vim', { 'for': 'python' }
+Plug 'manicmaniac/coconut.vim'
+Plug 'zchee/deoplete-jedi'
 
 " R
 Plug 'jalvesaq/Nvim-R'
@@ -86,8 +85,6 @@ augroup load_ultisnips
   autocmd!
   autocmd InsertEnter * call plug#load('ultisnips') | autocmd! load_ultisnips
 augroup END
-
-autocmd FileType coconut setlocal commentstring=#\ %s
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                            Vim General Settings                             "
@@ -309,12 +306,11 @@ nnoremap <C-w> :w<CR>
 "                                Generic Autos                                "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+autocmd BufNewFile,BufRead *.clj set filetype=clojure
+autocmd BufNewFile,BufRead *.cu set ft=cu
+autocmd BufNewFile,BufRead *.cuh set ft=cu
 autocmd BufRead,BufNewFile *.md setfiletype markdown
 autocmd BufRead,BufNewFile *.sc setfiletype scala
-
-" Enbale CUDA syntax
-au BufNewFile,BufRead *.cu set ft=cu
-au BufNewFile,BufRead *.cuh set ft=cu
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                   Plugins                                   "
@@ -458,6 +454,12 @@ nnoremap <C-T> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 " Jedi
 let g:jedi#force_py_version = 3
 
+" Coconut
+autocmd FileType coconut setlocal commentstring=#\ %s
+
+" Parinfer
+let g:parinfer_enabled = 1
+
 " Haskell - Taken from: https://blog.jez.io/haskell-development-with-neovim/
 let g:ale_linters.haskell = ['stack-ghc-mod', 'hlint']
 let g:haskell_indent_before_where = 2
@@ -472,3 +474,4 @@ let g:intero_use_neomake = 0
 let g:intero_vertical_split = 1
 let g:intero_window_size = 8
 set updatetime=100
+

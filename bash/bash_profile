@@ -20,3 +20,5 @@ if [ -e ~/bashrc_agoda ]
 then
     source ~/bashrc_agoda
 fi
+
+export PATH="$HOME/.cargo/bin:$PATH"

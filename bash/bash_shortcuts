@@ -182,6 +182,9 @@ function recreate_symbolic_links() {
 
     rm .ghci;
     ln -s ~/dotfiles/ghci .ghci;
+
+    rm ~/.lein/profiles.clj
+    ln -s ~/dotfiles/lein_profiles.clj .lein/profiles.clj
 }
 
 function setup_nvim() {
@@ -209,6 +212,14 @@ function fix_nvim_tmux_navigator () {
 function setup_parinfer_neovim () {
     cd ~/dotfiles/vim/plugged/parinfer-rust/cparinfer
     cargo build --release
+}
+
+function install_lein () {
+    curl https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein > lein
+    sudo mkdir -p /usr/local/bin/
+    sudo mv lein /usr/local/bin/lein
+    sudo chmod a+x /usr/local/bin/lein
+    lein
 }
 
 # Navigation shortcuts

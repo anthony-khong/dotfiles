@@ -45,6 +45,10 @@ Plug 'vim-scripts/textutil.vim'
 Plug 'w0rp/ale'
 
 " Clojure
+"Plug 'clojure-vim/acid.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'guns/vim-clojure-highlight'
+Plug 'guns/vim-clojure-static'
+Plug 'tpope/vim-fireplace'
 Plug 'eraserhd/parinfer-rust'
 
 " Haskell
@@ -458,7 +462,9 @@ let g:jedi#force_py_version = 3
 autocmd FileType coconut setlocal commentstring=#\ %s
 
 " Parinfer
+let g:parinfer_mode = 'smart'
 let g:parinfer_enabled = 1
+let g:parinfer_force_balance = 0
 
 " Haskell - Taken from: https://blog.jez.io/haskell-development-with-neovim/
 let g:ale_linters.haskell = ['stack-ghc-mod', 'hlint']

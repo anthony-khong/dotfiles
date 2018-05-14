@@ -155,36 +155,7 @@ function gpa() {
 }
 
 function recreate_symbolic_links() {
-    cd;
-    if [ "$(uname)" == "Darwin" ]; then
-        rm .bash_profile;
-        ln -s dotfiles/bash/bash_profile .bash_profile;
-    elif [ "$(uname)" == "Linux" ]; then
-        rm .bashrc;
-        ln -s dotfiles/bash/bashrc .bashrc;
-    fi
-
-    rm .inputrc;
-    ln -s dotfiles/bash/inputrc .inputrc;
-
-    cd;
-    rm .vimrc;
-    rm -rf .vim;
-    ln -s ~/dotfiles/vim/vimrc .vimrc;
-    ln -s ~/dotfiles/vim/ .vim;
-
-    mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config};
-    rm $XDG_CONFIG_HOME/nvim;
-    ln -s ~/dotfiles/vim $XDG_CONFIG_HOME/nvim;
-
-    rm .tmux.conf;
-    ln -s ~/dotfiles/tmux/tmux.conf .tmux.conf;
-
-    rm .ghci;
-    ln -s ~/dotfiles/ghci .ghci;
-
-    rm ~/.lein/profiles.clj
-    ln -s ~/dotfiles/lein_profiles.clj .lein/profiles.clj
+    bash ~/dotfiles/bash/recreate_symbolic_links
 }
 
 function setup_nvim() {

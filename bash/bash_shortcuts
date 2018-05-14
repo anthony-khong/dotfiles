@@ -97,6 +97,18 @@ function auto_stack_test() {
     do_if_read "$1" "stack test"
 }
 
+function hs_script() {
+    touch "$1"
+    echo "#!/usr/bin/env stack"     >> "$1"
+    echo "{- stack"                 >> "$1"
+    echo "     --resolver lts-11.7" >> "$1"
+    echo "     exec ghci"           >> "$1"
+    echo "-}"                       >> "$1"
+    echo ""                         >> "$1"
+    echo "main :: IO ()"            >> "$1"
+    echo "main = return ()"         >> "$1"
+}
+
 # Scala shortcuts
 alias sc='scala -i'
 

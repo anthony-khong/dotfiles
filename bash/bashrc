@@ -105,34 +105,7 @@ if ! shopt -oq posix; then
   fi
 fi
 
-export OPENBLAS_HOME=/home/akkhong
-export PYLEARN2_DATA_PATH=/data/lisa/data
-
-# CUDA Settings
-if [ $HOSTNAME = "jarwin" ]; then
-    export PATH=/usr/local/cuda-7.5/bin:$PATH
-    export LD_LIBRARY_PATH=/usr/local/cuda-7.5/lib64:$LD_LIBRARY_PATH
-fi
-
-export PYTHONPATH=/home/akkhong/
-export PYTHONPATH=$PYTHONPATH:/home/akkhong/cmls
-export PYTHONPATH=$PYTHONPATH:/home/akkhong/xgboost/python-package/
-
-# Stop Python from generating .pyc files
-export PYTHONDONTWRITEBYTECODE=1
-
 source ~/dotfiles/bash/bash_shortcuts
 source ~/dotfiles/bash/bash_preferences
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
-# Linuxbrew Path
-export PATH="$HOME/.linuxbrew/bin:$PATH"
-export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
-export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
-
-# added by Anaconda 2.1.0 installer
-export PATH="/opt/anaconda/bin:$PATH"
-
-# For OpenCV
-export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/lib/x86_64-linux-gnu/pkgconfig/

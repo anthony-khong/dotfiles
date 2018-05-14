@@ -35,6 +35,8 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tomtom/tlib_vim'
 Plug 'tpope/vim-fugitive'
 
+Plug 'hkupty/iron.nvim', { 'do': ':UpdateRemotePlugins' }
+
 " Visualisation
 Plug 'airblade/vim-gitgutter'
 Plug 'plasticboy/vim-markdown'
@@ -481,3 +483,5 @@ let g:intero_vertical_split = 1
 let g:intero_window_size = 8
 set updatetime=100
 
+" IronRepl
+let g:iron_repl_open_cmd = "70vsplit"

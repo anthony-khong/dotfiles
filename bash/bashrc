@@ -105,8 +105,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-export PYTHONPATH=~
-
 source ~/dotfiles/bash/bash_shortcuts
 source ~/dotfiles/bash/bash_preferences
 

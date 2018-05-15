@@ -38,15 +38,14 @@ RUN apt-get install -y software-properties-common python-software-properties \
         && nvim +PlugInstall +qall \
         && /bin/bash $HOME/dotfiles/tmux/tpm/scripts/install_plugins.sh
 
-## Python development
+## Python
 RUN pip install coconut[watch] \
     funcy \
     lightgbm \
     pdbpp \
     tabulate \
+    ipython==5.7.0 \
     && apt-get install -y python3-tk
-
-RUN pip install ipython==5.7.0 # Otherwise tmux copy-paste does not work
 
 ## Haskell
 ## Clojure

@@ -28,8 +28,7 @@ Plug 'vim-scripts/ctags.vim'
 " Utilities
 Plug 'Shougo/vimproc', {'do' : 'make'}
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'epeli/slimux'
-Plug 'hkupty/iron.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'jpalardy/vim-slime'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
@@ -485,3 +484,9 @@ set updatetime=100
 
 " IronRepl
 let g:iron_repl_open_cmd = "70vsplit"
+
+" Slime
+let g:slime_target = "tmux"
+let g:slime_default_config = {"socket_name": split($TMUX, ",")[0], "target_pane": ":0.1"}
+let g:slime_dont_ask_default = 1
+"let g:slime_python_ipython = 1

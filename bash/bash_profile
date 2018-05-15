@@ -5,7 +5,6 @@ alias ls='ls -GFh'
 
 export PATH="/Users/akkhong:$PATH"
 export PATH="/Users/akkhong/.local/bin:$PATH"
-export PATH="/opt/anaconda/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
 export PATH="/opt/spark/bin:$PATH"
 export DYLD_FALLBACK_LIBRARY_PATH=/usr/local/opt/openblas/lib/libopenblasp-r0.2.15.dylib:$DYLD_FALLBACK_LIBRARY_PATH
@@ -22,3 +21,4 @@ then
 fi
 
 export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="/opt/anaconda/bin:$PATH"

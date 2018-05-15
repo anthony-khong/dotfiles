@@ -46,6 +46,8 @@ RUN pip install coconut[watch] \
     tabulate \
     && apt-get install -y python3-tk
 
+RUN pip install ipython==5.7.0 # Otherwise tmux copy-paste does not work
+
 ## Haskell
 ## Clojure
 ## Scala

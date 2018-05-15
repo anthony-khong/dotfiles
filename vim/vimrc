@@ -28,14 +28,14 @@ Plug 'vim-scripts/ctags.vim'
 " Utilities
 Plug 'Shougo/vimproc', {'do' : 'make'}
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'epeli/slimux'
+Plug 'hkupty/iron.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tomtom/tlib_vim'
 Plug 'tpope/vim-fugitive'
-
-Plug 'hkupty/iron.nvim', { 'do': ':UpdateRemotePlugins' }
 
 " Visualisation
 Plug 'airblade/vim-gitgutter'

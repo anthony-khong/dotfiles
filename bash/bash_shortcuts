@@ -304,3 +304,11 @@ function revenue_breakdown() {
     ipython ~/carvil/scripts/revenue_check.py "$@"
 }
 
+# Docker
+function docker_cleanup_images() {
+    docker rmi $(docker images -q)
+}
+
+function docker_cleanup_containers() {
+    docker rm $(docker ps -a -q)
+}

@@ -39,7 +39,7 @@ function tnew {
 
 # Pandoc shortcuts
 function md_to_pdf() {
-    pandoc -V geometry:margin="$1"cm -o $3 $2 --pdf-engine=xelatex --number-sections
+    pandoc -V geometry:margin="$1"cm -o $3 $2
 }
 
 # Python shortcuts

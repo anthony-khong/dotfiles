@@ -41,10 +41,12 @@ RUN apt-get install -y software-properties-common python-software-properties \
 ## Python
 RUN pip install coconut[watch] \
     funcy \
+    ipython==5.7.0 \
+    jedi \
     lightgbm \
+    neovim \
     pdbpp \
     tabulate \
-    ipython==5.7.0 \
     && apt-get install -y python3-tk
 
 ## Haskell

@@ -38,6 +38,10 @@ RUN apt-get install -y software-properties-common python-software-properties \
         && nvim +PlugInstall +qall \
         && /bin/bash $HOME/dotfiles/tmux/tpm/scripts/install_plugins.sh
 
+## Rip Grep
+RUN curl -LO https://github.com/BurntSushi/ripgrep/releases/download/0.8.1/ripgrep_0.8.1_amd64.deb
+RUN dpkg -i ripgrep_0.8.1_amd64.deb && rm ripgrep_0.8.1_amd64.deb
+
 ## Python
 RUN pip install coconut[watch] \
     funcy \
@@ -45,10 +49,8 @@ RUN pip install coconut[watch] \
     jedi \
     lightgbm \
     neovim \
+    requests \
     pdbpp \
+    pytest \
     tabulate \
     && apt-get install -y python3-tk
-
-## Haskell
-## Clojure
-## Scala

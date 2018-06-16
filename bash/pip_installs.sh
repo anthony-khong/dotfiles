@@ -1,6 +1,5 @@
 pip install \
     coconut \
-    funcy \
     lightgbm \
     pdbpp \
     tabulate

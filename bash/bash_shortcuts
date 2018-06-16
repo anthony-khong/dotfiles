@@ -18,14 +18,6 @@ if [ $HOSTNAME = "jarwin" ]; then
 fi
 
 alias renew="sudo ipconfig set en0 BOOTP && sudo ipconfig set en0 DHCP"
-alias hs="runhaskell"
-
-function setup_devilspie() {
-    sudo apt-get install devilspie
-    mkdir ~/.devilspie
-    echo -e '(if\n\t(matches (window_name) "Terminal")\n\t(opacity 90)\n)' >> ~/.devilspie/terminal-opacity.ds
-}
-
 
 HISTCONTROL=ignoreboth
 HISTIGNORE='ls:bg:fg:history:hh'

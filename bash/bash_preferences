@@ -3,6 +3,7 @@ export PYTHONPATH=$PYTHONPATH:~/carvil
 export PYTHONPATH=$PYTHONPATH:~/reprod
 export PYTHONPATH=$PYTHONPATH:~/grist
 export PYTHONPATH=$PYTHONPATH:~/repos
+export PYTHONPATH=$PYTHONPATH:~/code
 export PYTHONPATH=$PYTHONPATH:~
 export PATH=$PATH:/opt
 export PATH=$PATH:~/.local/bin

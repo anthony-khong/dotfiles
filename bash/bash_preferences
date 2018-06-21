@@ -55,3 +55,7 @@ export FZF_DEFAULT_COMMAND="rg --files\
 export FZF_TMUX=1
 export FZF_TMUX_HEIGHT=20
 
+if [ -e ~/bashrc_agoda ]
+then
+    source ~/bashrc_agoda
+fi

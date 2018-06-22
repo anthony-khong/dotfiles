@@ -45,5 +45,13 @@ pip install coconut[watch] \
     requests \
     pdbpp \
     pytest \
+    pywebhdfs \
     tabulate \
     && apt-get install -y python3-tk
+
+sudo apt-get install git gcc make pkg-config libx11-dev libxtst-dev libxi-dev \
+    && cd $HOME \
+    && git clone https://github.com/alols/xcape.git \
+    && cd xcape \
+    && make \
+    && sudo make install

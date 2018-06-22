@@ -8,14 +8,20 @@ Change terminal themes.
 Change theme to New-Minty.
 Change font defaults to 11, 12, ..., 12.
 Clean up panels + increase size + show date.
+
+Install Slack.
+Add Agoda certificates.
+Setup Pulse Secure.
+Setup Github SSH key.
+Setup Shoiberg.
 '
 
 sudo apt-get update
 sudo apt-get install build-essential
 sudo apt-get install fonts-inconsolata -y
 
-apt-get update \
-    && apt-get install -y build-essential \
+sudo apt-get update \
+    && sudo apt-get install -y build-essential \
         ca-certificates \
         curl \
         git \
@@ -39,10 +45,10 @@ cd $HOME/Downloads \
     && sudo sh Anaconda3-5.2.0-Linux-x86_64.sh \
     cd $HOME
 
-apt-get install -y software-properties-common python-software-properties \
-        && add-apt-repository -y ppa:neovim-ppa/stable \
-        && apt-get update \
-        && apt-get install -y neovim \
+sudo apt-get install -y software-properties-common python-software-properties \
+        && sudo add-apt-repository -y ppa:neovim-ppa/stable \
+        && sudo apt-get update \
+        && sudo apt-get install -y neovim \
         && pip install --upgrade neovim jedi google-api-python-client \
         && nvim +PlugInstall +qall \
         && /bin/bash $HOME/dotfiles/tmux/tpm/scripts/install_plugins.sh
@@ -61,6 +67,7 @@ pip install coconut[watch] \
     pytest \
     pywebhdfs \
     tabulate \
+    tensorflow \
     && apt-get install -y python3-tk
 
 sudo apt-get install git gcc make pkg-config libx11-dev libxtst-dev libxi-dev \
@@ -69,3 +76,49 @@ sudo apt-get install git gcc make pkg-config libx11-dev libxtst-dev libxi-dev \
     && cd xcape \
     && make \
     && sudo make install
+
+sudo add-apt-repository ppa:gnome3-team/gnome3 \
+    && sudo apt-get update \
+    && sudo apt-get install evince
+
+sudo apt-get update \
+    && sudo apt-get install \
+        apt-transport-https \
+        ca-certificates \
+        curl \
+        software-properties-common \
+    && cd $HOME/Downloads \
+    && curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add - \
+    && sudo add-apt-repository \
+        "deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable" \
+    && cd $HOME \
+    && sudo apt-get update \
+    && sudo apt-get install docker-ce \
+    && sudo groupadd docker \
+    && sudo usermod -aG docker $USER
+
+echo "deb https://dl.bintray.com/sbt/debian /" | sudo tee -a /etc/apt/sources.list.d/sbt.list \
+    && sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2EE0EA64E40A89B84B2DF73499E82A75642AC823 \
+    && sudo apt-get update \
+    && sudo apt-get install sbt
+
+curl -sSL https://get.haskellstack.org/ | sh
+
+
+sudo apt-get install gcc python-dev libkrb5-dev \
+    && pip install pywinrm[kerberos] \
+    && pip install sparkmagic \
+    && jupyter nbextension enable --py --sys-prefix widgetsnbextension \
+
+: '
+If there are permission issues, do:
+cd /usr/local/share/ \
+    && sudo chown -R akhong .
+    && cd $HOME
+'
+cd /opt/anaconda/lib/python3.6/site-packages/ \
+    && jupyter-kernelspec install sparkmagic/kernels/sparkkernel \
+    && jupyter-kernelspec install sparkmagic/kernels/pysparkkernel \
+    && jupyter-kernelspec install sparkmagic/kernels/pyspark3kernel \
+    && jupyter-kernelspec install sparkmagic/kernels/sparkrkernel \
+    && pip install pandas==0.22

@@ -52,5 +52,6 @@ RUN pip install coconut[watch] \
     requests \
     pdbpp \
     pytest \
+    pywebhdfs \
     tabulate \
     && apt-get install -y python3-tk

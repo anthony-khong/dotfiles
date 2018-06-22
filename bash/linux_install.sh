@@ -8,6 +8,7 @@ Change terminal themes.
 Change theme to New-Minty.
 Change font defaults to 11, 12, ..., 12.
 Clean up panels + increase size + show date.
+Install Pandoc and  Dropbox.
 
 Install Slack.
 Add Agoda certificates.
@@ -122,3 +123,10 @@ cd /opt/anaconda/lib/python3.6/site-packages/ \
     && jupyter-kernelspec install sparkmagic/kernels/pyspark3kernel \
     && jupyter-kernelspec install sparkmagic/kernels/sparkrkernel \
     && pip install pandas==0.22
+
+sudo apt-get install texlive \
+    && sudo apt-get install lmodern
+
+sudo apt install gdebi \
+    && wget https://github.com/KELiON/cerebro/releases/download/v0.3.0/cerebro_0.3.0_amd64.deb \
+    && sudo gdebi cerebro_0.3.0_amd64.deb

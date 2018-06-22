@@ -110,6 +110,4 @@ source ~/dotfiles/bash/bash_preferences
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-export PATH="/opt/anaconda/bin:$PATH"
-export PATH="$HOME/.cargo/bin:$PATH"
 export PATH='/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin':"$PATH"

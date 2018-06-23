@@ -3,9 +3,10 @@ Add Dvorak keyboard + remap <Win-Space> to change layout.
 Adjust keyboard repeat delay and repeat speed.
 Create shortcuts for snapping.
 Remap <Ctrl-Alt-T> to `gnome-terminal --window --full-screen`.
+Remap <C-Left> and <C-Right> for workspaces.
 Change terminal themes.
 
-Change theme to New-Minty.
+Change all themes to Mint-Y Dark.
 Change font defaults to 11, 12, ..., 12.
 Clean up panels + increase size + show date.
 Install Pandoc and  Dropbox.
@@ -65,6 +66,7 @@ pip install coconut[watch] \
     neovim \
     requests \
     pdbpp \
+    pyarrow \
     pytest \
     pywebhdfs \
     tabulate \
@@ -130,3 +132,12 @@ sudo apt-get install texlive \
 sudo apt install gdebi \
     && wget https://github.com/KELiON/cerebro/releases/download/v0.3.0/cerebro_0.3.0_amd64.deb \
     && sudo gdebi cerebro_0.3.0_amd64.deb
+
+sudo apt install plank \
+    && sudo apt-get install unrar unzip python3 libgtk-3-0 \
+    && cd $HOME/Downloads \
+    && wget https://github.com/karim88/PlankSetting/archive/master.zip \
+    && unzip master.zip cd PlankSetting-master/ \
+    && sudo ./install.sh \
+    && cd $HOME
+

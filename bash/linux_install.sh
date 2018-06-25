@@ -141,3 +141,9 @@ sudo apt install plank \
     && sudo ./install.sh \
     && cd $HOME
 
+cd $HOME/Downloads \
+    && curl https://www.mendeley.com/repositories/ubuntu/stable/amd64/mendeleydesktop-latest \
+    && sudo dpkg -i mendeleydesktop*.deb \
+    && sudo apt-get update \
+    && sudo apt-get install mendeleydesktop \
+    && cd $HOME

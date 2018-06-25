@@ -6,12 +6,15 @@ Remap <Ctrl-Alt-T> to `gnome-terminal --window --full-screen`.
 Remap <C-Left> and <C-Right> for workspaces.
 Change terminal themes.
 
-Change all themes to Mint-Y Dark.
+Change all themes to Numix.
 Change font defaults to 11, 12, ..., 12.
 Clean up panels + increase size + show date.
-Install Pandoc and  Dropbox.
+Change applets.
+Change Calendar format to %e %b %Y, %H:%M.
 
+Install Pandoc and  Dropbox.
 Install Slack.
+Install SimpleNote.
 Add Agoda certificates.
 Setup Pulse Secure.
 Setup Github SSH key.
@@ -21,6 +24,12 @@ Setup Shoiberg.
 sudo apt-get update
 sudo apt-get install -y build-essential
 sudo apt-get install -y fonts-inconsolata
+
+sudo add-apt-repository ppa:numix/ppa \
+    && sudo apt-get update \
+    && sudo apt-get install numix-gtk-theme \
+    && sudo apt-get install numix-icon-theme-circle \
+    && sudo apt-get install numix-icon-theme
 
 sudo apt-get update \
     && sudo apt-get install -y build-essential \

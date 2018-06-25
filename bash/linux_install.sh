@@ -19,8 +19,8 @@ Setup Shoiberg.
 '
 
 sudo apt-get update
-sudo apt-get install build-essential
-sudo apt-get install fonts-inconsolata -y
+sudo apt-get install -y build-essential
+sudo apt-get install -y fonts-inconsolata
 
 sudo apt-get update \
     && sudo apt-get install -y build-essential \
@@ -73,7 +73,7 @@ pip install coconut[watch] \
     tensorflow \
     && apt-get install -y python3-tk
 
-sudo apt-get install git gcc make pkg-config libx11-dev libxtst-dev libxi-dev \
+sudo apt-get install -y git gcc make pkg-config libx11-dev libxtst-dev libxi-dev \
     && cd $HOME \
     && git clone https://github.com/alols/xcape.git \
     && cd xcape \
@@ -82,10 +82,10 @@ sudo apt-get install git gcc make pkg-config libx11-dev libxtst-dev libxi-dev \
 
 sudo add-apt-repository ppa:gnome3-team/gnome3 \
     && sudo apt-get update \
-    && sudo apt-get install evince
+    && sudo apt-get install -y evince
 
 sudo apt-get update \
-    && sudo apt-get install \
+    && sudo apt-get install -y \
         apt-transport-https \
         ca-certificates \
         curl \
@@ -96,19 +96,19 @@ sudo apt-get update \
         "deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable" \
     && cd $HOME \
     && sudo apt-get update \
-    && sudo apt-get install docker-ce \
+    && sudo apt-get install -y docker-ce \
     && sudo groupadd docker \
     && sudo usermod -aG docker $USER
 
 echo "deb https://dl.bintray.com/sbt/debian /" | sudo tee -a /etc/apt/sources.list.d/sbt.list \
     && sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2EE0EA64E40A89B84B2DF73499E82A75642AC823 \
     && sudo apt-get update \
-    && sudo apt-get install sbt
+    && sudo apt-get install -y sbt
 
 curl -sSL https://get.haskellstack.org/ | sh
 
 
-sudo apt-get install gcc python-dev libkrb5-dev \
+sudo apt-get install -y gcc python-dev libkrb5-dev \
     && pip install pywinrm[kerberos] \
     && pip install sparkmagic \
     && jupyter nbextension enable --py --sys-prefix widgetsnbextension \
@@ -126,15 +126,14 @@ cd /opt/anaconda/lib/python3.6/site-packages/ \
     && jupyter-kernelspec install sparkmagic/kernels/sparkrkernel \
     && pip install pandas==0.22
 
-sudo apt-get install texlive \
-    && sudo apt-get install lmodern
+sudo apt-get install -y texlive && sudo apt-get install -y lmodern
 
 sudo apt install gdebi \
     && wget https://github.com/KELiON/cerebro/releases/download/v0.3.0/cerebro_0.3.0_amd64.deb \
     && sudo gdebi cerebro_0.3.0_amd64.deb
 
 sudo apt install plank \
-    && sudo apt-get install unrar unzip python3 libgtk-3-0 \
+    && sudo apt-get install -y unrar unzip python3 libgtk-3-0 \
     && cd $HOME/Downloads \
     && wget https://github.com/karim88/PlankSetting/archive/master.zip \
     && unzip master.zip cd PlankSetting-master/ \
@@ -145,5 +144,9 @@ cd $HOME/Downloads \
     && curl https://www.mendeley.com/repositories/ubuntu/stable/amd64/mendeleydesktop-latest \
     && sudo dpkg -i mendeleydesktop*.deb \
     && sudo apt-get update \
-    && sudo apt-get install mendeleydesktop \
+    && sudo apt-get install -y mendeleydesktop \
     && cd $HOME
+
+sudo add-apt-repository ppa:nilarimogard/webupd8 \
+    && sudo apt-get update \
+    && sudo apt-get install -y grive

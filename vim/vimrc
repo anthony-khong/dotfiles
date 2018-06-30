@@ -16,8 +16,13 @@ Plug 'SirVer/ultisnips', { 'on': [] }
 Plug 'ervandew/supertab'
 Plug 'honza/vim-snippets'
 Plug 'junegunn/vim-easy-align'
-Plug 'kana/vim-textobj-user'
 Plug 'scrooloose/nerdcommenter'
+
+" Objects
+Plug 'kana/vim-textobj-user'
+Plug 'bps/vim-textobj-python'
+Plug 'michaeljsmith/vim-indent-object'
+Plug 'vim-scripts/argtextobj.vim'
 
 " Motions
 Plug 'easymotion/vim-easymotion'
@@ -40,8 +45,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'plasticboy/vim-markdown'
 Plug 'tpope/vim-surround'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'itchyny/lightline.vim'
 Plug 'vim-scripts/textutil.vim'
 Plug 'w0rp/ale'
 
@@ -59,7 +63,6 @@ Plug 'neovimhaskell/haskell-vim'
 Plug 'parsonsmatt/intero-neovim'
 
 " Python
-Plug 'bps/vim-textobj-python'
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 Plug 'manicmaniac/coconut.vim'
 Plug 'zchee/deoplete-jedi'
@@ -72,6 +75,9 @@ Plug 'derekwyatt/vim-scala'
 
 " Docker
 Plug 'ekalinin/Dockerfile.vim'
+
+" HTML
+Plug 'mattn/emmet-vim'
 
 if has("unix")
   let s:uname = system("uname")
@@ -208,6 +214,9 @@ set splitbelow
      set inccommand=nosplit
  endif
 
+" No redundant info
+set noshowmode
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                Colour Scheme                                "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -320,6 +329,11 @@ autocmd BufRead,BufNewFile *.sc setfiletype scala
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                   Plugins                                   "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Lightline
+let g:lightline = {
+      \ 'colorscheme': 'seoul256',
+      \ }
 
 " Tmux Navigator
 if exists('$TMUX')

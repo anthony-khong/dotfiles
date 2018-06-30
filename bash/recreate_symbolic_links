@@ -2,6 +2,7 @@ cd;
 if [ "$(uname)" == "Darwin" ]; then
     rm .bash_profile;
     ln -s dotfiles/bash/bash_profile .bash_profile;
+    ln -s dotfiles/bash/bash_profile .bashrc;
 elif [ "$(uname)" == "Linux" ]; then
     rm .bashrc;
     ln -s dotfiles/bash/bashrc .bashrc;

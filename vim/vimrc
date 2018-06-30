@@ -255,6 +255,7 @@ noremap <C-d> <S-Down>zz
 
 " Jump to next method
 nmap }} ]m
+nmap {{ [m
 
 " Centers screen whenever a search is found
 nnoremap G Gzz

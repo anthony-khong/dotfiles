@@ -4,9 +4,12 @@ MAINTAINER Anthony Khong <anthony.kusumo.khong@gmail.com>
 
 ENV USER root
 ENV HOME /root
-ENV TERM=screen-256color
+ENV TERM screen-256color
+ENV PYTHONPATH /root
 WORKDIR /root
 ENTRYPOINT /bin/bash
+
+RUN touch __init__.py && export PYTHONPATH="${PYTHONPATH}:/root"
 
 RUN conda install python=3.7 -y
 
@@ -23,3 +26,4 @@ RUN pip install coconut[watch] \
 
 RUN pip install http://download.pytorch.org/whl/cpu/torch-0.4.1.post2-cp37-cp37m-linux_x86_64.whl \
         torchvision
+

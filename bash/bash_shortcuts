@@ -285,7 +285,10 @@ function gpy() {
 }
 
 function pyml() {
-    SOURCE="$(pwd)/$1"
-    TARGET="${SOURCE/$HOME/}"
-    docker run -v ~/ml:/ml -it pyml opt/conda/bin/ipython -i "$TARGET"
+    docker run -v "$PWD":"/root/$(basename $PWD)" -it ml-dev
+}
+
+function pt_docker() {
+    DIRNAME="$(basename $PWD)"
+    docker run -v "$PWD":"/root/$DIRNAME" -it --entrypoint py.test ml-dev "$DIRNAME" -s --pdb
 }

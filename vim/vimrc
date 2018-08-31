@@ -468,9 +468,10 @@ let g:deoplete#omni#input_patterns.scala = ['[^. *\t0-9]\.\w*',': [A-Z]\w', '[\[
 
 " Ctags
 set tags=./tags;/
-nnoremap <C-[> <C-T>
+nnoremap <Space>j :Tag<CR>
+"nnoremap <C-[> <C-T>
 "nnoremap <C-T> <C-w><C-]><C-w>T
-nnoremap <C-T> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+"nnoremap <C-T> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 
 " Jedi
 let g:jedi#force_py_version = 3

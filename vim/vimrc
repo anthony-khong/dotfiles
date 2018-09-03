@@ -66,6 +66,7 @@ Plug 'parsonsmatt/intero-neovim'
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 Plug 'manicmaniac/coconut.vim'
 Plug 'zchee/deoplete-jedi'
+Plug 'Shougo/echodoc.vim'
 
 " R
 Plug 'jalvesaq/Nvim-R'
@@ -464,6 +465,7 @@ let g:deoplete#sources = {}
 let g:deoplete#sources.scala = ['buffer', 'tags', 'omni']
 let g:deoplete#omni#input_patterns = {}
 let g:deoplete#omni#input_patterns.scala = ['[^. *\t0-9]\.\w*',': [A-Z]\w', '[\[\t\( ][A-Za-z]\w*']
+let g:deoplete#sources#jedi#server_timeout = 60
 
 " Ctags
 set tags=./tags;/
@@ -472,7 +474,8 @@ nnoremap <C-[> <C-T>
 nnoremap <C-T> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 
 " Jedi
-let g:jedi#force_py_version = 3
+let g:jedi#show_call_signatures = "1"
+let g:jedi#completions_enabled = 0
 
 " Coconut
 autocmd FileType coconut setlocal commentstring=#\ %s
@@ -502,3 +505,6 @@ let g:slime_target = "tmux"
 let g:slime_default_config = {"socket_name": split($TMUX, ",")[0], "target_pane": ":0.1"}
 let g:slime_dont_ask_default = 1
 let g:slime_python_ipython = 1
+
+"Echodoc
+let g:echodoc_enable_at_startup = 1

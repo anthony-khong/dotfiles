@@ -19,6 +19,8 @@ Add Agoda certificates.
 Setup Pulse Secure.
 Setup Github SSH key.
 Setup Shoiberg.
+
+Add remap_caps to Startup Applications
 '
 
 sudo apt-get update

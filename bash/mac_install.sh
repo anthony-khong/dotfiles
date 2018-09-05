@@ -90,3 +90,4 @@ brew install stack
 # Mendeley, Sublime Text, Microsoft Office,
 # Karabiner-Elements, PyPy
 
+brew install bat

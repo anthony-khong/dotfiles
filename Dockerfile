@@ -44,14 +44,14 @@ RUN dpkg -i ripgrep_0.8.1_amd64.deb && rm ripgrep_0.8.1_amd64.deb
 
 ## Python
 RUN pip install coconut[watch] \
-    funcy \
+    hypothesis \
     ipython==5.7.0 \
     jedi \
     lightgbm \
     neovim \
-    requests \
     pdbpp \
     pytest \
     pywebhdfs \
+    requests \
     tabulate \
     && apt-get install -y python3-tk

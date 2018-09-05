@@ -17,10 +17,10 @@ RUN pip install --upgrade pip
 
 RUN pip install coconut[watch] \
     lightgbm \
-    requests \
     pdbpp \
     pytest \
     pywebhdfs \
+    requests \
     tabulate \
     xgboost
 

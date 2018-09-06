@@ -91,3 +91,4 @@ brew install stack
 # Karabiner-Elements, PyPy
 
 brew install bat
+brew install csvkit

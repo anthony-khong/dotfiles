@@ -240,6 +240,15 @@ function auto_md_to_pdf() {
     ls "$1" | entr bash -c "source $shortcuts; md_to_pdf 3 $1 $pdf_path; echo Last compiled: $(date)"
 }
 
+# TODO: add argument for pt
+function auto_pytest() {
+    rg --files "$1" |  entr bash -c "py.test $3; echo Last tested $(date)"
+}
+
+function auto_pt() {
+    rg --files "$1" |  entr bash -c "py.test -s --pdb $3; echo Last tested $(date)"
+}
+
 # Jekyll
 alias jserve="bundle exec jekyll serve --drafts --watch"
 
@@ -293,3 +302,6 @@ function pt_docker() {
 function rctags() {
     ctags -R -f ./.git/tags .
 }
+
+# Kitty
+alias kitty="/Applications/kitty.app/Contents/MacOS/kitty"

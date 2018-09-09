@@ -92,3 +92,5 @@ brew install stack
 
 brew install bat
 brew install csvkit
+brew install bash
+brew install gawk

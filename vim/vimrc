@@ -224,7 +224,7 @@ set noshowmode
 " It looks nicer in some colour schemes
 if dark_background
     set background=dark
-    silent! colorscheme oceanic
+    silent! colorscheme ubuntu-like
 else
     silent! colorscheme akk_light
 endif

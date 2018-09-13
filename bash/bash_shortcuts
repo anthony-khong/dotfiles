@@ -233,19 +233,24 @@ function vs() {
 # Spacemacs shortcuts
 alias emacs="emacs -nw"
 
-# FSWatch
+# Watch
 function do_if_read() {
-    fswatch "$1" | (while read; do eval "$2; echo Last executed $(date)"; done)
+    ls "$1" | entr bash -c "$2; echo Last executed $(date)"
 }
 
 function auto_md_to_pdf() {
     local pdf_path="${1%.*}.pdf"
-    fswatch "$1" | (while read; do eval "md_to_pdf 3 $1 $pdf_path; echo Last compiled: $(date)"; done)
+    local shortcuts="~/dotfiles/bash/bash_shortcuts"
+    ls "$1" | entr bash -c "source $shortcuts; md_to_pdf 3 $1 $pdf_path; echo Last compiled: $(date)"
 }
 
-function auto_revealjs() {
-    local html_path="${1%.*}.html"
-    fswatch "$1" | (while read; do eval "pandoc -t revealjs -s -o $html_path $1 -V revealjs-url=http://lab.hakim.se/reveal-js; echo Last compiled: $(date)"; done)
+# TODO: add argument for pt
+function auto_pytest() {
+    rg --files "$1" |  entr bash -c "py.test $3; echo Last tested $(date)"
+}
+
+function auto_pt() {
+    rg --files "$1" |  entr bash -c "py.test -s --pdb $3; echo Last tested $(date)"
 }
 
 # Jekyll
@@ -301,3 +306,6 @@ function pt_docker() {
 function rctags() {
     ctags -R -f ./.git/tags .
 }
+
+# Kitty
+alias kitty="/Applications/kitty.app/Contents/MacOS/kitty"

@@ -1,9 +1,13 @@
-pip install \
-    coconut \
+pip install coconut[watch] \
+    hypothesis \
+    ipython==5.7.0 \
+    jedi \
     lightgbm \
+    lightgbm \
+    neovim \
     pdbpp \
-    tabulate
-    #xgboost
-
-#pip install --ignore-installed --upgrade \
-    #https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-1.5.0-cp36-cp36m-linux_x86_64.whl
+    pytest \
+    pywebhdfs \
+    requests \
+    tabulate \
+    youtube-dl

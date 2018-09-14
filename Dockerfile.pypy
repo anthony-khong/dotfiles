@@ -1,0 +1,39 @@
+FROM pypy:3
+
+MAINTAINER Anthony Khong <anthony.kusumo.khong@gmail.com>
+
+ENV USER root
+ENV HOME /root
+ENV PYTHONPATH /root
+WORKDIR /root
+ENTRYPOINT /bin/bash
+
+RUN apt-get update && apt-get install -y \
+        build-essential \
+        libblas-dev \
+        liblapack-dev \
+        llvm \
+        gfortran
+
+RUN pypy3 -m pip install numpy
+
+RUN pypy3 -m pip install scipy
+
+RUN pypy3 -m pip install \
+        coconut[watch] \
+        cython \
+        hypothesis \
+        ipython \
+        jupyter \
+        lightgbm \
+        matplotlib \
+        pandas \
+        pdbpp \
+        prompt_toolkit==1.0.15 \
+        pytest \
+        requests \
+        scikit-learn \
+        tabulate \
+        xgboost
+
+RUN alias icoco='coconut --ipython console'

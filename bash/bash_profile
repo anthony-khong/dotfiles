@@ -20,3 +20,5 @@ source ~/dotfiles/bash/bash_preferences
 
 # added by Anaconda3 5.2.0 installer
 export PATH="/anaconda3/bin:$PATH"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

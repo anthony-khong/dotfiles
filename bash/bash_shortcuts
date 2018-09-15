@@ -136,6 +136,10 @@ function recreate_symbolic_links() {
     bash ~/dotfiles/bash/recreate_symbolic_links
 }
 
+function ntree() {
+    nvim +NERDTree
+}
+
 function setup_nvim() {
     nvim +PlugInstall +qall;
     nvim +PlugUpdate +qall;

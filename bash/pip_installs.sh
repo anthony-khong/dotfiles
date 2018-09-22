@@ -10,4 +10,5 @@ pip install coconut[watch] \
     pywebhdfs \
     requests \
     tabulate \
+    pyre-check \
     youtube-dl

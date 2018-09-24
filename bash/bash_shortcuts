@@ -297,6 +297,10 @@ function pyml() {
     docker run -v "$PWD":"/root/$(basename $PWD)" -it ml-dev
 }
 
+function docker-pypy() {
+    docker run -v "$PWD":"/root/$(basename $PWD)" -it pypy
+}
+
 function pt_docker() {
     DIRNAME="$(basename $PWD)"
     docker run -v "$PWD":"/root/$DIRNAME" -it --entrypoint py.test ml-dev "$DIRNAME" -s --pdb

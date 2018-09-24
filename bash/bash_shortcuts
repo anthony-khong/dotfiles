@@ -309,3 +309,9 @@ function rctags() {
 
 # Kitty
 alias kitty="/Applications/kitty.app/Contents/MacOS/kitty"
+
+# Trim
+function trim_image() {
+    convert "$1" -trim "$1"
+}
+

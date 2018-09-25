@@ -22,3 +22,4 @@ source ~/dotfiles/bash/bash_preferences
 export PATH="/anaconda3/bin:$PATH"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+

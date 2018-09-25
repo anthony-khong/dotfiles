@@ -313,3 +313,35 @@ function rctags() {
 
 # Kitty
 alias kitty="/Applications/kitty.app/Contents/MacOS/kitty"
+
+# Oscar
+function build_bf_docker() {
+    docker build -f docker/Dockerfile -t betfair .
+}
+
+function force_rebuild_bf_docker() {
+    docker build --no-cache -f docker/Dockerfile -t betfair .
+}
+
+function bf_bash() {
+    docker run -v "$PWD":"/root/$(basename $PWD)" -it betfair
+}
+
+function bf_ipython() {
+    docker run -v "$PWD":"/root/$(basename $PWD)" --entrypoint ipython -it betfair
+}
+
+function bf_pytest() {
+    docker run -v "$PWD":"/root/$(basename $PWD)" --entrypoint pytest -it betfair \
+        betfair/tests/ 
+}
+
+function bf_pytest_pdb() {
+    docker run -v "$PWD":"/root/$(basename $PWD)" --entrypoint pytest -it betfair \
+        betfair/tests/ -s --pdb
+}
+
+function auto_bf_pytest() {
+    rg --files . | entr bash -c \
+        "docker run -v \"$PWD\":\"/root/$(basename $PWD)\" --entrypoint pytest -it betfair betfair/$1"
+}

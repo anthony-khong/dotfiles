@@ -175,28 +175,6 @@ function install_lein () {
     lein
 }
 
-# Navigation shortcuts
-function papers() {
-    cd ~/Dropbox/Interesting\ Papers/
-}
-
-function dots() {
-    cd ~/dotfiles/
-}
-
-function atools() {
-    cd ~/mooc/algorithmic_toolbox
-    }
-
-function ll() {
-    if [ ! -z $1 ]
-    then
-        find "$1" -type f
-    else
-        find . -type f
-    fi
-}
-
 # Networking shortcuts
 function jarwin() {
     ssh -4 -X akkhong@jarwinjkt.zapto.org
@@ -220,15 +198,6 @@ function check_my_ip() {
 alias vi="/usr/bin/vim -p"
 alias vim="nvim -p"
 alias vff="nvim +'FZF ~'"
-function eff() {
-    vim $(fzf)
-}
-
-function vs() {
-    touch "$1"
-    chmod +x "$1"
-    vim "$1"
-}
 
 # Spacemacs shortcuts
 alias emacs="emacs -nw"
@@ -253,15 +222,8 @@ function auto_pt() {
     rg --files "$1" |  entr bash -c "py.test -s --pdb $3; echo Last tested $(date)"
 }
 
-# Jekyll
-alias jserve="bundle exec jekyll serve --drafts --watch"
-
 # Karabiner
 alias karabiner="/Applications/Karabiner.app/Contents/Library/bin/karabiner"
-
-function fix_cuda_compile() {
-    sudo ldconfig /usr/local/cuda/lib64
-}
 
 # Youtube DL
 alias ytdl_mp3="youtube-dl --extract-audio --audio-format mp3"
@@ -318,4 +280,3 @@ alias kitty="/Applications/kitty.app/Contents/MacOS/kitty"
 function trim_image() {
     convert "$1" -trim "$1"
 }
-

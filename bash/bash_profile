@@ -17,3 +17,4 @@ source ~/dotfiles/bash/bash_shortcuts
 source ~/dotfiles/bash/bash_preferences
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+

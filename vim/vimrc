@@ -128,7 +128,7 @@ set smartcase
 vnoremap < <gv
 vnoremap > >gv
 
-" Turning of highlights (after searching)
+" Turning off highlights (after searching)
 nnoremap ff :nohlsearch <CR>
 
 " Close current tab
@@ -399,7 +399,13 @@ nmap <Space>hs <Plug>GitGutterStageHunk
 nmap <Space>hr <Plug>GitGutterRevertHunk
 
 " Ale
-let g:ale_linters = {'python': ['pyflakes'], 'scala': ['scalastyle']}
+let g:ale_linters = {
+    \ 'python': ['pyflakes', 'mypy'],
+    \ 'scala': ['scalastyle'],
+    \ 'haskell': ['stack-ghc-mod', 'hlint']
+    \ }
+let g:ale_python_mypy_options = "–ignore-missing-imports"
+let g:ale_linters_explicit = 1
 let g:ale_completion_enabled = 1
 let g:ale_sign_error = '>>'
 let g:ale_sign_warning = '!!'
@@ -488,7 +494,6 @@ let g:parinfer_enabled = 1
 let g:parinfer_force_balance = 0
 
 " Haskell - Taken from: https://blog.jez.io/haskell-development-with-neovim/
-let g:ale_linters.haskell = ['stack-ghc-mod', 'hlint']
 let g:haskell_indent_before_where = 2
 let g:haskell_indent_case_alternative = 1
 let g:haskell_indent_if = 2
@@ -506,7 +511,7 @@ set updatetime=100
 let g:slime_target = "tmux"
 let g:slime_default_config = {"socket_name": split($TMUX, ",")[0], "target_pane": ":0.1"}
 let g:slime_dont_ask_default = 1
-let g:slime_python_ipython = 1
+" let g:slime_python_ipython = 1
 
 "Echodoc
 let g:echodoc_enable_at_startup = 1

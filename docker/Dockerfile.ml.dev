@@ -1,4 +1,4 @@
-FROM continuumio/anaconda3:latest
+FROM continuumio/miniconda3:4.5.4
 
 MAINTAINER Anthony Khong <anthony.kusumo.khong@gmail.com>
 
@@ -9,21 +9,12 @@ ENV PYTHONPATH /root
 WORKDIR /root
 ENTRYPOINT /bin/bash
 
-RUN touch __init__.py && export PYTHONPATH="${PYTHONPATH}:/root"
+RUN apt-get update && apt-get install -y build-essential
 
-RUN conda install python=3.7 -y
+RUN conda install -y python=3.7 anaconda && pip install --upgrade pip
 
-RUN pip install --upgrade pip
+ADD docker/requirements-ml-dev.txt /opt/requirements.txt
 
-RUN pip install coconut[watch] \
-    lightgbm \
-    pdbpp \
-    pytest \
-    pywebhdfs \
-    requests \
-    tabulate \
-    xgboost
+RUN pip install -r /opt/requirements.txt
 
-RUN pip install http://download.pytorch.org/whl/cpu/torch-0.4.1.post2-cp37-cp37m-linux_x86_64.whl \
-        torchvision
-
+RUN export PYTHONPATH="${PYTHONPATH}:/root"

@@ -13,8 +13,8 @@ RUN apt-get update && apt-get install -y build-essential
 
 RUN conda install -y python=3.7 anaconda && pip install --upgrade pip
 
-ADD docker/requirements-ml-dev.txt /opt/requirements.txt
+ADD docker/requirements-ml-dev-core.txt /opt/requirements-core.txt
+RUN pip install -r /opt/requirements-core.txt
 
-RUN pip install -r /opt/requirements.txt
-
-RUN export PYTHONPATH="${PYTHONPATH}:/root"
+ADD docker/requirements-ml-dev-extras.txt /opt/requirements-extras.txt
+RUN pip install -r /opt/requirements-extras.txt

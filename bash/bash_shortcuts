@@ -256,7 +256,11 @@ function gpy() {
 }
 
 function pyml() {
-    docker run -v "$PWD":"/root/$(basename $PWD)" -it ml-dev
+    docker run -v "$PWD":"/root/$(basename $PWD)" -it --entrypoint ipython -i ml-dev
+}
+
+function cocoml() {
+    docker run -v "$PWD":"/root/$(basename $PWD)" -it --entrypoint coco ml-dev --ipython console
 }
 
 function docker_pypy() {

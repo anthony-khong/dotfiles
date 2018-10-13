@@ -1,6 +1,5 @@
 unset DYLD_FALLBACK_LIBRARY_PATH
 export PYTHONPATH=$PYTHONPATH:~/carvil
-export PYTHONPATH=$PYTHONPATH:~/reprod
 export PYTHONPATH=$PYTHONPATH:~/grist
 export PYTHONPATH=$PYTHONPATH:~/repos
 export PYTHONPATH=$PYTHONPATH:~/code
@@ -12,9 +11,10 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 # Don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
-HISTCONTROL=ignoreboth:ignoredups:erasedups
 HISTSIZE=1000
 HISTFILESIZE=2000
+HISTCONTROL=ignoreboth
+HISTIGNORE='ls:bg:fg:history:hh'
 
 # When the shell exits, append to the history file instead of overwriting it
 if [[ "$0" == "bash" ]]; then
@@ -27,14 +27,10 @@ fi
 export TERM="screen-256color"
 
 # Short PS1
-# export PS1="\[\033[36m\]\u\[\033[m\]:\[\033[33;1m\]\W\[\033[m\]$ "
 if [[ "$0" == "bash" ]]; then
+    # export PS1="\[\033[36m\]\u\[\033[m\]:\[\033[33;1m\]\W\[\033[m\]$ "
     export PS1='\[\e[0;32m\]\u\[\e[m\]:\[\e[1;34m\]\W\[\033[m\]$ '
 fi
-
-# if [ "$(uname)" == "Linux" ]; then
-#     . /etc/profile.d/vte.sh
-# fi
 
 # Make Neovim the default editor
 export VISUAL=nvim

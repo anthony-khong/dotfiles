@@ -105,9 +105,7 @@ if ! shopt -oq posix; then
   fi
 fi
 
-source ~/dotfiles/bash/bash_shortcuts
-source ~/dotfiles/bash/bash_preferences
-
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
-export PATH='/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin':"$PATH"
+source ~/dotfiles/bash/bash_shortcuts.sh
+source ~/dotfiles/bash/bash_python.sh
+source ~/dotfiles/bash/bash_docker.sh
+source ~/dotfiles/bash/bash_preferences.sh

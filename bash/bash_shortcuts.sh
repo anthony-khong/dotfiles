@@ -1,4 +1,4 @@
-# Bash shortcuts
+# Reload bashrc
 function sbash() {
     if [ "$(uname)" == "Darwin" ]; then
         source ~/.bash_profile;
@@ -9,15 +9,30 @@ function sbash() {
     fi
 }
 
-function remap_caps() {
-    setxkbmap -option 'caps:ctrl_modifier'
-    xcape -t 150 -e 'Caps_Lock=Escape;Control_L=Escape;Control_R=Escape'
+# File Management
+function mkinit() {
+    echo '' >> __init__.py
 }
 
-alias renew="sudo ipconfig set en0 BOOTP && sudo ipconfig set en0 DHCP"
+# Neovim
+alias vi="/usr/bin/vim -p"
+alias vim="nvim -p"
+alias vff="nvim +'FZF ~'"
 
-HISTCONTROL=ignoreboth
-HISTIGNORE='ls:bg:fg:history:hh'
+function ntree() {
+    nvim +NERDTree
+}
+
+function setup_nvim() {
+    nvim +PlugInstall +qall;
+    nvim +PlugUpdate +qall;
+    nvim +PlugInstall +qall;
+}
+
+# Spacemacs shortcuts
+alias emacs="emacs -nw"
+
+# History
 alias hh=history
 alias clear_history='cat /dev/null > ~/.bash_history && history -c'
 
@@ -31,27 +46,12 @@ function md_to_pdf() {
     pandoc -V geometry:margin="$1"cm -o $3 $2
 }
 
-# Python shortcuts
-alias py='ipython -i'
-#alias py='bpython -i'
-alias pt='py.test -s --pdb'
-alias py3='python3 -i'
-alias coco='coconut -t 36'
-alias icoco='coco --ipython console'
-alias wcoco='coco -t 36 -w'
-alias jpy="jupyter notebook"
-
-function mkinit() {
-    echo '' >> __init__.py
+function auto_md_to_pdf() {
+    local pdf_path="${1%.*}.pdf"
+    local shortcuts="~/dotfiles/bash/bash_shortcuts"
+    ls "$1" | entr bash -c "source $shortcuts; md_to_pdf 3 $1 $pdf_path; echo Last compiled: $(date)"
 }
 
-function remove_pyc() {
-    find . -name "*.pyc" -exec rm -rf {} \;
-}
-
-function purge_py() {
-    find . | grep -E "(__pycache__|\.pyc|\.pyo$)" | xargs rm -rf
-}
 
 # Haskell shortcuts
 alias ghci='stack ghci'
@@ -75,7 +75,6 @@ function hs_script() {
 
 # Scala shortcuts
 alias sc='scala -i'
-
 alias samm='sbt ammonite:run'
 alias sbt="sbt -mem 2048"
 
@@ -104,44 +103,9 @@ function diffs() {
     vim `git ls-files -m` -p;
 }
 
-function echo_and_pull() {
-    printf 'Pulling the repository %s...\n' "${PWD##*/}";
-    git pull;
-}
-
-alias gst='git status'
-alias gpl='git pull'
-alias gps='git push'
-alias gco='git commit'
-alias gb='git branch'
-alias gch='git checkout'
-
 # Dotfiles shortucts
-function update_dots() {
-    cd ~/dotfiles && echo_and_pull;
-    gsu;
-    nvim +PlugInstall +qall
-}
-
-function gpa() {
-    cwd=$(pwd)
-    update_dots;
-    update_cmls;
-    cd $cwd;
-}
-
 function recreate_symbolic_links() {
     bash ~/dotfiles/bash/recreate_symbolic_links
-}
-
-function ntree() {
-    nvim +NERDTree
-}
-
-function setup_nvim() {
-    nvim +PlugInstall +qall;
-    nvim +PlugUpdate +qall;
-    nvim +PlugInstall +qall;
 }
 
 function clone_dotfiles() {
@@ -174,9 +138,7 @@ function install_lein () {
 }
 
 # Networking shortcuts
-function jarwin() {
-    ssh -4 -X akkhong@jarwinjkt.zapto.org
-}
+alias renew="sudo ipconfig set en0 BOOTP && sudo ipconfig set en0 DHCP"
 
 function draape() {
     ssh root@128.199.230.91
@@ -192,23 +154,9 @@ function check_my_ip() {
     curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/<.*$//'
 }
 
-# Vim shortcuts
-alias vi="/usr/bin/vim -p"
-alias vim="nvim -p"
-alias vff="nvim +'FZF ~'"
-
-# Spacemacs shortcuts
-alias emacs="emacs -nw"
-
 # Watch
 function do_if_read() {
     ls "$1" | entr bash -c "$2; echo Last executed $(date)"
-}
-
-function auto_md_to_pdf() {
-    local pdf_path="${1%.*}.pdf"
-    local shortcuts="~/dotfiles/bash/bash_shortcuts"
-    ls "$1" | entr bash -c "source $shortcuts; md_to_pdf 3 $1 $pdf_path; echo Last compiled: $(date)"
 }
 
 # TODO: add argument for pt
@@ -237,37 +185,6 @@ function start_db() {
 
 function revenue_breakdown() {
     ipython ~/carvil/scripts/revenue_check.py "$@"
-}
-
-# Docker
-function docker_cleanup_images() {
-    docker rmi $(docker images -q)
-}
-
-function docker_cleanup_containers() {
-    docker rm $(docker ps -a -q)
-}
-
-function gpy() {
-    DEST="/grist"
-    docker run -v ~/grist:"$DEST" -it grist_image ipython -i "$DEST/$1"
-}
-
-function pyml() {
-    docker run -v "$PWD":"/root/$(basename $PWD)" -it --entrypoint ipython -i ml-dev
-}
-
-function cocoml() {
-    docker run -v "$PWD":"/root/$(basename $PWD)" -it --entrypoint coco ml-dev --ipython console
-}
-
-function docker_pypy() {
-    docker run -v "$PWD":"/root/$(basename $PWD)" -it pypy
-}
-
-function pt_docker() {
-    DIRNAME="$(basename $PWD)"
-    docker run -v "$PWD":"/root/$DIRNAME" -it --entrypoint py.test ml-dev "$DIRNAME" -s --pdb
 }
 
 # Ctags
@@ -313,4 +230,10 @@ function auto_bf_pytest() {
 # Trim
 function trim_image() {
     convert "$1" -trim "$1"
+}
+
+# Keyboard
+function remap_caps() {
+    setxkbmap -option 'caps:ctrl_modifier'
+    xcape -t 150 -e 'Caps_Lock=Escape;Control_L=Escape;Control_R=Escape'
 }

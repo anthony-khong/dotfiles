@@ -13,9 +13,6 @@ function remap_caps() {
     setxkbmap -option 'caps:ctrl_modifier'
     xcape -t 150 -e 'Caps_Lock=Escape;Control_L=Escape;Control_R=Escape'
 }
-if [ $HOSTNAME = "jarwin" ]; then
-    remap_caps
-fi
 
 alias renew="sudo ipconfig set en0 BOOTP && sudo ipconfig set en0 DHCP"
 
@@ -35,8 +32,8 @@ function md_to_pdf() {
 }
 
 # Python shortcuts
-#alias py='ipython -i'
-alias py='bpython -i'
+alias py='ipython -i'
+#alias py='bpython -i'
 alias pt='py.test -s --pdb'
 alias py3='python3 -i'
 alias coco='coconut -t 36'

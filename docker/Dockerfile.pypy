@@ -20,10 +20,11 @@ RUN pypy3 -m pip install numpy
 RUN pypy3 -m pip install scipy
 
 RUN pypy3 -m pip install \
+        bpython \
         coconut[watch] \
         cython \
         hypothesis \
-        ipython \
+        ipython==6.5.0 \
         jupyter \
         lightgbm \
         matplotlib \

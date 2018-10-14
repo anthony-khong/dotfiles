@@ -1,9 +1,9 @@
 # Reload bashrc
 function sbash() {
-    if [ "$(uname)" == "Darwin" ]; then
+    if [[ "$(uname)" == "Darwin" ]]; then
         source ~/.bash_profile;
         echo 'bash_profile reloaded!'
-    elif [ "$(uname)" == "Linux" ]; then
+    elif [[ "$(uname)" == "Linux" ]]; then
         source ~/.bashrc;
         echo 'bashrc reloaded!'
     fi

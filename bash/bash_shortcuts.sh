@@ -94,6 +94,14 @@ function gpp() {
 }
 
 # Git shortcuts
+alias gs='git status '
+alias ga='git add '
+alias gb='git branch '
+alias gc='git commit'
+alias gd='git diff'
+alias go='git checkout '
+alias igt='git '
+
 function gsu() {
     git submodule init;
     git submodule update;

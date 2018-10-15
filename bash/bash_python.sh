@@ -1,5 +1,6 @@
 # Python shortcuts
-alias py='bpython -i'
+alias py='ipython -i'
+alias by='bpython -i'
 alias pt='py.test -s --pdb'
 alias py3='python3 -i'
 alias coco='coconut -t 36'

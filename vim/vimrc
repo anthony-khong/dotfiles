@@ -518,7 +518,7 @@ let g:slime_default_config = {
     \ "target_pane": ":0.1"
     \ }
 let g:slime_dont_ask_default = 1
-"let g:slime_python_ipython = 1
+let g:slime_python_ipython = 1
 
 "Echodoc
 let g:echodoc_enable_at_startup = 1

@@ -23,6 +23,8 @@ if [[ "$0" == "bash" ]]; then
     shopt -s histappend
 elif [[ "$0" == "zsh" ]]; then
     export PROMPT_COMMAND="history -a; history -n"
+    bind 'set show-all-if-ambiguous on'
+    bind 'TAB:menu-complete'
 fi
 
 # For tmux colours

@@ -205,35 +205,54 @@ alias kitty="/Applications/kitty.app/Contents/MacOS/kitty"
 
 # Oscar
 function build_bf_docker() {
-    docker build -f docker/Dockerfile -t betfair .
+    docker build -f docker/Dockerfile -t betfair docker/
 }
 
 function force_rebuild_bf_docker() {
-    docker build --no-cache -f docker/Dockerfile -t betfair .
+    docker build --no-cache -f docker/Dockerfile -t betfair docker/
 }
 
 function bf_bash() {
-    docker run -v "$PWD":"/root/$(basename $PWD)" -it betfair
+    docker run --rm -v "$PWD":"/root/$(basename $PWD)" -it betfair /bin/bash
 }
 
-function bf_ipython() {
-    docker run -v "$PWD":"/root/$(basename $PWD)" --entrypoint ipython -it betfair
+function bf_py() {
+    docker run --rm -v "$PWD":"/root/$(basename $PWD)" -it betfair ipython -i
+}
+
+function bf_by() {
+    docker run --rm -v "$PWD":"/root/$(basename $PWD)" -it betfair bpython -i
+}
+
+function bf_coco() {
+    docker run --rm -v "$PWD":"/root/$(basename $PWD)" -it betfair \
+        coconut -t 36 --ipython console
 }
 
 function bf_pytest() {
-    docker run -v "$PWD":"/root/$(basename $PWD)" --entrypoint pytest -it betfair \
-        betfair/tests/ 
+    docker run --rm -v "$PWD":"/root/$(basename $PWD)" -it betfair \
+        pytest betfair/tests/ 
 }
 
 function bf_pytest_pdb() {
-    docker run -v "$PWD":"/root/$(basename $PWD)" --entrypoint pytest -it betfair \
-        betfair/tests/ -s --pdb
+    docker run --rm -v "$PWD":"/root/$(basename $PWD)" -it betfair \
+        pytest betfair/tests/ -s --pdb
 }
 
 function auto_bf_pytest() {
     rg --files . | entr bash -c \
-        "docker run -v \"$PWD\":\"/root/$(basename $PWD)\" --entrypoint pytest -it betfair betfair/$1"
+        "docker run --rm -v \"$PWD\":\"/root/$(basename $PWD)\" -it betfair pytest betfair/$1"
 }
+
+function build_bf_pypy_docker() {
+    docker build -f docker/Dockerfile.pypy -t betfair_pypy docker
+}
+
+function bf_pypy() {
+    docker run --rm -v "$PWD":"/root/betfair" -it betfair_pypy ipython -i
+}
+
+alias racket='docker run -it racket'
 
 # Trim
 function trim_image() {

@@ -1,11 +1,8 @@
 beautifulsoup4
 bokeh
-bpython
 catboost
-coconut[jupyter,watch,jobs,mypy,asyncio]
 cython
 dask[complete]
-dask-ml[xgboost]
 html5lib
 hypothesis
 ipython
@@ -23,14 +20,9 @@ plotly
 pydot
 pyre-check
 pytest
-pywebhdfs
-requests
 scikit-learn
 scipy
 scrapy
 seaborn
 statsmodels
-tabulate
-toolz
-tornado
 xgboost

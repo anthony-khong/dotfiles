@@ -7,7 +7,7 @@ elif [[ "$(uname)" == "Linux" ]]; then
     rm .bashrc;
     ln -s dotfiles/bash/bashrc .bashrc;
 fi
-rm .zshrc
+rm -f .zshrc
 ln -s ~/dotfiles/bash/zshrc .zshrc
 
 rm .inputrc;

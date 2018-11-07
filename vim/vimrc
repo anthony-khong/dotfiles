@@ -480,7 +480,7 @@ let g:deoplete#sources.scala = ['buffer', 'tags', 'omni']
 let g:deoplete#omni#input_patterns = {}
 let g:deoplete#omni#input_patterns.scala = ['[^. *\t0-9]\.\w*',': [A-Z]\w', '[\[\t\( ][A-Za-z]\w*']
 let g:deoplete#sources#jedi#server_timeout = 60
-call deoplete#custom#option({
+silent! call deoplete#custom#option({
     \ 'auto_complete_delay': 0,
     \ 'smart_case': v:true,
     \ })

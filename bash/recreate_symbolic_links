@@ -31,5 +31,5 @@ mkdir .ghci
 ln -s ~/dotfiles/ghci .ghci;
 
 rm -rf ~/.lein
-.mkdir .lein
+mkdir .lein
 ln -s ~/dotfiles/lein_profiles.clj .lein/profiles.clj

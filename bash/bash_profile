@@ -17,3 +17,5 @@ source ~/dotfiles/bash/bash_shortcuts.sh
 source ~/dotfiles/bash/bash_python.sh
 source ~/dotfiles/bash/bash_docker.sh
 source ~/dotfiles/bash/bash_preferences.sh
+
+export PATH="$HOME/.cargo/bin:$PATH"

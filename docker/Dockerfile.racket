@@ -1,0 +1,14 @@
+# Based on https://github.com/slogsdon/docker-racket/blob/master/Dockerfile
+FROM ubuntu:16.04
+MAINTAINER Anthony Khong <anthony.kusumo.khong@gmail.com>
+
+ENV USER root
+ENV HOME /root
+WORKDIR /root
+
+RUN apt-get update && apt-get install -y build-essential curl
+RUN curl -t fsSL https://mirror.racket-lang.org/installers/7.0/racket-7.0-x86_64-linux.sh > racket.sh
+RUN echo "yes\n1\n" | /bin/bash racket.sh
+RUN rm racket.sh
+
+ENTRYPOINT /usr/bin/racket

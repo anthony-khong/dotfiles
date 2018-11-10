@@ -1,33 +1,33 @@
 cd;
 if [[ "$(uname)" == "Darwin" ]]; then
-    rm .bash_profile;
+    rm -rf .bash_profile;
     ln -s dotfiles/bash/bash_profile .bash_profile;
     ln -s dotfiles/bash/bash_profile .bashrc;
 elif [[ "$(uname)" == "Linux" ]]; then
-    rm .bashrc;
+    rm -rf .bashrc;
     ln -s dotfiles/bash/bashrc .bashrc;
 fi
-rm -f .zshrc
+rm -rf -f .zshrc
 ln -s ~/dotfiles/bash/zshrc .zshrc
 
-rm .inputrc;
+rm -rf .inputrc;
 ln -s dotfiles/bash/inputrc .inputrc;
 
 cd;
-rm .vimrc;
-rm -rf .vim;
+rm -rf .vimrc;
+rm -rf -rf .vim;
 ln -s ~/dotfiles/vim/vimrc .vimrc;
 ln -s ~/dotfiles/vim/ .vim;
 
 mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config};
-rm $XDG_CONFIG_HOME/nvim;
+rm -rf $XDG_CONFIG_HOME/nvim;
 ln -s ~/dotfiles/vim $XDG_CONFIG_HOME/nvim;
 
-rm .tmux.conf;
+rm -rf .tmux.conf;
 ln -s ~/dotfiles/tmux/tmux.conf .tmux.conf;
 
-rm .ghci;
+rm -rf .ghci;
 ln -s ~/dotfiles/ghci .ghci;
 
-rm ~/.lein/profiles.clj
+rm -rf ~/.lein/profiles.clj
 ln -s ~/dotfiles/lein_profiles.clj .lein/profiles.clj

@@ -71,18 +71,3 @@ if [ -e ~/bashrc_agoda ]
 then
     source ~/bashrc_agoda
 fi
-
-
-if [[ "$0" == "bash" ]]; then
-    # The next line updates PATH for the Google Cloud SDK.
-    if [ -f '/Users/akhong/google-cloud-sdk/path.bash.inc' ]; then . '/Users/akhong/google-cloud-sdk/path.bash.inc'; fi
-
-    # The next line enables shell command completion for gcloud.
-    if [ -f '/Users/akhong/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/akhong/google-cloud-sdk/completion.bash.inc'; fi
-elif [[ "$0" == "zsh" ]]; then
-    # The next line updates PATH for the Google Cloud SDK.
-    if [ -f '/Users/akhong/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/akhong/google-cloud-sdk/path.zsh.inc'; fi
-
-    # The next line enables shell command completion for gcloud.
-    if [ -f '/Users/akhong/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/akhong/google-cloud-sdk/completion.zsh.inc'; fi
-fi

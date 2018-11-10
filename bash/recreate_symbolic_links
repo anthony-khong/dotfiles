@@ -27,7 +27,9 @@ rm -rf .tmux.conf;
 ln -s ~/dotfiles/tmux/tmux.conf .tmux.conf;
 
 rm -rf .ghci;
+mkdir .ghci
 ln -s ~/dotfiles/ghci .ghci;
 
-rm -rf ~/.lein/profiles.clj
+rm -rf ~/.lein
+.mkdir .ghci
 ln -s ~/dotfiles/lein_profiles.clj .lein/profiles.clj

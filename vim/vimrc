@@ -40,12 +40,14 @@ Plug 'scrooloose/nerdtree'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tomtom/tlib_vim'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
 
 " Visualisation
 Plug 'airblade/vim-gitgutter'
+Plug 'itchyny/lightline.vim'
+Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'plasticboy/vim-markdown'
 Plug 'tpope/vim-surround'
-Plug 'itchyny/lightline.vim'
 Plug 'vim-scripts/textutil.vim'
 Plug 'w0rp/ale'
 
@@ -75,6 +77,12 @@ Plug 'derekwyatt/vim-scala'
 
 " Docker
 Plug 'ekalinin/Dockerfile.vim'
+
+" Racket
+Plug 'wlangstroth/vim-racket'
+Plug 'MicahElliott/vrod'
+"Plug 'guns/vim-sexp'
+"Plug 'tpope/vim-sexp-mappings-for-regular-people'
 
 " HTML
 Plug 'mattn/emmet-vim'
@@ -472,7 +480,7 @@ let g:deoplete#sources.scala = ['buffer', 'tags', 'omni']
 let g:deoplete#omni#input_patterns = {}
 let g:deoplete#omni#input_patterns.scala = ['[^. *\t0-9]\.\w*',': [A-Z]\w', '[\[\t\( ][A-Za-z]\w*']
 let g:deoplete#sources#jedi#server_timeout = 60
-call deoplete#custom#option({
+silent! call deoplete#custom#option({
     \ 'auto_complete_delay': 0,
     \ 'smart_case': v:true,
     \ })
@@ -513,12 +521,23 @@ set updatetime=100
 
 " Slime
 let g:slime_target = "tmux"
-let g:slime_default_config = {
+silent! let g:slime_default_config = {
     \ "socket_name": split($TMUX, ",")[0],
     \ "target_pane": ":0.1"
     \ }
 let g:slime_dont_ask_default = 1
 let g:slime_python_ipython = 1
 
-"Echodoc
+" Echodoc
 let g:echodoc_enable_at_startup = 1
+
+" Rainbow Parantheses
+"au VimEnter *.clj,*.rkt RainbowParenthesesToggle
+"au Syntax *.clj,*.rkt RainbowParenthesesLoadRound
+"au Syntax *.clj,*.rkt RainbowParenthesesLoadSquare
+"au Syntax *.clj,*.rkt RainbowParenthesesLoadBraces
+"let g:lisp_rainbow = 1  
+augroup rainbow_lisp
+  autocmd!
+  autocmd FileType lisp,clojure,scheme RainbowParentheses
+augroup END

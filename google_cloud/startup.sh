@@ -7,9 +7,12 @@ sudo apt-get update && sudo apt-get install -y \
     apt-transport-https \
     ca-certificates \
     curl \
+    emacs \
+    entr \
     git \
     libssl-dev \
     make \
+    pandoc \
     software-properties-common \
     tmux \
     xclip
@@ -37,6 +40,10 @@ sudo chown -R $USER /opt/anaconda/
 export PATH="/opt/anaconda/bin:$PATH"
 pip install --upgrade pip
 
+# Git
+git config --global user.email "anthony.kusumo.khong@gmail.com"
+git config --global user.name "Anthony Khong"
+
 # Dotfiles
 cd $HOME \
     && git clone https://github.com/anthony-khong/dotfiles.git \
@@ -56,9 +63,16 @@ sudo add-apt-repository -y ppa:neovim-ppa/stable \
         && /bin/bash $HOME/dotfiles/tmux/tpm/scripts/install_plugins.sh
 sudo chown -R $USER "$HOME/.local"
 
+# Spacemacs
+git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
+
 # Ripgrep
 curl -LO https://github.com/BurntSushi/ripgrep/releases/download/0.10.0/ripgrep_0.10.0_amd64.deb
 sudo dpkg -i ripgrep_0.10.0_amd64.deb && rm ripgrep_0.10.0_amd64.deb
+
+# Bat
+curl -LO https://github.com/sharkdp/bat/releases/download/v0.8.0/bat_0.8.0_amd64.deb
+sudo dpkg -i bat_0.8.0_amd64.deb && rm bat_0.8.0_amd64.deb
 
 # Parinfer
 curl https://sh.rustup.rs -sSf | sh -s -- -y

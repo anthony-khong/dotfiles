@@ -55,7 +55,6 @@ sudo add-apt-repository -y ppa:neovim-ppa/stable \
         && nvim +PlugInstall +silent +qall \
         && /bin/bash $HOME/dotfiles/tmux/tpm/scripts/install_plugins.sh
 sudo chown -R $USER "$HOME/.local"
-sed -i '/fzf.bash/d' .bashrc
 
 # Ripgrep
 curl -LO https://github.com/BurntSushi/ripgrep/releases/download/0.10.0/ripgrep_0.10.0_amd64.deb
@@ -72,3 +71,6 @@ cd ~/dotfiles/vim/plugged/parinfer-rust \
 
 # Wrap up
 sudo chown -R akhong $HOME
+cd $HOME/dotfiles \
+    && git checkout . \
+    && cd $HOME

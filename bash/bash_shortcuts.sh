@@ -264,3 +264,20 @@ function remap_caps() {
     setxkbmap -option 'caps:ctrl_modifier'
     xcape -t 150 -e 'Caps_Lock=Escape;Control_L=Escape;Control_R=Escape'
 }
+
+# GCP
+function create_cloud_dev() {
+    gcloud compute instances create cloud-dev \
+        --image-family ubuntu-1804-lts \
+        --image-project ubuntu-os-cloud \
+        --metadata-from-file startup-script=$HOME/repos/gcp/startup.sh \
+        --machine-type=n1-standard-8
+}
+
+function cloud_dev() {
+    if [ "$#" -ne 1 ]; then
+        gcloud compute ssh cloud-dev
+    else
+        gcloud compute instances $1 cloud-dev
+    fi
+}

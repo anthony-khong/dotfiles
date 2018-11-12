@@ -88,3 +88,4 @@ sudo chown -R akhong $HOME
 cd $HOME/dotfiles \
     && git checkout . \
     && cd $HOME
+usermod -a -G docker $USER

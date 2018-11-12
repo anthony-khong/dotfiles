@@ -55,14 +55,13 @@ cd $HOME \
     && /bin/bash $HOME/dotfiles/bash/recreate_symbolic_links
 
 # Neovim
+pip install --upgrade neovim jedi google-api-python-client pyflakes mypy
 sudo add-apt-repository -y ppa:neovim-ppa/stable \
         && sudo apt-get update \
         && sudo apt-get install -y neovim \
-        && pip install --upgrade neovim jedi google-api-python-client \
         && nvim +PlugInstall +silent +qall \
         && /bin/bash $HOME/dotfiles/tmux/tpm/scripts/install_plugins.sh
 sudo chown -R $USER "$HOME/.local"
-pip install pyflakes mypy
 
 # Spacemacs
 git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d

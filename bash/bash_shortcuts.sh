@@ -281,3 +281,13 @@ function cloud_dev() {
         gcloud compute instances $1 cloud-dev
     fi
 }
+
+# ZSH
+
+function disable_git_status() {
+    git config --add oh-my-zsh.hide-status 1
+}
+
+function enable_git_status () {
+    git config --unset-all oh-my-zsh.hide-status
+}

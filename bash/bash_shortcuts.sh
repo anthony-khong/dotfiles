@@ -213,15 +213,15 @@ function force_rebuild_bf_docker() {
 }
 
 function bf_bash() {
-    docker run --rm -v "$PWD":"/root/$(basename $PWD)" -it betfair /bin/bash
+    docker run --rm -v "$PWD":"/root/$(basename $PWD)" -it betfair /bin/bash "$@"
 }
 
 function bf_py() {
-    docker run --rm -v "$PWD":"/root/$(basename $PWD)" -it betfair ipython -i
+    docker run --rm -v "$PWD":"/root/$(basename $PWD)" -it betfair ipython -i "$@"
 }
 
 function bf_by() {
-    docker run --rm -v "$PWD":"/root/$(basename $PWD)" -it betfair bpython -i
+    docker run --rm -v "$PWD":"/root/$(basename $PWD)" -it betfair bpython -i "$@"
 }
 
 function bf_coco() {

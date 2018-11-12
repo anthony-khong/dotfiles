@@ -43,6 +43,9 @@ pip install --upgrade pip
 # Git
 git config --global user.email "anthony.kusumo.khong@gmail.com"
 git config --global user.name "Anthony Khong"
+curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
+sudo apt-get install -y git-lfs
+git lfs install
 
 # Dotfiles
 cd $HOME \
@@ -88,4 +91,4 @@ sudo chown -R akhong $HOME
 cd $HOME/dotfiles \
     && git checkout . \
     && cd $HOME
-usermod -a -G docker $USER
+sudo usermod -a -G docker $USER

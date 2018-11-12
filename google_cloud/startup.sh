@@ -62,6 +62,7 @@ sudo add-apt-repository -y ppa:neovim-ppa/stable \
         && nvim +PlugInstall +silent +qall \
         && /bin/bash $HOME/dotfiles/tmux/tpm/scripts/install_plugins.sh
 sudo chown -R $USER "$HOME/.local"
+pip install pyflakes mypy
 
 # Spacemacs
 git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d

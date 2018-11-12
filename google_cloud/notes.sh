@@ -20,3 +20,8 @@ gcloud compute ssh $NAME
 
 # SSH to Cloud Shell
 gcloud alpha cloud-shell ssh
+
+# Setting up X11Forwarding on Mac
+# - Install XQuartz + Restart
+# - Add "-X" flag to ssh
+# - Enable X11Forwarding via /etc/ssh/sshd_config

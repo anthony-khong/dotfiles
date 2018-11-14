@@ -270,14 +270,14 @@ function create_cloud_dev() {
     gcloud compute instances create cloud-dev \
         --image-family ubuntu-1804-lts \
         --image-project ubuntu-os-cloud \
-        --metadata-from-file startup-script=$HOME/dotfile/google_cloud/startup.sh \
-        --machine-type=n1-standard-8 \
-        --boot-disk-size=64GB
+        --metadata-from-file startup-script=$HOME/dotfiles/google_cloud/startup.sh \
+        --machine-type=n1-standard-16 \
+        --boot-disk-size=128GB
 }
 
 function cloud_dev() {
     if [ "$#" -ne 1 ]; then
-        gcloud compute ssh --ssh-flag="-Y" cloud-dev
+        gcloud compute ssh --ssh-flag="-Y" akhong@cloud-dev
     else
         gcloud compute instances $1 cloud-dev
     fi

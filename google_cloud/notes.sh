@@ -21,7 +21,22 @@ gcloud compute ssh $NAME
 # SSH to Cloud Shell
 gcloud alpha cloud-shell ssh
 
+# Reconfigure SSH
+gcloud compute config-ssh
+
+# Rebuild Could Dev
+# gcloud compute instances delete cloud-dev --keep-disks=boot
+# gcloud compute instances create cloud_dev \
+#     --disk name=DISK,boot=yes,auto-delete=no
+# gcloud compute ssh new-instance
+# Reauthenticate
+# gcloud auth login
+
+# Allow mosh
+gcloud compute firewall-rules create default-allow-mosh --allow=udp:60001
+
 # Setting up X11Forwarding on Mac
 # - Install XQuartz + Restart
 # - Add "-X" flag to ssh
 # - Enable X11Forwarding via /etc/ssh/sshd_config
+# - (Optional) XQuartz -> Preferences -> Security -> Swap the checks

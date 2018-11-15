@@ -277,6 +277,7 @@ nnoremap <Leader>vs :vsplit<CR>
 
 " Copy the entire script to the clipboard
 nnoremap <Leader>l mwggVG"+y'wzz
+nnoremap <leader>sa mwggVG
 " Copy from current line to the top
 nnoremap <Leader>k mwggV'w"+y'wzz
 " Copy from current line to the bottom

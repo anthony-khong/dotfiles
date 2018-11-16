@@ -277,7 +277,7 @@ function create_cloud_dev() {
 
 function cloud_dev() {
     if [ "$#" -ne 1 ]; then
-        gcloud compute ssh --ssh-flag="-Y" akhong@cloud-dev
+        gcloud compute ssh akhong@cloud-dev
     else
         gcloud compute instances $1 cloud-dev
     fi

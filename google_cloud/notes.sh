@@ -37,6 +37,6 @@ gcloud compute firewall-rules create default-allow-mosh --allow=udp:60001
 
 # Setting up X11Forwarding on Mac
 # - Install XQuartz + Restart
-# - Add "-X" flag to ssh
+# - Add "-Y" flag to ssh
 # - Enable X11Forwarding via /etc/ssh/sshd_config
 # - (Optional) XQuartz -> Preferences -> Security -> Swap the checks

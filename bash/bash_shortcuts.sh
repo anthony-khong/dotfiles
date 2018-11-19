@@ -271,8 +271,8 @@ function create_cloud_dev() {
         --image-family ubuntu-1804-lts \
         --image-project ubuntu-os-cloud \
         --metadata-from-file startup-script=$HOME/dotfiles/google_cloud/startup.sh \
-        --machine-type=n1-standard-16 \
-        --boot-disk-size=128GB
+        --machine-type="n1-standard-$1" \
+        --boot-disk-size="$2GB"
 }
 
 function cloud_dev() {

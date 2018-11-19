@@ -24,6 +24,9 @@ gcloud alpha cloud-shell ssh
 # Reconfigure SSH
 gcloud compute config-ssh
 
+# Create a storage bucket
+# gsutil mb gs://machine-learning-bucket/
+
 # Rebuild Could Dev
 # gcloud compute instances delete cloud-dev --keep-disks=boot
 # gcloud compute instances create cloud_dev \

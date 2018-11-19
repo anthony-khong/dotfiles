@@ -17,14 +17,6 @@ sudo apt-get update && sudo apt-get install -y \
     tmux \
     xclip
 
-# Create 16GB of swap memory
-sudo fallocate -l 16G /swapfile
-sudo chmod 600 /swapfile
-sudo mkswap /swapfile
-sudo swapon /swapfile
-sudo cp /etc/fstab /etc/fstab.bak
-echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
-
 # Docker
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg \
     | sudo apt-key add -
@@ -94,9 +86,24 @@ cd ~/dotfiles/vim/plugged/parinfer-rust \
     && cargo install --force \
     && cd $HOME
 
+# Create 16GB of swap memory
+# sudo fallocate -l 16G /swapfile
+# sudo chmod 600 /swapfile
+# sudo mkswap /swapfile
+# sudo swapon /swapfile
+# sudo cp /etc/fstab /etc/fstab.bak
+# echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+
 # Wrap up
 sudo chown -R akhong $HOME
 cd $HOME/dotfiles \
     && git checkout . \
     && cd $HOME
 sudo usermod -a -G docker $USER
+sudo usermod -aG sudo $USER
+
+# Mount storage bucket
+# export GCSFUSE_REPO=gcsfuse-`lsb_release -c -s`
+# echo "deb http://packages.cloud.google.com/apt $GCSFUSE_REPO main" | sudo tee /etc/apt/sources.list.d/gcsfuse.list
+# curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+# sudo apt-get update && sudo apt-get install -y gcsfuse

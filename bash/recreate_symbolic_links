@@ -26,6 +26,9 @@ ln -s ~/dotfiles/vim $XDG_CONFIG_HOME/nvim;
 rm -rf .tmux.conf;
 ln -s ~/dotfiles/tmux/tmux.conf .tmux.conf;
 
+mkdir -p ~/.ptpython
+ln -s ~/dotfiles/ptpython/config.py ~/.ptpython/config.py
+
 rm -rf .ghci;
 mkdir .ghci
 ln -s ~/dotfiles/ghci .ghci;

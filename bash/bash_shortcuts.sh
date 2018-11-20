@@ -213,43 +213,48 @@ function force_rebuild_bf_docker() {
 }
 
 function bf_bash() {
-    docker run --rm -v "$PWD":"/root/$(basename $PWD)" -it betfair /bin/bash "$@"
+    docker run --rm -v "$PWD":"/root/betfair" -it betfair /bin/bash
 }
 
 function bf_py() {
-    docker run --rm -v "$PWD":"/root/$(basename $PWD)" -it betfair ipython -i "$@"
+    if [ "$#" -ne 1 ]; then
+        docker run --rm -v "$PWD":"/root/betfair" -it betfair ptipython --vi
+    else
+        docker run --rm -v "$PWD":"/root/betfair" -it betfair ptipython --vi -i $1
+    fi
 }
 
 function bf_by() {
-    docker run --rm -v "$PWD":"/root/$(basename $PWD)" -it betfair bpython -i "$@"
+    docker run --rm -v "$PWD":"/root/betfair" -it betfair bpython -i
 }
 
 function bf_coco() {
-    docker run --rm -v "$PWD":"/root/$(basename $PWD)" -it betfair \
+    docker run --rm -v "$PWD":"/root/betfair" -it betfair \
         coconut -t 36 --ipython console
 }
 
-function bf_pytest() {
+function bf_run_tests() {
     docker run --rm -v "$PWD":"/root/$(basename $PWD)" -it betfair \
-        pytest betfair/tests/ 
+        pytest betfair/tests/"$@" --cov \
+        && echo "Running type checks..." \
+        && mypy --cache-dir=/dev/null --ignore-missing-imports \
+            --show-error-context ./betfair/
 }
 
-function bf_pytest_pdb() {
+function bf_run_tests_pdb() {
     docker run --rm -v "$PWD":"/root/$(basename $PWD)" -it betfair \
-        pytest betfair/tests/ -s --pdb
+        pytest betfair/tests/"$@" --cov -s --pdb \
+        && echo "Running type checks..." \
+        && mypy --cache-dir=/dev/null --ignore-missing-imports \
+            --show-error-context ./betfair/
 }
 
 function auto_bf_pytest() {
     rg --files . | entr bash -c \
-        "docker run --rm -v \"$PWD\":\"/root/$(basename $PWD)\" -it betfair pytest betfair/$1"
-}
-
-function build_bf_pypy_docker() {
-    docker build -f docker/Dockerfile.pypy -t betfair_pypy docker
-}
-
-function bf_pypy() {
-    docker run --rm -v "$PWD":"/root/betfair" -it betfair_pypy ipython -i
+        "clear \
+        && echo \"Running tests for $1...\" \
+        && docker run --rm -v \"$PWD\":\"/root/betfair\" \
+            -it betfair pytest betfair/tests/$1"
 }
 
 alias racket='docker run -it racket'

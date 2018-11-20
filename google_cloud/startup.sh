@@ -35,7 +35,7 @@ sudo chsh -s /usr/bin/zsh $USER
 
 # Miniconda
 wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda.sh
-sudo bash ~/miniconda.sh -b -p /opt/anaconda && rm ~/miniconda.sh
+sudo bash ~/miniconda.sh -b -p /opt/anaconda && sudo rm ~/miniconda.sh
 sudo chown -R $USER /opt/anaconda/
 export PATH="/opt/anaconda/bin:$PATH"
 pip install --upgrade pip
@@ -86,13 +86,12 @@ cd ~/dotfiles/vim/plugged/parinfer-rust \
     && cargo install --force \
     && cd $HOME
 
-# Create 16GB of swap memory
-# sudo fallocate -l 16G /swapfile
-# sudo chmod 600 /swapfile
-# sudo mkswap /swapfile
-# sudo swapon /swapfile
-# sudo cp /etc/fstab /etc/fstab.bak
-# echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+# Tmate
+curl -LO https://github.com/tmate-io/tmate/releases/download/2.2.1/tmate-2.2.1-static-linux-amd64.tar.gz
+sudo tar -xvf tmate-2.2.1-static-linux-amd64.tar.gz
+sudo mv tmate-2.2.1-static-linux-amd64/tmate /usr/bin
+sudo rm -rf tmate-2.2.1-static-linux-amd64
+sudo rm tmate-2.2.1-static-linux-amd64.tar.gz
 
 # Wrap up
 sudo chown -R akhong $HOME
@@ -101,6 +100,14 @@ cd $HOME/dotfiles \
     && cd $HOME
 sudo usermod -a -G docker $USER
 sudo usermod -aG sudo $USER
+
+# Create 16GB of swap memory - Prone to not execute!
+sudo fallocate -l 16G /swapfile
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+sudo cp /etc/fstab /etc/fstab.bak
+echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
 
 # Mount storage bucket
 # export GCSFUSE_REPO=gcsfuse-`lsb_release -c -s`

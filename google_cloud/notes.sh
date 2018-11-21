@@ -27,16 +27,18 @@ gcloud compute config-ssh
 # Create a storage bucket
 # gsutil mb gs://machine-learning-bucket/
 
-# Rebuild Could Dev
-# gcloud compute instances delete cloud-dev --keep-disks=boot
-# gcloud compute instances create cloud_dev \
-#     --disk name=DISK,boot=yes,auto-delete=no
-# gcloud compute ssh new-instance
-# Reauthenticate
-# gcloud auth login
+# Install gcloud
+curl https://sdk.cloud.google.com | bash
+exec -l $SHELL
+gcloud init
 
 # Allow mosh
 gcloud compute firewall-rules create default-allow-mosh --allow=udp:60001
+
+# Hooking up Google Storage
+# - Install gcloud
+# - export BOTO_CONFIG=/dev/null
+# - gsulit cp
 
 # Setting up X11Forwarding on Mac
 # - Install XQuartz + Restart

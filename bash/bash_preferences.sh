@@ -10,6 +10,7 @@ export PATH=$PATH:~/.local/bin
 export PATH="$HOME/.cargo/bin:$PATH"
 export NVIM_PYTHON_LOG_FILE=/tmp/log
 export NVIM_PYTHON_LOG_LEVEL=DEBUG
+export BOTO_CONFIG=/dev/null
 
 # Don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options

@@ -274,7 +274,7 @@ function remap_caps() {
 function create_cloud_dev() {
     gcloud compute instances create cloud-dev \
         --image-family ubuntu-1804-lts \
-        --image-project ubuntu-os-cloud \
+        --image-project gce-uefi-images \
         --metadata-from-file startup-script=$HOME/dotfiles/google_cloud/startup.sh \
         --machine-type="n1-standard-$1" \
         --boot-disk-size="$2GB"
@@ -289,7 +289,6 @@ function cloud_dev() {
 }
 
 # ZSH
-
 function disable_git_status() {
     git config --add oh-my-zsh.hide-status 1
 }

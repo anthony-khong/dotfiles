@@ -101,6 +101,9 @@ cd $HOME/dotfiles \
 sudo usermod -a -G docker $USER
 sudo usermod -aG sudo $USER
 
+# SSH key for GitLab and Github 
+ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa
+
 # Create 16GB of swap memory - Prone to not execute!
 sudo fallocate -l 16G /swapfile
 sudo chmod 600 /swapfile

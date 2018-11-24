@@ -233,21 +233,24 @@ function bf_coco() {
         coconut -t 36 --ipython console
 }
 
-function bf_run_tests() {
+function bf_run_unit_tests() {
     docker run --rm -v "$PWD":"/root/$(basename $PWD)" -it betfair \
-        pytest betfair/tests/"$@" --cov \
-        && echo "Running type checks..." \
-        && mypy --cache-dir=/dev/null --ignore-missing-imports \
-            --show-error-context ./betfair/
+        pytest betfair/tests/"$@" --cov
 }
 
-function bf_run_tests_pdb() {
+function bf_run_type_checks() {
     docker run --rm -v "$PWD":"/root/$(basename $PWD)" -it betfair \
-        pytest betfair/tests/"$@" --cov -s --pdb \
-        && echo "Running type checks..." \
-        && mypy --cache-dir=/dev/null --ignore-missing-imports \
-            --show-error-context ./betfair/
+        mypy --cache-dir=/dev/null --ignore-missing-imports --show-error-context \
+        betfair/betfair betfair/tests
 }
+
+function bf_run_tests() {
+    echo "Running unit tests..." \
+        && bf_run_unit_tests "$@" \
+        && echo "Running type checks..." \
+        && bf_run_type_checks
+}
+
 
 function auto_bf_pytest() {
     rg --files . | entr bash -c \

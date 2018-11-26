@@ -44,7 +44,7 @@ Plug 'tpope/vim-repeat'
 
 " Visualisation
 Plug 'airblade/vim-gitgutter'
-Plug 'drewtempelmeyer/palenight.vim' " Use with rebecca.itermcolors
+Plug 'drewtempelmeyer/palenight.vim' " Use with whimsy.itermcolors
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'plasticboy/vim-markdown'

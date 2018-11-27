@@ -19,3 +19,4 @@ source ~/dotfiles/bash/bash_docker.sh
 source ~/dotfiles/bash/bash_preferences.sh
 
 export PATH="$HOME/.cargo/bin:$PATH"
+export SCREEN=xterm-256color 

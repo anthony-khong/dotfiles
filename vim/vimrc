@@ -44,7 +44,6 @@ Plug 'tpope/vim-repeat'
 
 " Visualisation
 Plug 'airblade/vim-gitgutter'
-Plug 'drewtempelmeyer/palenight.vim' " Use with whimsy.itermcolors
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'plasticboy/vim-markdown'
@@ -232,18 +231,9 @@ set noshowmode
 " It looks nicer in some colour schemes
 if dark_background
     set background=dark
-    silent! colorscheme palenight
-    let g:palenight_terminal_italics=1
+    silent! colorscheme ubuntu-like
 else
     silent! colorscheme akk_light
-endif
-
-if (has("nvim"))
-  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-endif
-
-if (has("termguicolors"))
-  set termguicolors
 endif
 
 " This is needed to make Airline work
@@ -353,7 +343,7 @@ autocmd BufRead,BufNewFile *.sc setfiletype scala
 
 " Lightline
 let g:lightline = {
-      \ 'colorscheme': 'palenight',
+      \ 'colorscheme': 'seoul256',
       \ }
 
 " Tmux Navigator

@@ -428,9 +428,9 @@ let g:ale_linters_explicit = 1
 let g:ale_completion_enabled = 1
 let g:ale_sign_error = '>>'
 let g:ale_sign_warning = '!!'
-hi ALEErrorSign ctermbg=234 ctermfg=9
-hi ALEWarningSign ctermbg=234 ctermfg=11
-hi ALEWarning ctermbg=DarkMagenta
+hi ALEErrorSign   ctermbg=234         ctermfg=9  guibg=234 guifg=9
+hi ALEWarningSign ctermbg=234         ctermfg=11 guibg=234 guifg=11
+hi ALEWarning     ctermbg=DarkMagenta guibg=DarkMagenta
 let g:airline#extensions#ale#enabled = 1
 
 " Fugitive
@@ -493,7 +493,7 @@ let g:deoplete#omni#input_patterns = {}
 let g:deoplete#omni#input_patterns.scala = ['[^. *\t0-9]\.\w*',': [A-Z]\w', '[\[\t\( ][A-Za-z]\w*']
 let g:deoplete#sources#jedi#server_timeout = 60
 silent! call deoplete#custom#option({
-    \ 'auto_complete_delay': 0,
+    \ 'auto_complete_delay': 40,
     \ 'smart_case': v:true,
     \ })
 

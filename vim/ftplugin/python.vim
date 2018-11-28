@@ -20,7 +20,7 @@ function! MarkMargin (on)
         unlet b:MarkMargin
     endif
     if a:on
-        let b:MarkMargin = matchadd('ColorColumn', '\%91v', 100)
+        let b:MarkMargin = matchadd('ColorColumn', '\%96v', 100)
     endif
 endfunction
 

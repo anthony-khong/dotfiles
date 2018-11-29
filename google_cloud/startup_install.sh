@@ -19,9 +19,6 @@ sudo apt-get update && sudo apt-get install -y \
     tmux \
     xclip
 
-echo "Generating SSH key..." >> $INSTALL_LOG
-ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa
-
 echo "Installing Docker..." >> $INSTALL_LOG
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg \
     | sudo apt-key add -
@@ -109,5 +106,8 @@ sudo mkswap /swapfile
 sudo swapon /swapfile
 sudo cp /etc/fstab /etc/fstab.bak
 echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+
+echo "Generating SSH key..." >> $INSTALL_LOG
+sudo su - $USER && ssh-keygen -t rsa -N "" -f $HOME/.ssh/id_rsa && exit
 
 echo "Setup complete!" >> $INSTALL_LOG

@@ -3,8 +3,8 @@ export USER="akhong"
 export HOME="/home/akhong"
 export INSTALL_LOG="$HOME/.startup.log"
 
-echo "Generating SSH key..." >> $INSTALL_LOG
-ssh-keygen -t rsa -N "" -f $HOME/.ssh/id_rsa
+# echo "Generating SSH key..." >> $INSTALL_LOG
+# ssh-keygen -t rsa -N "" -f $HOME/.ssh/id_rsa
 
 echo "Installing essential apps with apt-get..." >> $INSTALL_LOG
 sudo apt-get update && sudo apt-get install -y \
@@ -102,8 +102,8 @@ cd $HOME/dotfiles \
 sudo usermod -a -G docker $USER
 sudo usermod -aG sudo $USER
 
-echo "Creating 16G of swap file..." >> $INSTALL_LOG
-sudo fallocate -l 16G /swapfile
+echo "Creating 32G of swap file..." >> $INSTALL_LOG
+sudo fallocate -l 32G /swapfile
 sudo chmod 600 /swapfile
 sudo mkswap /swapfile
 sudo swapon /swapfile

@@ -19,6 +19,9 @@ sudo apt-get update && sudo apt-get install -y \
     tmux \
     xclip
 
+echo "Generating SSH key..." >> $INSTALL_LOG
+ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa
+
 echo "Installing Docker..." >> $INSTALL_LOG
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg \
     | sudo apt-key add -
@@ -98,9 +101,6 @@ cd $HOME/dotfiles \
     && cd $HOME
 sudo usermod -a -G docker $USER
 sudo usermod -aG sudo $USER
-
-echo "Generating SSH key..." >> $INSTALL_LOG
-ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa
 
 echo "Creating 16G of swap file..." >> $INSTALL_LOG
 sudo fallocate -l 16G /swapfile

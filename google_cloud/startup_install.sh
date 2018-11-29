@@ -3,6 +3,9 @@ export USER="akhong"
 export HOME="/home/akhong"
 export INSTALL_LOG="$HOME/.startup.log"
 
+echo "Generating SSH key..." >> $INSTALL_LOG
+ssh-keygen -t rsa -N "" -f $HOME/.ssh/id_rsa
+
 echo "Installing essential apps with apt-get..." >> $INSTALL_LOG
 sudo apt-get update && sudo apt-get install -y \
     build-essential \
@@ -106,8 +109,5 @@ sudo mkswap /swapfile
 sudo swapon /swapfile
 sudo cp /etc/fstab /etc/fstab.bak
 echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
-
-echo "Generating SSH key..." >> $INSTALL_LOG
-sudo su - $USER && ssh-keygen -t rsa -N "" -f $HOME/.ssh/id_rsa && exit
 
 echo "Setup complete!" >> $INSTALL_LOG

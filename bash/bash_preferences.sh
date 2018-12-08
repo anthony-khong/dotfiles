@@ -73,3 +73,7 @@ if [ -e ~/bashrc_agoda ]
 then
     source ~/bashrc_agoda
 fi
+
+# Fixes some locale error when running mosh
+LANG="en_US.UTF-8"
+export LANG

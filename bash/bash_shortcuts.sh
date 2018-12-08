@@ -235,7 +235,7 @@ function bf_coco() {
 
 function bf_run_unit_tests() {
     docker run --rm -v "$PWD":"/root/$(basename $PWD)" -it betfair \
-        pytest betfair/tests/"$@" --cov
+        pytest betfair/tests/"$@" --cov --cov-report term-missing
 }
 
 function bf_run_type_checks() {

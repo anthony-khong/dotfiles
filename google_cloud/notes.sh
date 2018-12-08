@@ -49,3 +49,8 @@ gcloud compute firewall-rules create default-allow-mosh --allow=udp:60001
 # Configuring iTerm2
 # - Use FiraCode + Use Ligature
 # - Link: https://github.com/tonsky/FiraCode
+
+# Setting up mosh:
+# - Install mosh both in client and server
+# - Allow UDP connections: gcloud compute firewall-rules create mosh --allow udp:60000-61000
+# - Manually parse the instance's external IP

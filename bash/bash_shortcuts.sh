@@ -274,11 +274,11 @@ function remap_caps() {
 }
 
 # GCP
-function gcp_external_ip() {
+function gcp-external-ip() {
     gcloud compute instances describe $1 | grep "natIP"  | grep -Eo '([0-9]{1,3}\.){3}[0-9]{1,3}'
 }
 
-function create_cloud_dev() {
+function create-cloud-dev() {
     gcloud compute instances create cloud-dev \
         --image-family ubuntu-1804-lts \
         --image-project gce-uefi-images \
@@ -287,10 +287,10 @@ function create_cloud_dev() {
         --boot-disk-size="$2GB"
 }
 
-function cloud_dev() {
+function cloud-dev() {
     if [ "$#" -ne 1 ]; then
         #gcloud compute ssh akhong@cloud-dev
-        mosh --ssh="ssh -i ~/.ssh/google_compute_engine" akhong@$(gcp_external_ip cloud-dev)
+        mosh --ssh="ssh -i ~/.ssh/google_compute_engine" akhong@$(gcp-external-ip cloud-dev)
     else
         gcloud compute instances $1 cloud-dev
     fi

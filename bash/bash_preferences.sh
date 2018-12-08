@@ -75,5 +75,4 @@ then
 fi
 
 # Fixes some locale error when running mosh
-LANG="en_US.UTF-8"
-export LANG
+export LC_ALL="en_US.UTF-8"

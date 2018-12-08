@@ -45,3 +45,7 @@ gcloud compute firewall-rules create default-allow-mosh --allow=udp:60001
 # - Add "-Y" flag to ssh
 # - Enable X11Forwarding via /etc/ssh/sshd_config
 # - (Optional) XQuartz -> Preferences -> Security -> Swap the checks
+
+# Configuring iTerm2
+# - Use FiraCode + Use Ligature
+# - Link: https://github.com/tonsky/FiraCode

@@ -66,9 +66,10 @@ Plug 'neovimhaskell/haskell-vim'
 Plug 'parsonsmatt/intero-neovim'
 
 " Python
+Plug 'Shougo/echodoc.vim'
+Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'manicmaniac/coconut.vim'
 Plug 'zchee/deoplete-jedi'
-Plug 'Shougo/echodoc.vim'
 
 " R
 Plug 'jalvesaq/Nvim-R'

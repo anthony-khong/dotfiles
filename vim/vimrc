@@ -85,6 +85,12 @@ Plug 'MicahElliott/vrod'
 "Plug 'guns/vim-sexp'
 "Plug 'tpope/vim-sexp-mappings-for-regular-people'
 
+" F#
+Plug 'fsharp/vim-fsharp', {
+      \ 'for': 'fsharp',
+      \ 'do':  'make fsautocomplete',
+      \}
+
 " HTML
 Plug 'mattn/emmet-vim'
 

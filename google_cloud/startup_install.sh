@@ -20,6 +20,7 @@ sudo apt-get update && sudo apt-get install -y \
     pandoc \
     software-properties-common \
     tmux \
+    unzip \
     xclip
 
 echo "Installing Docker..." >> $INSTALL_LOG
@@ -53,6 +54,11 @@ git config --global user.name "Anthony Khong"
 curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
 sudo apt-get install -y git-lfs
 git lfs install
+
+echo "Installing mono and fsharp..." >> $INSTALL_LOG
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
+echo "deb https://download.mono-project.com/repo/ubuntu stable-bionic main" | sudo tee /etc/apt/sources.list.d/mono-official-stable.list
+sudo apt update sudo apt-get install -y mono-devel fsharp
 
 echo "Configuring dotfiles..." >> $INSTALL_LOG
 cd $HOME/dotfiles \

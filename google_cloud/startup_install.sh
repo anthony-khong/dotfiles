@@ -123,4 +123,12 @@ echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
 echo "Installing mosh..." >> $INSTALL_LOG
 sudo apt-get install -y mosh
 
+echo "Installing .NET SDK..." >> $INSTALL_LOG
+wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb
+sudo dpkg -i packages-microsoft-prod.deb
+sudo add-apt-repository universe \
+    && sudo apt-get install -y apt-transport-https \
+    && sudo apt-get update \
+    && sudo apt-get install -y dotnet-sdk-2.2
+
 echo "Setup complete!" >> $INSTALL_LOG

@@ -540,6 +540,9 @@ let g:intero_vertical_split = 1
 let g:intero_window_size = 8
 set updatetime=100
 
+" FSharp
+let g:fsharp_map_keys = 0
+
 " Slime
 let g:slime_target = "tmux"
 silent! let g:slime_default_config = {

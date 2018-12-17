@@ -131,4 +131,7 @@ sudo add-apt-repository universe \
     && sudo apt-get update \
     && sudo apt-get install -y dotnet-sdk-2.2
 
+echo "Installing Xorg.." >> $INSTALL_LOG
+sudo apt-get -y install xorg openbox
+
 echo "Setup complete!" >> $INSTALL_LOG

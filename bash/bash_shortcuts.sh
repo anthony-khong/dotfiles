@@ -9,11 +9,6 @@ function sbash() {
     fi
 }
 
-# File Management
-function mkinit() {
-    echo '' >> __init__.py
-}
-
 # Neovim
 alias vi="/usr/bin/vim -p"
 alias vim="nvim -p"
@@ -53,64 +48,6 @@ function auto_md_to_pdf() {
 }
 
 
-# Haskell shortcuts
-alias ghci='stack ghci'
-alias ho='hoogle'
-
-function auto_stack_test() {
-    do_if_read "$1" "stack test"
-}
-
-function hs_script() {
-    touch "$1"
-    echo "#!/usr/bin/env stack"     >> "$1"
-    echo "{- stack"                 >> "$1"
-    echo "     --resolver lts-11.7" >> "$1"
-    echo "     exec ghci"           >> "$1"
-    echo "-}"                       >> "$1"
-    echo ""                         >> "$1"
-    echo "main :: IO ()"            >> "$1"
-    echo "main = return ()"         >> "$1"
-}
-
-# Scala shortcuts
-alias sc='scala -i'
-alias samm='sbt ammonite:run'
-alias sbt="sbt -mem 2048"
-
-# C++ shortucts
-function gpp() {
-    g++ -pipe -std=c++11 -lm -o temp "$1"
-    if (( $# == 1 )); then
-        ./temp
-    else
-        cat "$2" | ./temp
-
-    fi
-
-    rm temp
-    echo ""
-    rm a.out
-}
-
-# Git shortcuts
-alias gs='git status '
-alias ga='git add '
-alias gb='git branch '
-alias gc='git commit'
-alias gd='git diff'
-alias go='git checkout '
-alias igt='git '
-
-function gsu() {
-    git submodule init;
-    git submodule update;
-}
-
-function diffs() {
-    vim `git ls-files -m` -p;
-}
-
 # Dotfiles shortucts
 function recreate_symbolic_links() {
     bash ~/dotfiles/bash/recreate_symbolic_links
@@ -130,19 +67,6 @@ function clone_dotfiles() {
 function fix_nvim_tmux_navigator () {
     infocmp $TERM | sed 's/kbs=^[hH]/kbs=\\177/' > $TERM.ti
     tic $TERM.ti
-}
-
-function setup_parinfer_neovim () {
-    cd ~/dotfiles/vim/plugged/parinfer-rust/cparinfer
-    cargo build --release
-}
-
-function install_lein () {
-    curl https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein > lein
-    sudo mkdir -p /usr/local/bin/
-    sudo mv lein /usr/local/bin/lein
-    sudo chmod a+x /usr/local/bin/lein
-    lein
 }
 
 # Networking shortcuts
@@ -165,15 +89,6 @@ function check_my_ip() {
 # Watch
 function do_if_read() {
     ls "$1" | entr bash -c "$2; echo Last executed $(date)"
-}
-
-# TODO: add argument for pt
-function auto_pytest() {
-    rg --files "$1" |  entr bash -c "py.test $3; echo Last tested $(date)"
-}
-
-function auto_pt() {
-    rg --files "$1" |  entr bash -c "py.test -s --pdb $3; echo Last tested $(date)"
 }
 
 # Karabiner
@@ -200,66 +115,7 @@ function rctags() {
     ctags -R -f ./.git/tags .
 }
 
-# Kitty
-alias kitty="/Applications/kitty.app/Contents/MacOS/kitty"
-
-# Oscar
-function build_bf_docker() {
-    docker build -f docker/Dockerfile -t betfair docker/
-}
-
-function force_rebuild_bf_docker() {
-    docker build --no-cache -f docker/Dockerfile -t betfair docker/
-}
-
-function bf_bash() {
-    docker run --rm -v "$PWD":"/root/betfair" -it betfair /bin/bash
-}
-
-function bf_py() {
-    if [ "$#" -ne 1 ]; then
-        docker run --rm -v "$PWD":"/root/betfair" -it betfair ptipython --vi
-    else
-        docker run --rm -v "$PWD":"/root/betfair" -it betfair ptipython --vi -i $1
-    fi
-}
-
-function bf_by() {
-    docker run --rm -v "$PWD":"/root/betfair" -it betfair bpython -i
-}
-
-function bf_coco() {
-    docker run --rm -v "$PWD":"/root/betfair" -it betfair \
-        coconut -t 36 --ipython console
-}
-
-function bf_run_unit_tests() {
-    docker run --rm -v "$PWD":"/root/$(basename $PWD)" -it betfair \
-        pytest betfair/tests/"$@" --cov --cov-report term-missing
-}
-
-function bf_run_type_checks() {
-    docker run --rm -v "$PWD":"/root/$(basename $PWD)" -it betfair \
-        mypy --cache-dir=/dev/null --ignore-missing-imports --show-error-context \
-        betfair/betfair betfair/tests
-}
-
-function bf_run_tests() {
-    echo "Running unit tests..." \
-        && bf_run_unit_tests "$@" \
-        && echo "Running type checks..." \
-        && bf_run_type_checks
-}
-
-
-function auto_bf_pytest() {
-    rg --files . | entr bash -c \
-        "clear \
-        && echo \"Running tests for $1...\" \
-        && docker run --rm -v \"$PWD\":\"/root/betfair\" \
-            -it betfair pytest betfair/tests/$1"
-}
-
+# Racket
 alias racket='docker run -it racket'
 
 # Trim
@@ -273,29 +129,6 @@ function remap_caps() {
     xcape -t 150 -e 'Caps_Lock=Escape;Control_L=Escape;Control_R=Escape'
 }
 
-# GCP
-function gcp-external-ip() {
-    gcloud compute instances describe $1 | grep "natIP"  | grep -Eo '([0-9]{1,3}\.){3}[0-9]{1,3}'
-}
-
-function create-cloud-dev() {
-    gcloud compute instances create cloud-dev \
-        --image-family ubuntu-1804-lts \
-        --image-project gce-uefi-images \
-        --metadata-from-file startup-script=$HOME/dotfiles/google_cloud/startup.sh \
-        --machine-type="n1-standard-$1" \
-        --boot-disk-size="$2GB"
-}
-
-function cloud-dev() {
-    if [ "$#" -ne 1 ]; then
-        #gcloud compute ssh akhong@cloud-dev --ssh-flag="-YC"
-        mosh --ssh="ssh -YC -i ~/.ssh/google_compute_engine" akhong@$(gcp-external-ip cloud-dev)
-    else
-        gcloud compute instances $1 cloud-dev
-    fi
-}
-
 # ZSH
 function disable_git_status() {
     git config --add oh-my-zsh.hide-status 1
@@ -304,3 +137,43 @@ function disable_git_status() {
 function enable_git_status () {
     git config --unset-all oh-my-zsh.hide-status
 }
+
+# Clojure
+function setup_parinfer_neovim () {
+    cd ~/dotfiles/vim/plugged/parinfer-rust/cparinfer
+    cargo build --release
+}
+
+function install_lein () {
+    curl https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein > lein
+    sudo mkdir -p /usr/local/bin/
+    sudo mv lein /usr/local/bin/lein
+    sudo chmod a+x /usr/local/bin/lein
+    lein
+}
+
+# Haskell
+alias ghci='stack ghci'
+alias ho='hoogle'
+
+function auto_stack_test() {
+    do_if_read "$1" "stack test"
+}
+
+function hs_script() {
+    touch "$1"
+    echo "#!/usr/bin/env stack"     >> "$1"
+    echo "{- stack"                 >> "$1"
+    echo "     --resolver lts-11.7" >> "$1"
+    echo "     exec ghci"           >> "$1"
+    echo "-}"                       >> "$1"
+    echo ""                         >> "$1"
+    echo "main :: IO ()"            >> "$1"
+    echo "main = return ()"         >> "$1"
+}
+
+# Scala shortcuts
+alias sc='scala -i'
+alias samm='sbt ammonite:run'
+alias sbt="sbt -mem 2048"
+

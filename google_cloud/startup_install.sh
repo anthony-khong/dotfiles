@@ -123,4 +123,7 @@ echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
 echo "Installing mosh..." >> $INSTALL_LOG
 sudo apt-get install -y mosh
 
+echo "Installing Xorg.." >> $INSTALL_LOG
+sudo apt-get -y install xorg openbox
+
 echo "Setup complete!" >> $INSTALL_LOG

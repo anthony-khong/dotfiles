@@ -91,6 +91,7 @@ Plug 'fsharp/vim-fsharp', {
       \ 'for': 'fsharp',
       \ 'do':  'make fsautocomplete',
       \}
+Plug 'callmekohei/deoplete-fsharp', { 'do': 'bash install.bash' }
 
 " HTML
 Plug 'mattn/emmet-vim'
@@ -499,10 +500,11 @@ let g:deoplete#sources.scala = ['buffer', 'tags', 'omni']
 let g:deoplete#omni#input_patterns = {}
 let g:deoplete#omni#input_patterns.scala = ['[^. *\t0-9]\.\w*',': [A-Z]\w', '[\[\t\( ][A-Za-z]\w*']
 let g:deoplete#sources#jedi#server_timeout = 60
-silent! call deoplete#custom#option({
-    \ 'auto_complete_delay': 40,
-    \ 'smart_case': v:true,
-    \ })
+call deoplete#custom#option({
+  \ 'auto_complete_delay': 0,
+  \ 'ignore_case': v:true,
+  \ 'refresh_always': v:false,
+\ })
 
 " Deoplete-Jedi
 highlight Pmenu ctermbg=8 guibg=#606060

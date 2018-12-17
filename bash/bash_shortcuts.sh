@@ -289,8 +289,8 @@ function create-cloud-dev() {
 
 function cloud-dev() {
     if [ "$#" -ne 1 ]; then
-        #gcloud compute ssh akhong@cloud-dev
-        mosh --ssh="ssh -i ~/.ssh/google_compute_engine" akhong@$(gcp-external-ip cloud-dev)
+        gcloud compute ssh akhong@cloud-dev --ssh-flag="-X"
+        #mosh --ssh="ssh -X -C -i ~/.ssh/google_compute_engine" akhong@$(gcp-external-ip cloud-dev)
     else
         gcloud compute instances $1 cloud-dev
     fi

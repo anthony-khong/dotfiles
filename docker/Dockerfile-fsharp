@@ -2,5 +2,5 @@ FROM fsharp:netcore
 
 MAINTAINER Anthony Khong <anthony.kusumo.khong@gmail.com>
 
-RUN dotnet add package FsLab --version 1.1.6
+# RUN mozroots --import --sync && curl -L https://nuget.org/nuget.exe -o nuget.exe
 

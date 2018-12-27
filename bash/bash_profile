@@ -21,3 +21,5 @@ source ~/dotfiles/google_cloud/bash_gcp.sh
 
 export PATH="$HOME/.cargo/bin:$PATH"
 export SCREEN=xterm-256color
+
+export IP=$(ifconfig en0 | grep inet | awk '$1=="inet" {print $2}')

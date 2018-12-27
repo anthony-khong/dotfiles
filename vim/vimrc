@@ -83,8 +83,8 @@ Plug 'ekalinin/Dockerfile.vim'
 " Racket
 Plug 'wlangstroth/vim-racket'
 Plug 'MicahElliott/vrod'
-"Plug 'guns/vim-sexp'
-"Plug 'tpope/vim-sexp-mappings-for-regular-people'
+Plug 'guns/vim-sexp'
+Plug 'tpope/vim-sexp-mappings-for-regular-people'
 
 " F#
 Plug 'fsharp/vim-fsharp', {
@@ -342,6 +342,8 @@ nnoremap <Leader>8 :set colorcolumn=80<CR>
 " Jumping between tabs
 nnoremap ( :tabprevious<CR>
 nnoremap ) :tabnext<CR>
+nnoremap tp :tabprevious<CR>
+nnoremap tn :tabnext<CR>
 
 " Force write
 nnoremap <C-w> :w<CR>

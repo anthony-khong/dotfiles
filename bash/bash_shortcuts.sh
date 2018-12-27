@@ -43,7 +43,7 @@ function md_to_pdf() {
 
 function auto_md_to_pdf() {
     local pdf_path="${1%.*}.pdf"
-    local shortcuts="~/dotfiles/bash/bash_shortcuts"
+    local shortcuts="~/dotfiles/bash/bash_shortcuts.sh"
     ls "$1" | entr bash -c "source $shortcuts; md_to_pdf 3 $1 $pdf_path; echo Last compiled: $(date)"
 }
 
@@ -177,3 +177,13 @@ alias sc='scala -i'
 alias samm='sbt ammonite:run'
 alias sbt="sbt -mem 2048"
 
+# FSharp
+function install-paket() {
+    export PAKET_URL=https://github.com/fsprojects/Paket/releases/download/5.194.0/paket.bootstrapper.exe
+    mkdir .paket
+    curl -L $PAKET_URL -o .paket/paket.bootstrapper.exe
+    mono .paket/paket.bootstrapper.exe
+    echo ".paket/paket.exe" >> .gitignore
+    echo ".packages" >> .gitignore
+    mono .paket/paket.exe install
+}

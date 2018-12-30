@@ -53,11 +53,10 @@ Plug 'vim-scripts/textutil.vim'
 Plug 'w0rp/ale'
 
 " Clojure
-"Plug 'clojure-vim/acid.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'eraserhd/parinfer-rust'
 Plug 'guns/vim-clojure-highlight'
 Plug 'guns/vim-clojure-static'
 Plug 'tpope/vim-fireplace'
-Plug 'eraserhd/parinfer-rust'
 
 " Haskell
 Plug 'alx741/vim-hindent'

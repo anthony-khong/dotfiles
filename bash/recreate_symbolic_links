@@ -19,6 +19,9 @@ rm -rf -rf .vim;
 ln -s ~/dotfiles/vim/vimrc .vimrc;
 ln -s ~/dotfiles/vim/ .vim;
 
+cd;
+ln -s ~/dotfiles/spacemacs/spacemacsrc .spacemacs;
+
 mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config};
 rm -rf $XDG_CONFIG_HOME/nvim;
 ln -s ~/dotfiles/vim $XDG_CONFIG_HOME/nvim;

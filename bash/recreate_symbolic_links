@@ -20,7 +20,10 @@ ln -s ~/dotfiles/vim/vimrc .vimrc;
 ln -s ~/dotfiles/vim/ .vim;
 
 cd;
+rm .spacemacs;
 ln -s ~/dotfiles/spacemacs/spacemacsrc .spacemacs;
+rm ~/.emacs.d/init.el
+ln -s ~/dotfiles/spacemacs/init.el .emacs.d/init.el
 
 mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config};
 rm -rf $XDG_CONFIG_HOME/nvim;

@@ -27,6 +27,10 @@ function setup_nvim() {
 # Spacemacs shortcuts
 alias em="emacsclient -a ''"
 
+function kill-emacsclient() {
+    emacsclient -e '(kill-emacs)'
+}
+
 # History
 alias hh=history
 alias clear_history='cat /dev/null > ~/.bash_history && history -c'

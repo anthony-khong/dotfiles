@@ -25,7 +25,7 @@ function setup_nvim() {
 }
 
 # Spacemacs shortcuts
-alias emacs="emacs -nw"
+alias em="emacsclient -a ''"
 
 # History
 alias hh=history

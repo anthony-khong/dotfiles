@@ -1,4 +1,2 @@
-{:user {:plugins [[lein-pprint "1.1.1"]
-                  [cider/cider-nrepl "0.18.0"]
-                  [incanter "1.9.3"]]}}
-
+{:user {:plugins [[org.clojure/clojure "1.10.0"]
+                  [cider/cider-nrepl "0.19.0"]]}}

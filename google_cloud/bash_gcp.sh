@@ -17,7 +17,6 @@ function gce() {
 
     elif [ "$2" = "ssh" ]; then
         gcloud compute ssh akhong@$1 --ssh-flag="-YC"
-
     else
         gcloud compute instances $2 $1
 

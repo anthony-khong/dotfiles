@@ -19,6 +19,17 @@
 (evil-mode t)
 (setq evil-search-module 'evil-search)
 
+(use-package tmux-pane :ensure t)
+(require 'tmux-pane)
+(tmux-pane-mode t)
+
+(use-package powerline :ensure t)
+(require 'powerline)
+
+(use-package airline-themes :ensure t)
+(require 'airline-themes)
+(airline-themes-set-modeline)
+
 (use-package monokai-theme :ensure t)
 (load-theme 'monokai t)
 (setq default-frame-alist '((background-color . "unspecified-bg")))
@@ -28,6 +39,7 @@
 (setq linum-relative-format "%3s ")
 (global-linum-mode t)
 (linum-relative-on)
+(set-face-background 'linum "unspecified-bg")
 
 (use-package helm :ensure t)
 (require 'helm)
@@ -86,10 +98,18 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("b59d7adea7873d58160d368d42828e7ac670340f11f36f67fa8071dbf957236a" default)))
  '(package-selected-packages
    (quote
     (eyebrowse anotehu evil-mode use-package evil-visual-mark-mode))))
-(custom-set-faces)
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.

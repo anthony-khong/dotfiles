@@ -15,9 +15,32 @@
   (require 'use-package))
 
 (use-package evil :ensure t)
+(define-key evil-normal-state-map (kbd "C-s") 'save-buffer)
+(define-key evil-normal-state-map (kbd "C-u") 'evil-scroll-up)
+(define-key evil-normal-state-map (kbd "C-d") 'evil-scroll-down)
+
 (require 'evil)
 (evil-mode t)
 (setq evil-search-module 'evil-search)
+
+(use-package general :ensure t
+  :config
+  (general-evil-setup t)
+
+  (general-define-key
+   :states '(normal emacs)
+   :prefix "SPC"
+   "bp" '(previous-buffer :which-key "previous buffer")
+   "bn" '(next-buffer :which-key "next buffer")
+   "bk" '(kill-this-buffer :which-key "kill buffer")
+   "bA" '(eval-buffer :which-key "eval buffer")
+   "bb" '(er-switch-to-previous-buffer :which-key "goto last buffer")
+   "bf" '(helm-buffers-list :which-key "find buffer")
+   "be" '(find-file :which-key "new buffer edit")
+   )
+)
+;; TODO
+(define-key evil-normal-state-map (kbd "SPC s") 'shell-other-window)
 
 (use-package tmux-pane :ensure t)
 (require 'tmux-pane)
@@ -25,6 +48,10 @@
 
 (use-package powerline :ensure t)
 (require 'powerline)
+
+(use-package which-key :ensure t
+  :init
+  (which-key-mode))
 
 (use-package airline-themes :ensure t)
 (require 'airline-themes)
@@ -34,6 +61,11 @@
 (load-theme 'monokai t)
 (setq default-frame-alist '((background-color . "unspecified-bg")))
 
+(use-package ranger :ensure t
+  :commands (ranger)
+  :config
+  (setq ranger-cleanup-eagerly t))
+
 (use-package linum-relative :ensure t)
 (require 'linum-relative)
 (setq linum-relative-format "%3s ")
@@ -41,13 +73,28 @@
 (linum-relative-on)
 (set-face-background 'linum "unspecified-bg")
 
-(use-package helm :ensure t)
-(require 'helm)
-(require 'helm-config)
-(global-set-key (kbd "M-x") #'helm-M-x)
-(global-set-key (kbd "C-x r b") #'helm-filtered-bookmarks)
-(global-set-key (kbd "C-x C-f") #'helm-find-files)
-(helm-mode 1)
+(use-package diminish :ensure t)
+(require 'diminish)
+
+(use-package ivy :ensure t
+  :diminish (ivy-mode . "") ; does not display ivy in the modeline
+  :init (ivy-mode 1)        ; enable ivy globally at startup
+  :bind (:map ivy-mode-map  ; bind in the ivy buffer
+         ("C-'" . ivy-avy)) ; C-' to ivy-avy
+  :config
+  (setq ivy-use-virtual-buffers t)    ; extend searching to bookmarks and …
+  (setq ivy-height 20)                ; set height of the ivy window
+  (setq ivy-count-format "(%d/%d) ")) ; count format, from the ivy help page
+
+(use-package counsel :ensure t
+  :bind*                           ; load counsel when pressed
+  (("M-x"     . counsel-M-x)       ; M-x use counsel
+   ("C-x C-f" . counsel-find-file) ; C-x C-f use counsel-find-file
+   ("C-x C-r" . counsel-recentf)   ; search recently edited files
+   ("C-c f"   . counsel-git)       ; search for files in git repo
+   ("C-c s"   . counsel-git-grep)  ; search for regexp in git repo
+   ("C-c /"   . counsel-ag)        ; search for regexp in git repo using ag
+   ("C-c l"   . counsel-locate)))  ; search for files or else using locate
 
 (use-package clojure-mode :ensure t)
 (use-package cider :ensure t)
@@ -65,21 +112,12 @@
 (setq vc-follow-symlinks t)
 
 ;; Key Bindings
-;; TODO: Make SPC a prefix + make these command generaliseable
-(define-key evil-normal-state-map (kbd ", e") 'kill-this-buffer)
-(define-key evil-normal-state-map (kbd ", A") 'eval-buffer)
-(define-key evil-normal-state-map (kbd "C-s") 'save-buffer)
-(define-key evil-normal-state-map (kbd "C-u") 'evil-scroll-up)
-(define-key evil-normal-state-map (kbd "C-d") 'evil-scroll-down)
-(define-key evil-normal-state-map (kbd "t p") 'previous-buffer)
-(define-key evil-normal-state-map (kbd "t n") 'next-buffer)
+
+;; Functions
 (defun er-switch-to-previous-buffer ()
   "https://emacsredux.com/blog/2013/04/28/switch-to-previous-buffer/"
   (interactive)
   (switch-to-buffer (other-buffer (current-buffer) 1)))
-(define-key evil-normal-state-map (kbd "t t") 'er-switch-to-previous-buffer)
-(define-key evil-normal-state-map (kbd "t f") 'helm-buffers-list)
-(define-key evil-normal-state-map (kbd "tabe") 'find-file)
 
 (defun shell-other-window ()
   "Open a `shell' in a new window."
@@ -87,7 +125,6 @@
   (let ((buf (shell)))
     (switch-to-buffer (other-buffer buf))
     (switch-to-buffer-other-window buf)))
-(define-key evil-normal-state-map (kbd "SPC s") 'shell-other-window)
 
 ;; Emacs Lisp
 (add-hook 'lisp-mode-hook '(lambda ()

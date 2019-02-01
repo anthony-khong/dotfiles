@@ -16,6 +16,8 @@
 
 (use-package evil :ensure t)
 (require 'evil)
+(evil-mode t)
+(setq evil-search-module 'evil-search)
 (define-key evil-normal-state-map (kbd "C-u") 'evil-scroll-up)
 (define-key evil-normal-state-map (kbd "C-d") 'evil-scroll-down)
 
@@ -23,8 +25,11 @@
 (require 'evil-commentary)
 (evil-commentary-mode)
 
-(evil-mode t)
-(setq evil-search-module 'evil-search)
+;; TODO
+;; (use-package evil-snipe :ensure t)
+;; (require 'evil-snipe)
+;; (evil-snipe-mode +1)
+;; (evil-snipe-override-mode +1)
 
 (use-package general :ensure t
   :config
@@ -56,6 +61,9 @@
    "j" '(evil-window-down :which-key "evil-down")
    "k" '(evil-window-up :which-key "evil-up")))
 
+(use-package rainbow-delimiters :ensure t
+  :init (rainbow-delimiters-mode))
+
 (use-package tmux-pane :ensure t)
 (require 'tmux-pane)
 (tmux-pane-mode t)
@@ -66,6 +74,17 @@
 (use-package which-key :ensure t
   :init
   (which-key-mode))
+
+;; Continuos scrolling
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
+(setq mouse-wheel-progressive-speed nil)
+(setq mouse-wheel-follow-mouse 't)
+(setq scroll-step 1)
+(setq scroll-margin 3)
+
+;; (use-package git-gutter :ensure t)
+;; (require 'git-gutter)
+;; (global-git-gutter-mode +1)
 
 (use-package airline-themes :ensure t)
 (require 'airline-themes)
@@ -135,6 +154,13 @@
 (menu-bar-mode -1) 
 (setq vc-follow-symlinks t)
 
+;;;; Continuos scrolling
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
+(setq mouse-wheel-progressive-speed nil)
+(setq mouse-wheel-follow-mouse 't)
+(setq scroll-step 1)
+(setq scroll-margin 3)
+
 ;; Functions
 (defun er-switch-to-previous-buffer ()
   "https://emacsredux.com/blog/2013/04/28/switch-to-previous-buffer/"
@@ -168,7 +194,7 @@
     ("b59d7adea7873d58160d368d42828e7ac670340f11f36f67fa8071dbf957236a" default)))
  '(package-selected-packages
    (quote
-    (company eyebrowse anotehu evil-mode use-package evil-visual-mark-mode))))
+    (git-gutter evil-snipe rainbow-delimiters company eyebrowse anotehu evil-mode use-package evil-visual-mark-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

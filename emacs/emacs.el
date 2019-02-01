@@ -15,11 +15,15 @@
   (require 'use-package))
 
 (use-package evil :ensure t)
+(require 'evil)
 (define-key evil-normal-state-map (kbd "C-s") 'save-buffer)
 (define-key evil-normal-state-map (kbd "C-u") 'evil-scroll-up)
 (define-key evil-normal-state-map (kbd "C-d") 'evil-scroll-down)
 
-(require 'evil)
+(use-package evil-commentary :ensure t)
+(require 'evil-commentary)
+(evil-commentary-mode)
+
 (evil-mode t)
 (setq evil-search-module 'evil-search)
 
@@ -30,6 +34,7 @@
   (general-define-key
    :states '(normal emacs)
    :prefix "SPC"
+   ;; Buffers
    "bp" '(previous-buffer :which-key "previous buffer")
    "bn" '(next-buffer :which-key "next buffer")
    "bk" '(kill-this-buffer :which-key "kill buffer")
@@ -37,11 +42,16 @@
    "bb" '(er-switch-to-previous-buffer :which-key "goto last buffer")
    "bf" '(helm-buffers-list :which-key "find buffer")
    "be" '(find-file :which-key "new buffer edit")
-   )
-)
-;; TODO
-(define-key evil-normal-state-map (kbd "SPC s") 'shell-other-window)
-
+   ;; Windows
+   "wv" '(split-window-horizontally :which-key "vsplit")
+   "wh" '(split-window-vertically :which-key "hsplit")
+   "ww" '(other-window :which-key "other window")
+   "wx" '(delete-window :which-key "delete window")
+   "l" '(evil-window-right :which-key "evil-right")
+   "h" '(evil-window-left :which-key "evil-left")
+   "j" '(evil-window-down :which-key "evil-down")
+   "k" '(evil-window-up :which-key "evil-up")))
+   
 (use-package tmux-pane :ensure t)
 (require 'tmux-pane)
 (tmux-pane-mode t)
@@ -59,6 +69,7 @@
 
 (use-package monokai-theme :ensure t)
 (load-theme 'monokai t)
+(set-background-color "unspecified-bg")
 (setq default-frame-alist '((background-color . "unspecified-bg")))
 
 (use-package ranger :ensure t
@@ -111,20 +122,12 @@
 (menu-bar-mode -1) 
 (setq vc-follow-symlinks t)
 
-;; Key Bindings
-
 ;; Functions
 (defun er-switch-to-previous-buffer ()
   "https://emacsredux.com/blog/2013/04/28/switch-to-previous-buffer/"
   (interactive)
   (switch-to-buffer (other-buffer (current-buffer) 1)))
 
-(defun shell-other-window ()
-  "Open a `shell' in a new window."
-  (interactive)
-  (let ((buf (shell)))
-    (switch-to-buffer (other-buffer buf))
-    (switch-to-buffer-other-window buf)))
 
 ;; Emacs Lisp
 (add-hook 'lisp-mode-hook '(lambda ()
@@ -141,12 +144,12 @@
  '(package-selected-packages
    (quote
     (eyebrowse anotehu evil-mode use-package evil-visual-mark-mode))))
-(custom-set-faces
+(custom-set-faces)
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ 
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.

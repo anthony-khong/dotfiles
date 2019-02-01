@@ -46,12 +46,15 @@ function md_to_pdf() {
     pandoc -V geometry:margin="$1"cm -o $3 $2
 }
 
+function echo_compiled() {
+    echo "compiled on $(date)"
+}
+
 function auto_md_to_pdf() {
     local pdf_path="${1%.*}.pdf"
     local shortcuts="~/dotfiles/bash/bash_shortcuts.sh"
-    ls "$1" | entr bash -c "source $shortcuts; md_to_pdf 3 $1 $pdf_path; echo Last compiled: $(date)"
+    ls "$1" | entr bash -c "source $shortcuts; md_to_pdf 3 $1 $pdf_path; echo_compiled"
 }
-
 
 # Dotfiles shortucts
 function recreate_symbolic_links() {

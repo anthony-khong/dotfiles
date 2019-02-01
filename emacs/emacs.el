@@ -16,7 +16,6 @@
 
 (use-package evil :ensure t)
 (require 'evil)
-(define-key evil-normal-state-map (kbd "C-s") 'save-buffer)
 (define-key evil-normal-state-map (kbd "C-u") 'evil-scroll-up)
 (define-key evil-normal-state-map (kbd "C-d") 'evil-scroll-down)
 
@@ -34,24 +33,29 @@
   (general-define-key
    :states '(normal emacs)
    :prefix "SPC"
+   ;; General
+   "ex" '(execute-extended-command :which-key "M-x")
+   "eq" '(save-buffers-kill-terminal :which-key "C-x C-c")
+   "ff" '(find-file :which-key "new buffer edit")
    ;; Buffers
-   "bp" '(previous-buffer :which-key "previous buffer")
-   "bn" '(next-buffer :which-key "next buffer")
-   "bk" '(kill-this-buffer :which-key "kill buffer")
-   "bA" '(eval-buffer :which-key "eval buffer")
+   "bA" '(eval-buffer-then-report :which-key "eval buffer")
    "bb" '(er-switch-to-previous-buffer :which-key "goto last buffer")
-   "bf" '(helm-buffers-list :which-key "find buffer")
-   "be" '(find-file :which-key "new buffer edit")
+   "bn" '(next-buffer :which-key "next buffer")
+   "bp" '(previous-buffer :which-key "previous buffer")
+   "bs" '(save-buffer :which-key "save buffer")
+   "bx" '(kill-this-buffer :which-key "kill buffer")
    ;; Windows
-   "wv" '(split-window-horizontally :which-key "vsplit")
-   "wh" '(split-window-vertically :which-key "hsplit")
-   "ww" '(other-window :which-key "other window")
+   "sv" '(split-window-horizontally :which-key "vsplit")
+   "sh" '(split-window-vertically :which-key "hsplit")
+   "wv" '(vsplit-33 :which-key "vsplit-33")
+   "wh" '(hsplit-33 :which-key "hsplit-33")
    "wx" '(delete-window :which-key "delete window")
+   "'" '(other-window :which-key "other window")
    "l" '(evil-window-right :which-key "evil-right")
    "h" '(evil-window-left :which-key "evil-left")
    "j" '(evil-window-down :which-key "evil-down")
    "k" '(evil-window-up :which-key "evil-up")))
-   
+
 (use-package tmux-pane :ensure t)
 (require 'tmux-pane)
 (tmux-pane-mode t)
@@ -71,6 +75,15 @@
 (load-theme 'monokai t)
 (set-background-color "unspecified-bg")
 (setq default-frame-alist '((background-color . "unspecified-bg")))
+
+(use-package company :ensure t
+  :init
+  (company-mode))
+(require 'company)
+(global-company-mode 1)
+(eval-after-load 'company
+  '(progn
+     (define-key company-active-map (kbd "TAB") 'company-complete-selection)))
 
 (use-package ranger :ensure t
   :commands (ranger)
@@ -128,6 +141,18 @@
   (interactive)
   (switch-to-buffer (other-buffer (current-buffer) 1)))
 
+(defun hsplit-33 ()
+  (interactive)
+  (split-window-vertically (floor (* 0.68 (window-height)))))
+
+(defun vsplit-33 ()
+  (interactive)
+  (split-window-horizontally (floor (* 0.68 (window-width)))))
+
+(defun eval-buffer-then-report ()
+  (interactive)
+  (eval-buffer)
+  (message "Buffer evaluated!"))
 
 ;; Emacs Lisp
 (add-hook 'lisp-mode-hook '(lambda ()
@@ -143,8 +168,13 @@
     ("b59d7adea7873d58160d368d42828e7ac670340f11f36f67fa8071dbf957236a" default)))
  '(package-selected-packages
    (quote
-    (eyebrowse anotehu evil-mode use-package evil-visual-mark-mode))))
-(custom-set-faces)
+    (company eyebrowse anotehu evil-mode use-package evil-visual-mark-mode))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.

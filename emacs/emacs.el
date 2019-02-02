@@ -36,55 +36,51 @@
   (general-evil-setup t)
 
   (general-define-key
-   :states '(normal emacs)
+   :states '(normal insert emacs)
    :prefix "SPC"
-   ;; General
+   :non-normal-prefix "C-s"
+   ;; General (e)
    "ex" '(execute-extended-command :which-key "M-x")
    "eq" '(save-buffers-kill-terminal :which-key "C-x C-c")
    "ff" '(find-file :which-key "new buffer edit")
-   ;; Buffers
+   ;; Buffers (b)
    "bA" '(eval-buffer-then-report :which-key "eval buffer")
    "bb" '(er-switch-to-previous-buffer :which-key "goto last buffer")
    "bn" '(next-buffer :which-key "next buffer")
    "bp" '(previous-buffer :which-key "previous buffer")
    "bs" '(save-buffer :which-key "save buffer")
    "bx" '(kill-this-buffer :which-key "kill buffer")
-   ;; Windows
-   "sv" '(split-window-horizontally :which-key "vsplit")
-   "sh" '(split-window-vertically :which-key "hsplit")
-   "wv" '(vsplit-33 :which-key "vsplit-33")
-   "wh" '(hsplit-33 :which-key "hsplit-33")
-   "wx" '(delete-window :which-key "delete window")
+   "bf" '(ivy-switch-buffer :which-key "switch buffer")
+   ;; Panes (a)
+   ;;;; Splits
+   "av" '(vsplit :which-key "vsplit")
+   "ah" '(hsplit :which-key "hsplit")
+   "ar" '(vsplit-33 :which-key "vsplit-33")
+   "ad" '(hsplit-33 :which-key "hsplit-33")
+   "ax" '(delete-window :which-key "delete window")
+   "at" '(launch-terminal :which-key "launch terminal")
+   ;;;; Movements
    "'" '(other-window :which-key "other window")
    "l" '(evil-window-right :which-key "evil-right")
    "h" '(evil-window-left :which-key "evil-left")
    "j" '(evil-window-down :which-key "evil-down")
-   "k" '(evil-window-up :which-key "evil-up")))
+   "k" '(evil-window-up :which-key "evil-up")
+   ;; Send (s)
+   ;; "ss" '(send-to-terminal-buffer :which-key "send to terminal buffer")
+   "ss" '(emamux:run-region :which-key "send tmux")
+   ))
 
-(use-package rainbow-delimiters :ensure t
-  :init (rainbow-delimiters-mode))
+(use-package emamux :ensure t)
 
 (use-package tmux-pane :ensure t)
 (require 'tmux-pane)
 (tmux-pane-mode t)
 
+(use-package rainbow-delimiters :ensure t
+  :init (rainbow-delimiters-mode))
+
 (use-package powerline :ensure t)
 (require 'powerline)
-
-(use-package which-key :ensure t
-  :init
-  (which-key-mode))
-
-;; Continuos scrolling
-(setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
-(setq mouse-wheel-progressive-speed nil)
-(setq mouse-wheel-follow-mouse 't)
-(setq scroll-step 1)
-(setq scroll-margin 3)
-
-;; (use-package git-gutter :ensure t)
-;; (require 'git-gutter)
-;; (global-git-gutter-mode +1)
 
 (use-package airline-themes :ensure t)
 (require 'airline-themes)
@@ -96,8 +92,7 @@
 (setq default-frame-alist '((background-color . "unspecified-bg")))
 
 (use-package company :ensure t
-  :init
-  (company-mode))
+  :init (company-mode))
 (require 'company)
 (global-company-mode 1)
 (eval-after-load 'company
@@ -106,15 +101,15 @@
 
 (use-package ranger :ensure t
   :commands (ranger)
-  :config
-  (setq ranger-cleanup-eagerly t))
+  :config (setq ranger-cleanup-eagerly t))
 
-(use-package linum-relative :ensure t)
+(use-package linum-relative :ensure t
+  :init
+  (setq linum-relative-format "%3s ")
+  (global-linum-mode t)
+  (set-face-background 'linum "unspecified-bg"))
 (require 'linum-relative)
-(setq linum-relative-format "%3s ")
-(global-linum-mode t)
 (linum-relative-on)
-(set-face-background 'linum "unspecified-bg")
 
 (use-package diminish :ensure t)
 (require 'diminish)
@@ -139,9 +134,19 @@
    ("C-c /"   . counsel-ag)        ; search for regexp in git repo using ag
    ("C-c l"   . counsel-locate)))  ; search for files or else using locate
 
+(use-package which-key :ensure t
+  :init (which-key-mode))
+
+;; TODO
+;; (use-package git-gutter :ensure t)
+;; (require 'git-gutter)
+;; (global-git-gutter-mode +1)
+
+;;;; Clojure
 (use-package clojure-mode :ensure t)
 (use-package cider :ensure t)
 
+;;;; Markdown
 (use-package markdown-mode
   :ensure t
   :commands (markdown-mode gfm-mode)
@@ -167,18 +172,46 @@
   (interactive)
   (switch-to-buffer (other-buffer (current-buffer) 1)))
 
+(defun hsplit ()
+  (interactive)
+  (split-window-vertically)
+  (other-window 1))
+
 (defun hsplit-33 ()
   (interactive)
-  (split-window-vertically (floor (* 0.68 (window-height)))))
+  (split-window-vertically (floor (* 0.68 (window-height))))
+  (other-window 1))
+
+(defun vsplit ()
+  (interactive)
+  (split-window-horizontally)
+  (other-window 1))
 
 (defun vsplit-33 ()
   (interactive)
-  (split-window-horizontally (floor (* 0.68 (window-width)))))
+  (split-window-horizontally (floor (* 0.68 (window-width))))
+  (other-window 1))
 
 (defun eval-buffer-then-report ()
   (interactive)
   (eval-buffer)
   (message "Buffer evaluated!"))
+
+(defun launch-terminal ()
+  (interactive)
+  (term "/bin/zsh"))
+
+(defun mark-inner-paragraph ()
+  (interactive)
+  (mark-paragraph)
+  (next-line)
+  (beginning-of-line))
+
+(defun send-to-terminal-buffer (beg end)
+  (interactive "r")
+  (mark-inner-paragraph)
+  (process-send-region "terminal" beg end))
+
 
 ;; Emacs Lisp
 (add-hook 'lisp-mode-hook '(lambda ()

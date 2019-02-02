@@ -20,6 +20,11 @@
 (setq evil-search-module 'evil-search)
 (define-key evil-normal-state-map (kbd "C-u") 'evil-scroll-up)
 (define-key evil-normal-state-map (kbd "C-d") 'evil-scroll-down)
+(define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
+(define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
+(defun my-center-line (&rest _)
+  (evil-scroll-line-to-center nil))
+(advice-add 'evil-search-next :after #'my-center-line)
 
 (use-package evil-commentary :ensure t)
 (require 'evil-commentary)
@@ -36,7 +41,7 @@
   (general-evil-setup t)
 
   (general-define-key
-   :states '(normal insert emacs)
+   :states '(normal insert emacs visual)
    :prefix "SPC"
    :non-normal-prefix "C-s"
    ;; General (e)
@@ -70,7 +75,13 @@
    "ss" '(emamux:run-region :which-key "send tmux")
    ))
 
+(use-package xclip :ensure t)
+(xclip-mode 1)
+
 (use-package emamux :ensure t)
+(custom-set-variables
+ '(emamux:default-orientation 'horizonal) ; sic
+ '(emamux:runner-pane-height 35))
 
 (use-package tmux-pane :ensure t)
 (require 'tmux-pane)
@@ -158,6 +169,7 @@
 ;; Passive Configurations
 (menu-bar-mode -1) 
 (setq vc-follow-symlinks t)
+(electric-indent-mode +1)
 
 ;;;; Continuos scrolling
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
@@ -165,6 +177,16 @@
 (setq mouse-wheel-follow-mouse 't)
 (setq scroll-step 1)
 (setq scroll-margin 3)
+
+;;;; Clipboard
+(defun noct:conditionally-toggle-xclip-mode ()
+  (if (display-graphic-p)
+      (if (bound-and-true-p xclip-mode)
+          (xclip-mode -1))
+    (xclip-mode)))
+(noct:conditionally-toggle-xclip-mode)
+(add-hook 'focus-in-hook
+          #'noct:conditionally-toggle-xclip-mode)
 
 ;; Functions
 (defun er-switch-to-previous-buffer ()
@@ -202,7 +224,7 @@
   (term "/bin/zsh"))
 
 (defun mark-inner-paragraph ()
-  (interactive)
+  (interactive "r")
   (mark-paragraph)
   (next-line)
   (beginning-of-line))
@@ -211,7 +233,6 @@
   (interactive "r")
   (mark-inner-paragraph)
   (process-send-region "terminal" beg end))
-
 
 ;; Emacs Lisp
 (add-hook 'lisp-mode-hook '(lambda ()

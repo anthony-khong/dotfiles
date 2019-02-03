@@ -14,17 +14,22 @@
 (eval-when-compile
   (require 'use-package))
 
-(use-package evil :ensure t)
-(require 'evil)
-(evil-mode t)
-(setq evil-search-module 'evil-search)
-(define-key evil-normal-state-map (kbd "C-u") 'evil-scroll-up)
-(define-key evil-normal-state-map (kbd "C-d") 'evil-scroll-down)
-(define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
-(define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
-(defun my-center-line (&rest _)
-  (evil-scroll-line-to-center nil))
-(advice-add 'evil-search-next :after #'my-center-line)
+(use-package evil :ensure t
+  :init
+  (setq evil-want-keybinding nil)
+  (setq evil-search-module 'evil-search)
+  :config
+  (evil-mode 1)
+  (define-key evil-normal-state-map (kbd "C-u") 'evil-scroll-up)
+  (define-key evil-normal-state-map (kbd "C-d") 'evil-scroll-down)
+  (define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
+  (define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
+  (advice-add 'evil-search-next :after #'my-center-line))
+
+(use-package evil-collection :ensure t
+  :after evil
+  :config
+  (evil-collection-init))
 
 (use-package evil-commentary :ensure t)
 (require 'evil-commentary)
@@ -86,8 +91,18 @@
 
 (use-package emamux :ensure t)
 (custom-set-variables
- '(emamux:default-orientation 'horizonal) ; sic
- '(emamux:runner-pane-height 35))
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("b59d7adea7873d58160d368d42828e7ac670340f11f36f67fa8071dbf957236a" default)))
+ '(emamux:default-orientation (quote horizonal))
+ '(emamux:runner-pane-height 35)
+ '(package-selected-packages
+   (quote
+    (git-gutter evil-snipe rainbow-delimiters company eyebrowse anotehu evil-mode use-package evil-visual-mark-mode))))
 
 (use-package tmux-pane :ensure t)
 (require 'tmux-pane)
@@ -103,6 +118,11 @@
 (require 'airline-themes)
 (airline-themes-set-modeline)
 
+;; (use-package doom-themes :ensure t)
+;; (require 'doom-themes)
+;; (setq doom-themes-enable-bold t
+;;       doom-themes-enable-italic t)
+;; (load-theme 'doom-one t)
 (use-package monokai-theme :ensure t)
 (load-theme 'monokai t)
 (set-background-color "unspecified-bg")
@@ -126,6 +146,7 @@
   (global-linum-mode t)
   (set-face-background 'linum "unspecified-bg"))
 (require 'linum-relative)
+(setq linum-relative-current-symbol "")
 (linum-relative-on)
 
 (use-package diminish :ensure t)
@@ -195,6 +216,9 @@
           #'noct:conditionally-toggle-xclip-mode)
 
 ;; Functions
+(defun my-center-line (&rest _)
+  (evil-scroll-line-to-center nil))
+
 (defun er-switch-to-previous-buffer ()
   "https://emacsredux.com/blog/2013/04/28/switch-to-previous-buffer/"
   (interactive)
@@ -256,17 +280,7 @@
 (add-hook 'lisp-mode-hook '(lambda ()
                             (local-set-key (kbd "RET") 'newline-and-indent)))
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   (quote
-    ("b59d7adea7873d58160d368d42828e7ac670340f11f36f67fa8071dbf957236a" default)))
- '(package-selected-packages
-   (quote
-    (git-gutter evil-snipe rainbow-delimiters company eyebrowse anotehu evil-mode use-package evil-visual-mark-mode))))
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

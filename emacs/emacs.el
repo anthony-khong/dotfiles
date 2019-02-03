@@ -41,12 +41,18 @@
   (general-evil-setup t)
 
   (general-define-key
+   :states '(normal visual)
+   :prefix "C-c"
+   "C-c" '(send-to-tmux :which-key "run region"))
+
+  (general-define-key
    :states '(normal insert emacs visual)
    :prefix "SPC"
    :non-normal-prefix "C-s"
    ;; General (e)
    "ex" '(execute-extended-command :which-key "M-x")
    "eq" '(save-buffers-kill-terminal :which-key "C-x C-c")
+   "et" '(launch-terminal :which-key "launch terminal")
    "ff" '(find-file :which-key "new buffer edit")
    ;; Buffers (b)
    "bA" '(eval-buffer-then-report :which-key "eval buffer")
@@ -63,7 +69,7 @@
    "ar" '(vsplit-33 :which-key "vsplit-33")
    "ad" '(hsplit-33 :which-key "hsplit-33")
    "ax" '(delete-window :which-key "delete window")
-   "at" '(launch-terminal :which-key "launch terminal")
+   "at" '(terminal-vsplit :which-key "terminal vsplit")
    ;;;; Movements
    "'" '(other-window :which-key "other window")
    "l" '(evil-window-right :which-key "evil-right")
@@ -71,8 +77,8 @@
    "j" '(evil-window-down :which-key "evil-down")
    "k" '(evil-window-up :which-key "evil-up")
    ;; Send (s)
-   ;; "ss" '(send-to-terminal-buffer :which-key "send to terminal buffer")
-   "ss" '(emamux:run-region :which-key "send tmux")
+   "ss" '(send-to-terminal-buffer :which-key "send to terminal buffer")
+   ;; "ss" '(emamux:run-region :which-key "send tmux")
    ))
 
 (use-package xclip :ensure t)
@@ -229,10 +235,22 @@
   (next-line)
   (beginning-of-line))
 
+(defun terminal-vsplit ()
+  (interactive)
+  (vsplit-33)
+  (launch-terminal)
+  (other-window 1))
+
 (defun send-to-terminal-buffer (beg end)
   (interactive "r")
   (mark-inner-paragraph)
   (process-send-region "terminal" beg end))
+
+(defun send-to-tmux (beg end)
+  (interactive "r")
+  (mark-inner-paragraph)
+  (emamux:run-region beg end)
+  (evil-normal-state))
 
 ;; Emacs Lisp
 (add-hook 'lisp-mode-hook '(lambda ()

@@ -35,6 +35,12 @@
 (require 'evil-commentary)
 (evil-commentary-mode)
 
+(use-package key-chord :ensure t
+  :config
+  (require 'key-chord)
+  (key-chord-mode 1)
+  (key-chord-define evil-insert-state-map "hh" 'evil-normal-state))
+
 ;; TODO
 ;; (use-package evil-snipe :ensure t)
 ;; (require 'evil-snipe)
@@ -55,10 +61,15 @@
    :prefix "SPC"
    :non-normal-prefix "C-s"
    ;; General (e)
-   "ex" '(execute-extended-command :which-key "M-x")
+   "ex" '(counsel-M-x :which-key "M-x")
+   "ed" '(describe-key :which-key "M-x")
    "eq" '(save-buffers-kill-terminal :which-key "C-x C-c")
    "et" '(launch-terminal :which-key "launch terminal")
    "ff" '(find-file :which-key "new buffer edit")
+   ;; Yanking (y)
+   "ya" '(yank-all-stay :which-key "yank all")
+   "ys" '(yank-from-start-stay :which-key "yank from the start")
+   "ye" '(yank-to-end-stay :which-key "yank to the end")
    ;; Buffers (b)
    "bA" '(eval-buffer-then-report :which-key "eval buffer")
    "bb" '(er-switch-to-previous-buffer :which-key "goto last buffer")
@@ -82,9 +93,9 @@
    "j" '(evil-window-down :which-key "evil-down")
    "k" '(evil-window-up :which-key "evil-up")
    ;; Send (s)
-   "ss" '(send-to-terminal-buffer :which-key "send to terminal buffer")
+   "ss" '(send-to-terminal-buffer :which-key "send to terminal buffer")))
    ;; "ss" '(emamux:run-region :which-key "send tmux")
-   ))
+   
 
 (use-package xclip :ensure t)
 (xclip-mode 1)
@@ -136,6 +147,10 @@
   '(progn
      (define-key company-active-map (kbd "TAB") 'company-complete-selection)))
 
+(use-package volatile-highlights :ensure t
+  :config
+  (volatile-highlights-mode t))
+
 (use-package ranger :ensure t
   :commands (ranger)
   :config (setq ranger-cleanup-eagerly t))
@@ -179,6 +194,27 @@
 ;; (use-package git-gutter :ensure t)
 ;; (require 'git-gutter)
 ;; (global-git-gutter-mode +1)
+
+;;;; Emacs Lisp
+(use-package parinfer
+  :ensure t
+  :bind
+  (("C-," . parinfer-toggle-mode))
+  :init
+  (progn
+    (setq parinfer-extensions
+          '(defaults       ; should be included.
+            pretty-parens  ; different paren styles for different modes.
+            evil           ; If you use Evil.
+            lispy          ; If you use Lispy. With this extension, you should install Lispy and do not enable lispy-mode directly.
+            paredit        ; Introduce some paredit commands.
+            smart-tab      ; C-b & C-f jump positions and smart shift with tab & S-tab.
+            smart-yank))   ; Yank behavior depend on mode.
+    (add-hook 'clojure-mode-hook #'parinfer-mode)
+    (add-hook 'emacs-lisp-mode-hook #'parinfer-mode)
+    (add-hook 'common-lisp-mode-hook #'parinfer-mode)
+    (add-hook 'scheme-mode-hook #'parinfer-mode)
+    (add-hook 'lisp-mode-hook #'parinfer-mode)))
 
 ;;;; Clojure
 (use-package clojure-mode :ensure t)
@@ -276,9 +312,33 @@
   (emamux:run-region beg end)
   (evil-normal-state))
 
+(defun yank-all-stay ()
+  (interactive)
+  (evil-set-marker ?m)
+  (mark-whole-buffer)
+  (call-interactively 'evil-yank)
+  (evil-goto-mark ?m))
+
+(defun yank-from-start-stay ()
+  (interactive)
+  (evil-set-marker ?m)
+  (end-of-line)
+  (call-interactively 'set-mark-command)
+  (beginning-of-buffer)
+  (call-interactively 'evil-yank)
+  (evil-goto-mark ?m))
+
+(defun yank-to-end-stay ()
+  (interactive)
+  (evil-set-marker ?m)
+  (call-interactively 'set-mark-command)
+  (end-of-buffer)
+  (call-interactively 'evil-yank)
+  (evil-goto-mark ?m))
+
 ;; Emacs Lisp
 (add-hook 'lisp-mode-hook '(lambda ()
-                            (local-set-key (kbd "RET") 'newline-and-indent)))
+                             (local-set-key (kbd "RET") 'newline-and-indent)))
 
 
 (custom-set-faces
@@ -287,23 +347,23 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- 
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- 
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- 
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- 
+;; custom-set-faces was added by Custom.
+;; If you edit it by hand, you could mess it up, so be careful.
+;; Your init file should contain only one such instance.
+;; If there is more than one, they won't work right.
+
+;; custom-set-faces was added by Custom.
+;; If you edit it by hand, you could mess it up, so be careful.
+;; Your init file should contain only one such instance.
+;; If there is more than one, they won't work right.
+
+;; custom-set-faces was added by Custom.
+;; If you edit it by hand, you could mess it up, so be careful.
+;; Your init file should contain only one such instance.
+;; If there is more than one, they won't work right.
+
+;; custom-set-faces was added by Custom.
+;; If you edit it by hand, you could mess it up, so be careful.
+;; Your init file should contain only one such instance.
+;; If there is more than one, they won't work right.
+

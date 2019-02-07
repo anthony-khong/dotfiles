@@ -1,8 +1,8 @@
 (require 'package)
 
-(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
-(add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
+(add-to-list 'package-archives '("org"		.	"http://orgmode.org/elpa/"))
+(add-to-list 'package-archives '("melpa"	.	"http://melpa.org/packages/"))
+(add-to-list 'package-archives '("melpa-stable" .	"http://stable.melpa.org/packages/"))
 (package-initialize)
 
 ;; Packages
@@ -41,6 +41,11 @@
   (key-chord-mode 1)
   (key-chord-define evil-insert-state-map "hh" 'evil-normal-state))
 
+(use-package avy
+  :ensure t
+  :config
+  (setq avy-keys '(?a ?o ?e ?u ?i ?d ?h ?t ?n ?s)))
+
 ;; TODO
 ;; (use-package evil-snipe :ensure t)
 ;; (require 'evil-snipe)
@@ -60,10 +65,17 @@
    :states '(normal insert emacs visual)
    :prefix "SPC"
    :non-normal-prefix "C-s"
+   ;; Special actions
+   "x" '(counsel-M-x :which-key "M-x")
+   "'" '(other-window :which-key "other window")
+   "l" '(evil-window-right :which-key "evil-right")
+   "h" '(evil-window-left :which-key "evil-left")
+   "j" '(evil-window-down :which-key "evil-down")
+   "k" '(evil-window-up :which-key "evil-up")
+   "SPC a" '(avy-goto-char-2 :which-key "select two-chars")
    ;; General (e)
-   "ex" '(counsel-M-x :which-key "M-x")
-   "ed" '(describe-key :which-key "M-x")
-   "eq" '(save-buffers-kill-terminal :which-key "C-x C-c")
+   "ed" '(describe-key :which-key "describe key")
+   "eq" '(save-buffers-kill-terminal :which-key "save and kill buffer")
    "et" '(launch-terminal :which-key "launch terminal")
    "ff" '(find-file :which-key "new buffer edit")
    ;; Yanking (y)
@@ -79,41 +91,19 @@
    "bx" '(kill-this-buffer :which-key "kill buffer")
    "bf" '(ivy-switch-buffer :which-key "switch buffer")
    ;; Panes (a)
-   ;;;; Splits
    "av" '(vsplit :which-key "vsplit")
    "ah" '(hsplit :which-key "hsplit")
    "ar" '(vsplit-33 :which-key "vsplit-33")
    "ad" '(hsplit-33 :which-key "hsplit-33")
    "ax" '(delete-window :which-key "delete window")
    "at" '(terminal-vsplit :which-key "terminal vsplit")
-   ;;;; Movements
-   "'" '(other-window :which-key "other window")
-   "l" '(evil-window-right :which-key "evil-right")
-   "h" '(evil-window-left :which-key "evil-left")
-   "j" '(evil-window-down :which-key "evil-down")
-   "k" '(evil-window-up :which-key "evil-up")
    ;; Send (s)
    "ss" '(send-to-terminal-buffer :which-key "send to terminal buffer")))
-   ;; "ss" '(emamux:run-region :which-key "send tmux")
-   
 
 (use-package xclip :ensure t)
 (xclip-mode 1)
 
 (use-package emamux :ensure t)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   (quote
-    ("b59d7adea7873d58160d368d42828e7ac670340f11f36f67fa8071dbf957236a" default)))
- '(emamux:default-orientation (quote horizonal))
- '(emamux:runner-pane-height 35)
- '(package-selected-packages
-   (quote
-    (git-gutter evil-snipe rainbow-delimiters company eyebrowse anotehu evil-mode use-package evil-visual-mark-mode))))
 
 (use-package tmux-pane :ensure t)
 (require 'tmux-pane)
@@ -233,6 +223,7 @@
 (menu-bar-mode -1) 
 (setq vc-follow-symlinks t)
 (electric-indent-mode +1)
+(setq backup-directory-alist `(("." . "~/.saves")))
 
 ;;;; Continuos scrolling
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
@@ -340,6 +331,19 @@
 (add-hook 'lisp-mode-hook '(lambda ()
                              (local-set-key (kbd "RET") 'newline-and-indent)))
 
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("b59d7adea7873d58160d368d42828e7ac670340f11f36f67fa8071dbf957236a" default)))
+ '(emamux:default-orientation (quote horizonal))
+ '(emamux:runner-pane-height 35)
+ '(package-selected-packages
+   (quote
+    (avy git-gutter evil-snipe rainbow-delimiters company eyebrowse anotehu evil-mode use-package evil-visual-mark-mode))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -366,4 +370,3 @@
 ;; If you edit it by hand, you could mess it up, so be careful.
 ;; Your init file should contain only one such instance.
 ;; If there is more than one, they won't work right.
-

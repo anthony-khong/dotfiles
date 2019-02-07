@@ -25,8 +25,8 @@ function setup_nvim() {
 }
 
 # Spacemacs shortcuts
-# alias em="emacsclient -a ''"
 alias em="emacs -nw"
+alias emc="emacsclient -a ''"
 
 function kill-emacsclient() {
     emacsclient -e '(kill-emacs)'

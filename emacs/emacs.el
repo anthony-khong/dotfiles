@@ -20,11 +20,21 @@
   (setq evil-search-module 'evil-search)
   :config
   (evil-mode 1)
-  (define-key evil-normal-state-map (kbd "C-u") 'evil-scroll-up)
-  (define-key evil-normal-state-map (kbd "C-d") 'evil-scroll-down)
+  (define-key evil-normal-state-map (kbd "C-u") 'evil-scroll-up-then-center)
+  (define-key evil-normal-state-map (kbd "C-d") 'evil-scroll-down-then-center)
   (define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
   (define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
   (advice-add 'evil-search-next :after #'my-center-line))
+
+(defun evil-scroll-up-then-center (count)
+  (interactive "P")
+  (evil-scroll-up count)
+  (evil-scroll-line-to-center count))
+
+(defun evil-scroll-down-then-center (count)
+  (interactive "P")
+  (evil-scroll-down count)
+  (evil-scroll-line-to-center count))
 
 (use-package evil-collection :ensure t
   :after evil
@@ -116,20 +126,15 @@
    ("C-c l"   . counsel-locate)))  ; search for files or else using locate
 
 (use-package counsel-projectile :ensure t
-  :config (counsel-projectile-mode))  
-	
+  :config (counsel-projectile-mode)
+  :diminish (counsel-projectile-mode . ""))
+
 (use-package flx :ensure t
   :config (setq ivy-re-builders-alist '((t . ivy--regex-fuzzy))))
 
 (use-package which-key :ensure t
   :init (which-key-mode)
   :diminish (which-key-mode . ""))
-
-;; TODO
-;; (use-package git-gutter :ensure t)
-;; (require 'git-gutter)
-;; (global-git-gutter-mode +1)
-
 
 (use-package xclip :ensure t)
 (xclip-mode 1)
@@ -173,17 +178,23 @@
   :commands (ranger)
   :config (setq ranger-cleanup-eagerly t))
 
+(use-package diminish :ensure t)
+(require 'diminish)
+
 (use-package linum-relative :ensure t
   :init
-  (setq linum-relative-format "%3s ")
+  (setq linum-format "%4d \u2502")
+  (setq linum-relative-format "%4s \u2502")
   (global-linum-mode t)
   (set-face-background 'linum "unspecified-bg"))
 (require 'linum-relative)
 (setq linum-relative-current-symbol "")
 (linum-relative-on)
 
-(use-package diminish :ensure t)
-(require 'diminish)
+;; (use-package git-gutter :ensure t)
+;; (require 'git-gutter)
+;; (global-git-gutter-mode +1)
+;; (git-gutter:linum-setup)
 
 ;;;; Emacs Lisp
 (use-package parinfer
@@ -352,22 +363,3 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-;; custom-set-faces was added by Custom.
-;; If you edit it by hand, you could mess it up, so be careful.
-;; Your init file should contain only one such instance.
-;; If there is more than one, they won't work right.
-
-;; custom-set-faces was added by Custom.
-;; If you edit it by hand, you could mess it up, so be careful.
-;; Your init file should contain only one such instance.
-;; If there is more than one, they won't work right.
-
-;; custom-set-faces was added by Custom.
-;; If you edit it by hand, you could mess it up, so be careful.
-;; Your init file should contain only one such instance.
-;; If there is more than one, they won't work right.
-
-;; custom-set-faces was added by Custom.
-;; If you edit it by hand, you could mess it up, so be careful.
-;; Your init file should contain only one such instance.
-;; If there is more than one, they won't work right.

@@ -71,7 +71,8 @@
    "ed" '(describe-key :which-key "describe key")
    "eq" '(save-buffers-kill-terminal :which-key "save and kill buffer")
    "et" '(launch-terminal :which-key "launch terminal")
-   "ff" '(find-file :which-key "new buffer edit")
+   "ff" '(fiplr-find-file :which-key "fuzzy find file")
+   "ff" '(fiplr-find-directory :which-key "fuzzy find directory")
    ;; Yanking (y)
    "ya" '(yank-all-stay :which-key "yank all")
    "ys" '(yank-from-start-stay :which-key "yank from the start")
@@ -114,17 +115,17 @@
    ("C-c /"   . counsel-ag)        ; search for regexp in git repo using ag
    ("C-c l"   . counsel-locate)))  ; search for files or else using locate
 
+(use-package flx :ensure t
+  :config (setq ivy-re-builders-alist '((t . ivy--regex-fuzzy))))
+
+(use-package fiplr :ensure t
+  :config
+  (setq fiplr-ignored-globs '((directories (".git" ".svn"))
+                              (files ("*.jpg" "*.png" "*.zip" "*~")))))
+
 (use-package which-key :ensure t
   :init (which-key-mode)
   :diminish (which-key-mode . ""))
-
-;; (use-package ido :ensure t
-;;   :config
-;;   (setq ido-enable-flex-matching t)
-;;   (setq ido-everywhere t)
-;;   (ido-mode 1)
-;;   (setq ido-create-new-buffer 'always))
-;; (require 'ido)
 
 ;; TODO
 ;; (use-package git-gutter :ensure t)
@@ -345,7 +346,7 @@
  '(emamux:runner-pane-height 35)
  '(package-selected-packages
    (quote
-    (counsel evil-collection fzf avy git-gutter evil-snipe rainbow-delimiters company eyebrowse anotehu evil-mode use-package evil-visual-mark-mode))))
+    (fiplr counsel evil-collection fzf avy git-gutter evil-snipe rainbow-delimiters company eyebrowse anotehu evil-mode use-package evil-visual-mark-mode))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

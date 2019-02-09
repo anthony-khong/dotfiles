@@ -24,6 +24,8 @@
   (define-key evil-normal-state-map (kbd "C-d") 'evil-scroll-down-then-center)
   (define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
   (define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
+  (define-key evil-visual-state-map (kbd ">") 'better-evil-shift-right)
+  (define-key evil-visual-state-map (kbd "<") 'better-evil-shift-left)
   (advice-add 'evil-search-next :after #'my-center-line))
 
 (defun evil-scroll-up-then-center (count)
@@ -83,6 +85,9 @@
    "et" '(launch-terminal :which-key "launch terminal")
    "ff" '(counsel-projectile-find-file :which-key "fuzzy find file")
    "fd" '(counsel-projectile-find-dir :which-key "fuzzy find directory")
+   "nh" '(evil-ex-nohighlight :which-key "nohl")
+   ;; Open (o)
+   "or" '(ranger :which-key "ranger")
    ;; Yanking (y)
    "ya" '(yank-all-stay :which-key "yank all")
    "ys" '(yank-from-start-stay :which-key "yank from the start")
@@ -102,6 +107,13 @@
    "ad" '(hsplit-33 :which-key "hsplit-33")
    "ax" '(delete-window :which-key "delete window")
    "at" '(terminal-vsplit :which-key "terminal vsplit")
+   ;; Python (p)
+   "pgd" '(elpy-goto-definition-other-window :which-key "go to definition")
+   "pga" '(elpy-goto-assignment-other-window :which-key "go to assignment")
+   "pc" '(elpy-check :which-key "lint")
+   "pd" '(elpy-doc :which-key "documentation")
+   "pne" '(elpy-flymake-next-error :which-key "next error")
+   "ppe" '(elpy-flymake-previous-error :which-key "previous error")
    ;; Send (s)
    "ss" '(send-to-terminal-buffer :which-key "send to terminal buffer")))
 
@@ -127,7 +139,9 @@
 
 (use-package counsel-projectile :ensure t
   :config (counsel-projectile-mode)
-  :diminish (counsel-projectile-mode . ""))
+  :diminish
+  (projectile-mode . "")
+  (counsel-projectile-mode . ""))
 
 (use-package flx :ensure t
   :config (setq ivy-re-builders-alist '((t . ivy--regex-fuzzy))))
@@ -196,6 +210,10 @@
 ;; (global-git-gutter-mode +1)
 ;; (git-gutter:linum-setup)
 
+;; (use-package yasnippet :ensure t
+;;   :init (yas-global-mode 1)
+;;   :diminish (yas-minor-mode . ""))
+
 ;;;; Emacs Lisp
 (use-package parinfer
   :ensure t
@@ -218,6 +236,13 @@
     (add-hook 'scheme-mode-hook #'parinfer-mode)
     (add-hook 'lisp-mode-hook #'parinfer-mode)))
 
+;;;; Python
+(use-package elpy :ensure t
+  :config
+  (elpy-enable)
+  (setq python-shell-interpreter "python"
+	python-shell-interpreter-args "-i --simple-prompt"))
+
 ;;;; Clojure
 (use-package clojure-mode :ensure t)
 (use-package cider :ensure t)
@@ -232,10 +257,11 @@
   :init (setq markdown-command "multimarkdown"))
 
 ;; Passive Configurations
-(menu-bar-mode -1) 
+(menu-bar-mode -1)
 (setq vc-follow-symlinks t)
 (electric-indent-mode +1)
 (setq backup-directory-alist `(("." . "~/.saves")))
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;;;; Continuos scrolling
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
@@ -339,6 +365,18 @@
   (call-interactively 'evil-yank)
   (evil-goto-mark ?m))
 
+(defun better-evil-shift-right (beg end)
+  (interactive "r")
+  (evil-shift-right beg end)
+  (evil-normal-state)
+  (evil-visual-restore))
+
+(defun better-evil-shift-left (beg end)
+  (interactive "r")
+  (evil-shift-left beg end)
+  (evil-normal-state)
+  (evil-visual-restore))
+
 ;; Emacs Lisp
 (add-hook 'lisp-mode-hook '(lambda ()
                              (local-set-key (kbd "RET") 'newline-and-indent)))
@@ -355,7 +393,7 @@
  '(emamux:runner-pane-height 35)
  '(package-selected-packages
    (quote
-    (counsel-projectile fiplr counsel evil-collection fzf avy git-gutter evil-snipe rainbow-delimiters company eyebrowse anotehu evil-mode use-package evil-visual-mark-mode))))
+    (elpy yasnippet counsel-projectile fiplr counsel evil-collection fzf avy git-gutter evil-snipe rainbow-delimiters company eyebrowse anotehu evil-mode use-package evil-visual-mark-mode))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

@@ -1,8 +1,11 @@
+;; Startup Optimisation
+(setq gc-cons-threshold 100000000)
+
 (require 'package)
 
-(add-to-list 'package-archives '("org"		.	"http://orgmode.org/elpa/"))
-(add-to-list 'package-archives '("melpa"	.	"http://melpa.org/packages/"))
-(add-to-list 'package-archives '("melpa-stable" .	"http://stable.melpa.org/packages/"))
+(add-to-list 'package-archives '("org"        		.    	"http://orgmode.org/elpa/"))
+(add-to-list 'package-archives '("melpa"    	.    	"http://melpa.org/packages/"))
+(add-to-list 'package-archives '("melpa-stable" .    	"http://stable.melpa.org/packages/"))
 (package-initialize)
 
 ;; Packages
@@ -107,15 +110,21 @@
    "ad" '(hsplit-33 :which-key "hsplit-33")
    "ax" '(delete-window :which-key "delete window")
    "at" '(terminal-vsplit :which-key "terminal vsplit")
-   ;; Python (p)
-   "pgd" '(elpy-goto-definition-other-window :which-key "go to definition")
-   "pga" '(elpy-goto-assignment-other-window :which-key "go to assignment")
-   "pc" '(elpy-check :which-key "lint")
-   "pd" '(elpy-doc :which-key "documentation")
-   "pne" '(elpy-flymake-next-error :which-key "next error")
-   "ppe" '(elpy-flymake-previous-error :which-key "previous error")
    ;; Send (s)
-   "ss" '(send-to-terminal-buffer :which-key "send to terminal buffer")))
+   "ss" '(send-to-terminal-buffer :which-key "send to terminal buffer"))
+
+  ;; Python
+  (general-define-key
+   :states '(normal insert emacs visual)
+   :keymaps 'python-mode-map
+   :prefix "SPC"
+   :non-normal-prefix "C-s"
+   "gd" '(elpy-goto-definition-other-window :which-key "go to definition")
+   "ga" '(elpy-goto-assignment-other-window :which-key "go to assignment")
+   "c" '(elpy-check :which-key "lint")
+   "d" '(elpy-doc :which-key "documentation")
+   "ne" '(elpy-flymake-next-error :which-key "next error")
+   "pe" '(elpy-flymake-previous-error :which-key "previous error")))
 
 (use-package ivy :ensure t
   :diminish (ivy-mode . "") ; does not display ivy in the modeline
@@ -179,6 +188,8 @@
   :diminish (company-mode . "")
   :config
   (global-company-mode 1)
+  (setq company-dabbrev-downcase 0)
+  (setq company-idle-delay 0.1)
   (eval-after-load 'company
     '(progn
        (define-key company-active-map (kbd "TAB") 'company-complete-selection))))
@@ -205,14 +216,22 @@
 (setq linum-relative-current-symbol "")
 (linum-relative-on)
 
+(use-package yasnippet :ensure t
+  :init (yas-global-mode 1)
+  :diminish (yas-minor-mode . ""))
+
+(use-package yasnippet-snippets :ensure t)
+
+(use-package magit :ensure t)
+(require 'magit)
+
+(use-package evil-magit :ensure t)
+(require 'evil-magit)
+
 ;; (use-package git-gutter :ensure t)
 ;; (require 'git-gutter)
 ;; (global-git-gutter-mode +1)
 ;; (git-gutter:linum-setup)
-
-;; (use-package yasnippet :ensure t
-;;   :init (yas-global-mode 1)
-;;   :diminish (yas-minor-mode . ""))
 
 ;;;; Emacs Lisp
 (use-package parinfer
@@ -241,7 +260,7 @@
   :config
   (elpy-enable)
   (setq python-shell-interpreter "python"
-	python-shell-interpreter-args "-i --simple-prompt"))
+     	python-shell-interpreter-args "-i --simple-prompt"))
 
 ;;;; Clojure
 (use-package clojure-mode :ensure t)
@@ -393,11 +412,10 @@
  '(emamux:runner-pane-height 35)
  '(package-selected-packages
    (quote
-    (elpy yasnippet counsel-projectile fiplr counsel evil-collection fzf avy git-gutter evil-snipe rainbow-delimiters company eyebrowse anotehu evil-mode use-package evil-visual-mark-mode))))
+    (evil-magit magit yasnippet-snippets elpy yasnippet counsel-projectile fiplr counsel evil-collection fzf avy git-gutter evil-snipe rainbow-delimiters company eyebrowse anotehu evil-mode use-package evil-visual-mark-mode))))
 
-(custom-set-faces
+(custom-set-faces)
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )

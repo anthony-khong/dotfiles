@@ -119,6 +119,12 @@
    :keymaps 'python-mode-map
    :prefix "SPC"
    :non-normal-prefix "C-s"
+   ;; REPL/shell (s)
+   "si" '(elpy-shell-switch-to-shell :which-key "init repl")
+   "sk" '(elpy-shell-kill :which-key "kill repl")
+   "ss" '(elpy-shell-send-group :which-key "send group") ; TODO: check mode
+   "sg" '(elpy-shell-send-region-or-buffer :which-key "send region")
+   ;; Others
    "gd" '(elpy-goto-definition-other-window :which-key "go to definition")
    "ga" '(elpy-goto-assignment-other-window :which-key "go to assignment")
    "c" '(elpy-check :which-key "lint")
@@ -259,8 +265,8 @@
 (use-package elpy :ensure t
   :config
   (elpy-enable)
-  (setq python-shell-interpreter "python"
-     	python-shell-interpreter-args "-i --simple-prompt"))
+  (setq python-shell-interpreter "ipython"
+     	python-shell-interpreter-args "--simple-prompt --pprint"))
 
 ;;;; Clojure
 (use-package clojure-mode :ensure t)
@@ -359,6 +365,12 @@
   (mark-inner-paragraph)
   (emamux:run-region beg end)
   (evil-normal-state))
+
+;; (defun send-to-tmux (beg end)
+;;   (interactive "r")
+;;   (mark-inner-paragraph)
+;;   (call-interactively 'emamux:send-region)
+;;   (evil-normal-state))
 
 (defun yank-all-stay ()
   (interactive)

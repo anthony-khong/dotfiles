@@ -68,7 +68,7 @@
   (general-define-key
    :states '(normal visual)
    :prefix "C-c"
-   "C-c" '(send-to-tmux :which-key "run region"))
+   "C-c" '(send-paragraph-to-tmux :which-key "run region"))
 
   (general-define-key
    :states '(normal insert emacs visual)
@@ -120,7 +120,7 @@
    :states '(normal visual)
    :keymaps 'python-mode-map
    :prefix "C-c"
-   "C-c" '(send-to-tmux-ipython :which-key "run region"))
+   "C-c" '(send-paragraph-to-tmux-ipython :which-key "run region"))
 
   (general-define-key
    :states '(normal insert emacs visual)
@@ -288,6 +288,9 @@
          ("\\.markdown\\'" . markdown-mode))
   :init (setq markdown-command "multimarkdown"))
 
+;; Load Scripts
+(load-file "~/dotfiles/emacs/emacs-vim-slime.el")
+
 ;; Passive Configurations
 (menu-bar-mode -1)
 (setq vc-follow-symlinks t)
@@ -378,28 +381,6 @@
   (interactive "r")
   (mark-paragraph)
   (process-send-region "terminal" beg end))
-
-(defun send-to-tmux (beg end)
-  (interactive "r")
-  (mark-paragraph)
-  (call-interactively 'evil-yank)
-  (write-region (format "%s" (car kill-ring)) nil "~/.slime_paste")
-  (shell-command "tmux load-buffer ~/.slime_paste")
-  (shell-command "tmux paste-buffer -d -t 1")
-  (shell-command "tmux send-keys -t 1 Enter")
-  (shell-command "cat /dev/null > ~/.slime_paste"))
-
-(defun send-to-tmux-ipython (beg end)
-  (interactive "r")
-  (mark-paragraph)
-  (call-interactively 'evil-yank)
-  (shell-command "tmux send-keys -t 1 '%cpaste -q' Enter")
-  (write-region (format "%s" (car kill-ring)) nil "~/.slime_paste")
-  (shell-command "tmux load-buffer ~/.slime_paste")
-  (shell-command "tmux paste-buffer -d -t 1")
-  (shell-command "tmux send-keys -t 1 KP- KP-")
-  (shell-command "tmux send-keys -t 1 Enter")
-  (shell-command "cat /dev/null > ~/.slime_paste"))
 
 (defun yank-all-stay ()
   (interactive)

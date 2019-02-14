@@ -209,12 +209,12 @@
 
 (use-package linum-relative :ensure t
   :init
-  (setq linum-format "%4d \u2502")
-  (setq linum-relative-format "%4s \u2502")
-  (global-linum-mode t)
-  (set-face-background 'linum "unspecified-bg"))
+  (setq linum-relative-backend 'display-line-numbers-mode)
+  (global-display-line-numbers-mode)
+  (set-face-background 'line-number "unspecified-bg")
+  (setq-default linum-format "%4d \u2502"
+		linum-relative-format "%4s \u2502"))
 (require 'linum-relative)
-(setq linum-relative-current-symbol "")
 (linum-relative-on)
 
 (use-package yasnippet :ensure t
@@ -229,10 +229,15 @@
 (use-package evil-magit :ensure t)
 (require 'evil-magit)
 
-;; (use-package git-gutter :ensure t)
-;; (require 'git-gutter)
-;; (global-git-gutter-mode +1)
-;; (git-gutter:linum-setup)
+(use-package git-gutter :ensure t)
+(require 'git-gutter)
+(set-face-foreground 'git-gutter:added "green")
+(set-face-foreground 'git-gutter:deleted "red")
+(set-face-foreground 'git-gutter:modified "yellow")
+(set-face-background 'git-gutter:added "unspecified-bg")
+(set-face-background 'git-gutter:deleted "unspecified-bg")
+(set-face-background 'git-gutter:modified "unspecified-bg")
+(global-git-gutter-mode +1)
 
 ;;;; Emacs Lisp
 (use-package parinfer
@@ -426,6 +431,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(git-gutter:modified-sign "~")
+ '(git-gutter:added-sign "+")
+ '(git-gutter:deleted-sign "-")
  '(custom-safe-themes
    (quote
     ("b59d7adea7873d58160d368d42828e7ac670340f11f36f67fa8071dbf957236a" default)))

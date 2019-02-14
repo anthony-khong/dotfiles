@@ -81,6 +81,7 @@
    "h" '(evil-window-left :which-key "evil-left")
    "j" '(evil-window-down :which-key "evil-down")
    "k" '(evil-window-up :which-key "evil-up")
+   "A" '(reload-init :which-key "reload init")
    "SPC a" '(avy-goto-char-2 :which-key "select two-chars")
    ;; General (e)
    "ed" '(describe-key :which-key "describe key")
@@ -292,13 +293,18 @@
           (lambda ()
             (font-lock-add-keywords nil
 				    '(("\\<\\(FIXME\\|TODO\\|BUG\\|XXX\\)" 1 font-lock-warning-face t)))))
+(fset 'yes-or-no-p 'y-or-n-p)
+(setq-default truncate-lines t
+              indent-tabs-mode nil)
 
 ;;;; Continuos scrolling
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
 (setq mouse-wheel-progressive-speed nil)
 (setq mouse-wheel-follow-mouse 't)
-(setq scroll-step 1)
-(setq scroll-margin 3)
+(setq scroll-margin 8
+      scroll-step 1
+      scroll-conservatively 10000
+      scroll-preserve-screen-position 1)
 
 ;;;; Clipboard
 (defun noct:conditionally-toggle-xclip-mode ()
@@ -426,6 +432,12 @@
   (evil-shift-left beg end)
   (evil-normal-state)
   (evil-visual-restore))
+
+(defun reload-init ()
+  "Reloads init file"
+  (interactive)
+  (load-file "~/.emacs")
+  (message "Emacs reloaded!"))
 
 ;; Emacs Lisp
 (add-hook 'lisp-mode-hook '(lambda ()

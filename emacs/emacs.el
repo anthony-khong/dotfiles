@@ -117,6 +117,12 @@
 
   ;; Python
   (general-define-key
+   :states '(normal visual)
+   :keymaps 'python-mode-map
+   :prefix "C-c"
+   "C-c" '(send-to-tmux-ipython :which-key "run region"))
+
+  (general-define-key
    :states '(normal insert emacs visual)
    :keymaps 'python-mode-map
    :prefix "SPC"
@@ -368,34 +374,30 @@
   (launch-terminal)
   (other-window 1))
 
-;; (defun send-to-terminal-buffer (beg end)
-;;   (interactive "r")
-;;   (mark-inner-paragraph)
-;;   (process-send-region "terminal" beg end))
-
 (defun send-to-terminal-buffer (beg end)
   (interactive "r")
   (mark-paragraph)
   (process-send-region "terminal" beg end))
 
-;; (defun send-to-tmux (beg end)
-;;   (interactive "r")
-;;   (mark-inner-paragraph)
-;;   (emamux:run-region beg end)
-;;   (evil-normal-state))
-
 (defun send-to-tmux (beg end)
-  "Execute command in tmux pane"
   (interactive "r")
   (mark-paragraph)
   (call-interactively 'evil-yank)
-  (if python-mode-map
-      (shell-command "tmux send-keys -t 1 '%cpaste -q' Enter"))
   (write-region (format "%s" (car kill-ring)) nil "~/.slime_paste")
   (shell-command "tmux load-buffer ~/.slime_paste")
   (shell-command "tmux paste-buffer -d -t 1")
-  (if python-mode-map
-      (shell-command "tmux send-keys -t 1 KP- KP-"))
+  (shell-command "tmux send-keys -t 1 Enter")
+  (shell-command "cat /dev/null > ~/.slime_paste"))
+
+(defun send-to-tmux-ipython (beg end)
+  (interactive "r")
+  (mark-paragraph)
+  (call-interactively 'evil-yank)
+  (shell-command "tmux send-keys -t 1 '%cpaste -q' Enter")
+  (write-region (format "%s" (car kill-ring)) nil "~/.slime_paste")
+  (shell-command "tmux load-buffer ~/.slime_paste")
+  (shell-command "tmux paste-buffer -d -t 1")
+  (shell-command "tmux send-keys -t 1 KP- KP-")
   (shell-command "tmux send-keys -t 1 Enter")
   (shell-command "cat /dev/null > ~/.slime_paste"))
 

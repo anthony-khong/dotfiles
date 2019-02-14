@@ -87,7 +87,8 @@
    "ed" '(describe-key :which-key "describe key")
    "eq" '(save-buffers-kill-terminal :which-key "save and kill buffer")
    "et" '(launch-terminal :which-key "launch terminal")
-   "ff" '(counsel-projectile-find-file :which-key "fuzzy find file")
+   "ff" '(counsel-fzf-home :which-key "fuzzy find file")
+   "fp" '(counsel-fzf :which-key "project fuzzy find file")
    "fd" '(counsel-projectile-find-dir :which-key "fuzzy find directory")
    "nh" '(evil-ex-nohighlight :which-key "nohl")
    ;; Open (o)
@@ -147,6 +148,7 @@
    ("C-c s"   . counsel-git-grep)  ; search for regexp in git repo
    ("C-c /"   . counsel-ag)        ; search for regexp in git repo using ag
    ("C-c l"   . counsel-locate)))  ; search for files or else using locate
+(setq counsel-async-ignore-re '("*Dropbox*"))
 
 (use-package counsel-projectile :ensure t
   :config (counsel-projectile-mode)
@@ -438,6 +440,10 @@
   (interactive)
   (load-file "~/.emacs")
   (message "Emacs reloaded!"))
+
+(defun counsel-fzf-home ()
+  (interactive)
+  (counsel-fzf "" "~"))
 
 ;; Emacs Lisp
 (add-hook 'lisp-mode-hook '(lambda ()

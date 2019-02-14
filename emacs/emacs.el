@@ -211,9 +211,7 @@
   :init
   (setq linum-relative-backend 'display-line-numbers-mode)
   (global-display-line-numbers-mode)
-  (set-face-background 'line-number "unspecified-bg")
-  (setq-default linum-format "%4d \u2502"
-		linum-relative-format "%4s \u2502"))
+  (set-face-background 'line-number "unspecified-bg"))
 (require 'linum-relative)
 (linum-relative-on)
 
@@ -287,6 +285,13 @@
 (electric-indent-mode +1)
 (setq backup-directory-alist `(("." . "~/.saves")))
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+(global-prettify-symbols-mode +1)
+(setq prettify-symbols-unprettify-at-point 'right-edge)
+(setq inhibit-compacting-font-caches t)
+(add-hook 'prog-mode-hook
+          (lambda ()
+            (font-lock-add-keywords nil
+				    '(("\\<\\(FIXME\\|TODO\\|BUG\\|XXX\\)" 1 font-lock-warning-face t)))))
 
 ;;;; Continuos scrolling
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))

@@ -119,11 +119,6 @@
    :keymaps 'python-mode-map
    :prefix "SPC"
    :non-normal-prefix "C-s"
-   ;; REPL/shell (s)
-   ;; "si" '(elpy-shell-switch-to-shell :which-key "init repl")
-   ;; "sk" '(elpy-shell-kill :which-key "kill repl")
-   ;; "ss" '(elpy-shell-send-group :which-key "send group") ; TODO: check mode
-   ;; "sg" '(elpy-shell-send-region-or-buffer :which-key "send region")
    ;; Others
    "gd" '(elpy-goto-definition-other-window :which-key "go to definition")
    "ga" '(elpy-goto-assignment-other-window :which-key "go to assignment")
@@ -376,60 +371,15 @@
   (interactive "r")
   (mark-paragraph)
   (call-interactively 'evil-yank)
-  ;; TODO: write kill-ring to a file
-  (shell-command "tmux send-keys -t 1 '%cpaste -q' Enter")
+  (if python-mode-map
+      (shell-command "tmux send-keys -t 1 '%cpaste -q' Enter"))
   (write-region (format "%s" (car kill-ring)) nil "~/.slime_paste")
-  ;; (append-to-file beg end "~/.slime_paste")
-  ;; (shell-command (format "echo \"%s\" | cat > $HOME/.slime_paste" kill-ring))
   (shell-command "tmux load-buffer ~/.slime_paste")
   (shell-command "tmux paste-buffer -d -t 1")
-  (shell-command "tmux send-keys -t 1 KP- KP- Enter")
+  (if python-mode-map
+      (shell-command "tmux send-keys -t 1 KP- KP-"))
+  (shell-command "tmux send-keys -t 1 Enter")
   (shell-command "cat /dev/null > ~/.slime_paste"))
-;; (shell-command "tmux send-keys -t 1 '%cpaste -q' Enter")
-;; (shell-command (concat "tmux send-keys -t 1 \"" kill-ring "\" Enter")) ; TODO: escape apostrophe
-;; (shell-command "tmux send-keys -t 1 KP- KP- Enter"))
-(defun view-kill ()
-  (interactive)
-  (save-excursion
-    (save-window-excursion
-      (let ((working-buffer (current-buffer))
-            (new-buffer (get-buffer-create "kill-ring-view"))
-            (count 0)
-            (custom-map (copy-keymap minibuffer-local-map))
-            (selection nil)
-            )
-        (unwind-protect
-            (progn
-              (define-key custom-map " " 'scroll-other-window)
-
-              (switch-to-buffer new-buffer t)
-              (delete-other-windows)
-
-              (dolist (x kill-ring)
-                (insert (concat "----- "
-                                (number-to-string count)
-                                " -----"))
-                (newline)
-                (insert x)
-                (newline)
-                (newline)
-                (setq count (+ count 1))
-                )
-              (goto-char (point-min))
-
-              (let ((choice (read-from-minibuffer "choose: " nil custom-map t nil)))
-                (and (numberp choice)
-                     (< choice count)
-                     (progn
-                       (set-buffer working-buffer)
-                       (insert (nth choice kill-ring))
-                       (setq selection choice)
-                       ))
-                ))
-          (kill-buffer new-buffer) ; unwind-protect clean-up form
-          )
-        selection
-        ))))
 
 (defun yank-all-stay ()
   (interactive)

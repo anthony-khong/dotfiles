@@ -3,7 +3,7 @@
 
 (require 'package)
 
-(add-to-list 'package-archives '("org"        		.    	"http://orgmode.org/elpa/"))
+(add-to-list 'package-archives '("org"        	.    	"http://orgmode.org/elpa/"))
 (add-to-list 'package-archives '("melpa"    	.    	"http://melpa.org/packages/"))
 (add-to-list 'package-archives '("melpa-stable" .    	"http://stable.melpa.org/packages/"))
 (package-initialize)
@@ -17,12 +17,13 @@
 (eval-when-compile
   (require 'use-package))
 
-(use-package auto-package-update
-  :ensure t
+(use-package auto-package-update :ensure t
   :config
   (setq auto-package-update-delete-old-versions t
         auto-package-update-interval 4)
   (auto-package-update-maybe))
+
+(use-package benchmark-init :ensure t)
 
 (use-package evil :ensure t
   :init
@@ -94,7 +95,8 @@
    "ed" '(describe-key :which-key "describe key")
    "eq" '(save-buffers-kill-terminal :which-key "save and kill buffer")
    "et" '(launch-terminal :which-key "launch terminal")
-   "ff" '(counsel-fzf-home :which-key "fuzzy find file")
+   "ff" '(counsel-find-file :which-key "find file")
+   "fz" '(counsel-fzf-home :which-key "fuzzy find file")
    "fp" '(counsel-fzf :which-key "project fuzzy find file")
    "fd" '(counsel-projectile-find-dir :which-key "fuzzy find directory")
    "nh" '(evil-ex-nohighlight :which-key "nohl")
@@ -169,17 +171,12 @@
   (projectile-mode . "")
   (counsel-projectile-mode . ""))
 
-(use-package flx :ensure t
-  :config (setq ivy-re-builders-alist '((t . ivy--regex-fuzzy))))
-
 (use-package which-key :ensure t
   :init (which-key-mode)
   :diminish (which-key-mode . ""))
 
 (use-package xclip :ensure t)
 (xclip-mode 1)
-
-(use-package emamux :ensure t)
 
 (use-package tmux-pane :ensure t)
 (require 'tmux-pane)
@@ -222,6 +219,8 @@
 
 (use-package diminish :ensure t)
 (require 'diminish)
+(diminish 'undo-tree-mode)
+(diminish 'auto-revert-mode)
 
 (use-package linum-relative :ensure t
   :init
@@ -240,10 +239,8 @@
 (use-package magit :ensure t)
 (require 'magit)
 
-(use-package evil-magit :ensure t)
-(require 'evil-magit)
-
-(use-package git-gutter :ensure t)
+(use-package git-gutter :ensure t
+  :diminish (git-gutter-mode . ""))
 (require 'git-gutter)
 (set-face-foreground 'git-gutter:added "green")
 (set-face-foreground 'git-gutter:deleted "red")
@@ -274,6 +271,8 @@
     (add-hook 'common-lisp-mode-hook #'parinfer-mode)
     (add-hook 'scheme-mode-hook #'parinfer-mode)
     (add-hook 'lisp-mode-hook #'parinfer-mode)))
+(add-hook 'lisp-mode-hook '(lambda ()
+                             (local-set-key (kbd "RET") 'newline-and-indent)))
 
 ;;;; Python
 (use-package elpy :ensure t
@@ -284,7 +283,22 @@
 
 ;;;; Clojure
 (use-package clojure-mode :ensure t)
-(use-package cider :ensure t)
+(use-package cider :ensure t
+  :pin melpa-stable)
+
+(add-hook 'clojure-mode-hook
+          (lambda ()
+            (require 'clojure-mode)
+            (require 'clojure-mode-extra-font-locking)
+            (add-hook 'clojure-mode-hook #'aggressive-indent-mode)
+            (font-lock-add-keywords
+             nil
+             '(("(\\(facts?\\)"
+                (1 font-lock-keyword-face))
+               ("(\\(background?\\)"
+                (1 font-lock-keyword-face))))
+            (define-clojure-indent (fact 1))
+            (define-clojure-indent (facts 1))))
 
 ;;;; Markdown
 (use-package markdown-mode
@@ -434,10 +448,6 @@
 (defun counsel-fzf-home ()
   (interactive)
   (counsel-fzf "" "~"))
-
-;; Emacs Lisp
-(add-hook 'lisp-mode-hook '(lambda ()
-                             (local-set-key (kbd "RET") 'newline-and-indent)))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

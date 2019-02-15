@@ -17,6 +17,13 @@
 (eval-when-compile
   (require 'use-package))
 
+(use-package auto-package-update
+  :ensure t
+  :config
+  (setq auto-package-update-delete-old-versions t
+        auto-package-update-interval 4)
+  (auto-package-update-maybe))
+
 (use-package evil :ensure t
   :init
   (setq evil-want-keybinding nil)
@@ -437,20 +444,21 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(git-gutter:modified-sign "~")
- '(git-gutter:added-sign "+")
- '(git-gutter:deleted-sign "-")
  '(custom-safe-themes
    (quote
     ("b59d7adea7873d58160d368d42828e7ac670340f11f36f67fa8071dbf957236a" default)))
  '(emamux:default-orientation (quote horizonal))
  '(emamux:runner-pane-height 35)
+ '(git-gutter:added-sign "+")
+ '(git-gutter:deleted-sign "-")
+ '(git-gutter:modified-sign "~")
  '(package-selected-packages
    (quote
     (evil-magit magit yasnippet-snippets elpy yasnippet counsel-projectile fiplr counsel evil-collection fzf avy git-gutter evil-snipe rainbow-delimiters company eyebrowse anotehu evil-mode use-package evil-visual-mark-mode))))
 
-(custom-set-faces)
+(custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ )

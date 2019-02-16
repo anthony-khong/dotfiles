@@ -25,6 +25,7 @@
 
 (use-package benchmark-init :ensure t)
 
+(setq evil-want-C-i-jump nil)
 (use-package evil :ensure t
   :init
   (setq evil-want-keybinding nil)
@@ -123,6 +124,15 @@
    "at" '(terminal-vsplit :which-key "terminal vsplit")
    ;; Send (s)
    "ss" '(send-to-terminal-buffer :which-key "send to terminal buffer"))
+
+  ;; Org Mode
+  (general-define-key
+   :states '(normal insert emacs visual)
+   :keymaps 'org-mode-map
+   :prefix "SPC"
+   :non-normal-prefix "C-s"
+   ;; Others
+   "ih" '(insert-org-mode-header :which-key "insert org header"))
 
   ;; Python
   (general-define-key
@@ -274,6 +284,11 @@
 (add-hook 'lisp-mode-hook '(lambda ()
                              (local-set-key (kbd "RET") 'newline-and-indent)))
 
+;;;; Org Mode
+(use-package org
+  :mode (("\\.org$" . org-mode))
+  :ensure org-plus-contrib)
+
 ;;;; Python
 (use-package elpy :ensure t
   :config
@@ -326,7 +341,7 @@
             (font-lock-add-keywords nil
 				    '(("\\<\\(FIXME\\|TODO\\|BUG\\|XXX\\)" 1 font-lock-warning-face t)))))
 (fset 'yes-or-no-p 'y-or-n-p)
-(setq-default truncate-lines t
+(setq-default truncate-lines nil
               indent-tabs-mode nil)
 
 ;;;; Continuos scrolling
@@ -449,6 +464,10 @@
   (interactive)
   (counsel-fzf "" "~"))
 
+(defun insert-org-mode-header ()
+  (interactive)
+  (insert "MY PROJECT -*- mode: org -*-"))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -464,7 +483,7 @@
  '(git-gutter:modified-sign "~")
  '(package-selected-packages
    (quote
-    (evil-magit magit yasnippet-snippets elpy yasnippet counsel-projectile fiplr counsel evil-collection fzf avy git-gutter evil-snipe rainbow-delimiters company eyebrowse anotehu evil-mode use-package evil-visual-mark-mode))))
+    (org-plus-contrib evil-magit magit yasnippet-snippets elpy yasnippet counsel-projectile fiplr counsel evil-collection fzf avy git-gutter evil-snipe rainbow-delimiters company eyebrowse anotehu evil-mode use-package evil-visual-mark-mode))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

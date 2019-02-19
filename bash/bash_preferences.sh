@@ -74,5 +74,9 @@ then
     source ~/bashrc_agoda
 fi
 
+if [[ -a /opt/anaconda/bin/aws_zsh_completer.sh ]]; then
+    source /opt/anaconda/bin/aws_zsh_completer.sh
+fi
+
 # Fixes some locale error when running mosh
 export LC_ALL="en_US.UTF-8"

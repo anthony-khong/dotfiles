@@ -17,11 +17,7 @@
 (eval-when-compile
   (require 'use-package))
 
-(use-package auto-package-update :ensure t
-  :config
-  (setq auto-package-update-delete-old-versions t
-        auto-package-update-interval 4)
-  (auto-package-update-maybe))
+(use-package auto-package-update :ensure t)
 
 (use-package benchmark-init :ensure t)
 
@@ -324,8 +320,10 @@
          ("\\.markdown\\'" . markdown-mode))
   :init (setq markdown-command "multimarkdown"))
 
+
 ;; Load Scripts
 (load-file "~/dotfiles/emacs/emacs-vim-slime.el")
+(load-file "~/dotfiles/emacs/dockerfile-mode.el")
 
 ;; Passive Configurations
 (menu-bar-mode -1)
@@ -343,6 +341,8 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 (setq-default truncate-lines nil
               indent-tabs-mode nil)
+(add-to-list 'interpreter-mode-alist
+             '("bash" . sh-mode))
 
 ;;;; Continuos scrolling
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))

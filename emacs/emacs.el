@@ -236,6 +236,12 @@
 (require 'linum-relative)
 (linum-relative-on)
 
+(use-package whitespace :ensure t)
+(require 'whitespace)
+(setq whitespace-line-column 100) ;; limit line length
+(setq whitespace-style '(face lines-tail))
+(add-hook 'prog-mode-hook 'whitespace-mode)
+
 (use-package yasnippet :ensure t
   :init (yas-global-mode 1)
   :diminish (yas-minor-mode . ""))
@@ -291,6 +297,7 @@
   (elpy-enable)
   (setq python-shell-interpreter "ipython"
      	python-shell-interpreter-args "--simple-prompt --pprint"))
+(delete `elpy-module-highlight-indentation elpy-modules)
 
 ;;;; Clojure
 (use-package clojure-mode :ensure t)
@@ -343,6 +350,8 @@
               indent-tabs-mode nil)
 (add-to-list 'interpreter-mode-alist
              '("bash" . sh-mode))
+(modify-syntax-entry ?_ "w")
+(add-to-list 'company-backends '(company-capf company-dabbrev))
 
 ;;;; Continuos scrolling
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))

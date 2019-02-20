@@ -3,9 +3,6 @@ export USER="akhong"
 export HOME="/home/akhong"
 export INSTALL_LOG="$HOME/.startup.log"
 
-# echo "Generating SSH key..." >> $INSTALL_LOG
-# ssh-keygen -t rsa -N "" -f $HOME/.ssh/id_rsa
-
 echo "Installing essential apps with apt-get..." >> $INSTALL_LOG
 sudo apt-get update && sudo apt-get install -y \
     build-essential \
@@ -55,11 +52,6 @@ curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.s
 sudo apt-get install -y git-lfs
 git lfs install
 
-echo "Installing mono and fsharp..." >> $INSTALL_LOG
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
-echo "deb https://download.mono-project.com/repo/ubuntu stable-bionic main" | sudo tee /etc/apt/sources.list.d/mono-official-stable.list
-sudo apt update sudo apt-get install -y mono-devel fsharp
-
 echo "Configuring dotfiles..." >> $INSTALL_LOG
 cd $HOME/dotfiles \
     && git submodule init \
@@ -76,9 +68,6 @@ sudo add-apt-repository -y ppa:neovim-ppa/stable \
         && nvim +PlugInstall +silent +qall \
         && /bin/bash $HOME/dotfiles/tmux/tpm/scripts/install_plugins.sh
 sudo chown -R $USER "$HOME/.local"
-
-echo "Installing Spacemacs..." >> $INSTALL_LOG
-git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 
 echo "Installing Ripgrep..." >> $INSTALL_LOG
 curl -LO https://github.com/BurntSushi/ripgrep/releases/download/0.10.0/ripgrep_0.10.0_amd64.deb
@@ -108,13 +97,13 @@ cd $HOME/dotfiles \
 sudo usermod -a -G docker $USER
 sudo usermod -aG sudo $USER
 
-echo "Creating 32G of swap file..." >> $INSTALL_LOG
-sudo fallocate -l 32G /swapfile
-sudo chmod 600 /swapfile
-sudo mkswap /swapfile
-sudo swapon /swapfile
-sudo cp /etc/fstab /etc/fstab.bak
-echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+# echo "Creating 32G of swap file..." >> $INSTALL_LOG
+# sudo fallocate -l 32G /swapfile
+# sudo chmod 600 /swapfile
+# sudo mkswap /swapfile
+# sudo swapon /swapfile
+# sudo cp /etc/fstab /etc/fstab.bak
+# echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
 
 echo "Installing mosh..." >> $INSTALL_LOG
 sudo apt-get install -y mosh

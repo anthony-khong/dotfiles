@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: pytest skip
+# key: sk
+# --
+import pytest
+@pytest.mark.skip

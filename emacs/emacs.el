@@ -243,7 +243,9 @@
 (add-hook 'prog-mode-hook 'whitespace-mode)
 
 (use-package yasnippet :ensure t
-  :init (yas-global-mode 1)
+  :init
+  (setq yas-snippet-dirs  '("~/dotfiles/emacs/snippets"))
+  (yas-global-mode 1)
   :diminish (yas-minor-mode . ""))
 
 (use-package yasnippet-snippets :ensure t)

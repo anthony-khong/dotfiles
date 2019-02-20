@@ -15,12 +15,12 @@ ln -s dotfiles/bash/inputrc .inputrc;
 
 cd;
 rm -rf .vimrc;
-rm -rf -rf .vim;
+rm -rf .vim;
 ln -s ~/dotfiles/vim/vimrc .vimrc;
 ln -s ~/dotfiles/vim/ .vim;
 
 cd;
-rm .emacs;
+rm -rf .emacs;
 ln -s ~/dotfiles/emacs/emacs.el .emacs;
 rm -rf .emacs.d
 mkdir .emacs.d

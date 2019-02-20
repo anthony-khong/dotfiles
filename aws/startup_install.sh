@@ -1,6 +1,6 @@
 #! /bin/bash
-export USER="akhong"
-export HOME="/home/akhong"
+export USER="ubuntu"
+export HOME="/home/ubuntu"
 export INSTALL_LOG="$HOME/.startup.log"
 
 echo "Installing essential apps with apt-get..." >> $INSTALL_LOG
@@ -90,7 +90,7 @@ sudo rm -rf tmate-2.2.1-static-linux-amd64
 sudo rm tmate-2.2.1-static-linux-amd64.tar.gz
 
 echo "Setting up permissions and Docker..." >> $INSTALL_LOG
-sudo chown -R akhong $HOME
+sudo chown -R $USER $HOME
 cd $HOME/dotfiles \
     && git checkout . \
     && cd $HOME

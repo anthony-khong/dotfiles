@@ -9,7 +9,6 @@ sudo apt-get update && sudo apt-get install -y \
     apt-transport-https \
     ca-certificates \
     curl \
-    emacs \
     entr \
     git \
     libssl-dev \
@@ -65,9 +64,15 @@ pip install --upgrade neovim jedi google-api-python-client pyflakes mypy
 sudo add-apt-repository -y ppa:neovim-ppa/stable \
         && sudo apt-get update \
         && sudo apt-get install -y neovim \
-        && nvim +PlugInstall +silent +qall \
         && /bin/bash $HOME/dotfiles/tmux/tpm/scripts/install_plugins.sh
 sudo chown -R $USER "$HOME/.local"
+# nvim +PlugInstall +silent +qall
+
+echo "Installing Emacs and its dependencies..." >> $INSTALL_LOG
+sudo add-apt-repository ppa:kelleyk/emacs -y \
+    && sudo apt-get update \
+    && sudo apt install -y emacs26
+emacs26 --daemon &
 
 echo "Installing Ripgrep..." >> $INSTALL_LOG
 curl -LO https://github.com/BurntSushi/ripgrep/releases/download/0.10.0/ripgrep_0.10.0_amd64.deb

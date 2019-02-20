@@ -12,10 +12,13 @@ function ec2-desc() {
 }
 
 function create-cloud-dev() {
+    # TODO: mirror gcp function
+    # TODO: default: t2.micro
     aws ec2 run-instances \
         --image-id ami-0c5199d385b432989 \
-        --instance-type t2.micro \
-        --key-name cloud-dev
+        --instance-type $1 \
+        --key-name cloud-dev \
+        --block-device-mappings "[{\"DeviceName\":\"/dev/sdf\",\"Ebs\":{\"VolumeSize\":$2,\"DeleteOnTermination\":true}}]" \
 }
 
 function cloud-dev-instance-id() {

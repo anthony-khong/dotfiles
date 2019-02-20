@@ -24,7 +24,10 @@ function setup_nvim() {
     nvim +PlugInstall +qall;
 }
 
-# Spacemacs shortcuts
+# Emacs shortcuts
+if type emacs26 > /dev/null; then
+    alias emacs=emacs26
+fi
 alias em="emacs -nw"
 alias ec="emacsclient -a ''"
 

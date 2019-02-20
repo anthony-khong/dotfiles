@@ -26,6 +26,3 @@ function aws-cloud-dev() {
 function aws-terminate-cloud-dev() {
     aws ec2 terminate-instances --instance-ids $(cloud-dev-instance-id)
 }
-
-
-ssh -i ~/.aws/cloud-dev.pem akhong@$(cloud-dev-dns)

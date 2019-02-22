@@ -12,13 +12,15 @@ function ec2-desc() {
 }
 
 function create-cloud-dev() {
-    # TODO: mirror gcp function
-    # TODO: default: t2.micro
     aws ec2 run-instances \
         --image-id ami-0c5199d385b432989 \
-        --instance-type $1 \
+        --instance-type t2.micro \
         --key-name cloud-dev \
-        --block-device-mappings "[{\"DeviceName\":\"/dev/sdf\",\"Ebs\":{\"VolumeSize\":$2,\"DeleteOnTermination\":true}}]" \
+        --user-data file://~/dotfiles/aws/startup.sh
+}
+
+function aws-ec2() {
+    aws ec2 $1 --instance-ids $(ec2-desc $2 InstanceId)
 }
 
 function cloud-dev-instance-id() {
@@ -29,10 +31,13 @@ function cloud-dev-dns() {
     ec2-desc cloud-dev PublicDnsName
 }
 
-function aws-cloud-dev() {
+function ssh-aws-cloud-dev() {
     ssh -i ~/.aws/cloud-dev.pem ubuntu@$(cloud-dev-dns)
 }
 
+function mosh-aws-cloud-dev() {
+    mosh -ssh="ssh -i ~/.aws/cloud-dev.pem" ubuntu@$(cloud-dev-dns)
+}
 
 function aws-terminate-cloud-dev() {
     aws ec2 terminate-instances --instance-ids $(cloud-dev-instance-id)

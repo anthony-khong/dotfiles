@@ -3,6 +3,9 @@ export USER="ubuntu"
 export HOME="/home/ubuntu"
 export INSTALL_LOG="$HOME/.startup.log"
 
+echo "Installing mosh..." >> $INSTALL_LOG
+sudo apt-get update && sudo apt-get install -y mosh
+
 echo "Installing essential apps with apt-get..." >> $INSTALL_LOG
 sudo apt-get update && sudo apt-get install -y \
     build-essential \
@@ -109,9 +112,6 @@ sudo usermod -aG sudo $USER
 # sudo swapon /swapfile
 # sudo cp /etc/fstab /etc/fstab.bak
 # echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
-
-echo "Installing mosh..." >> $INSTALL_LOG
-sudo apt-get install -y mosh
 
 echo "Installing Xorg.." >> $INSTALL_LOG
 sudo apt-get -y install xorg openbox

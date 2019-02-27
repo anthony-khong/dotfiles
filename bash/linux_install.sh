@@ -103,15 +103,41 @@ cd $HOME/dotfiles \
 sudo usermod -a -G docker $USER
 sudo usermod -aG sudo $USER
 
-# echo "Creating 32G of swap file..." >> $INSTALL_LOG
-# sudo fallocate -l 32G /swapfile
-# sudo chmod 600 /swapfile
-# sudo mkswap /swapfile
-# sudo swapon /swapfile
-# sudo cp /etc/fstab /etc/fstab.bak
-# echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
-
 echo "Installing Xorg.." >> $INSTALL_LOG
 sudo apt-get -y install xorg openbox
+
+echo "Installing Xcape.." >> $INSTALL_LOG
+sudo apt-get -y install git gcc make pkg-config libx11-dev libxtst-dev libxi-dev
+git clone https://github.com/alols/xcape.git \
+    && cd xcape \
+    && make \
+    && sudo make install
+
+echo "Installing Bat..." >> $INSTALL_LOG
+wget https://github.com/sharkdp/bat/releases/download/v0.10.0/bat_0.10.0_amd64.deb
+sudo dpkg -i bat_0.10.0_amd64.deb
+rm bat_0.10.0_amd64.deb
+
+echo "Installing Compiz..." >> $INSTALL_LOG
+sudo apt-get -y install compizconfig-settings-manager
+sudo apt -y install gnome-tweak-tool
+
+echo "Installing Google Chrome..." >> $INSTALL_LOG
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo dpkg -i google-chrome-stable_current_amd64.deb
+rm google-chrome-stable_current_amd64.deb
+
+echo "Installing Fonts..." >> $INSTALL_LOG
+wget https://github.com/adobe-fonts/source-code-pro/archive/2.030R-ro/1.050R-it.zip
+unzip 1.050R-it.zip
+mkdir -p ~/.fonts
+cp source-code-pro-*-it/OTF/*.otf ~/.fonts/
+fc-cache -f -v
+rm 1.050R-it.zip
+rm -rf fonts
+
+echo "Installing Fira Code..." >> $INSTALL_LOG
+sudo add-apt-repository universe
+sudo apt -y install fonts-firacode
 
 echo "Setup complete!" >> $INSTALL_LOG

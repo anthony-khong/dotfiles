@@ -55,9 +55,17 @@
 (require 'evil-commentary)
 (evil-commentary-mode)
 
+
 (use-package evil-tabs :ensure t
   :config
-  (global-evil-tabs-mode t))
+  (global-evil-tabs-mode t)
+  (evil-define-key 'normal evil-tabs-mode-map
+    ")" 'elscreen-next
+    "(" 'elscreen-previous)
+  (setq elscreen-display-screen-number nil)
+  (setq elscreen-display-tab 8)
+  (setq elscreen-tab-display-control nil)
+  (setq elscreen-tab-display-kill-screen nil))
 
 (use-package key-chord :ensure t
   :config

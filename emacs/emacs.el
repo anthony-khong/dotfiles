@@ -55,6 +55,10 @@
 (require 'evil-commentary)
 (evil-commentary-mode)
 
+(use-package evil-tabs :ensure t
+  :config
+  (global-evil-tabs-mode t))
+
 (use-package key-chord :ensure t
   :config
   (require 'key-chord)
@@ -494,7 +498,7 @@
  '(git-gutter:modified-sign "~")
  '(package-selected-packages
    (quote
-    (org-plus-contrib evil-magit magit yasnippet-snippets elpy yasnippet counsel-projectile fiplr counsel evil-collection fzf avy git-gutter evil-snipe rainbow-delimiters company eyebrowse anotehu evil-mode use-package evil-visual-mark-mode))))
+    (evil-tabs org-plus-contrib evil-magit magit yasnippet-snippets elpy yasnippet counsel-projectile fiplr counsel evil-collection fzf avy git-gutter evil-snipe rainbow-delimiters company eyebrowse anotehu evil-mode use-package evil-visual-mark-mode))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

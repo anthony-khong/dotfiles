@@ -1,163 +1,117 @@
-: '
-Add Dvorak keyboard + remap <Win-Space> to change layout.
-Adjust keyboard repeat delay and repeat speed.
-Create shortcuts for snapping.
-Remap <Ctrl-Alt-T> to `gnome-terminal --window --full-screen`.
-Remap <C-Left> and <C-Right> for workspaces.
-Change terminal themes.
+#! /bin/bash
+export INSTALL_LOG="$HOME/.startup.log"
 
-Change all themes to Numix.
-Change font defaults to 11, 12, ..., 12.
-Clean up panels + increase size + show date.
-Change applets.
-Change Calendar format to %e %b %Y, %H:%M.
+echo "Installing mosh..." >> $INSTALL_LOG
+sudo apt-get update && sudo apt-get install -y mosh
 
-Install Pandoc and  Dropbox.
-Install Slack.
-Install SimpleNote.
-Add Agoda certificates.
-Setup Pulse Secure.
-Setup Github SSH key.
-Setup Shoiberg.
+echo "Installing essential apps with apt-get..." >> $INSTALL_LOG
+sudo apt-get update && sudo apt-get install -y \
+    build-essential \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    entr \
+    git \
+    libssl-dev \
+    make \
+    pandoc \
+    software-properties-common \
+    tmux \
+    unzip \
+    xclip
 
-Add remap_caps to Startup Applications
-'
+echo "Installing Docker..." >> $INSTALL_LOG
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg \
+    | sudo apt-key add -
+sudo add-apt-repository \
+    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+    $(lsb_release -cs) \
+    stable"
+sudo apt-get update && sudo apt-get install -y docker-ce
 
-sudo apt-get update
-sudo apt-get install -y build-essential
-sudo apt-get install -y fonts-inconsolata
+echo "Installing ZSH..." >> $INSTALL_LOG
+sudo apt-get update && sudo apt-get install -y zsh
+wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sudo zsh
+sudo chsh -s /usr/bin/zsh $USER
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git \
+    ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-autosuggestions \
+    ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
-sudo add-apt-repository ppa:numix/ppa \
-    && sudo apt-get update \
-    && sudo apt-get install numix-gtk-theme \
-    && sudo apt-get install numix-icon-theme-circle \
-    && sudo apt-get install numix-icon-theme
+echo "Installing Miniconda..." >> $INSTALL_LOG
+wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda.sh
+sudo bash ~/miniconda.sh -b -p /opt/anaconda && sudo rm ~/miniconda.sh
+sudo chown -R $USER /opt/anaconda/
+export PATH="/opt/anaconda/bin:$PATH"
+pip install --upgrade pip
 
-sudo apt-get update \
-    && sudo apt-get install -y build-essential \
-        ca-certificates \
-        curl \
-        git \
-        libssl-dev \
-        make \
-        tmux \
-        wget \
-        xclip
+echo "Setting up Git..." >> $INSTALL_LOG
+git config --global user.email "anthony.kusumo.khong@gmail.com"
+git config --global user.name "Anthony Khong"
+curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
+sudo apt-get install -y git-lfs
+git lfs install
 
-cd $HOME \
-    && git clone https://github.com/anthony-khong/dotfiles.git \
-    && cd $HOME/dotfiles \
+echo "Configuring dotfiles..." >> $INSTALL_LOG
+cd $HOME/dotfiles \
     && git submodule init \
     && git submodule update \
     && cd $HOME \
     && /bin/bash -c "source ~/dotfiles/bash/bashrc" \
-    && /bin/bash $HOME/dotfiles/bash/recreate_symbolic_links; exit 0
+    && /bin/bash $HOME/dotfiles/bash/recreate_symbolic_links
 
-cd $HOME/Downloads \
-    && wget https://repo.anaconda.com/archive/Anaconda3-5.2.0-Linux-x86_64.sh \
-    && sudo sh Anaconda3-5.2.0-Linux-x86_64.sh \
-    cd $HOME
-
-sudo apt-get install -y software-properties-common python-software-properties \
-        && sudo add-apt-repository -y ppa:neovim-ppa/stable \
+echo "Installing Neovim + dependencies..." >> $INSTALL_LOG
+pip install --upgrade neovim jedi google-api-python-client pyflakes mypy
+sudo add-apt-repository -y ppa:neovim-ppa/stable \
         && sudo apt-get update \
         && sudo apt-get install -y neovim \
-        && pip install --upgrade neovim jedi google-api-python-client \
-        && nvim +PlugInstall +qall \
         && /bin/bash $HOME/dotfiles/tmux/tpm/scripts/install_plugins.sh
+sudo chown -R $USER "$HOME/.local"
+# nvim +PlugInstall +silent +qall
 
-curl -LO https://github.com/BurntSushi/ripgrep/releases/download/0.8.1/ripgrep_0.8.1_amd64.deb \
-    dpkg -i ripgrep_0.8.1_amd64.deb && rm ripgrep_0.8.1_amd64.deb
-
-pip install coconut[watch] \
-    funcy \
-    ipython==5.7.0 \
-    jedi \
-    lightgbm \
-    neovim \
-    requests \
-    pdbpp \
-    pyarrow \
-    pytest \
-    pywebhdfs \
-    tabulate \
-    tensorflow \
-    && apt-get install -y python3-tk
-
-sudo apt-get install -y git gcc make pkg-config libx11-dev libxtst-dev libxi-dev \
-    && cd $HOME \
-    && git clone https://github.com/alols/xcape.git \
-    && cd xcape \
-    && make \
-    && sudo make install
-
-sudo add-apt-repository ppa:gnome3-team/gnome3 \
+echo "Installing Emacs and its dependencies..." >> $INSTALL_LOG
+sudo add-apt-repository ppa:kelleyk/emacs -y \
     && sudo apt-get update \
-    && sudo apt-get install -y evince
+    && sudo apt install -y emacs26
+emacs26 --daemon &
 
-sudo apt-get update \
-    && sudo apt-get install -y \
-        apt-transport-https \
-        ca-certificates \
-        curl \
-        software-properties-common \
-    && cd $HOME/Downloads \
-    && curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add - \
-    && sudo add-apt-repository \
-        "deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable" \
-    && cd $HOME \
-    && sudo apt-get update \
-    && sudo apt-get install -y docker-ce \
-    && sudo groupadd docker \
-    && sudo usermod -aG docker $USER
+echo "Installing Ripgrep..." >> $INSTALL_LOG
+curl -LO https://github.com/BurntSushi/ripgrep/releases/download/0.10.0/ripgrep_0.10.0_amd64.deb
+sudo dpkg -i ripgrep_0.10.0_amd64.deb && rm ripgrep_0.10.0_amd64.deb
 
-echo "deb https://dl.bintray.com/sbt/debian /" | sudo tee -a /etc/apt/sources.list.d/sbt.list \
-    && sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2EE0EA64E40A89B84B2DF73499E82A75642AC823 \
-    && sudo apt-get update \
-    && sudo apt-get install -y sbt
-
-curl -sSL https://get.haskellstack.org/ | sh
-
-
-sudo apt-get install -y gcc python-dev libkrb5-dev \
-    && pip install pywinrm[kerberos] \
-    && pip install sparkmagic \
-    && jupyter nbextension enable --py --sys-prefix widgetsnbextension \
-
-: '
-If there are permission issues, do:
-cd /usr/local/share/ \
-    && sudo chown -R akhong .
-    && cd $HOME
-'
-cd /opt/anaconda/lib/python3.6/site-packages/ \
-    && jupyter-kernelspec install sparkmagic/kernels/sparkkernel \
-    && jupyter-kernelspec install sparkmagic/kernels/pysparkkernel \
-    && jupyter-kernelspec install sparkmagic/kernels/pyspark3kernel \
-    && jupyter-kernelspec install sparkmagic/kernels/sparkrkernel \
-    && pip install pandas==0.22
-
-sudo apt-get install -y texlive && sudo apt-get install -y lmodern
-
-sudo apt install gdebi \
-    && wget https://github.com/KELiON/cerebro/releases/download/v0.3.0/cerebro_0.3.0_amd64.deb \
-    && sudo gdebi cerebro_0.3.0_amd64.deb
-
-sudo apt install plank \
-    && sudo apt-get install -y unrar unzip python3 libgtk-3-0 \
-    && cd $HOME/Downloads \
-    && wget https://github.com/karim88/PlankSetting/archive/master.zip \
-    && unzip master.zip cd PlankSetting-master/ \
-    && sudo ./install.sh \
+echo "Installing Parinfer..." >> $INSTALL_LOG
+curl https://sh.rustup.rs -sSf | sh -s -- -y
+export PATH="$HOME/.cargo/bin:$PATH"
+cd ~/dotfiles/vim/plugged/parinfer-rust \
+    && make install \
+    && cargo build --release \
+    && cargo install --force \
     && cd $HOME
 
-cd $HOME/Downloads \
-    && curl https://www.mendeley.com/repositories/ubuntu/stable/amd64/mendeleydesktop-latest \
-    && sudo dpkg -i mendeleydesktop*.deb \
-    && sudo apt-get update \
-    && sudo apt-get install -y mendeleydesktop \
-    && cd $HOME
+echo "Installing Tmate..." >> $INSTALL_LOG
+curl -LO https://github.com/tmate-io/tmate/releases/download/2.2.1/tmate-2.2.1-static-linux-amd64.tar.gz
+sudo tar -xvf tmate-2.2.1-static-linux-amd64.tar.gz
+sudo mv tmate-2.2.1-static-linux-amd64/tmate /usr/bin
+sudo rm -rf tmate-2.2.1-static-linux-amd64
+sudo rm tmate-2.2.1-static-linux-amd64.tar.gz
 
-sudo add-apt-repository ppa:nilarimogard/webupd8 \
-    && sudo apt-get update \
-    && sudo apt-get install -y grive
+echo "Setting up permissions and Docker..." >> $INSTALL_LOG
+sudo chown -R $USER $HOME
+cd $HOME/dotfiles \
+    && git checkout . \
+    && cd $HOME
+sudo usermod -a -G docker $USER
+sudo usermod -aG sudo $USER
+
+# echo "Creating 32G of swap file..." >> $INSTALL_LOG
+# sudo fallocate -l 32G /swapfile
+# sudo chmod 600 /swapfile
+# sudo mkswap /swapfile
+# sudo swapon /swapfile
+# sudo cp /etc/fstab /etc/fstab.bak
+# echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+
+echo "Installing Xorg.." >> $INSTALL_LOG
+sudo apt-get -y install xorg openbox
+
+echo "Setup complete!" >> $INSTALL_LOG

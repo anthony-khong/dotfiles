@@ -55,18 +55,6 @@
 (require 'evil-commentary)
 (evil-commentary-mode)
 
-
-(use-package evil-tabs :ensure t
-  :config
-  (global-evil-tabs-mode t)
-  (evil-define-key 'normal evil-tabs-mode-map
-    ")" 'elscreen-next
-    "(" 'elscreen-previous)
-  (setq elscreen-display-screen-number nil)
-  (setq elscreen-display-tab 8)
-  (setq elscreen-tab-display-control nil)
-  (setq elscreen-tab-display-kill-screen nil))
-
 (use-package key-chord :ensure t
   :config
   (require 'key-chord)
@@ -131,7 +119,12 @@
    "ax" '(delete-window :which-key "delete window")
    "at" '(terminal-vsplit :which-key "terminal vsplit")
    ;; Send (s)
-   "ss" '(send-to-terminal-buffer :which-key "send to terminal buffer"))
+   "ss" '(send-to-terminal-buffer :which-key "send to terminal buffer")
+   ;; Tabs (s)
+   ;; "te" '(evil-tabs-tabedit :which-key "tabe") TODO
+   "tn" '(elscreen-next :which-key "tabn")
+   "tp" '(elscreen-previous :which-key "tabp")
+   "tq" '(evil-tab-sensitive-quit :which-key "quit"))
 
   ;; Org Mode
   (general-define-key
@@ -214,6 +207,17 @@
 (load-theme 'monokai t)
 (set-background-color "unspecified-bg")
 (setq default-frame-alist '((background-color . "unspecified-bg")))
+
+(use-package evil-tabs :ensure t
+  :config
+  (global-evil-tabs-mode t)
+  (evil-define-key 'normal evil-tabs-mode-map
+    ")" 'elscreen-next
+    "(" 'elscreen-previous)
+  (setq elscreen-display-screen-number nil)
+  (setq elscreen-tab-display-control nil)
+  (setq elscreen-tab-display-kill-screen nil)
+  (setq elscreen-color-theme-override-theme t))
 
 (use-package company :ensure t
   :init (company-mode)
@@ -506,7 +510,7 @@
  '(git-gutter:modified-sign "~")
  '(package-selected-packages
    (quote
-    (evil-tabs org-plus-contrib evil-magit magit yasnippet-snippets elpy yasnippet counsel-projectile fiplr counsel evil-collection fzf avy git-gutter evil-snipe rainbow-delimiters company eyebrowse anotehu evil-mode use-package evil-visual-mark-mode))))
+    (auto-package-update evil-tabs org-plus-contrib evil-magit magit yasnippet-snippets elpy yasnippet counsel-projectile fiplr counsel evil-collection fzf avy git-gutter evil-snipe rainbow-delimiters company eyebrowse anotehu evil-mode use-package evil-visual-mark-mode))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

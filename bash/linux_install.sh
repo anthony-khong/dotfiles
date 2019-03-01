@@ -74,6 +74,7 @@ sudo add-apt-repository ppa:kelleyk/emacs -y \
     && sudo apt-get update \
     && sudo apt install -y emacs26
 emacs26 --daemon &
+pip install flake8 autopep8 yapf
 
 echo "Installing Ripgrep..." >> $INSTALL_LOG
 curl -LO https://github.com/BurntSushi/ripgrep/releases/download/0.10.0/ripgrep_0.10.0_amd64.deb
@@ -137,7 +138,20 @@ rm 1.050R-it.zip
 rm -rf fonts
 
 echo "Installing Fira Code..." >> $INSTALL_LOG
-sudo add-apt-repository universe
+sudo add-apt-repository universe -y
 sudo apt -y install fonts-firacode
+
+echo "Installing Pandoc..." >> $INSTALL_LOG
+wget https://github.com/jgm/pandoc/releases/download/2.6/pandoc-2.6-1-amd64.deb
+sudo dpkg -i pandoc-2.6-1-amd64.deb
+rm pandoc-2.6-1-amd64.deb
+
+# TODO echo "Installing Lein..." >> $INSTALL_LOG
+# TODO echo "Installing Haskell..." >> $INSTALL_LOG
+
+echo "Installing Latex..." >> $INSTALL_LOG
+sudo add-apt-repository ppa:jonathonf/texlive -y
+sudo apt update && sudo apt install -y texlive-full
+sudo apt update && sudo apt install -y texworks
 
 echo "Setup complete!" >> $INSTALL_LOG

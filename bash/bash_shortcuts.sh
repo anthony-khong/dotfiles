@@ -29,7 +29,7 @@ if type emacs26 > /dev/null; then
     alias emacs=emacs26
 fi
 alias em="emacs -nw"
-alias ec="emacsclient -a ''"
+alias ec="emacsclient -a '' -nw"
 
 function kill-emacsclient() {
     emacsclient -e '(kill-emacs)'

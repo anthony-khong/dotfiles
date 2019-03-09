@@ -354,7 +354,10 @@
 (menu-bar-mode -1)
 (setq vc-follow-symlinks t)
 (electric-indent-mode +1)
-(setq backup-directory-alist `(("." . "~/.saves")))
+(setq backup-directory-alist
+      `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms
+      `((".*" ,temporary-file-directory t)))
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 (global-prettify-symbols-mode +1)
 (setq prettify-symbols-unprettify-at-point 'right-edge)

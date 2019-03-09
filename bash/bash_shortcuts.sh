@@ -34,6 +34,7 @@ alias ec="emacsclient -a '' -nw"
 function kill-emacsclient() {
     emacsclient -e '(kill-emacs)'
 }
+alias kec="kill-emacsclient"
 
 # History
 alias hh=history

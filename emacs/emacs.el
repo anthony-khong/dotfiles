@@ -219,6 +219,9 @@
   (setq elscreen-tab-display-kill-screen nil)
   (setq elscreen-color-theme-override-theme t))
 
+(use-package elscreen-separate-buffer-list :ensure t)
+(elscreen-separate-buffer-list-mode)
+
 (use-package company :ensure t
   :init (company-mode)
   :diminish (company-mode . "")
@@ -349,6 +352,7 @@
 ;; Load Scripts
 (load-file "~/dotfiles/emacs/emacs-vim-slime.el")
 (load-file "~/dotfiles/emacs/dockerfile-mode.el")
+(load-file "~/dotfiles/emacs/helm-elscreen.el")
 
 ;; Passive Configurations
 (menu-bar-mode -1)

@@ -182,6 +182,14 @@
   (projectile-mode . "")
   (counsel-projectile-mode . ""))
 
+(use-package ido :ensure t
+  :config
+  (setq ido-auto-merge-delay-time 99999999)
+  (setq ido-everywhere t)
+  (setq ido-virtual-buffers t)
+  (setq ido-enable-flex-matching t)
+  (ido-mode))
+
 (use-package which-key :ensure t
   :init (which-key-mode)
   :diminish (which-key-mode . ""))
@@ -352,7 +360,7 @@
 ;; Load Scripts
 (load-file "~/dotfiles/emacs/emacs-vim-slime.el")
 (load-file "~/dotfiles/emacs/dockerfile-mode.el")
-(load-file "~/dotfiles/emacs/helm-elscreen.el")
+(load-file "~/dotfiles/emacs/no-scratch-messages.el")
 
 ;; Passive Configurations
 (menu-bar-mode -1)

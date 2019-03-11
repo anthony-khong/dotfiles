@@ -110,7 +110,7 @@
    "bp" '(previous-buffer :which-key "previous buffer")
    "bs" '(save-buffer :which-key "save buffer")
    "bx" '(kill-this-buffer :which-key "kill buffer")
-   "bf" '(ivy-switch-buffer :which-key "switch buffer")
+   "be" '(ivy-switch-buffer :which-key "switch buffer")
    ;; Panes (a)
    "av" '(vsplit :which-key "vsplit")
    "ah" '(hsplit :which-key "hsplit")
@@ -121,7 +121,7 @@
    ;; Send (s)
    "ss" '(send-to-terminal-buffer :which-key "send to terminal buffer")
    ;; Tabs (s)
-   ;; "te" '(evil-tabs-tabedit :which-key "tabe") TODO
+   "te" '(elscreen-find-file :which-key "tabe")
    "tn" '(elscreen-next :which-key "tabn")
    "tp" '(elscreen-previous :which-key "tabp")
    "tq" '(evil-tab-sensitive-quit :which-key "quit"))
@@ -509,6 +509,7 @@
 (defun insert-org-mode-header ()
   (interactive)
   (insert "MY PROJECT -*- mode: org -*-"))
+
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

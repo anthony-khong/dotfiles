@@ -110,7 +110,8 @@
    "bp" '(previous-buffer :which-key "previous buffer")
    "bs" '(save-buffer :which-key "save buffer")
    "bx" '(kill-this-buffer :which-key "kill buffer")
-   "be" '(ivy-switch-buffer :which-key "switch buffer")
+   "bj" '(ivy-switch-buffer :which-key "switch buffer")
+   "be" '(counsel-find-file :which-key "switch buffer")
    ;; Panes (a)
    "av" '(vsplit :which-key "vsplit")
    "ah" '(hsplit :which-key "hsplit")
@@ -118,8 +119,6 @@
    "ad" '(hsplit-33 :which-key "hsplit-33")
    "ax" '(delete-window :which-key "delete window")
    "at" '(terminal-vsplit :which-key "terminal vsplit")
-   ;; Send (s)
-   "ss" '(send-to-terminal-buffer :which-key "send to terminal buffer")
    ;; Tabs (s)
    "te" '(elscreen-find-file :which-key "tabe")
    "tn" '(elscreen-next :which-key "tabn")
@@ -188,6 +187,7 @@
   (setq ido-everywhere t)
   (setq ido-virtual-buffers t)
   (setq ido-enable-flex-matching t)
+  (setq ido-separator "\n")
   (ido-mode))
 
 (use-package which-key :ensure t
@@ -226,9 +226,6 @@
   (setq elscreen-tab-display-control nil)
   (setq elscreen-tab-display-kill-screen nil)
   (setq elscreen-color-theme-override-theme t))
-
-(use-package elscreen-separate-buffer-list :ensure t)
-(elscreen-separate-buffer-list-mode)
 
 (use-package company :ensure t
   :init (company-mode)
@@ -360,7 +357,6 @@
 ;; Load Scripts
 (load-file "~/dotfiles/emacs/emacs-vim-slime.el")
 (load-file "~/dotfiles/emacs/dockerfile-mode.el")
-(load-file "~/dotfiles/emacs/no-scratch-messages.el")
 
 ;; Passive Configurations
 (menu-bar-mode -1)
@@ -455,11 +451,6 @@
   (launch-terminal)
   (other-window 1))
 
-(defun send-to-terminal-buffer (beg end)
-  (interactive "r")
-  (mark-paragraph)
-  (process-send-region "terminal" beg end))
-
 (defun yank-all-stay ()
   (interactive)
   (evil-set-marker ?m)
@@ -533,4 +524,4 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(default ((t (:background nil)))))

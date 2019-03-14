@@ -211,8 +211,10 @@
 (require 'airline-themes)
 (airline-themes-set-modeline)
 
-(use-package monokai-theme :ensure t)
-(load-theme 'monokai t)
+;; (use-package monokai-theme :ensure t)
+;; (load-theme 'monokai t)
+(use-package zerodark-theme :ensure t)
+(load-theme 'zerodark t)
 (set-background-color "unspecified-bg")
 (setq default-frame-alist '((background-color . "unspecified-bg")))
 
@@ -517,7 +519,7 @@
  '(git-gutter:modified-sign "~")
  '(package-selected-packages
    (quote
-    (auto-package-update evil-tabs org-plus-contrib evil-magit magit yasnippet-snippets elpy yasnippet counsel-projectile fiplr counsel evil-collection fzf avy git-gutter evil-snipe rainbow-delimiters company eyebrowse anotehu evil-mode use-package evil-visual-mark-mode))))
+    (doom-themes auto-package-update evil-tabs org-plus-contrib evil-magit magit yasnippet-snippets elpy yasnippet counsel-projectile fiplr counsel evil-collection fzf avy git-gutter evil-snipe rainbow-delimiters company eyebrowse anotehu evil-mode use-package evil-visual-mark-mode))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

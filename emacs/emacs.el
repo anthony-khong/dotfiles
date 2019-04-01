@@ -110,8 +110,8 @@
    "bp" '(previous-buffer :which-key "previous buffer")
    "bs" '(save-buffer :which-key "save buffer")
    "bx" '(kill-this-buffer :which-key "kill buffer")
-   "bj" '(ivy-switch-buffer :which-key "switch buffer")
-   "be" '(counsel-find-file :which-key "switch buffer")
+   "bj" '(ibuffer :which-key "switch buffer")
+   "be" '(counsel-find-file :which-key "buffer edit")
    ;; Panes (a)
    "av" '(vsplit :which-key "vsplit")
    "ah" '(hsplit :which-key "hsplit")
@@ -187,7 +187,6 @@
   (setq ido-everywhere t)
   (setq ido-virtual-buffers t)
   (setq ido-enable-flex-matching t)
-  (setq ido-separator "\n")
   (ido-mode))
 
 (use-package which-key :ensure t
@@ -211,23 +210,17 @@
 (require 'airline-themes)
 (airline-themes-set-modeline)
 
-;; (use-package monokai-theme :ensure t)
-;; (load-theme 'monokai t)
-(use-package zerodark-theme :ensure t)
-(load-theme 'zerodark t)
+(use-package monokai-theme :ensure t)
+(load-theme 'monokai t)
 (set-background-color "unspecified-bg")
 (setq default-frame-alist '((background-color . "unspecified-bg")))
 
-(use-package evil-tabs :ensure t
+(use-package ibuffer-vc :ensure t
   :config
-  (global-evil-tabs-mode t)
-  (evil-define-key 'normal evil-tabs-mode-map
-    ")" 'elscreen-next
-    "(" 'elscreen-previous)
-  (setq elscreen-display-screen-number nil)
-  (setq elscreen-tab-display-control nil)
-  (setq elscreen-tab-display-kill-screen nil)
-  (setq elscreen-color-theme-override-theme t))
+  (add-to-list 'ibuffer-never-show-predicates "^\\*"))
+(add-hook 'ibuffer-mode-hook
+	      '(lambda ()
+	         (ibuffer-switch-to-saved-filter-groups "home")))
 
 (use-package company :ensure t
   :init (company-mode)
@@ -327,6 +320,10 @@
      	python-shell-interpreter-args "--simple-prompt --pprint"))
 (delete `elpy-module-highlight-indentation elpy-modules)
 
+(use-package py-autopep8 :ensure t)
+(require 'py-autopep8)
+(add-hook 'python-mode-hook 'py-autopep8-enable-on-save)
+
 ;;;; Clojure
 (use-package clojure-mode :ensure t)
 (use-package cider :ensure t
@@ -361,6 +358,8 @@
 (load-file "~/dotfiles/emacs/dockerfile-mode.el")
 
 ;; Passive Configurations
+;; (set-frame-parameter (selected-frame) 'buffer-predicate #'buffer-file-name)
+(set-frame-parameter (selected-frame) 'buffer-predicate #'buffer-file-name)
 (menu-bar-mode -1)
 (setq vc-follow-symlinks t)
 (electric-indent-mode +1)
@@ -383,6 +382,7 @@
              '("bash" . sh-mode))
 (modify-syntax-entry ?_ "w")
 (add-to-list 'company-backends '(company-capf company-dabbrev))
+(setq-default tab-width 4)
 
 ;;;; Continuos scrolling
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
@@ -519,7 +519,7 @@
  '(git-gutter:modified-sign "~")
  '(package-selected-packages
    (quote
-    (doom-themes auto-package-update evil-tabs org-plus-contrib evil-magit magit yasnippet-snippets elpy yasnippet counsel-projectile fiplr counsel evil-collection fzf avy git-gutter evil-snipe rainbow-delimiters company eyebrowse anotehu evil-mode use-package evil-visual-mark-mode))))
+    (py-autopep8 doom-themes auto-package-update evil-tabs org-plus-contrib evil-magit magit yasnippet-snippets elpy yasnippet counsel-projectile fiplr counsel evil-collection fzf avy git-gutter evil-snipe rainbow-delimiters company eyebrowse anotehu evil-mode use-package evil-visual-mark-mode))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

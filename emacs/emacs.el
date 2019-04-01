@@ -3,10 +3,14 @@
 
 (require 'package)
 
-(add-to-list 'package-archives '("org"        	.    	"http://orgmode.org/elpa/"))
-(add-to-list 'package-archives '("melpa"    	.    	"http://melpa.org/packages/"))
-(add-to-list 'package-archives '("melpa-stable" .    	"http://stable.melpa.org/packages/"))
+(add-to-list 'package-archives '("org"                	.            	"http://orgmode.org/elpa/"))
+(add-to-list 'package-archives '("melpa"            	.            	"http://melpa.org/packages/"))
+(add-to-list 'package-archives '("melpa-stable" .            	"http://stable.melpa.org/packages/"))
 (package-initialize)
+
+;; Load Scripts
+(load-file "~/dotfiles/emacs/emacs-vim-slime.el")
+(load-file "~/dotfiles/emacs/dockerfile-mode.el")
 
 ;; Packages
 (unless (package-installed-p 'use-package)
@@ -86,7 +90,6 @@
    "h" '(evil-window-left :which-key "evil-left")
    "j" '(evil-window-down :which-key "evil-down")
    "k" '(evil-window-up :which-key "evil-up")
-   "A" '(reload-init :which-key "reload init")
    "SPC a" '(avy-goto-char-2 :which-key "select two-chars")
    ;; General (e)
    "ed" '(describe-key :which-key "describe key")
@@ -97,6 +100,7 @@
    "fp" '(counsel-fzf :which-key "project fuzzy find file")
    "fd" '(counsel-projectile-find-dir :which-key "fuzzy find directory")
    "nh" '(evil-ex-nohighlight :which-key "nohl")
+   "ri" '(reload-init :which-key "reload init")
    ;; Open (o)
    "or" '(ranger :which-key "ranger")
    ;; Yanking (y)
@@ -205,22 +209,21 @@
 
 (use-package powerline :ensure t)
 (require 'powerline)
+(powerline-default-theme)
+(setq powerline-display-buffer-size nil)
+(setq powerline-display-mule-info nil)
+(setq powerline-display-hud nil)
 
 (use-package airline-themes :ensure t)
 (require 'airline-themes)
 (airline-themes-set-modeline)
 
-(use-package monokai-theme :ensure t)
-(load-theme 'monokai t)
-(set-background-color "unspecified-bg")
-(setq default-frame-alist '((background-color . "unspecified-bg")))
-
 (use-package ibuffer-vc :ensure t
   :config
   (add-to-list 'ibuffer-never-show-predicates "^\\*"))
 (add-hook 'ibuffer-mode-hook
-	      '(lambda ()
-	         (ibuffer-switch-to-saved-filter-groups "home")))
+          '(lambda ()
+               (ibuffer-switch-to-saved-filter-groups "home")))
 
 (use-package company :ensure t
   :init (company-mode)
@@ -242,10 +245,11 @@
   :commands (ranger)
   :config (setq ranger-cleanup-eagerly t))
 
-(use-package diminish :ensure t)
+(use-package diminish :ensure t
+  :diminish
+  (undo-tree-mode . "")
+  (auto-revert-mode . ""))
 (require 'diminish)
-(diminish 'undo-tree-mode)
-(diminish 'auto-revert-mode)
 
 (use-package linum-relative :ensure t
   :init
@@ -283,6 +287,11 @@
 (set-face-background 'git-gutter:modified "unspecified-bg")
 (global-git-gutter-mode +1)
 
+(use-package monokai-theme :ensure t)
+(load-theme 'monokai t)
+(set-background-color "unspecified-bg")
+(setq default-frame-alist '((background-color . "unspecified-bg")))
+
 ;;;; Emacs Lisp
 (use-package parinfer
   :ensure t
@@ -317,7 +326,7 @@
   :config
   (elpy-enable)
   (setq python-shell-interpreter "ipython"
-     	python-shell-interpreter-args "--simple-prompt --pprint"))
+             	python-shell-interpreter-args "--simple-prompt --pprint"))
 (delete `elpy-module-highlight-indentation elpy-modules)
 
 (use-package py-autopep8 :ensure t)
@@ -352,13 +361,7 @@
          ("\\.markdown\\'" . markdown-mode))
   :init (setq markdown-command "multimarkdown"))
 
-
-;; Load Scripts
-(load-file "~/dotfiles/emacs/emacs-vim-slime.el")
-(load-file "~/dotfiles/emacs/dockerfile-mode.el")
-
 ;; Passive Configurations
-;; (set-frame-parameter (selected-frame) 'buffer-predicate #'buffer-file-name)
 (set-frame-parameter (selected-frame) 'buffer-predicate #'buffer-file-name)
 (menu-bar-mode -1)
 (setq vc-follow-symlinks t)
@@ -374,7 +377,7 @@
 (add-hook 'prog-mode-hook
           (lambda ()
             (font-lock-add-keywords nil
-				    '(("\\<\\(FIXME\\|TODO\\|BUG\\|XXX\\)" 1 font-lock-warning-face t)))))
+             '(("\\<\\(FIXME\\|TODO\\|BUG\\|XXX\\)" 1 font-lock-warning-face t)))))
 (fset 'yes-or-no-p 'y-or-n-p)
 (setq-default truncate-lines nil
               indent-tabs-mode nil)
@@ -526,4 +529,4 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:background nil)))))
+ '(default ((t (:background "unspecified-bg")))))

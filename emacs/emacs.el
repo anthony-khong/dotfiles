@@ -138,6 +138,24 @@
    ;; Others
    "ih" '(insert-org-mode-header :which-key "insert org header"))
 
+
+  (general-define-key
+   :states '(normal visual)
+   :keymaps 'clojure-mode-map
+   :prefix "SPC"
+   :non-normal-prefix "C-s"
+   "cj" '(cider-jack-in :which-key "jack in")
+   "cl" '(cider-load-buffer :which-key "load buffer")
+   "cc" '(cider-connect :which-key "connect")
+   "cn" '(cider-repl-set-ns :which-key "set repl ns")
+   "ct" '(cider-test-run-test :which-key "run test"))
+
+  (general-define-key
+   :states '(normal visual)
+   :keymaps 'clojure-mode-map
+   :prefix "C-c"
+   "C-c" '(cider-eval-last-sexp :which-key "eval last sexp"))
+
   ;; Python
   (general-define-key
    :states '(normal visual)
@@ -293,6 +311,7 @@
 (setq default-frame-alist '((background-color . "unspecified-bg")))
 
 ;;;; Emacs Lisp
+(use-package clojure-mode :ensure t)
 (use-package parinfer
   :ensure t
   :bind

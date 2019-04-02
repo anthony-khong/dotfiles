@@ -123,6 +123,7 @@
    "ad" '(hsplit-33 :which-key "hsplit-33")
    "ax" '(delete-window :which-key "delete window")
    "at" '(terminal-vsplit :which-key "terminal vsplit")
+   "aa" '(toggle-window-split :which-key "rotate")
    ;; Tabs (s)
    "te" '(elscreen-find-file :which-key "tabe")
    "tn" '(elscreen-next :which-key "tabn")
@@ -148,13 +149,20 @@
    "cl" '(cider-load-buffer :which-key "load buffer")
    "cc" '(cider-connect :which-key "connect")
    "cn" '(cider-repl-set-ns :which-key "set repl ns")
-   "ct" '(cider-test-run-test :which-key "run test"))
+   "ct" '(cider-test-run-test :which-key "run test")
+   "cb" '(cider-switch-to-repl-buffer :which "repl buffer")
+   "cd" '(cider-doc :which-key "doc")
+   "cf" '(cider-find-var :which-key "find var")
+   "cp" '(cider-pop-back :which-key "pop back")
+   "ces" '(cider-eval-sexp-at-point :which-key "eval sexp")
+   "cet" '(cider-eval-defun-at-point :which-key "eval top")
+   "cer" '(cider-eval-region :which-key "eval region"))
 
   (general-define-key
    :states '(normal visual)
    :keymaps 'clojure-mode-map
    :prefix "C-c"
-   "C-c" '(cider-eval-last-sexp :which-key "eval last sexp"))
+   "C-c" '(cider-eval-defun-at-point :which-key "eval top level"))
 
   ;; Python
   (general-define-key
@@ -182,6 +190,9 @@
   :bind (:map ivy-mode-map  ; bind in the ivy buffer
               ("C-'" . ivy-avy)) ; C-' to ivy-avy
   :config
+  (setq ivy-re-builders-alist
+        '((ivy-switch-buffer . ivy--regex-plus)
+          (t . ivy--regex-fuzzy)))    ; Fuzzy matching in M-x
   (setq ivy-use-virtual-buffers t)    ; extend searching to bookmarks and …
   (setq ivy-height 20)                ; set height of the ivy window
   (setq ivy-count-format "(%d/%d) ")) ; count format, from the ivy help page
@@ -311,7 +322,10 @@
 (setq default-frame-alist '((background-color . "unspecified-bg")))
 
 ;;;; Emacs Lisp
-(use-package clojure-mode :ensure t)
+(use-package paredit :ensure t)
+(use-package lispy :ensure t)
+(use-package smart-tabs-mode :ensure t)
+(use-package smart-yank :ensure t)
 (use-package parinfer
   :ensure t
   :bind
@@ -355,21 +369,24 @@
 ;;;; Clojure
 (use-package clojure-mode :ensure t)
 (use-package cider :ensure t
-  :pin melpa-stable)
+  :pin melpa-stable
+  :config
+  (setq nrepl-hide-special-buffers t)
+  (setq cider-repl-pop-to-buffer-on-connect 'display-only))
 
-(add-hook 'clojure-mode-hook
-          (lambda ()
-            (require 'clojure-mode)
-            (require 'clojure-mode-extra-font-locking)
-            (add-hook 'clojure-mode-hook #'aggressive-indent-mode)
-            (font-lock-add-keywords
-             nil
-             '(("(\\(facts?\\)"
-                (1 font-lock-keyword-face))
-               ("(\\(background?\\)"
-                (1 font-lock-keyword-face))))
-            (define-clojure-indent (fact 1))
-            (define-clojure-indent (facts 1))))
+;; (add-hook 'clojure-mode-hook
+;;           (lambda ()
+;;             (require 'clojure-mode)
+;;             (require 'clojure-mode-extra-font-locking)
+;;             (add-hook 'clojure-mode-hook #'aggressive-indent-mode)
+;;             (font-lock-add-keywords
+;;              nil
+;;              '(("(\\(facts?\\)"
+;;                 (1 font-lock-keyword-face))
+;;                ("(\\(background?\\)"
+;;                 (1 font-lock-keyword-face))))
+;;             (define-clojure-indent (fact 1))
+;;             (define-clojure-indent (facts 1))))
 
 ;;;; Markdown
 (use-package markdown-mode
@@ -525,6 +542,31 @@
   (interactive)
   (insert "MY PROJECT -*- mode: org -*-"))
 
+(defun toggle-window-split ()
+  ;; From https://www.emacswiki.org/emacs/ToggleWindowSplit
+  (interactive)
+  (if (= (count-windows) 2)
+      (let* ((this-win-buffer (window-buffer))
+	         (next-win-buffer (window-buffer (next-window)))
+	         (this-win-edges (window-edges (selected-window)))
+	         (next-win-edges (window-edges (next-window)))
+	         (this-win-2nd (not (and (<= (car this-win-edges)
+					                     (car next-win-edges))
+				                     (<= (cadr this-win-edges)
+					                     (cadr next-win-edges)))))
+	         (splitter
+	          (if (= (car this-win-edges)
+		             (car (window-edges (next-window))))
+		          'split-window-horizontally
+		        'split-window-vertically)))
+	    (delete-other-windows)
+	    (let ((first-win (selected-window)))
+	      (funcall splitter)
+	      (if this-win-2nd (other-window 1))
+	      (set-window-buffer (selected-window) this-win-buffer)
+	      (set-window-buffer (next-window) next-win-buffer)
+	      (select-window first-win)
+	      (if this-win-2nd (other-window 1))))))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

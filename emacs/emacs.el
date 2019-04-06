@@ -123,12 +123,7 @@
    "ad" '(hsplit-33 :which-key "hsplit-33")
    "ax" '(delete-window :which-key "delete window")
    "at" '(terminal-vsplit :which-key "terminal vsplit")
-   "aa" '(toggle-window-split :which-key "rotate")
-   ;; Tabs (s)
-   "te" '(elscreen-find-file :which-key "tabe")
-   "tn" '(elscreen-next :which-key "tabn")
-   "tp" '(elscreen-previous :which-key "tabp")
-   "tq" '(evil-tab-sensitive-quit :which-key "quit"))
+   "aa" '(toggle-window-split :which-key "rotate"))
 
   ;; Org Mode
   (general-define-key
@@ -156,13 +151,34 @@
    "cp" '(cider-pop-back :which-key "pop back")
    "ces" '(cider-eval-sexp-at-point :which-key "eval sexp")
    "cet" '(cider-eval-defun-at-point :which-key "eval top")
-   "cer" '(cider-eval-region :which-key "eval region"))
+   "cer" '(cider-eval-region :which-key "eval region")
+   "p(" '(paredit-wrap-round :which-key "wrap (")
+   "p[" '(paredit-wrap-square :which-key "wrap [")
+   "p{" '(paredit-wrap-curly :which-key "wrap {")
+   "pk" '(paredit-kill :which-key "paredit kill")
+   "ps" '(paredit-forward-slurp-sexp :which-key "forward slurp")
+   "pb" '(paredit-forward-barf-sexp :which-key "forward barf")
+   "pS" '(paredit-backward-slurp-sexp :which-key "backward slurp")
+   "pB" '(paredit-backward-barf-sexp :which-key "backward barf")
+   "ps" '(paredit-split-sexp :which-key "split sexp")
+   "pj" '(paredit-join-sexps :which-key "join sexps")
+   "SPC l" '(paredit-forward-down :which-key "paredit forward")
+   "SPC h" '(paredit-backward-up :which-key "paredit backward")
+   "pt" '(transpose-sexps :which-key "transpose sexps")
+   "pT" '(reverse-transpose-sexps :which-key "reverse transpose sexps")
+   )
 
   (general-define-key
-   :states '(normal visual)
+   :states '(normal)
    :keymaps 'clojure-mode-map
    :prefix "C-c"
    "C-c" '(cider-eval-defun-at-point :which-key "eval top level"))
+
+  (general-define-key
+   :states '(visual)
+   :keymaps 'clojure-mode-map
+   :prefix "C-c"
+   "C-c" '(cider-eval-region :which-key "eval region"))
 
   ;; Python
   (general-define-key
@@ -567,6 +583,15 @@
 	      (set-window-buffer (next-window) next-win-buffer)
 	      (select-window first-win)
 	      (if this-win-2nd (other-window 1))))))
+
+(defun reverse-transpose-sexps (arg)
+  (interactive "*p")
+  (transpose-sexps (- arg))
+  ;; when transpose-sexps can no longer transpose, it throws an error and code
+  ;; below this line won't be executed. So, we don't have to worry about side
+  ;; effects of backward-sexp and forward-sexp.
+  (backward-sexp (1+ arg))
+  (forward-sexp 1))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

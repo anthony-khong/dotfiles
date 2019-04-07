@@ -180,6 +180,15 @@
    :prefix "C-c"
    "C-c" '(cider-eval-region :which-key "eval region"))
 
+  (general-define-key
+   :states '(normal)
+   :keymaps 'cider-repl-mode-map
+   :prefix "SPC"
+   "n" '(cider-repl-next-input :which-key "repl next")
+   "p" '(cider-repl-previous-input :which-key "repl previous")
+   "cb" '(cider-repl-clear-buffer :which-key "clear buffer")
+   "co" '(cider-repl-clear-output :which-key "clear output"))
+
   ;; Python
   (general-define-key
    :states '(normal visual)

@@ -9,6 +9,9 @@ function sbash() {
     fi
 }
 
+# Pretty Print JSON
+alias ppj='python -m json.tool'
+
 # Neovim
 alias vi="/usr/bin/vim -p"
 alias vim="nvim -p"

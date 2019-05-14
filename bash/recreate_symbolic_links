@@ -39,3 +39,7 @@ ln -s ~/dotfiles/ghci .ghci;
 rm -rf ~/.lein
 mkdir .lein
 ln -s ~/dotfiles/lein_profiles.clj .lein/profiles.clj
+
+
+rm ~/.config/karabiner/karabiner.json
+ln -s ~/dotfiles/bash/karabiner.json .config/karabiner/karabiner.json

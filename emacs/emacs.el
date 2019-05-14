@@ -399,6 +399,10 @@
   (setq nrepl-hide-special-buffers t)
   (setq cider-repl-pop-to-buffer-on-connect 'display-only))
 
+(use-package clojure-mode-extra-font-locking :ensure t)
+(require 'clojure-mode-extra-font-locking)
+
+
 ;; (add-hook 'clojure-mode-hook
 ;;           (lambda ()
 ;;             (require 'clojure-mode)
@@ -617,7 +621,7 @@
  '(git-gutter:modified-sign "~")
  '(package-selected-packages
    (quote
-    (py-autopep8 doom-themes auto-package-update evil-tabs org-plus-contrib evil-magit magit yasnippet-snippets elpy yasnippet counsel-projectile fiplr counsel evil-collection fzf avy git-gutter evil-snipe rainbow-delimiters company eyebrowse anotehu evil-mode use-package evil-visual-mark-mode))))
+    (clojure-mode-extra-font-locking py-autopep8 doom-themes auto-package-update evil-tabs org-plus-contrib evil-magit magit yasnippet-snippets elpy yasnippet counsel-projectile fiplr counsel evil-collection fzf avy git-gutter evil-snipe rainbow-delimiters company eyebrowse anotehu evil-mode use-package evil-visual-mark-mode))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

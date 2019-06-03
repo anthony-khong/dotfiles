@@ -3,9 +3,9 @@
 
 (require 'package)
 
-(add-to-list 'package-archives '("org"                	.            	"http://orgmode.org/elpa/"))
-(add-to-list 'package-archives '("melpa"            	.            	"http://melpa.org/packages/"))
-(add-to-list 'package-archives '("melpa-stable" .            	"http://stable.melpa.org/packages/"))
+(add-to-list 'package-archives '("org"          . "http://orgmode.org/elpa/"))
+(add-to-list 'package-archives '("melpa"        . "http://melpa.org/packages/"))
+(add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
 (package-initialize)
 
 ;; Load Scripts
@@ -135,6 +135,7 @@
    "ih" '(insert-org-mode-header :which-key "insert org header"))
 
 
+  ;; Clojure
   (general-define-key
    :states '(normal visual)
    :keymaps 'clojure-mode-map
@@ -165,8 +166,8 @@
    "SPC l" '(paredit-forward-down :which-key "paredit forward")
    "SPC h" '(paredit-backward-up :which-key "paredit backward")
    "pt" '(transpose-sexps :which-key "transpose sexps")
-   "pT" '(reverse-transpose-sexps :which-key "reverse transpose sexps")
-   )
+   "pT" '(reverse-transpose-sexps :which-key "reverse transpose sexps"))
+
 
   (general-define-key
    :states '(normal)
@@ -384,7 +385,7 @@
   :config
   (elpy-enable)
   (setq python-shell-interpreter "ipython"
-             	python-shell-interpreter-args "--simple-prompt --pprint"))
+                   	python-shell-interpreter-args "--simple-prompt --pprint"))
 (delete `elpy-module-highlight-indentation elpy-modules)
 
 (use-package py-autopep8 :ensure t)
@@ -576,26 +577,26 @@
   (interactive)
   (if (= (count-windows) 2)
       (let* ((this-win-buffer (window-buffer))
-	         (next-win-buffer (window-buffer (next-window)))
-	         (this-win-edges (window-edges (selected-window)))
-	         (next-win-edges (window-edges (next-window)))
-	         (this-win-2nd (not (and (<= (car this-win-edges)
-					                     (car next-win-edges))
-				                     (<= (cadr this-win-edges)
-					                     (cadr next-win-edges)))))
-	         (splitter
-	          (if (= (car this-win-edges)
-		             (car (window-edges (next-window))))
-		          'split-window-horizontally
-		        'split-window-vertically)))
-	    (delete-other-windows)
-	    (let ((first-win (selected-window)))
-	      (funcall splitter)
-	      (if this-win-2nd (other-window 1))
-	      (set-window-buffer (selected-window) this-win-buffer)
-	      (set-window-buffer (next-window) next-win-buffer)
-	      (select-window first-win)
-	      (if this-win-2nd (other-window 1))))))
+             (next-win-buffer (window-buffer (next-window)))
+             (this-win-edges (window-edges (selected-window)))
+             (next-win-edges (window-edges (next-window)))
+             (this-win-2nd (not (and (<= (car this-win-edges)
+                                      (car next-win-edges))
+                                 (<= (cadr this-win-edges)
+                                     (cadr next-win-edges)))))
+             (splitter
+                (if (= (car this-win-edges)
+                       (car (window-edges (next-window))))
+                    'split-window-horizontally
+                  'split-window-vertically)))
+       (delete-other-windows)
+       (let ((first-win (selected-window)))
+           (funcall splitter)
+           (if this-win-2nd (other-window 1))
+           (set-window-buffer (selected-window) this-win-buffer)
+           (set-window-buffer (next-window) next-win-buffer)
+           (select-window first-win)
+           (if this-win-2nd (other-window 1))))))
 
 (defun reverse-transpose-sexps (arg)
   (interactive "*p")

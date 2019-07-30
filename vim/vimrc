@@ -144,17 +144,17 @@ vnoremap < <gv
 vnoremap > >gv
 
 " Turning off highlights (after searching)
-nnoremap ff :nohlsearch <CR>
+nnoremap <Space>nh :nohlsearch<CR>
 
 " Close current tab
-nnoremap <Leader>e :q<CR>
+nnoremap <Space>eq :q<CR>
 
 " Save current script
-nnoremap <C-s> :update<CR>
-inoremap <C-s> <Esc>:update<CR>
+nnoremap <Space>bs :update<CR>
+inoremap <Space>bs :update<CR>
 
 " Remove trailing whitespace
-nnoremap <silent> <Leader>w :keeppatterns %s/\s\+$//<CR>
+nnoremap <silent> <Space>rw :keeppatterns %s/\s\+$//<CR>
 
 " No more weird characters when pressing <Esc>
 set ttimeout
@@ -211,10 +211,6 @@ set fo-=t
 set history=700
 set undolevels=700
 
-" Make search case insensitive
-" set hlsearch
-" set incsearch
-
 " Disable stupid backup and swap files - they trigger too many events
 " for file system watchers
 set nobackup
@@ -262,9 +258,7 @@ set laststatus=2
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Shortuct to reload vimrc
-nmap <Leader>R :so ~/.config/nvim/init.vim<CR>:echo '.nvimrc reloaded!'<CR>
-nmap <Leader>M :so ~/dotfiles/vim/others/mbk_vimrc<CR>:echo 'Changed to MBK'<CR>
-nmap <Leader>A :so ~/dotfiles/vim/vimrc<CR>:echo 'Changed to AKK'<CR>
+nmap <Space>rv :so ~/.config/nvim/init.vim<CR>:echo '.nvimrc reloaded!'<CR>
 
 " Jump to escape mode
 inoremap hh <Esc>
@@ -290,30 +284,20 @@ nnoremap n nzz
 nnoremap N Nzz
 
 " Pane movements
-nnoremap <Leader>hs :split<CR>
-nnoremap <Leader>vs :vsplit<CR>
+nnoremap <Space>ah :split<CR>
+nnoremap <Space>av :vsplit<CR>
+nnoremap <Space>ax :q<CR>
 
-" Copy the entire script to the clipboard
-nnoremap <Leader>l mwggVG"+y'wzz
-nnoremap <leader>sa mwggVG
-" Copy from current line to the top
-nnoremap <Leader>k mwggV'w"+y'wzz
-" Copy from current line to the bottom
-nnoremap <Leader>j mwGV'w"+y'wzz
-" Copy entire line to the clipboard
-nnoremap <Leader>y V"+y
-" Copy selection to the clipboard
-vnoremap <Leader>c "+y
-
-" Highlight downwards and upwards within a function
-nnoremap <Leader>u V{
-nnoremap <Leader>d V}
+" Copy the entire script to the clipboard, to top and to bottom
+nnoremap <Space>ya mwggVG"+y'wzz
+nnoremap <Space>yk mwggV'w"+y'wzz
+nnoremap <Space>yj mwGV'w"+y'wzz
 
 " Map sort function to a key
-vnoremap <Leader>o :sort<CR>
+vnoremap <Space>s :sort<CR>
 
 " Switch back and forth between relative and absolute number
-nnoremap <Leader>n :set relativenumber!<CR>
+nnoremap <Space>rn :set relativenumber!<CR>
 
 " Fold Toggle
 nnoremap <Leader>f za
@@ -335,17 +319,11 @@ nnoremap <expr> j (v:count > 1 ? "m'" . v:count : '') . 'j'
 " without switching to the normal mode.
 inoremap <C-e> <C-o>$
 
-" Set colour column shortcut
-nnoremap <Leader>8 :set colorcolumn=80<CR>
-
 " Jumping between tabs
 nnoremap ( :tabprevious<CR>
 nnoremap ) :tabnext<CR>
 nnoremap tp :tabprevious<CR>
 nnoremap tn :tabnext<CR>
-
-" Force write
-nnoremap <C-w> :w<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                Generic Autos                                "
@@ -447,7 +425,7 @@ nmap <Space>gd :Gdiff<CR>
 nmap <Space>gb :Gblame<CR>
 
 " NERDTree toggle
-nmap <Space>n :NERDTreeToggle<CR>
+nmap <Space>be :NERDTreeToggle<CR>
 
 " NERDCommenter
 let g:NERDCreateDefaultMappings = 0
@@ -515,9 +493,6 @@ highlight PmenuSbar ctermbg=0 guibg=#d6d6d6
 " Ctags
 set tags=./tags;/
 nnoremap <Space>j :Tag<CR>
-"nnoremap <C-[> <C-T>
-"nnoremap <C-T> <C-w><C-]><C-w>T
-"nnoremap <C-T> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 
 " Coconut
 autocmd FileType coconut setlocal commentstring=#\ %s
@@ -557,11 +532,6 @@ let g:slime_python_ipython = 1
 let g:echodoc_enable_at_startup = 1
 
 " Rainbow Parantheses
-"au VimEnter *.clj,*.rkt RainbowParenthesesToggle
-"au Syntax *.clj,*.rkt RainbowParenthesesLoadRound
-"au Syntax *.clj,*.rkt RainbowParenthesesLoadSquare
-"au Syntax *.clj,*.rkt RainbowParenthesesLoadBraces
-"let g:lisp_rainbow = 1  
 augroup rainbow_lisp
   autocmd!
   autocmd FileType lisp,clojure,scheme RainbowParentheses

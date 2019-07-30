@@ -173,13 +173,13 @@
    :states '(normal)
    :keymaps 'clojure-mode-map
    :prefix "C-c"
-   "C-c" '(cider-eval-defun-at-point :which-key "eval top level"))
+   "C-c" '(send-paragraph-to-tmux :which-key "eval top level"))
 
   (general-define-key
    :states '(visual)
    :keymaps 'clojure-mode-map
    :prefix "C-c"
-   "C-c" '(cider-eval-region :which-key "eval region"))
+   "C-c" '(send-paragraph-to-tmux :which-key "eval region"))
 
   (general-define-key
    :states '(normal)

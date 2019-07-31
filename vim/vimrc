@@ -104,8 +104,6 @@ endif
 
 " Add plugins to &runtimepath
 call plug#end()
-nnoremap <Space>I :PlugInstall<CR>
-nnoremap <Space>U :PlugUpdate<CR>
 
 " Lazy loading for UltiSnips
 augroup load_ultisnips
@@ -142,19 +140,6 @@ set smartcase
 " Does not release visual mode during block indentation
 vnoremap < <gv
 vnoremap > >gv
-
-" Turning off highlights (after searching)
-nnoremap <Space>nh :nohlsearch<CR>
-
-" Close current tab
-nnoremap <Space>eq :q<CR>
-
-" Save current script
-nnoremap <Space>bs :update<CR>
-inoremap <Space>bs :update<CR>
-
-" Remove trailing whitespace
-nnoremap <silent> <Space>rw :keeppatterns %s/\s\+$//<CR>
 
 " No more weird characters when pressing <Esc>
 set ttimeout
@@ -229,6 +214,9 @@ set splitbelow
 " No redundant info
 set noshowmode
 
+" Sign column shows up all the time
+set signcolumn=yes
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                Colour Scheme                                "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -256,10 +244,6 @@ set laststatus=2
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                Vim Bindings                                 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Shortuct to reload vimrc
-nmap <Space>rv :so ~/.config/nvim/init.vim<CR>:echo '.nvimrc reloaded!'<CR>
-
 " Jump to escape mode
 inoremap hh <Esc>
 inoremap thhh th<Esc>
@@ -283,27 +267,6 @@ nnoremap G Gzz
 nnoremap n nzz
 nnoremap N Nzz
 
-" Pane movements
-nnoremap <Space>ah :split<CR>
-nnoremap <Space>av :vsplit<CR>
-nnoremap <Space>ax :q<CR>
-
-" Copy the entire script to the clipboard, to top and to bottom
-nnoremap <Space>ya mwggVG"+y'wzz
-nnoremap <Space>yk mwggV'w"+y'wzz
-nnoremap <Space>yj mwGV'w"+y'wzz
-
-" Map sort function to a key
-vnoremap <Space>s :sort<CR>
-
-" Switch back and forth between relative and absolute number
-nnoremap <Space>rn :set relativenumber!<CR>
-
-" Fold Toggle
-nnoremap <Leader>f za
-nnoremap <Leader>df zE
-nnoremap <Leader>} zfa}
-
 " Since <C-a> is the Tmux prefix, we replace <C-a> with <C-o>
 inoremap <C-o> <C-a>
 
@@ -322,13 +285,6 @@ inoremap <C-e> <C-o>$
 " Jumping between tabs
 nnoremap ( :tabprevious<CR>
 nnoremap ) :tabnext<CR>
-nnoremap tp :tabprevious<CR>
-nnoremap tn :tabnext<CR>
-if !exists('g:lasttab')
-  let g:lasttab = 1
-endif
-nmap <Space>bb :exe "tabn ".g:lasttab<CR>
-au TabLeave * let g:lasttab = tabpagenr()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                Generic Autos                                "
@@ -401,14 +357,6 @@ let g:airline_mode_map = {
     \ }
 let g:airline_section_y = ''
 
-" GitGutter
-set signcolumn=yes
-nmap <Space>gg :GitGutter<CR>
-nmap <Space>] <Plug>GitGutterPrevHunk
-nmap <Space>[ <Plug>GitGutterNextHunk
-nmap <Space>hs <Plug>GitGutterStageHunk
-nmap <Space>hr <Plug>GitGutterRevertHunk
-
 " Ale
 let g:ale_linters = {
     \ 'python': ['pyflakes', 'mypy'],
@@ -425,13 +373,6 @@ hi ALEWarningSign ctermbg=234         ctermfg=11 guibg=234 guifg=11
 hi ALEWarning     ctermbg=DarkMagenta guibg=DarkMagenta
 let g:airline#extensions#ale#enabled = 1
 
-" Fugitive
-nmap <Space>gd :Gdiff<CR>
-nmap <Space>gb :Gblame<CR>
-
-" NERDTree toggle
-nnoremap <Space>be :FZF<CR>
-
 " NERDCommenter
 let g:NERDCreateDefaultMappings = 0
 nmap <Space>c <Plug>NERDCommenterToggle
@@ -445,20 +386,8 @@ let g:SuperTabDefaultCompletionType = "<c-n>"
 " EasyMotion
 let g:EasyMotion_smartcase = 1
 let g:EasyMotion_keys = "aoeui'l;z,rqv.cjwyfxbdhtns"
-" This is to get rid of awful <Leader><Leader> default
-map <Space><Space>em <Plug>(easymotion-prefix)
-nmap <Space><Space> <Plug>(easymotion-s)
-vmap <Space><Space> <Plug>(easymotion-s)
-
-" Vim-Sneak
-nmap S <Plug>Sneak_s
-nmap Z <Plug>Sneak_S
 
 " FuzzySearch
-" FZF
-" nnoremap <C-t> :FZF ~<CR>
-nnoremap <Space>f :FZF ~<CR>
-nnoremap <Space>p :FZF<CR>
 let g:fzf_action = {
             \'enter': 'tabedit',
             \'ctrl-v': 'vsplit',
@@ -497,7 +426,6 @@ highlight PmenuSbar ctermbg=0 guibg=#d6d6d6
 
 " Ctags
 set tags=./tags;/
-nnoremap <Space>j :Tag<CR>
 
 " Coconut
 autocmd FileType coconut setlocal commentstring=#\ %s
@@ -541,3 +469,68 @@ augroup rainbow_lisp
   autocmd!
   autocmd FileType lisp,clojure,scheme RainbowParentheses
 augroup END
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                           Leader + Space Remaps                             "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Turning off highlights (after searching)
+nnoremap <Space>nh :nohlsearch<CR>
+
+" Close current tab
+nnoremap <Space>eq :q<CR>
+
+" Tabs (misnamed as buffers)
+inoremap <Space>bs :update<CR>
+nnoremap <Space>be :FZF<CR>
+nnoremap <Space>bh :FZF ~<CR>
+nnoremap <Space>bj :NERDTreeToggle<CR>
+nnoremap <Space>bn :tabnext<CR>
+nnoremap <Space>bp :tabprevious<CR>
+nnoremap <Space>bs :update<CR>
+nnoremap <Space>bx :q<CR>
+if !exists('g:lasttab')
+  let g:lasttab = 1
+endif
+nnoremap <Space>bb :exe "tabn ".g:lasttab<CR>
+au TabLeave * let g:lasttab = tabpagenr()
+
+" Remove trailing whitespace
+nnoremap <silent> <Space>rw :keeppatterns %s/\s\+$//<CR>
+
+" Shortuct to reload vimrc
+nmap <Space>rv :so ~/.config/nvim/init.vim<CR>:echo '.nvimrc reloaded!'<CR>
+
+" Panes
+nnoremap <Space>ah :split<CR>
+nnoremap <Space>av :vsplit<CR>
+nnoremap <Space>ax :q<CR>
+
+" Copy the entire script to the clipboard, to top and to bottom
+nnoremap <Space>ya mwggVG"+y'wzz
+nnoremap <Space>yk mwggV'w"+y'wzz
+nnoremap <Space>yj mwGV'w"+y'wzz
+
+" Map sort function to a key
+vnoremap <Space>s :sort<CR>
+
+" Switch back and forth between relative and absolute number
+nnoremap <Space>rn :set relativenumber!<CR>
+
+" Git
+nnoremap <Space>gg :GitGutter<CR>
+nnoremap <Space>gd :Gdiff<CR>
+nnoremap <Space>gb :Gblame<CR>
+
+" Jumps
+" This is to get rid of awful <Leader><Leader> default
+map <Space><Space>em <Plug>(easymotion-prefix)
+nmap <Space><Space> <Plug>(easymotion-s)
+vmap <Space><Space> <Plug>(easymotion-s)
+
+" Tags
+nnoremap <Space>j :Tag<CR>
+
+" Fold Toggle
+" nnoremap <Leader>f za
+" nnoremap <Leader>df zE
+" nnoremap <Leader>} zfa}

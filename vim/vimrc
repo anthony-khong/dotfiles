@@ -81,9 +81,9 @@ Plug 'ekalinin/Dockerfile.vim'
 
 " Racket
 Plug 'wlangstroth/vim-racket'
-Plug 'MicahElliott/vrod'
-Plug 'guns/vim-sexp'
-Plug 'tpope/vim-sexp-mappings-for-regular-people'
+"Plug 'MicahElliott/vrod'
+"Plug 'guns/vim-sexp'
+"Plug 'tpope/vim-sexp-mappings-for-regular-people'
 
 " F#
 Plug 'fsharp/vim-fsharp', {
@@ -223,9 +223,12 @@ set signcolumn=yes
 " It looks nicer in some colour schemes
 if dark_background
     set background=dark
-    silent! colorscheme palenight
+    "silent! colorscheme palenight
+    silent! colorscheme monokai
     let g:palenight_terminal_italics=1
-    hi Normal      guibg=NONE    ctermbg=NONE
+    hi Normal  guibg=NONE ctermbg=NONE
+    hi LineNr  guibg=NONE ctermbg=NONE
+    hi NonText guibg=NONE ctermbg=NONE
 else
     silent! colorscheme akk_light
 endif

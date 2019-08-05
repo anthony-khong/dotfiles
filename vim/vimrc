@@ -27,7 +27,7 @@ Plug 'vim-scripts/argtextobj.vim'
 " Motions
 Plug 'easymotion/vim-easymotion'
 Plug 'ggVGc/vim-fuzzysearch'
-Plug 'justinmk/vim-sneak'
+" Plug 'justinmk/vim-sneak'
 Plug 'vim-scripts/ctags.vim'
 
 " Utilities
@@ -36,11 +36,13 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'jpalardy/vim-slime'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'scrooloose/nerdtree'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tomtom/tlib_vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
+Plug 'w0rp/ale'
 
 " Visualisation
 Plug 'airblade/vim-gitgutter'
@@ -50,7 +52,6 @@ Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'plasticboy/vim-markdown'
 Plug 'tpope/vim-surround'
 Plug 'vim-scripts/textutil.vim'
-Plug 'w0rp/ale'
 
 " Clojure
 Plug 'eraserhd/parinfer-rust'
@@ -305,7 +306,7 @@ autocmd BufRead,BufNewFile *.sc setfiletype scala
 
 " Lightline
 let g:lightline = {
-      \ 'colorscheme': 'seoul256',
+      \ 'colorscheme': 'one',
       \ }
 
 " Tmux Navigator
@@ -483,7 +484,6 @@ nnoremap <Space>nh :nohlsearch<CR>
 nnoremap <Space>eq :q<CR>
 
 " Tabs (misnamed as buffers)
-inoremap <Space>bs :update<CR>
 nnoremap <Space>be :FZF<CR>
 nnoremap <Space>bh :FZF ~<CR>
 nnoremap <Space>bj :NERDTreeToggle<CR>

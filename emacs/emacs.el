@@ -371,6 +371,7 @@
     (add-hook 'emacs-lisp-mode-hook #'parinfer-mode)
     (add-hook 'common-lisp-mode-hook #'parinfer-mode)
     (add-hook 'scheme-mode-hook #'parinfer-mode)
+    (add-hook 'hy-mode-hook #'parinfer-mode)
     (add-hook 'lisp-mode-hook #'parinfer-mode)))
 (add-hook 'lisp-mode-hook '(lambda ()
                              (local-set-key (kbd "RET") 'newline-and-indent)))
@@ -385,12 +386,14 @@
   :config
   (elpy-enable)
   (setq python-shell-interpreter "ipython"
-                   	python-shell-interpreter-args "--simple-prompt --pprint"))
+                       	python-shell-interpreter-args "--simple-prompt --pprint"))
 (delete `elpy-module-highlight-indentation elpy-modules)
 
 (use-package py-autopep8 :ensure t)
 (require 'py-autopep8)
 (add-hook 'python-mode-hook 'py-autopep8-enable-on-save)
+
+(use-package hy-mode :ensure t)
 
 ;;;; Clojure
 (use-package clojure-mode :ensure t)
@@ -622,7 +625,7 @@
  '(git-gutter:modified-sign "~")
  '(package-selected-packages
    (quote
-    (clojure-mode-extra-font-locking py-autopep8 doom-themes auto-package-update evil-tabs org-plus-contrib evil-magit magit yasnippet-snippets elpy yasnippet counsel-projectile fiplr counsel evil-collection fzf avy git-gutter evil-snipe rainbow-delimiters company eyebrowse anotehu evil-mode use-package evil-visual-mark-mode))))
+    (hy-mode clojure-mode-extra-font-locking py-autopep8 doom-themes auto-package-update evil-tabs org-plus-contrib evil-magit magit yasnippet-snippets elpy yasnippet counsel-projectile fiplr counsel evil-collection fzf avy git-gutter evil-snipe rainbow-delimiters company eyebrowse anotehu evil-mode use-package evil-visual-mark-mode))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

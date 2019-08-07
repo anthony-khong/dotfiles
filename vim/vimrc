@@ -68,6 +68,7 @@ Plug 'parsonsmatt/intero-neovim'
 " Python
 Plug 'Shougo/echodoc.vim'
 Plug 'Vimjas/vim-python-pep8-indent'
+Plug 'hylang/vim-hy'
 Plug 'manicmaniac/coconut.vim'
 Plug 'zchee/deoplete-jedi'
 

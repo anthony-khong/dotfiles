@@ -1,4 +1,6 @@
 " Inspired by vim-monochrome
+"
+let g:colors_name = "ubuntu"
 
 set background=dark
 

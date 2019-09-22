@@ -32,7 +32,7 @@ map <silent> <Space>T <Plug>InteroType
 nnoremap <silent> <Space>it :InteroTypeInsert<CR>
 
 " Navigation
-nnoremap <silent> <Space>jd :InteroGoToDef<CR>
+" nnoremap <silent> <Space>jd :InteroGoToDef<CR>
 
 " Managing targets
 " Prompts you to enter targets (no silent):

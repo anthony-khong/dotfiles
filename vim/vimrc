@@ -63,7 +63,7 @@ Plug 'tpope/vim-fireplace'
 Plug 'alx741/vim-hindent'
 Plug 'nbouscal/vim-stylish-haskell'
 Plug 'neovimhaskell/haskell-vim'
-Plug 'parsonsmatt/intero-neovim'
+Plug 'parsonsmatt/intero-neovim', { 'for': 'haskell' }
 
 " Python
 Plug 'Shougo/echodoc.vim'
@@ -225,9 +225,8 @@ set signcolumn=yes
 " It looks nicer in some colour schemes
 if dark_background
     set background=dark
-    "silent! colorscheme palenight
     silent! colorscheme monokai
-    let g:palenight_terminal_italics=1
+    "let g:palenight_terminal_italics=1
     hi Normal  guibg=NONE ctermbg=NONE
     hi LineNr  guibg=NONE ctermbg=NONE
     hi NonText guibg=NONE ctermbg=NONE
@@ -290,6 +289,12 @@ inoremap <C-e> <C-o>$
 " Jumping between tabs
 nnoremap ( :tabprevious<CR>
 nnoremap ) :tabnext<CR>
+
+" Jumping between Vim panes
+nnoremap <Space>j <C-W><C-J>
+nnoremap <Space>k <C-W><C-K>
+nnoremap <Space>l <C-W><C-L>
+nnoremap <Space>h <C-W><C-H>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                Generic Autos                                "
@@ -440,6 +445,9 @@ let g:parinfer_mode = 'smart'
 let g:parinfer_enabled = 1
 let g:parinfer_force_balance = 0
 
+" FSharp
+let g:fsharp_map_keys = 0
+
 " Haskell - Taken from: https://blog.jez.io/haskell-development-with-neovim/
 let g:haskell_indent_before_where = 2
 let g:haskell_indent_case_alternative = 1
@@ -447,15 +455,11 @@ let g:haskell_indent_if = 2
 let g:haskell_indent_let_no_in = 0
 let g:hindent_line_length = 90
 let g:hindent_on_save = 0
-let g:intero_start_immediately = 1
 let g:intero_type_on_hover = 1
 let g:intero_use_neomake = 0
 let g:intero_vertical_split = 1
 let g:intero_window_size = 8
 set updatetime=100
-
-" FSharp
-let g:fsharp_map_keys = 0
 
 " Slime
 let g:slime_target = "tmux"
@@ -533,9 +537,6 @@ nnoremap <Space>gb :Gblame<CR>
 map <Space><Space>em <Plug>(easymotion-prefix)
 nmap <Space><Space> <Plug>(easymotion-s)
 vmap <Space><Space> <Plug>(easymotion-s)
-
-" Tags
-nnoremap <Space>j :Tag<CR>
 
 " Fold Toggle
 " nnoremap <Leader>f za

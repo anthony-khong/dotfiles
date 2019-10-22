@@ -9,6 +9,16 @@ function sbash() {
     fi
 }
 
+# Tmate
+function tm() {
+    if [[ "$(uname)" == "Darwin" ]]; then
+        tmate
+    elif [[ "$(uname)" == "Linux" ]]; then
+        export TERM=screen
+        tmate
+    fi
+}
+
 # Pretty Print JSON
 alias ppj='python -m json.tool'
 

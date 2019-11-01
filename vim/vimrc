@@ -52,6 +52,7 @@ Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'plasticboy/vim-markdown'
 Plug 'tpope/vim-surround'
 Plug 'vim-scripts/textutil.vim'
+Plug 'patstockwell/vim-monokai-tasty'
 
 " Clojure
 Plug 'eraserhd/parinfer-rust'
@@ -225,7 +226,8 @@ set signcolumn=yes
 " It looks nicer in some colour schemes
 if dark_background
     set background=dark
-    silent! colorscheme monokai
+    silent! colorscheme vim-monokai-tasty
+    "silent! colorscheme monokai
     "let g:palenight_terminal_italics=1
     hi Normal  guibg=NONE ctermbg=NONE
     hi LineNr  guibg=NONE ctermbg=NONE

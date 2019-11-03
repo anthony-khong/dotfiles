@@ -59,6 +59,7 @@ Plug 'eraserhd/parinfer-rust'
 Plug 'guns/vim-clojure-highlight'
 Plug 'guns/vim-clojure-static'
 Plug 'tpope/vim-fireplace'
+Plug 'tpope/vim-salve'
 
 " Haskell
 Plug 'alx741/vim-hindent'

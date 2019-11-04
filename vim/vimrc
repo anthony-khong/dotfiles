@@ -61,6 +61,7 @@ Plug 'guns/vim-clojure-static'
 Plug 'guns/vim-sexp'
 Plug 'tpope/vim-fireplace'
 Plug 'tpope/vim-sexp-mappings-for-regular-people'
+Plug 'tpope/vim-salve'
 
 " Haskell
 Plug 'alx741/vim-hindent'

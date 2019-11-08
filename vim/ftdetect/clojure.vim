@@ -4,16 +4,32 @@ vnoremap <Space>dd "xy:exe 'Doc ' . @x<CR>
 
 " Vim-Iced
 let g:iced#buffer#stdout#mods="vertical"
-let g:iced_enable_auto_indent = v:false
-let g:iced_enable_popup_document="any"
+let g:iced_enable_auto_indent=v:false
+let g:iced_enable_auto_document="normal"
+let g:iced_enable_popup_document="full"
 
+"" Cider connect and init
 nnoremap <Space>cj :IcedJackIn<CR>
-nnoremap <Space>cc :IcedConnect<CR>:IcedStdoutBufferOpen<CR>
-nnoremap <Space>cl :IcedRequire<CR>
+nnoremap <Space>cc :IcedConnect<CR>:IcedStdoutBufferOpen<CR>:vertical resize 92<CR>
+nnoremap <Space>cr :IcedRequire<CR>
 nnoremap <Space>cn :IcedEvalNs<CR>
-nnoremap <Space>rl :IcedStdoutBufferClear<CR>
+nnoremap <Space>cf :IcedCommandPalette<CR>
+
+"" Cider eval
 nnoremap <Space>cet :IcedEvalOuterTopList<CR>
 vnoremap <Space>cet :IcedEvalReplVisual<CR>
-nnoremap <Space>cit vi(:IcedEvalReplVisual<CR>
-nnoremap <Space>> :IcedSlurp<CR>
-nnoremap <Space>< :IcedBarf<CR>
+nnoremap <Space>cit va(:IcedEvalReplVisual<CR>
+nnoremap <Space>ci :IcedInterrupt<CR>
+nnoremap <Space>cw :IcedStdoutBufferClear<CR>
+
+"" Cider edits
+nnoremap <> :IcedSlurp<CR>
+nnoremap >< :IcedBarf<CR>
+nnoremap <Space>cl :IcedMoveToLet<CR>
+
+"" Cider show source and docs
+nnoremap <Space>css :IcedPopupSourceShow<CR>
+nnoremap <Space>csd :IcedPopupDocumentOpen<CR>
+
+"" Cider toggle test
+nnoremap <Space>tt :IcedToggleSrcAndTest<CR>

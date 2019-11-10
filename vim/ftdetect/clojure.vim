@@ -1,7 +1,3 @@
-" Find documentation under cursor
-nnoremap <Space>dd viw"xy:exe 'Doc ' . @x<CR>
-vnoremap <Space>dd "xy:exe 'Doc ' . @x<CR>
-
 " Vim-Iced
 let g:iced#buffer#stdout#mods="vertical"
 let g:iced_enable_auto_indent=v:false

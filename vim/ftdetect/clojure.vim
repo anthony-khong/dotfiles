@@ -9,8 +9,9 @@ let g:iced_enable_popup_document="full"
 
 "" Cider connect and init
 nnoremap <Space>cj :IcedJackIn<CR>
-nnoremap <Space>cc :IcedConnect<CR>:IcedStdoutBufferOpen<CR>:vertical resize 92<CR>
+nnoremap <Space>cc :IcedConnect<CR>:IcedStdoutBufferOpen<CR>:exec 'vertical resize '. string(&columns * 0.65)<CR>
 nnoremap <Space>cr :IcedRequire<CR>
+nnoremap <Space>cR :IcedRequireAll<CR>
 nnoremap <Space>cn :IcedEvalNs<CR>
 nnoremap <Space>cf :IcedCommandPalette<CR>
 

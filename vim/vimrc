@@ -49,10 +49,11 @@ Plug 'airblade/vim-gitgutter'
 Plug 'drewtempelmeyer/palenight.vim' " Use with whimsy.itermcolors
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/rainbow_parentheses.vim'
+Plug 'patstockwell/vim-monokai-tasty'
 Plug 'plasticboy/vim-markdown'
+Plug 'roman/golden-ratio'
 Plug 'tpope/vim-surround'
 Plug 'vim-scripts/textutil.vim'
-Plug 'patstockwell/vim-monokai-tasty'
 
 " Clojure
 Plug 'eraserhd/parinfer-rust'

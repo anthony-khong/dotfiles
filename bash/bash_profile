@@ -3,7 +3,6 @@ export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
 alias ls='ls -GFh'
 
-export PATH="$HOME/dotfiles/vim/plugged/vim-iced/bin:$PATH"
 export PATH="$HOME:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"

@@ -1,3 +1,6 @@
+" Vim-Fireplace
+nnoremap <Space>fr :Require<CR>
+
 " Vim-Iced
 let g:iced#buffer#stdout#mods="vertical"
 let g:iced_enable_auto_indent=v:false
@@ -13,8 +16,8 @@ nnoremap <Space>cf :IcedCommandPalette<CR>
 
 "" Cider eval
 nnoremap <Space>cet :IcedEvalOuterTopList<CR>
-vnoremap <Space>cet :IcedEvalReplVisual<CR>
-nnoremap <Space>cit va(:IcedEvalReplVisual<CR>
+vnoremap <Space>cet :IcedEvalVisual<CR>
+nnoremap <Space>cit va(:IcedEvalVisual<CR>
 nnoremap <Space>ci :IcedInterrupt<CR>
 nnoremap <Space>cw :IcedStdoutBufferClear<CR>
 

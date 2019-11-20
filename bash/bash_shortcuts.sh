@@ -101,6 +101,10 @@ function draape() {
     ssh root@128.199.230.91
 }
 
+function pop-os() {
+    ssh akhong@10.8.1.1
+}
+
 function flush_dns_cache() {
     sudo dscacheutil -flushcache
     sudo killall -HUP mDNSResponder

@@ -45,6 +45,7 @@ Plug 'tpope/vim-repeat'
 Plug 'dense-analysis/ale'
 
 " Visualisation
+Plug 'ncm2/float-preview.nvim'
 Plug 'airblade/vim-gitgutter'
 Plug 'drewtempelmeyer/palenight.vim' " Use with whimsy.itermcolors
 Plug 'itchyny/lightline.vim'
@@ -60,10 +61,11 @@ Plug 'eraserhd/parinfer-rust'
 Plug 'guns/vim-clojure-highlight'
 Plug 'guns/vim-clojure-static'
 Plug 'guns/vim-sexp'
-Plug 'tpope/vim-fireplace'
+"Plug 'tpope/vim-fireplace'
 Plug 'tpope/vim-sexp-mappings-for-regular-people'
-Plug 'tpope/vim-salve'
-Plug 'liquidz/vim-iced', {'for': 'clojure'}
+"Plug 'tpope/vim-salve'
+"Plug 'liquidz/vim-iced', {'for': 'clojure'}
+Plug 'Olical/conjure', { 'tag': 'v2.1.2', 'do': 'bin/compile' }
 
 " Haskell
 Plug 'alx741/vim-hindent'
@@ -123,6 +125,7 @@ augroup END
 
 " Set the leader to comma
 let mapleader = ","
+let maplocalleader="\<space>"
 
 " Makes copy and pasting work
 set clipboard=unnamed
@@ -376,7 +379,8 @@ let g:airline_section_y = ''
 let g:ale_linters = {
     \ 'python': ['pyflakes', 'mypy'],
     \ 'scala': ['scalastyle'],
-    \ 'haskell': ['stack-ghc-mod', 'hlint']
+    \ 'haskell': ['stack-ghc-mod', 'hlint'],
+    \ 'clojure': ['clj-kondo', 'joker']
     \ }
 let g:ale_python_mypy_options = "–ignore-missing-imports"
 let g:ale_linters_explicit = 1
@@ -433,6 +437,16 @@ call deoplete#custom#option({
   \ 'ignore_case': v:true,
   \ 'refresh_always': v:false,
 \ })
+
+" Taken from https://oli.me.uk/getting-started-with-clojure-neovim-and-conjure-in-minutes/
+call deoplete#custom#option(
+  \ 'keyword_patterns',
+  \ {'clojure': '[\w!$%&*+/:<=>?@\^_~\-\.#]*'}
+  \ )
+set completeopt-=preview
+let g:float_preview#docked = 0
+let g:float_preview#max_width = 80
+let g:float_preview#max_height = 40
 
 " Deoplete-Jedi
 highlight Pmenu ctermbg=8 guibg=#606060
@@ -644,6 +658,10 @@ function! s:vim_sexp_mappings()
     omap <buffer> W   <Plug>(sexp_move_to_next_element_head)
     omap <buffer> gE  <Plug>(sexp_move_to_prev_element_tail)
     omap <buffer> E   <Plug>(sexp_move_to_next_element_tail)
+
+    " Slurps and Barfs
+    nmap <buffer> ><  <Plug>(sexp_emit_tail_element)
+    nmap <buffer> <>  <Plug>(sexp_capture_next_element)
 endfunction
 
 augroup VIM_SEXP_MAPPING

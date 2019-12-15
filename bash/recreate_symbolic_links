@@ -23,7 +23,7 @@ cd;
 rm -rf .emacs;
 ln -s ~/dotfiles/emacs/emacs.el .emacs;
 rm -rf .emacs.d
-mkdir .emacs.d
+mkdir -p .emacs.d
 
 mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config};
 rm -rf $XDG_CONFIG_HOME/nvim;
@@ -33,13 +33,14 @@ rm -rf .tmux.conf;
 ln -s ~/dotfiles/tmux/tmux.conf .tmux.conf;
 
 rm -rf .ghci;
-mkdir .ghci
+mkdir -p .ghci
 ln -s ~/dotfiles/ghci .ghci;
 
-rm -rf ~/.lein
-mkdir .lein
+mkdir -p .lein
+rm -rf .lein/profiles.clj
 ln -s ~/dotfiles/lein_profiles.clj .lein/profiles.clj
-
+mkdir -p .config/conjure
+ln -s ~/dotfiles/conjure.edn .config/conjure/.conjure.edn
 
 rm ~/.config/karabiner/karabiner.json
 ln -s ~/dotfiles/bash/karabiner.json .config/karabiner/karabiner.json

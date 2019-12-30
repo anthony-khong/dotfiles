@@ -62,6 +62,8 @@ Plug 'eraserhd/parinfer-rust'
 Plug 'guns/vim-clojure-highlight'
 Plug 'guns/vim-clojure-static'
 Plug 'guns/vim-sexp'
+"Plug 'tpope/vim-fireplace'
+"Plug 'tpope/vim-salve'
 Plug 'tpope/vim-sexp-mappings-for-regular-people'
 
 " Haskell

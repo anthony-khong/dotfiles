@@ -1,1 +1,4 @@
-{:conns { :lein {:port 55555 }}}
+{:conns
+ {
+  :lein {:port 55555}
+  :frontend {:port 12345 :lang :cljs}}}

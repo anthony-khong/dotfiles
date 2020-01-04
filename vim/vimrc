@@ -525,6 +525,7 @@ au TabLeave * let g:lasttab = tabpagenr()
 
 " Remove trailing whitespace
 nnoremap <silent> <Space>rw :keeppatterns %s/\s\+$//<CR>
+autocmd FileType python,clojure autocmd BufWritePre <buffer> %s/\s\+$//e
 
 " Shortuct to reload vimrc
 nmap <Space>rv :so ~/.config/nvim/init.vim<CR>:echo '.nvimrc reloaded!'<CR>

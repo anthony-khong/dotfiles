@@ -97,7 +97,7 @@
 
 (electric-indent-mode +1)
 (fset 'yes-or-no-p 'y-or-n-p)
-(global-hl-line-mode 1)
+;; (global-hl-line-mode 1)
 (global-prettify-symbols-mode +1)
 (menu-bar-mode -1)
 (modify-syntax-entry ?_ "w")

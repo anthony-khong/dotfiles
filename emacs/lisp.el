@@ -76,6 +76,7 @@
   "cj" '(cider-jack-in :which-key "jack in")
   "cl" '(cider-load-buffer :which-key "load buffer")
   "cc" '(cider-connect :which-key "connect")
+  "csr" '(cider-shadow-repl :which-key "shadow repl")
   "cn" '(cider-repl-set-ns :which-key "set repl ns")
   "ct" '(cider-test-run-test :which-key "run test")
   "cb" '(cider-switch-to-repl-buffer :which "repl buffer")
@@ -85,6 +86,7 @@
   "ces" '(cider-eval-sexp-at-point :which-key "eval sexp")
   "cet" '(cider-eval-defun-at-point :which-key "eval top")
   "cer" '(cider-eval-region :which-key "eval region")
+  "cel" '(cider-eval-last-sexp :which-key "eval last")
   "p(" '(paredit-wrap-round :which-key "wrap (")
   "p[" '(paredit-wrap-square :which-key "wrap [")
   "p{" '(paredit-wrap-curly :which-key "wrap {")
@@ -129,3 +131,8 @@
   ;; effects of backward-sexp and forward-sexp.
   (backward-sexp (1+ arg))
   (forward-sexp 1))
+
+(defun cider-shadow-repl ()
+  (interactive)
+  (cider-nrepl-sync-request:eval "(shadow/repl :app)")
+  (message "Ran (shadow/repl :app)"))

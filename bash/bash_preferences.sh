@@ -4,6 +4,7 @@ export PYTHONPATH=$PYTHONPATH:~/grist
 export PYTHONPATH=$PYTHONPATH:~/repos
 export PYTHONPATH=$PYTHONPATH:~/code
 export PYTHONPATH=$PYTHONPATH:~
+export PATH="/opt/openjdk/jdk-11.0.5+10/bin":$PATH
 export PATH="/opt/anaconda/bin:$PATH"
 export PATH=$PATH:/opt
 export PATH=$PATH:~/.local/bin

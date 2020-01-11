@@ -24,51 +24,6 @@
   :config
   (setq avy-keys '(?a ?o ?e ?u ?i ?d ?h ?t ?n ?s)))
 
-;(use-package ivy :ensure t
-  ;:diminish (ivy-mode . "") ; does not display ivy in the modeline
-  ;:init (ivy-mode 1)        ; enable ivy globally at startup
-  ;:bind (:map ivy-mode-map  ; bind in the ivy buffer
-             ;("C-'" . ivy-avy)) ; C-' to ivy-avy
-  ;:config
-  ;(setq ivy-re-builders-alist
-        ;'((ivy-switch-buffer . ivy--regex-plus)
-          ;(t . ivy--regex-fuzzy)))    ; Fuzzy matching in M-x
-  ;(setq ivy-use-virtual-buffers t)    ; extend searching to bookmarks and …
-  ;(setq ivy-height 20)                ; set height of the ivy window
-  ;(setq ivy-count-format "(%d/%d) ")) ; count format, from the ivy help page
-
-;(use-package counsel :ensure t
-  ;:bind*                           ; load counsel when pressed
-  ;(("M-x"     . counsel-M-x)       ; M-x use counsel
-   ;("C-x C-f" . counsel-find-file) ; C-x C-f use counsel-find-file
-   ;("C-x C-r" . counsel-recentf)   ; search recently edited files
-   ;("C-c f"   . counsel-git)       ; search for files in git repo
-   ;("C-c s"   . counsel-git-grep)  ; search for regexp in git repo
-   ;("C-c /"   . counsel-ag)        ; search for regexp in git repo using ag
-   ;("C-c l"   . counsel-locate)))  ; search for files or else using locate
-;(setq counsel-async-ignore-re '("*Dropbox*"))
-
-;(use-package counsel-projectile :ensure t
-  ;:config (counsel-projectile-mode)
-  ;:diminish
-  ;(projectile-mode . "")
-  ;(counsel-projectile-mode . ""))
-
-;(use-package ido :ensure t
-  ;:config
-  ;(setq ido-auto-merge-delay-time 99999999)
-  ;(setq ido-everywhere t)
-  ;(setq ido-virtual-buffers t)
-  ;(setq ido-enable-flex-matching t)
-  ;(ido-mode))
-
-;(use-package ibuffer-vc :ensure t
- ;:config
- ;(add-to-list 'ibuffer-never-show-predicates "^\\*"))
-;(add-hook 'ibuffer-mode-hook
-         ;'(lambda ()
-              ;(ibuffer-switch-to-saved-filter-groups "home")))
-
 (use-package company :ensure t
  :init (company-mode)
  :diminish (company-mode . "")
@@ -88,9 +43,6 @@
  ;:diminish (yas-minor-mode . ""))
 
 ;(use-package yasnippet-snippets :ensure t)
-
-;(use-package magit :ensure t)
-;(require 'magit)
 
 ;;;; Org Mode
 (use-package org
@@ -113,10 +65,6 @@
   (load-file "~/.emacs")
   (message "Emacs reloaded!"))
 
-(defun counsel-fzf-home ()
-  (interactive)
-  (counsel-fzf "" "~"))
-
 (defun insert-org-mode-header ()
   (interactive)
   (insert "MY PROJECT -*- mode: org -*-"))
@@ -126,6 +74,7 @@
                  "tmux"
                  "passive"
                  "buffers-and-panes"
+                 "navigation"
                  ;; Languages
                  "dockerfile"
                  "python"
@@ -142,7 +91,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (hy-mode clojure-mode-extra-font-locking py-autopep8 doom-themes auto-package-update evil-tabs org-plus-contrib evil-magit magit yasnippet-snippets elpy yasnippet counsel-projectile fiplr counsel evil-collection fzf avy git-gutter evil-snipe rainbow-delimiters company eyebrowse anotehu evil-mode use-package evil-visual-mark-mode))))
+    (helm-rg hy-mode clojure-mode-extra-font-locking py-autopep8 doom-themes auto-package-update evil-tabs org-plus-contrib evil-magit magit yasnippet-snippets elpy yasnippet counsel-projectile fiplr counsel evil-collection fzf avy git-gutter evil-snipe rainbow-delimiters company eyebrowse anotehu evil-mode use-package evil-visual-mark-mode))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

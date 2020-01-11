@@ -6,7 +6,6 @@
 (set-background-color "unspecified-bg")
 (setq default-frame-alist '((background-color . "unspecified-bg")))
 
-
 (use-package linum-relative :ensure t
   :init
   (setq linum-relative-backend 'display-line-numbers-mode)
@@ -62,6 +61,9 @@
   :commands (ranger)
   :config (setq ranger-cleanup-eagerly t))
 
+(use-package magit :ensure t)
+(require 'magit)
+
 (use-package xclip :ensure t)
 (xclip-mode 1)
 
@@ -70,6 +72,8 @@
 (setq whitespace-line-column 100) ;; limit line length
 (setq whitespace-style '(face lines-tail))
 (add-hook 'prog-mode-hook 'whitespace-mode)
+
+(use-package tagedit :ensure t)
 
 ;; Configs
 (setq enable-local-variables nil)
@@ -93,10 +97,12 @@
 
 (electric-indent-mode +1)
 (fset 'yes-or-no-p 'y-or-n-p)
+(global-hl-line-mode 1)
 (global-prettify-symbols-mode +1)
 (menu-bar-mode -1)
 (modify-syntax-entry ?_ "w")
 (set-frame-parameter (selected-frame) 'buffer-predicate #'buffer-file-name)
+(show-paren-mode 1)
 
 ;;;; Continuous Scrolling
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
@@ -116,4 +122,3 @@
 (noct:conditionally-toggle-xclip-mode)
 (add-hook 'focus-in-hook
           #'noct:conditionally-toggle-xclip-mode)
-

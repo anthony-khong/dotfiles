@@ -39,7 +39,7 @@
    :prefix "SPC"
    :non-normal-prefix "C-s"
    ;; Special actions
-   "x" '(counsel-M-x :which-key "M-x")
+   "x" '(helm-M-x :which-key "M-x")
    "'" '(other-window :which-key "other window")
    "l" '(evil-window-right :which-key "evil-right")
    "h" '(evil-window-left :which-key "evil-left")
@@ -50,10 +50,6 @@
    "ed" '(describe-key :which-key "describe key")
    "eq" '(save-buffers-kill-terminal :which-key "save and kill buffer")
    "et" '(launch-terminal :which-key "launch terminal")
-   "ff" '(counsel-find-file :which-key "find file")
-   "fz" '(counsel-fzf-home :which-key "fuzzy find file")
-   "fp" '(counsel-fzf :which-key "project fuzzy find file")
-   "fd" '(counsel-projectile-find-dir :which-key "fuzzy find directory")
    "nh" '(evil-ex-nohighlight :which-key "nohl")
    "ri" '(reload-init :which-key "reload init")
    ;; Open (o)
@@ -69,8 +65,9 @@
    "bp" '(previous-buffer :which-key "previous buffer")
    "bs" '(save-buffer :which-key "save buffer")
    "bx" '(kill-this-buffer :which-key "kill buffer")
-   "bj" '(ibuffer :which-key "switch buffer")
-   "be" '(counsel-find-file :which-key "buffer edit")
+   "be" '(helm-projectile-find-file :which-key "buffer edit")
+   "bh" '(fzf-counsel-home :which-key "buffer edit from home")
+   "bc" '(helm-projectile-switch-to-buffer :which-key "buffer edit")
    ;; Panes (a)
    "av" '(vsplit :which-key "vsplit")
    "ah" '(hsplit :which-key "hsplit")
@@ -88,6 +85,18 @@
    :non-normal-prefix "C-s"
    ;; Others
    "ih" '(insert-org-mode-header :which-key "insert org header")))
+
+(use-package projectile
+  :ensure t
+  :config
+  (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
+  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+  (projectile-mode +1))
+(use-package helm :ensure t :config)
+(use-package helm-projectile :ensure t)
+
+(use-package ido-completing-read+ :ensure t)
+(use-package smex :ensure t)
 
 ;; Functions
 (defun my-center-line (&rest _)
@@ -145,3 +154,6 @@
   (evil-normal-state)
   (evil-visual-restore))
 
+(defun counsel-fzf-home ()
+  (interactive)
+  (counsel-fzf "" "~"))

@@ -41,9 +41,6 @@ function setup_nvim() {
 if type emacs26 > /dev/null; then
     alias emacs=emacs26
 fi
-if type emacs-26.1 > /dev/null; then
-    alias emacs=emacs-26.1
-fi
 alias em="emacs -nw"
 alias ec="emacsclient -a '' -nw"
 

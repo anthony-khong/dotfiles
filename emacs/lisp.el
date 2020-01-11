@@ -1,4 +1,6 @@
-;;;; Emacs Lisp
+(add-to-list 'package-pinned-packages '(cider . "melpa-stable") t)
+(add-to-list 'package-pinned-packages '(magit . "melpa-stable") t)
+
 (use-package paredit :ensure t)
 (use-package lispy :ensure t)
 (use-package smart-tabs-mode :ensure t)
@@ -33,8 +35,14 @@
 (use-package cider :ensure t
   :pin melpa-stable
   :config
+  (setq cider-repl-pop-to-buffer-on-connect 'display-only)
   (setq nrepl-hide-special-buffers t)
-  (setq cider-repl-pop-to-buffer-on-connect 'display-only))
+  (setq cider-show-error-buffer t)
+  (setq cider-auto-select-error-buffer t)
+  (setq cider-repl-history-file "~/.emacs.d/cider-history")
+  (setq cider-repl-wrap-history t))
+(add-hook 'cider-mode-hook 'eldoc-mode)
+(add-hook 'cider-repl-mode-hook 'paredit-mode)
 
 (use-package clojure-mode-extra-font-locking :ensure t)
 (require 'clojure-mode-extra-font-locking)
@@ -52,6 +60,13 @@
                  (1 font-lock-keyword-face))))
              (define-clojure-indent (fact 1))
              (define-clojure-indent (facts 1))))
+
+;; Use clojure mode for other extensions
+(add-to-list 'auto-mode-alist '("\\.edn$" . clojure-mode))
+(add-to-list 'auto-mode-alist '("\\.boot$" . clojure-mode))
+(add-to-list 'auto-mode-alist '("\\.cljs.*$" . clojure-mode))
+(add-to-list 'auto-mode-alist '("lein-env" . enh-ruby-mode))
+(setq clojure-verify-major-mode nil)
 
 (general-define-key
   :states '(normal visual)
@@ -114,4 +129,3 @@
   ;; effects of backward-sexp and forward-sexp.
   (backward-sexp (1+ arg))
   (forward-sexp 1))
-

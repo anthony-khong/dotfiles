@@ -1,3 +1,8 @@
+(use-package tmux-pane :ensure t)
+(require 'tmux-pane)
+(tmux-pane-mode t)
+
+;; Vim Slime
 (defun send-kill-ring-to-tmux ()
   (interactive)
   (write-region (format "%s" (car kill-ring)) nil "~/.slime_paste")
@@ -23,3 +28,9 @@
   (send-kill-ring-to-tmux)
   (send-text-to-tmux "KP- KP-")
   (send-text-to-tmux "Enter"))
+
+
+(general-define-key
+  :states '(normal visual)
+  :prefix "C-c"
+  "C-c" '(send-paragraph-to-tmux :which-key "run region"))

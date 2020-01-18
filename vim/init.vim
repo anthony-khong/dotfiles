@@ -188,6 +188,10 @@ let g:ale_linters_explicit = 1
 let g:ale_completion_enabled = 1
 let g:ale_sign_error = '>>'
 let g:ale_sign_warning = '!!'
+hi ALEErrorSign   ctermbg=234         ctermfg=9  guibg=234 guifg=9
+hi ALEWarningSign ctermbg=234         ctermfg=11 guibg=234 guifg=11
+hi ALEWarning     ctermbg=DarkMagenta guibg=DarkMagenta
+let g:airline#extensions#ale#enabled = 1
 
 " Deoplete
 let g:deoplete#enable_at_startup = 1

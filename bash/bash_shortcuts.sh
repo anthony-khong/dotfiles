@@ -216,3 +216,7 @@ function install-paket() {
     echo ".packages" >> .gitignore
     mono .paket/paket.exe install
 }
+
+function fix-mojave-header-files() {
+    open /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg
+}

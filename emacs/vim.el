@@ -66,7 +66,7 @@
    "bs" '(save-buffer :which-key "save buffer")
    "bx" '(kill-this-buffer :which-key "kill buffer")
    "be" '(helm-projectile-find-file :which-key "buffer edit")
-   "bh" '(fzf-counsel-home :which-key "buffer edit from home")
+   "bh" '(counsel-fzf-home :which-key "buffer edit from home")
    "bc" '(helm-projectile-switch-to-buffer :which-key "buffer edit")
    ;; Panes (a)
    "av" '(vsplit :which-key "vsplit")

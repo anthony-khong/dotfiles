@@ -1,4 +1,8 @@
 {:conns
- {
-  :lein {:port 55555}
-  :frontend {:port 12345 :lang :cljs}}}
+ {:lein {:port 55555}
+  :frontend {:port 12345 :lang :cljs}}
+ :hooks {:connect! (fn [conn]
+                     (println "Connected to a"
+                              #?(:clj "Clojure"
+                                 :cljs "ClojureScript")
+                              "prepl!"))}}

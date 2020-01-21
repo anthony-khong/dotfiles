@@ -49,6 +49,8 @@ Plug 'guns/vim-clojure-highlight'
 Plug 'guns/vim-clojure-static'
 Plug 'guns/vim-sexp'
 Plug 'tpope/vim-sexp-mappings-for-regular-people'
+Plug 'venantius/vim-cljfmt'
+Plug 'tpope/vim-fireplace/'
 
 " Docker
 Plug 'ekalinin/Dockerfile.vim'
@@ -342,5 +344,6 @@ nmap <Space><Space> <Plug>(easymotion-s)
 vmap <Space><Space> <Plug>(easymotion-s)
 
 " Slurps and Barfs
+let g:sexp_filetypes = ''
 nmap <buffer> ><  <Plug>(sexp_emit_tail_element)
 nmap <buffer> <>  <Plug>(sexp_capture_next_element)

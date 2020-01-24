@@ -50,6 +50,11 @@ Plug 'guns/vim-clojure-static'
 Plug 'guns/vim-sexp'
 Plug 'tpope/vim-sexp-mappings-for-regular-people'
 
+" Python
+Plug 'davidhalter/jedi-vim'
+Plug 'sbdchd/neoformat'
+Plug 'zchee/deoplete-jedi'
+
 " Docker
 Plug 'ekalinin/Dockerfile.vim'
 
@@ -184,6 +189,7 @@ let g:ale_linters = {
       \ 'python': ['pyflakes', 'mypy'],
       \ 'clojure': ['clj-kondo', 'joker']
       \}
+let g:ale_python_mypy_options = "–ignore-missing-imports"
 let g:ale_linters_explicit = 1
 let g:ale_completion_enabled = 1
 let g:ale_sign_error = '>>'
@@ -197,6 +203,14 @@ let g:airline#extensions#ale#enabled = 1
 let g:deoplete#enable_at_startup = 1
 call deoplete#custom#option('keyword_patterns', {'clojure': '[\w!$%&*+/:<=>?@\^_~\-\.#]*'})
 set completeopt-=preview
+
+" Neoformat
+" Enable alignment
+let g:neoformat_basic_format_align = 1
+" Enable tab to spaces conversion
+let g:neoformat_basic_format_retab = 1
+" Enable trimmming of trailing whitespace
+let g:neoformat_basic_format_trim = 1
 
 " Lazy loading for UltiSnips
 augroup load_ultisnips
@@ -281,6 +295,21 @@ augroup rainbow_lisp
   autocmd FileType lisp,clojure,scheme RainbowParentheses
 augroup END
 let g:rainbow#blacklist = [228, 231, 238, 245]
+
+" Slime
+let g:slime_target = "tmux"
+silent! let g:slime_default_config = {
+    \ "socket_name": split($TMUX, ",")[0],
+    \ "target_pane": ":0.1"
+    \ }
+let g:slime_dont_ask_default = 1
+let g:slime_python_ipython = 1
+
+" Jedi
+" disable autocompletion, cause we use deoplete for completion
+let g:jedi#completions_enabled = 0
+" open the go-to function in split, not another buffer
+let g:jedi#use_splits_not_buffers = "right"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                     Leader + Space Remaps                        "

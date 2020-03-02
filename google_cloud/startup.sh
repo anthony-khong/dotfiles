@@ -10,6 +10,7 @@ if [[ ! -e "$INSTALL_LOG" ]]; then
 
     echo "Cloned dotfiles..." >> $INSTALL_LOG
     cd $HOME && git clone https://github.com/anthony-khong/dotfiles.git
+    sudo chown -R $USER $HOME/dotfiles
 
     echo "Starting install script..." >> $INSTALL_LOG
     /bin/bash $HOME/dotfiles/google_cloud/startup_install.sh

@@ -1,6 +1,6 @@
 #! /bin/bash
-export USER="akhong"
-export HOME="/home/akhong"
+export USER="ubuntu"
+export HOME="/home/ubuntu"
 export INSTALL_LOG="$HOME/.startup.log"
 
 # echo "Generating SSH key..." >> $INSTALL_LOG
@@ -12,7 +12,6 @@ sudo apt-get update && sudo apt-get install -y \
     apt-transport-https \
     ca-certificates \
     curl \
-    emacs \
     entr \
     git \
     libssl-dev \
@@ -48,18 +47,6 @@ sudo chown -R $USER /opt/anaconda/
 export PATH="/opt/anaconda/bin:$PATH"
 pip install --upgrade pip
 
-echo "Setting up Git..." >> $INSTALL_LOG
-git config --global user.email "anthony.kusumo.khong@gmail.com"
-git config --global user.name "Anthony Khong"
-curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
-sudo apt-get install -y git-lfs
-git lfs install
-
-echo "Installing mono and fsharp..." >> $INSTALL_LOG
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
-echo "deb https://download.mono-project.com/repo/ubuntu stable-bionic main" | sudo tee /etc/apt/sources.list.d/mono-official-stable.list
-sudo apt update sudo apt-get install -y mono-devel fsharp
-
 echo "Configuring dotfiles..." >> $INSTALL_LOG
 cd $HOME/dotfiles \
     && git submodule init \
@@ -70,15 +57,10 @@ cd $HOME/dotfiles \
 
 echo "Installing Neovim + dependencies..." >> $INSTALL_LOG
 pip install --upgrade neovim jedi google-api-python-client pyflakes mypy
-sudo add-apt-repository -y ppa:neovim-ppa/stable \
-        && sudo apt-get update \
+sudo apt-get update \
         && sudo apt-get install -y neovim \
-        && nvim +PlugInstall +silent +qall \
         && /bin/bash $HOME/dotfiles/tmux/tpm/scripts/install_plugins.sh
 sudo chown -R $USER "$HOME/.local"
-
-echo "Installing Spacemacs..." >> $INSTALL_LOG
-git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 
 echo "Installing Ripgrep..." >> $INSTALL_LOG
 curl -LO https://github.com/BurntSushi/ripgrep/releases/download/0.10.0/ripgrep_0.10.0_amd64.deb
@@ -118,8 +100,5 @@ echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
 
 echo "Installing mosh..." >> $INSTALL_LOG
 sudo apt-get install -y mosh
-
-echo "Installing Xorg.." >> $INSTALL_LOG
-sudo apt-get -y install xorg openbox
 
 echo "Setup complete!" >> $INSTALL_LOG

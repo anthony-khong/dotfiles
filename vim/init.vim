@@ -22,7 +22,7 @@ Plug 'ggVGc/vim-fuzzysearch'
 Plug 'vim-scripts/ctags.vim'
 
 " Completion + Linting
-Plug 'Shougo/deoplete.nvim'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'w0rp/ale'
 
 " Visualisation

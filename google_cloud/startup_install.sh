@@ -2,12 +2,14 @@
 export USER="ubuntu"
 export HOME="/home/ubuntu"
 export INSTALL_LOG="$HOME/.startup.log"
+sudo chown $USER $INSTALL_LOG
 
 echo "Installing essential apps with apt-get..." >> $INSTALL_LOG
 sudo apt-get update && sudo apt-get install -y \
     build-essential \
     apt-transport-https \
     ca-certificates \
+    clang \
     curl \
     entr \
     git \
@@ -33,7 +35,7 @@ sudo apt-get update && sudo apt-get install -y docker-ce
 
 echo "Installing ZSH..." >> $INSTALL_LOG
 sudo apt-get update && sudo apt-get install -y zsh
-wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sudo zsh
+wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
 sudo chsh -s /usr/bin/zsh $USER
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git \
     ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
@@ -68,15 +70,6 @@ echo "Installing Ripgrep..." >> $INSTALL_LOG
 sudo curl -LO https://github.com/BurntSushi/ripgrep/releases/download/0.10.0/ripgrep_0.10.0_amd64.deb
 sudo dpkg -i ripgrep_0.10.0_amd64.deb && sudo rm ripgrep_0.10.0_amd64.deb
 
-echo "Installing Parinfer..." >> $INSTALL_LOG
-curl https://sh.rustup.rs -sSf | sh -s -- -y
-export PATH="$HOME/.cargo/bin:$PATH"
-cd ~/dotfiles/vim/plugged/parinfer-rust \
-    && make install \
-    && cargo build --release \
-    && cargo install --force \
-    && cd $HOME
-
 echo "Installing Tmate..." >> $INSTALL_LOG
 curl -LO https://github.com/tmate-io/tmate/releases/download/2.2.1/tmate-2.2.1-static-linux-amd64.tar.gz
 sudo tar -xvf tmate-2.2.1-static-linux-amd64.tar.gz
@@ -98,5 +91,14 @@ sudo mkswap /swapfile
 sudo swapon /swapfile
 sudo cp /etc/fstab /etc/fstab.bak
 echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+
+echo "Installing Parinfer..." >> $INSTALL_LOG
+curl https://sh.rustup.rs -sSf | sh -s -- -y
+export PATH="$HOME/.cargo/bin:$PATH"
+cd ~/dotfiles/vim/plugged/parinfer-rust \
+    && make install \
+    && cargo build --release \
+    && cargo install --force \
+    && cd $HOME
 
 echo "Setup complete!" >> $INSTALL_LOG

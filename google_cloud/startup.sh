@@ -2,6 +2,7 @@
 export USER="ubuntu"
 export HOME="/home/ubuntu"
 export INSTALL_LOG="$HOME/.startup.log"
+sudo chown $USER $INSTALL_LOG
 
 if [[ ! -e "$INSTALL_LOG" ]]; then
     echo "Starting install..." >> $INSTALL_LOG
@@ -11,5 +12,5 @@ if [[ ! -e "$INSTALL_LOG" ]]; then
     cd $HOME && git clone https://github.com/anthony-khong/dotfiles.git
 
     echo "Starting install script..." >> $INSTALL_LOG
-    #/bin/bash $HOME/dotfiles/google_cloud/startup_install.sh
+    /bin/bash $HOME/dotfiles/google_cloud/startup_install.sh
 fi

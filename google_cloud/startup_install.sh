@@ -1,10 +1,7 @@
 #! /bin/bash
-export USER="ubuntu"
-export HOME="/home/ubuntu"
+export USER="akhong"
+export HOME="/home/akhong"
 export INSTALL_LOG="$HOME/.startup.log"
-
-# echo "Generating SSH key..." >> $INSTALL_LOG
-# ssh-keygen -t rsa -N "" -f $HOME/.ssh/id_rsa
 
 echo "Installing essential apps with apt-get..." >> $INSTALL_LOG
 sudo apt-get update && sudo apt-get install -y \
@@ -48,6 +45,7 @@ export PATH="/opt/anaconda/bin:$PATH"
 pip install --upgrade pip
 
 echo "Configuring dotfiles..." >> $INSTALL_LOG
+sudo chown -R $USER dotfiles
 cd $HOME/dotfiles \
     && git submodule init \
     && git submodule update \
@@ -60,11 +58,12 @@ pip install --upgrade neovim jedi google-api-python-client pyflakes mypy
 sudo apt-get update \
         && sudo apt-get install -y neovim \
         && /bin/bash $HOME/dotfiles/tmux/tpm/scripts/install_plugins.sh
-sudo chown -R $USER "$HOME/.local"
+# nvim +PlugInstall +qall 
+# sudo chown -R $USER "$HOME/.config"
 
 echo "Installing Ripgrep..." >> $INSTALL_LOG
-curl -LO https://github.com/BurntSushi/ripgrep/releases/download/0.10.0/ripgrep_0.10.0_amd64.deb
-sudo dpkg -i ripgrep_0.10.0_amd64.deb && rm ripgrep_0.10.0_amd64.deb
+sudo curl -LO https://github.com/BurntSushi/ripgrep/releases/download/0.10.0/ripgrep_0.10.0_amd64.deb
+sudo dpkg -i ripgrep_0.10.0_amd64.deb && sudo rm ripgrep_0.10.0_amd64.deb
 
 echo "Installing Parinfer..." >> $INSTALL_LOG
 curl https://sh.rustup.rs -sSf | sh -s -- -y

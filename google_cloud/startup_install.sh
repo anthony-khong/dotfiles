@@ -19,6 +19,9 @@ sudo apt-get update && sudo apt-get install -y \
     unzip \
     xclip
 
+echo "Installing mosh..." >> $INSTALL_LOG
+sudo apt-get install -y mosh
+
 echo "Installing Docker..." >> $INSTALL_LOG
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg \
     | sudo apt-key add -
@@ -54,12 +57,12 @@ cd $HOME/dotfiles \
     && /bin/bash $HOME/dotfiles/bash/recreate_symbolic_links
 
 echo "Installing Neovim + dependencies..." >> $INSTALL_LOG
-pip install --upgrade neovim jedi google-api-python-client pyflakes mypy
-sudo apt-get update \
-        && sudo apt-get install -y neovim \
-        && /bin/bash $HOME/dotfiles/tmux/tpm/scripts/install_plugins.sh
-# nvim +PlugInstall +qall 
-# sudo chown -R $USER "$HOME/.config"
+pip install --upgrade neovim jedi google-api-python-client pyflakes mypy msgpack pynvim
+curl -L https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage > $HOME/nvim.appimage
+sudo mv $HOME/nvim.appimage /usr/local/bin/nvim
+chmod +x /usr/local/bin/nvim
+/bin/bash $HOME/dotfiles/tmux/tpm/scripts/install_plugins.sh
+nvim +PlugInstall +qall || true
 
 echo "Installing Ripgrep..." >> $INSTALL_LOG
 sudo curl -LO https://github.com/BurntSushi/ripgrep/releases/download/0.10.0/ripgrep_0.10.0_amd64.deb
@@ -82,7 +85,6 @@ sudo rm -rf tmate-2.2.1-static-linux-amd64
 sudo rm tmate-2.2.1-static-linux-amd64.tar.gz
 
 echo "Setting up permissions and Docker..." >> $INSTALL_LOG
-sudo chown -R akhong $HOME
 cd $HOME/dotfiles \
     && git checkout . \
     && cd $HOME
@@ -96,8 +98,5 @@ sudo mkswap /swapfile
 sudo swapon /swapfile
 sudo cp /etc/fstab /etc/fstab.bak
 echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
-
-echo "Installing mosh..." >> $INSTALL_LOG
-sudo apt-get install -y mosh
 
 echo "Setup complete!" >> $INSTALL_LOG

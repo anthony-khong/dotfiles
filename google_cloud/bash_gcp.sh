@@ -13,10 +13,10 @@ function gce() {
             --boot-disk-size="$4GB"
 
     elif [ "$2" = "mosh" ]; then
-        mosh --ssh="ssh -i ~/.ssh/google_compute_engine" akhong@$(gcp-external-ip $1)
+        mosh --ssh="ssh -i ~/.ssh/google_compute_engine" ubuntu@$(gcp-external-ip $1)
 
     elif [ "$2" = "ssh" ]; then
-        gcloud compute ssh akhong@$1 --ssh-flag="-YC"
+        gcloud compute ssh ubuntu@$1
     else
         gcloud compute instances $2 $1
 

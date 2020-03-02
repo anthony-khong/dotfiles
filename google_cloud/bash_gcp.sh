@@ -9,7 +9,7 @@ function gce() {
             --image-family ubuntu-1804-lts \
             --image-project gce-uefi-images \
             --metadata-from-file startup-script=$HOME/dotfiles/google_cloud/startup.sh \
-            --machine-type="n1-standard-$3" \
+            --machine-type="$3" \
             --boot-disk-size="$4GB"
 
     elif [ "$2" = "mosh" ]; then
@@ -22,3 +22,8 @@ function gce() {
 
     fi
 }
+
+# gce matahari create n1-standard-4 64
+# NOTE: use highmem for actual instance
+# TODO: put data into storage
+# TODO: find out how to connect compute instance and storage

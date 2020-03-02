@@ -64,18 +64,20 @@ cd $HOME/dotfiles \
 
 echo "Installing Neovim + dependencies..." >> $INSTALL_LOG
 pip install --upgrade neovim jedi google-api-python-client pyflakes mypy
-sudo add-apt-repository -y ppa:neovim-ppa/stable \
-        && sudo apt-get update \
+sudo apt-get update \
         && sudo apt-get install -y neovim \
         && /bin/bash $HOME/dotfiles/tmux/tpm/scripts/install_plugins.sh
-sudo chown -R $USER "$HOME/.local"
+sudo mkdir -p $HOME/.local && sudo chown -R $USER "$HOME/.local"
 # nvim +PlugInstall +silent +qall
 
-echo "Installing Emacs and its dependencies..." >> $INSTALL_LOG
-sudo add-apt-repository ppa:kelleyk/emacs -y \
-    && sudo apt-get update \
-    && sudo apt install -y emacs26
-emacs26 --daemon &
+# TODO: verify
+#echo "Installing Emacs and its dependencies..." >> $INSTALL_LOG
+#sudo add-apt-repository ppa:kelleyk/emacs -y \
+    #&& sudo apt-get update \
+    #&& sudo apt install -y emacs26
+#emacs26 --daemon &
+
+# TODO: build conjure
 
 echo "Installing Ripgrep..." >> $INSTALL_LOG
 curl -LO https://github.com/BurntSushi/ripgrep/releases/download/0.10.0/ripgrep_0.10.0_amd64.deb
@@ -98,7 +100,7 @@ sudo rm -rf tmate-2.2.1-static-linux-amd64
 sudo rm tmate-2.2.1-static-linux-amd64.tar.gz
 
 echo "Setting up permissions and Docker..." >> $INSTALL_LOG
-sudo chown -R $USER $HOME
+sudo chown -R $USER $HOME/dotfiles
 cd $HOME/dotfiles \
     && git checkout . \
     && cd $HOME

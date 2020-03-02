@@ -42,5 +42,7 @@ ln -s ~/dotfiles/lein_profiles.clj .lein/profiles.clj
 mkdir -p .config/conjure
 ln -s ~/dotfiles/conjure.edn .config/conjure/.conjure.edn
 
-rm ~/.config/karabiner/karabiner.json
-ln -s ~/dotfiles/bash/karabiner.json .config/karabiner/karabiner.json
+if [[ ! -e "$HOME/.config/karabiner/karabiner.json" ]]; then
+    rm ~/.config/karabiner/karabiner.json
+    ln -s ~/dotfiles/bash/karabiner.json .config/karabiner/karabiner.json
+fi

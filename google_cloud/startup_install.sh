@@ -41,6 +41,7 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git \
     ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 git clone https://github.com/zsh-users/zsh-autosuggestions \
     ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+sudo chown -R $USER $HOME/.oh-my-zsh/cache
 
 echo "Installing Miniconda..." >> $INSTALL_LOG
 wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda.sh
@@ -58,6 +59,16 @@ cd $HOME/dotfiles \
     && /bin/bash -c "source ~/dotfiles/bash/bashrc" \
     && /bin/bash $HOME/dotfiles/bash/recreate_symbolic_links
 
+echo "Installing Java..." >> $INSTALL_LOG
+wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | sudo apt-key add -
+sudo add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/
+sudo apt update && sudo apt install -y adoptopenjdk-11-openj9
+
+echo "Installing Clojure..." >> $INSTALL_LOG
+curl -O https://download.clojure.org/install/linux-install-1.10.1.536.sh
+chmod +x linux-install-1.10.1.536.sh
+sudo ./linux-install-1.10.1.536.sh
+
 echo "Installing Neovim + dependencies..." >> $INSTALL_LOG
 pip install --upgrade neovim jedi google-api-python-client pyflakes mypy msgpack pynvim
 curl -L https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage > $HOME/nvim.appimage
@@ -65,6 +76,7 @@ sudo mv $HOME/nvim.appimage /usr/local/bin/nvim
 chmod +x /usr/local/bin/nvim
 /bin/bash $HOME/dotfiles/tmux/tpm/scripts/install_plugins.sh
 nvim +PlugInstall +qall || true
+sudo chown -R $USER $HOME/.local || true
 
 echo "Installing Ripgrep..." >> $INSTALL_LOG
 sudo curl -LO https://github.com/BurntSushi/ripgrep/releases/download/0.10.0/ripgrep_0.10.0_amd64.deb

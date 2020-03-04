@@ -22,8 +22,3 @@ function gce() {
 
     fi
 }
-
-# gce matahari create n1-standard-4 64
-# NOTE: use highmem for actual instance
-# TODO: put data into storage
-# TODO: find out how to connect compute instance and storage

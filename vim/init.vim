@@ -120,10 +120,11 @@ set signcolumn=yes
 set background=dark
 silent! colorscheme vim-monokai-tasty
 au ColorScheme * hi Normal ctermbg=none guibg=none
-" breaks over mosh connection
-"if (has("termguicolors"))
-    "set termguicolors
-"endif
+if $USER != "ubuntu"
+    if (has("termguicolors"))
+        set termguicolors
+    endif
+endif
 
 " Floating window
 let g:float_preview#docked = 0

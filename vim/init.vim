@@ -117,8 +117,11 @@ set splitbelow
 set signcolumn=yes
 
 " Colorscheme
-set background=dark
-silent! colorscheme vim-monokai-tasty
+runtime! plugin/default.vim
+set background=light
+silent! colorscheme akk_light
+"set background=dark
+"silent! colorscheme vim-monokai-tasty
 au ColorScheme * hi Normal ctermbg=none guibg=none
 if $USER != "ubuntu"
     if (has("termguicolors"))
@@ -402,3 +405,4 @@ augroup VIM_SEXP_MAPPING
     autocmd!
     autocmd FileType clojure,scheme,lisp,timl call s:vim_sexp_mappings()
 augroup END
+

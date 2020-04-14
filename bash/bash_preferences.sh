@@ -4,6 +4,7 @@ export PYTHONPATH=$PYTHONPATH:~/grist
 export PYTHONPATH=$PYTHONPATH:~/repos
 export PYTHONPATH=$PYTHONPATH:~/code
 export PYTHONPATH=$PYTHONPATH:~
+export PATH=$HOME/.nimble/bin:$PATH
 export PATH="/opt/openjdk/jdk-11.0.5+10/bin":$PATH
 export PATH="/opt/anaconda/bin:$PATH"
 export PATH=$PATH:/opt
@@ -14,6 +15,7 @@ export PATH="$HOME/dotfiles/vim/plugged/vim-iced/bin:$PATH"
 export NVIM_PYTHON_LOG_FILE=/tmp/log
 export NVIM_PYTHON_LOG_LEVEL=DEBUG
 export BOTO_CONFIG=/dev/null
+export CLOUDSDK_PYTHON=/opt/anaconda/bin/python
 
 # Don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options

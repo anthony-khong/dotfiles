@@ -1,3 +1,5 @@
+let dark_background = 1
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                          Plugin Settings                          "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -118,11 +120,16 @@ set signcolumn=yes
 
 " Colorscheme
 runtime! plugin/default.vim
-set background=light
-silent! colorscheme akk_light
-"set background=dark
-"silent! colorscheme vim-monokai-tasty
-au ColorScheme * hi Normal ctermbg=none guibg=none
+if dark_background
+    set background=dark
+    silent! colorscheme vim-monokai-tasty
+else
+    set background=light
+    silent! colorscheme akk_light
+endif
+hi Normal  guibg=NONE ctermbg=NONE
+hi LineNr  guibg=NONE ctermbg=NONE
+hi NonText guibg=NONE ctermbg=NONE
 if $USER != "ubuntu"
     if (has("termguicolors"))
         set termguicolors
@@ -192,7 +199,7 @@ nnoremap <Space>h <C-W><C-H>
 " Ale
 let g:ale_linters = {
       \ 'python': ['pyflakes', 'mypy'],
-      \ 'clojure': ['clj-kondo', 'joker']
+      \ 'clojure': ['clj-kondo']
       \}
 let g:ale_python_mypy_options = "–ignore-missing-imports"
 let g:ale_linters_explicit = 1

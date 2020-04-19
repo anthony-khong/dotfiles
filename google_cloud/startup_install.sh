@@ -69,6 +69,14 @@ curl -O https://download.clojure.org/install/linux-install-1.10.1.536.sh
 chmod +x linux-install-1.10.1.536.sh
 sudo ./linux-install-1.10.1.536.sh
 
+echo "Installing Lein..." >> $INSTALL_LOG
+curl -O https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
+sudo mv lein /opt/
+chmod a+x /opt/lein
+sudo mkdir -p $HOME/.lein \
+    && sudo chown $USER /opt/lein \
+    && sudo chown -R $USER $HOME/.lein
+
 echo "Installing Neovim + dependencies..." >> $INSTALL_LOG
 pip install --upgrade neovim jedi google-api-python-client pyflakes mypy msgpack pynvim
 curl -L https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage > $HOME/nvim.appimage

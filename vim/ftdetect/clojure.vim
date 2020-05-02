@@ -4,3 +4,11 @@ let g:conjure_quick_doc_normal_mode = v:true
 let g:conjure_log_direction = "vertical"
 let g:conjure_log_size_small = 40
 let g:conjure_log_blacklist = []
+
+let g:conjure_config = {
+    \ "mappings.def-word": "d",
+    \ "log.hud.enabled?": v:true,
+    \ "log.hud.height": "0.95"
+    \ }
+
+nnoremap <Space>cc mwvip:ConjureEval<CR>'wzz

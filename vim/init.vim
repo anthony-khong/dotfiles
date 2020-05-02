@@ -413,3 +413,5 @@ augroup VIM_SEXP_MAPPING
     autocmd FileType clojure,scheme,lisp,timl call s:vim_sexp_mappings()
 augroup END
 
+
+nnoremap <Space>cc mwvip:ConjureEvalSelection<CR>'wzz

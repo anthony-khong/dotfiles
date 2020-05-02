@@ -45,7 +45,7 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tpope/vim-fugitive'
 
 " Lisp
-Plug 'Olical/conjure', { 'tag': 'v2.0.0', 'do': 'bin/compile' }
+Plug 'Olical/conjure', {'branch': 'develop'}
 Plug 'eraserhd/parinfer-rust'
 Plug 'guns/vim-clojure-highlight'
 Plug 'guns/vim-clojure-static'
@@ -192,6 +192,10 @@ nnoremap <Space>k <C-W><C-K>
 nnoremap <Space>l <C-W><C-L>
 nnoremap <Space>h <C-W><C-H>
 
+" Navigating Jumps
+nnoremap <Space>o <C-O>
+nnoremap <Space>i <C-I>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                          Plugin Settings                          "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -326,6 +330,9 @@ let g:jedi#use_splits_not_buffers = "right"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                     Leader + Space Remaps                        "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Reloading
+nnoremap <Space>sv :source $INIT_VIM<CR>:echo "init.vim reloaded!"<CR>
+
 " Turning off highlights (after searching)
 nnoremap <Space>nh :nohlsearch<CR>
 
@@ -412,6 +419,3 @@ augroup VIM_SEXP_MAPPING
     autocmd!
     autocmd FileType clojure,scheme,lisp,timl call s:vim_sexp_mappings()
 augroup END
-
-
-nnoremap <Space>cc mwvip:ConjureEvalSelection<CR>'wzz

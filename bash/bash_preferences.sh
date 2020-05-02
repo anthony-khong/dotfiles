@@ -17,6 +17,7 @@ export NVIM_PYTHON_LOG_LEVEL=DEBUG
 export BOTO_CONFIG=/dev/null
 export CLOUDSDK_PYTHON=/opt/anaconda/bin/python
 export GPG_TTY=$(tty)
+export INIT_VIM="$HOME/dotfiles/vim/init.vim"
 
 # Don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options

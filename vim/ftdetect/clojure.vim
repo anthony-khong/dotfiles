@@ -1,10 +1,4 @@
 " Conjure
-let g:conjure_log_auto_close = v:false
-let g:conjure_quick_doc_normal_mode = v:true
-let g:conjure_log_direction = "vertical"
-let g:conjure_log_size_small = 40
-let g:conjure_log_blacklist = []
-
 let g:conjure_config = {
     \ "mappings.def-word": "d",
     \ "log.hud.enabled?": v:true,
@@ -12,3 +6,4 @@ let g:conjure_config = {
     \ }
 
 nnoremap <Space>cc mwvip:ConjureEval<CR>'wzz
+nmap <Space>cl <Space>lv<C-W><C-H>:exe "vertical resize " . (winwidth(0) * 5/4)<CR>

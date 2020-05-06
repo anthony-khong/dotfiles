@@ -382,6 +382,7 @@ nnoremap <Space>rn :set relativenumber!<CR>
 nnoremap <Space>gg :GitGutter<CR>
 nnoremap <Space>gd :Gdiff<CR>
 nnoremap <Space>gb :Gblame<CR>
+highlight SignColumn guibg=NONE ctermbg=NONE
 
 " Jumps
 " This is to get rid of awful <Leader><Leader> default

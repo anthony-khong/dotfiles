@@ -1,4 +1,4 @@
-let dark_background = 1
+let dark_background = 0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                          Plugin Settings                          "
@@ -34,6 +34,7 @@ Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'ncm2/float-preview.nvim'
 Plug 'patstockwell/vim-monokai-tasty'
 Plug 'plasticboy/vim-markdown'
+Plug 'romgrk/github-light.vim'
 
 " Utilities
 Plug 'christoomey/vim-tmux-navigator'
@@ -125,7 +126,8 @@ if dark_background
     silent! colorscheme vim-monokai-tasty
 else
     set background=light
-    silent! colorscheme akk_light
+    "silent! colorscheme akk_light
+    silent! colorscheme github-light
 endif
 hi Normal  guibg=NONE ctermbg=NONE
 hi LineNr  guibg=NONE ctermbg=NONE

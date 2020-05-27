@@ -1,4 +1,4 @@
-let dark_background = 0
+let dark_background = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                          Plugin Settings                          "
@@ -46,7 +46,7 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tpope/vim-fugitive'
 
 " Lisp
-Plug 'Olical/conjure', {'branch': 'v3.0.0'}
+Plug 'Olical/conjure', {'branch': 'v3.4.0'}
 Plug 'eraserhd/parinfer-rust'
 Plug 'guns/vim-clojure-highlight'
 Plug 'guns/vim-clojure-static'

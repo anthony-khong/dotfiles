@@ -46,7 +46,7 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tpope/vim-fugitive'
 
 " Lisp
-Plug 'Olical/conjure', {'tag': 'v4.0.0'}
+Plug 'Olical/conjure', {'tag': 'v4.1.0'}
 Plug 'eraserhd/parinfer-rust'
 Plug 'guns/vim-clojure-highlight'
 Plug 'guns/vim-clojure-static'
@@ -142,6 +142,9 @@ endif
 let g:float_preview#docked = 0
 let g:float_preview#max_width = 80
 let g:float_preview#max_height = 40
+
+" Word wrapping
+set wrap
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           Vim Bindings                           "

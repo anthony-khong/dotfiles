@@ -29,6 +29,7 @@ Plug 'w0rp/ale'
 
 " Visualisation
 Plug 'airblade/vim-gitgutter'
+Plug 'chuling/equinusocio-material.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'ncm2/float-preview.nvim'
@@ -121,9 +122,19 @@ set signcolumn=yes
 
 " Colorscheme
 runtime! plugin/default.vim
+if $USER != "ubuntu"
+    if (has("termguicolors"))
+        set termguicolors
+    endif
+endif
 if dark_background
     set background=dark
-    silent! colorscheme vim-monokai-tasty
+    let g:equinusocio_material_style = 'pure'
+    let g:equinusocio_material_hide_vertsplit = 1
+    let g:equinusocio_material_bracket_improved = 1
+    set fillchars+=vert:│
+    colorscheme equinusocio_material
+    "silent! colorscheme vim-monokai-tasty
 else
     set background=light
     "silent! colorscheme akk_light
@@ -132,11 +143,6 @@ endif
 hi Normal  guibg=NONE ctermbg=NONE
 hi LineNr  guibg=NONE ctermbg=NONE
 hi NonText guibg=NONE ctermbg=NONE
-if $USER != "ubuntu"
-    if (has("termguicolors"))
-        set termguicolors
-    endif
-endif
 
 " Floating window
 let g:float_preview#docked = 0
@@ -240,9 +246,12 @@ augroup load_ultisnips
 augroup END
 
 " Lightline
+"let g:lightline = {
+      "\ 'colorscheme': 'one',
+      "\ }
 let g:lightline = {
-      \ 'colorscheme': 'one',
-      \ }
+  \ 'colorscheme': 'equinusocio_material',
+  \ }
 
 " Tmux Navigator
 if exists('$TMUX')

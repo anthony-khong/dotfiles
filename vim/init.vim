@@ -48,6 +48,7 @@ Plug 'tpope/vim-fugitive'
 
 " Lisp
 Plug 'Olical/conjure', {'tag': 'v4.1.0'}
+Plug 'bakpakin/fennel.vim'
 Plug 'eraserhd/parinfer-rust'
 Plug 'guns/vim-clojure-highlight'
 Plug 'guns/vim-clojure-static'
@@ -423,8 +424,8 @@ function! s:vim_sexp_mappings()
 
     nmap <buffer> {{ <Plug>(sexp_move_to_prev_element_head)
     nmap <buffer> }} <Plug>(sexp_move_to_next_element_head)
-    nmap <buffer> s< <Plug>(sexp_swap_element_backward)
-    nmap <buffer> s> <Plug>(sexp_swap_element_forward)
+    nmap <buffer> }{ <Plug>(sexp_swap_element_backward)
+    nmap <buffer> {} <Plug>(sexp_swap_element_forward)
 
     nmap <buffer> >< <Plug>(sexp_emit_tail_element)
     nmap <buffer> <> <Plug>(sexp_capture_next_element)

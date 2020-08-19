@@ -1,4 +1,4 @@
-let dark_background =  1
+let dark_background = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                          Plugin Settings                          "
@@ -441,11 +441,7 @@ augroup END
 
 
 function! s:dim_closing_parens()
-    if &background ==# 'dark'
-        hi ClosingParens ctermfg=237 guifg=grey23
-    else
-        hi ClosingParens ctermfg=251 guifg=grey78
-    endif
+    hi link ClosingParens Comment
     call matchadd('ClosingParens', ')')
     call matchadd('ClosingParens', ']')
     call matchadd('ClosingParens', '}')

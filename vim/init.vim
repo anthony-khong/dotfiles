@@ -48,6 +48,7 @@ Plug 'tpope/vim-fugitive'
 
 " Lisp
 Plug 'Olical/conjure', {'tag': 'v4.1.0'}
+Plug 'bakpakin/fennel.vim'
 Plug 'eraserhd/parinfer-rust'
 Plug 'guns/vim-clojure-highlight'
 Plug 'guns/vim-clojure-static'
@@ -426,8 +427,8 @@ function! s:vim_sexp_mappings()
 
     nmap <buffer> {{ <Plug>(sexp_move_to_prev_element_head)
     nmap <buffer> }} <Plug>(sexp_move_to_next_element_head)
-    nmap <buffer> s< <Plug>(sexp_swap_element_backward)
-    nmap <buffer> s> <Plug>(sexp_swap_element_forward)
+    nmap <buffer> }{ <Plug>(sexp_swap_element_backward)
+    nmap <buffer> {} <Plug>(sexp_swap_element_forward)
 
     nmap <buffer> >< <Plug>(sexp_emit_tail_element)
     nmap <buffer> <> <Plug>(sexp_capture_next_element)
@@ -437,3 +438,17 @@ augroup VIM_SEXP_MAPPING
     autocmd!
     autocmd FileType clojure,scheme,lisp,timl call s:vim_sexp_mappings()
 augroup END
+
+
+function! s:dim_closing_parens()
+    if &background ==# 'dark'
+        hi ClosingParens ctermfg=237 guifg=grey23
+    else
+        hi ClosingParens ctermfg=251 guifg=grey78
+    endif
+    call matchadd('ClosingParens', ')')
+    call matchadd('ClosingParens', ']')
+    call matchadd('ClosingParens', '}')
+endfunction
+
+autocmd FileType clojure,scheme,lisp,timl call s:dim_closing_parens()

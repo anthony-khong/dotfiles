@@ -1,4 +1,4 @@
-let dark_background = 1
+let dark_background =  1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                          Plugin Settings                          "
@@ -246,12 +246,15 @@ augroup load_ultisnips
 augroup END
 
 " Lightline
-"let g:lightline = {
-      "\ 'colorscheme': 'one',
-      "\ }
-let g:lightline = {
-  \ 'colorscheme': 'equinusocio_material',
-  \ }
+if dark_background
+    let g:lightline = {
+    \ 'colorscheme': 'equinusocio_material',
+    \ }
+else
+    let g:lightline = {
+        \ 'colorscheme': 'one',
+        \ }
+endif
 
 " Tmux Navigator
 if exists('$TMUX')

@@ -435,3 +435,17 @@ augroup VIM_SEXP_MAPPING
     autocmd!
     autocmd FileType clojure,scheme,lisp,timl call s:vim_sexp_mappings()
 augroup END
+
+
+function! s:dim_closing_parens()
+    if &background ==# 'dark'
+        hi ClosingParens ctermfg=237 guifg=grey23
+    else
+        hi ClosingParens ctermfg=251 guifg=grey78
+    endif
+    call matchadd('ClosingParens', ')')
+    call matchadd('ClosingParens', ']')
+    call matchadd('ClosingParens', '}')
+endfunction
+
+autocmd FileType clojure,scheme,lisp,timl call s:dim_closing_parens()

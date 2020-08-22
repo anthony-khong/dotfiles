@@ -1,4 +1,7 @@
+set nocompatible hidden laststatus=2
 let dark_background = 1
+set shell=/bin/zsh
+let $SHELL = "/bin/zsh"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                          Plugin Settings                          "
@@ -42,6 +45,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'jpalardy/vim-slime'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'yuki-ycino/fzf-preview.vim', { 'branch': 'release', 'do': ':UpdateRemotePlugins' }
 Plug 'scrooloose/nerdtree'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tpope/vim-fugitive'
@@ -361,7 +365,7 @@ nnoremap <Space>nh :nohlsearch<CR>
 nnoremap <Space>eq :q<CR>
 
 " Tabs (misnamed as buffers)
-nnoremap <Space>be :FZF<CR>
+nnoremap <Space>be :FzfPreviewDirectoryFiles<CR>
 nnoremap <Space>bh :FZF ~<CR>
 nnoremap <Space>bj :NERDTreeToggle<CR>
 nnoremap <Space>bn :tabnext<CR>

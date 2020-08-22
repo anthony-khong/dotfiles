@@ -40,7 +40,8 @@ Plug 'romgrk/github-light.vim'
 " Utilities
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'jpalardy/vim-slime'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'yuki-ycino/fzf-preview.vim', { 'branch': 'release', 'do': ':UpdateRemotePlugins' }
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'tmux-plugins/vim-tmux-focus-events'
@@ -361,7 +362,7 @@ nnoremap <Space>nh :nohlsearch<CR>
 nnoremap <Space>eq :q<CR>
 
 " Tabs (misnamed as buffers)
-nnoremap <Space>be :FZF<CR>
+nnoremap <Space>be :FzfPreviewDirectoryFiles<CR>
 nnoremap <Space>bh :FZF ~<CR>
 nnoremap <Space>bj :NERDTreeToggle<CR>
 nnoremap <Space>bn :tabnext<CR>

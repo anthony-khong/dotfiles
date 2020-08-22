@@ -108,3 +108,5 @@ source ~/dotfiles/bash/bash_preferences.sh
 source ~/dotfiles/google_cloud/bash_gcp.sh
 
 export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
+
+[ -z "$ZSH_NAME" ] && [ -f ~/.fzf.bash ] && source ~/.fzf.bash

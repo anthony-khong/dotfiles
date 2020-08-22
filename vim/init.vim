@@ -45,7 +45,6 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'jpalardy/vim-slime'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'yuki-ycino/fzf-preview.vim', { 'branch': 'release', 'do': ':UpdateRemotePlugins' }
 Plug 'scrooloose/nerdtree'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tpope/vim-fugitive'
@@ -366,7 +365,7 @@ nnoremap <Space>eq :q<CR>
 
 " Tabs (misnamed as buffers)
 nnoremap <Space>be :call fzf#vim#files('', fzf#vim#with_preview('down'))<CR>
-nnoremap <Space>bh :FZF ~<CR>
+nnoremap <Space>bh :call fzf#vim#files('~', fzf#vim#with_preview('down'))<CR>
 nnoremap <Space>bj :NERDTreeToggle<CR>
 nnoremap <Space>bn :tabnext<CR>
 nnoremap <Space>bp :tabprevious<CR>

@@ -365,7 +365,7 @@ nnoremap <Space>nh :nohlsearch<CR>
 nnoremap <Space>eq :q<CR>
 
 " Tabs (misnamed as buffers)
-nnoremap <Space>be :FzfPreviewDirectoryFiles<CR>
+nnoremap <Space>be :call fzf#vim#files('', fzf#vim#with_preview('down'))<CR>
 nnoremap <Space>bh :FZF ~<CR>
 nnoremap <Space>bj :NERDTreeToggle<CR>
 nnoremap <Space>bn :tabnext<CR>

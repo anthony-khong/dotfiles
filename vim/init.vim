@@ -300,6 +300,9 @@ let g:EasyMotion_smartcase = 1
 let g:EasyMotion_keys = "aoeui'l;z,rqv.cjwyfxbdhtns"
 
 " FuzzySearch
+let g:fzf_layout = { 'window': { 'width': 0.9, 
+                               \ 'height': 0.67,
+                               \ 'border': 'rounded' } }
 let g:fzf_action = {
             \'enter': 'tabedit',
             \'ctrl-v': 'vsplit',

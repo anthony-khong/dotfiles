@@ -65,14 +65,16 @@ export FZF_DEFAULT_COMMAND="rg --files\
 export FZF_TMUX=1
 export FZF_TMUX_HEIGHT=20
 
-if [ -e ~/bashrc_agoda ]
-then
-    source ~/bashrc_agoda
-fi
-
 if [[ -a /opt/anaconda/bin/aws_zsh_completer.sh ]]; then
     source /opt/anaconda/bin/aws_zsh_completer.sh
 fi
 
 # Fixes some locale error when running mosh
 export LC_ALL="en_US.UTF-8"
+
+# Make FZF search faster
+if [[ "$SHELL" == *"bash"* ]]; then
+    [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+elif [[ "$SHELL" == *"zsh"* ]]; then
+    [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+fi

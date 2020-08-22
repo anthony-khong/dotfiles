@@ -48,16 +48,6 @@ fi
 export VISUAL=nvim
 export EDITOR="$VISUAL"
 
-# Make FZF search faster
-if [[ "$0" == "bash" ]]; then
-    [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-elif [[ "$0" == "zsh" ]]; then
-    [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-fi
-
-# This controls what happens in Terminal
-# export FZF_CTRL_T_COMMAND="ag -l -g ''"
-
 # This controls what happens in Vim
 export FZF_DEFAULT_COMMAND="rg --files\
                             -g '*'\

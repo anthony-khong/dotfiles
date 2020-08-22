@@ -25,4 +25,4 @@ export SCREEN=xterm-256color
 
 export IP=$(ifconfig en0 | grep inet | awk '$1=="inet" {print $2}')
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+[ -z "$ZSH_NAME" ] && [ -f ~/.fzf.bash ] && source ~/.fzf.bash

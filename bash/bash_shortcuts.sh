@@ -38,9 +38,6 @@ function setup_nvim() {
 }
 
 # Emacs shortcuts
-if type emacs26 > /dev/null; then
-    alias emacs=emacs26
-fi
 alias em="emacs -nw"
 alias ec="emacsclient -a '' -nw"
 

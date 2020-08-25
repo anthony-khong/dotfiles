@@ -307,6 +307,10 @@ let g:fzf_action = {
             \'enter': 'tabedit',
             \'ctrl-v': 'vsplit',
             \'ctrl-t': 'tabedit'}
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview(), <bang>0)
 
 " UltiSnips
 let g:UltiSnipsExpandTrigger = "<Tab>"
@@ -363,6 +367,7 @@ nnoremap <Space>eq :q<CR>
 " Tabs (misnamed as buffers)
 nnoremap <Space>be :call fzf#vim#files('', fzf#vim#with_preview('down'))<CR>
 nnoremap <Space>bh :call fzf#vim#files('~', fzf#vim#with_preview('down'))<CR>
+nnoremap <Space>bf :Rg<CR>
 nnoremap <Space>bj :NERDTreeToggle<CR>
 nnoremap <Space>bn :tabnext<CR>
 nnoremap <Space>bp :tabprevious<CR>

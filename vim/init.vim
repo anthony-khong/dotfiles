@@ -1,7 +1,4 @@
-set nocompatible hidden laststatus=2
 let dark_background = 1
-set shell=/bin/zsh
-let $SHELL = "/bin/zsh"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                          Plugin Settings                          "
@@ -132,13 +129,13 @@ if $USER != "ubuntu"
     endif
 endif
 if dark_background
-    set background=dark
-    let g:equinusocio_material_style = 'pure'
-    let g:equinusocio_material_hide_vertsplit = 1
-    let g:equinusocio_material_bracket_improved = 1
-    set fillchars+=vert:│
-    colorscheme equinusocio_material
-    "silent! colorscheme vim-monokai-tasty
+    "set background=dark
+    "let g:equinusocio_material_style = 'pure'
+    "let g:equinusocio_material_hide_vertsplit = 1
+    "let g:equinusocio_material_bracket_improved = 1
+    "set fillchars+=vert:│
+    "colorscheme equinusocio_material
+    silent! colorscheme vim-monokai-tasty
 else
     set background=light
     "silent! colorscheme akk_light

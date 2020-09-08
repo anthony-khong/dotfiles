@@ -141,9 +141,6 @@ function rctags() {
     ctags -R -f ./.git/tags .
 }
 
-# Racket
-alias racket='docker run -it racket'
-
 # Trim
 function trim_image() {
     convert "$1" -trim "$1"
@@ -164,56 +161,20 @@ function enable_git_status () {
     git config --unset-all oh-my-zsh.hide-status
 }
 
-# Clojure
-function setup_parinfer_neovim () {
-    cd ~/dotfiles/vim/plugged/parinfer-rust/cparinfer
-    cargo build --release
+# Encryption
+function tar-enc () {
+	TMP=$(mktemp -d)
+    echo "tar-ing to $TMP/$1.tar.gz ..."
+    tar -czf "$TMP/$1.tar.gz" "$1"
+    echo "enc-ing to $1.secrude ..."
+    openssl enc -aes256 -salt -in "$TMP/$1.tar.gz" -out "$1.secured"
 }
 
-function install_lein () {
-    curl https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein > lein
-    sudo mkdir -p /usr/local/bin/
-    sudo mv lein /usr/local/bin/lein
-    sudo chmod a+x /usr/local/bin/lein
-    lein
-}
-
-# Haskell
-alias ghci='stack ghci'
-alias ho='hoogle'
-
-function auto_stack_test() {
-    do_if_read "$1" "stack test"
-}
-
-function hs_script() {
-    touch "$1"
-    echo "#!/usr/bin/env stack"     >> "$1"
-    echo "{- stack"                 >> "$1"
-    echo "     --resolver lts-11.7" >> "$1"
-    echo "     exec ghci"           >> "$1"
-    echo "-}"                       >> "$1"
-    echo ""                         >> "$1"
-    echo "main :: IO ()"            >> "$1"
-    echo "main = return ()"         >> "$1"
-}
-
-# Scala shortcuts
-alias sc='scala -i'
-alias samm='sbt ammonite:run'
-alias sbt="sbt -mem 2048"
-
-# FSharp
-function install-paket() {
-    export PAKET_URL=https://github.com/fsprojects/Paket/releases/download/5.194.0/paket.bootstrapper.exe
-    mkdir .paket
-    curl -L $PAKET_URL -o .paket/paket.bootstrapper.exe
-    mono .paket/paket.bootstrapper.exe
-    echo ".paket/paket.exe" >> .gitignore
-    echo ".packages" >> .gitignore
-    mono .paket/paket.exe install
-}
-
-function fix-mojave-header-files() {
-    open /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg
+function dec-tar () {
+	TMP=$(mktemp -d)
+    FNAME=$(echo "$1" | sed -e "s/.secured$//")
+    echo "dec-ing to $TMP/$FNAME.tar.gz"
+    openssl enc -d -aes256 -in "$1" -out "$TMP/$FNAME.tar.gz"
+    echo "untar-ing to $PWD"
+    tar -xzf "$TMP/$FNAME.tar.gz" -C .
 }

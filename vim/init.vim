@@ -300,8 +300,8 @@ let g:EasyMotion_smartcase = 1
 let g:EasyMotion_keys = "aoeui'l;z,rqv.cjwyfxbdhtns"
 
 " FuzzySearch
-let g:fzf_layout = { 'window': { 'width': 0.9, 
-                               \ 'height': 0.67,
+let g:fzf_layout = { 'window': { 'width': 0.95,
+                               \ 'height': 0.9,
                                \ 'border': 'rounded' } }
 let g:fzf_action = {
             \'enter': 'tabedit',
@@ -365,8 +365,8 @@ nnoremap <Space>nh :nohlsearch<CR>
 nnoremap <Space>eq :q<CR>
 
 " Tabs (misnamed as buffers)
-nnoremap <Space>be :call fzf#vim#files('', fzf#vim#with_preview('down'))<CR>
-nnoremap <Space>bh :call fzf#vim#files('~', fzf#vim#with_preview('down'))<CR>
+nnoremap <Space>be :call fzf#vim#files('', fzf#vim#with_preview('down:60%'))<CR>
+nnoremap <Space>bh :call fzf#vim#files('~', fzf#vim#with_preview('down:60%'))<CR>
 nnoremap <Space>bf :Rg<CR>
 nnoremap <Space>bj :NERDTreeToggle<CR>
 nnoremap <Space>bn :tabnext<CR>

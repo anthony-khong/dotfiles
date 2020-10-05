@@ -16,6 +16,7 @@ Plug 'ervandew/supertab'
 Plug 'honza/vim-snippets'
 Plug 'junegunn/vim-easy-align'
 Plug 'scrooloose/nerdcommenter'
+Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 
 " Motions
@@ -62,6 +63,28 @@ Plug 'zchee/deoplete-jedi'
 
 " Docker
 Plug 'ekalinin/Dockerfile.vim'
+
+" TSX
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+
+" Ruby
+Plug 'Keithbsmiley/rspec.vim', { 'for': 'ruby' }
+Plug 'Shougo/neco-syntax'
+Plug 'janko-m/vim-test'
+Plug 'kana/vim-textobj-user', { 'for': ['ruby'] }
+Plug 'nelstrom/vim-textobj-rubyblock', { 'for': ['ruby'] }
+Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
+Plug 'thoughtbot/vim-rspec', { 'for': 'ruby' }
+Plug 'tpope/vim-bundler', { 'for': 'ruby' }
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-rake', { 'for': 'ruby' }
+Plug 'tpope/vim-rbenv', { 'for': 'ruby' }
+Plug 'vim-ruby/vim-ruby'
+
+" Haml, Sass, and SCSS
+Plug 'tpope/vim-haml', { 'for': ['haml'] }
 
 call plug#end()
 

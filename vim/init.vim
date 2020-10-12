@@ -40,6 +40,7 @@ Plug 'romgrk/github-light.vim'
 
 " Utilities
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'janko-m/vim-test'
 Plug 'jpalardy/vim-slime'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -55,7 +56,6 @@ Plug 'guns/vim-clojure-highlight'
 Plug 'guns/vim-clojure-static'
 Plug 'guns/vim-sexp'
 Plug 'tpope/vim-sexp-mappings-for-regular-people'
-Plug 'venantius/vim-cljfmt'
 
 " Python
 Plug 'davidhalter/jedi-vim'
@@ -71,8 +71,6 @@ Plug 'peitalin/vim-jsx-typescript'
 
 " Ruby
 Plug 'Keithbsmiley/rspec.vim', { 'for': 'ruby' }
-Plug 'Shougo/neco-syntax'
-Plug 'janko-m/vim-test'
 Plug 'kana/vim-textobj-user', { 'for': ['ruby'] }
 Plug 'nelstrom/vim-textobj-rubyblock', { 'for': ['ruby'] }
 Plug 'thoughtbot/vim-rspec', { 'for': 'ruby' }

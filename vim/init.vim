@@ -74,7 +74,6 @@ Plug 'Shougo/neco-syntax'
 Plug 'janko-m/vim-test'
 Plug 'kana/vim-textobj-user', { 'for': ['ruby'] }
 Plug 'nelstrom/vim-textobj-rubyblock', { 'for': ['ruby'] }
-Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
 Plug 'thoughtbot/vim-rspec', { 'for': 'ruby' }
 Plug 'tpope/vim-bundler', { 'for': 'ruby' }
 Plug 'tpope/vim-endwise'

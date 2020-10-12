@@ -1,9 +1,5 @@
 unset DYLD_FALLBACK_LIBRARY_PATH
-export PYTHONPATH=$PYTHONPATH:~/carvil
-export PYTHONPATH=$PYTHONPATH:~/grist
 export PYTHONPATH=$PYTHONPATH:~/repos
-export PYTHONPATH=$PYTHONPATH:~/code
-export PYTHONPATH=$PYTHONPATH:~
 export PATH=$HOME/.nimble/bin:$PATH
 export PATH="/opt/openjdk/jdk-11.0.5+10/bin":$PATH
 export PATH="/opt/anaconda/bin:$PATH"
@@ -12,6 +8,7 @@ export PATH=$PATH:~/.local/bin
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$PATH:/snap/bin/"
 export PATH="$PATH:/opt/spark/bin"
+export PATH="$HOME/.rbenv/shims:$PATH"
 export NVIM_PYTHON_LOG_FILE=/tmp/log
 export NVIM_PYTHON_LOG_LEVEL=DEBUG
 export BOTO_CONFIG=/dev/null

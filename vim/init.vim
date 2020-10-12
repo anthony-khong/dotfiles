@@ -55,6 +55,7 @@ Plug 'guns/vim-clojure-highlight'
 Plug 'guns/vim-clojure-static'
 Plug 'guns/vim-sexp'
 Plug 'tpope/vim-sexp-mappings-for-regular-people'
+Plug 'venantius/vim-cljfmt'
 
 " Python
 Plug 'davidhalter/jedi-vim'

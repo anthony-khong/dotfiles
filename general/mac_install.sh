@@ -17,7 +17,7 @@ git clone https://github.com/zsh-users/zsh-autosuggestions \
 # chmod 755 /usr/local/share/zsh/site-functions
 
 # Essentials
-brew install bat entr mosh node pandoc postgresql ripgrep wget yarn
+brew install bat entr gnupg2 mosh node pandoc postgresql ripgrep wget yarn
 
 # Git LFS
 brew install git-fls
@@ -89,3 +89,8 @@ tar -xf google-cloud-sdk-313.0.1-darwin-x86_64.tar.gz google-cloud-sdk/
 ./google-cloud-sdk/install.sh
 ./google-cloud-sdk/bin/gcloud init
 
+# GPG
+
+gpg --gen-key
+gpg --list-keys --keyid-format LONG
+gpg --keyserver hkp://hkps.pool.sks-keyservers.net --send-keys $PUBLIC_KEY_ID

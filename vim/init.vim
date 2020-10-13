@@ -1,4 +1,4 @@
-let dark_background = 0
+let dark_background = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                          Plugin Settings                          "
@@ -161,7 +161,7 @@ else
     set background=light
     "silent! colorscheme akk_light
     silent! colorscheme github-light
-    let $BAT_THEME='Monokai Extended Light'
+    let $BAT_THEME='gruvbox-light'
 endif
 hi Normal  guibg=NONE ctermbg=NONE
 hi LineNr  guibg=NONE ctermbg=NONE

@@ -17,7 +17,7 @@ git clone https://github.com/zsh-users/zsh-autosuggestions \
 # chmod 755 /usr/local/share/zsh/site-functions
 
 # Essentials
-brew install bat entr gnupg2 mosh node pandoc postgresql ripgrep wget yarn
+brew install bash bat entr gnupg2 mosh node pandoc postgresql ripgrep wget yarn
 
 # Git LFS
 brew install git-fls

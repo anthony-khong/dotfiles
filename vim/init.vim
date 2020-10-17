@@ -49,7 +49,7 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tpope/vim-fugitive'
 
 " Lisp
-Plug 'Olical/conjure', {'tag': 'v4.1.0'}
+Plug 'Olical/conjure', {'tag': 'v4.7.0'}
 Plug 'bakpakin/fennel.vim'
 Plug 'eraserhd/parinfer-rust'
 Plug 'guns/vim-clojure-highlight'

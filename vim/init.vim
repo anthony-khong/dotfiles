@@ -62,6 +62,10 @@ Plug 'davidhalter/jedi-vim'
 Plug 'sbdchd/neoformat'
 Plug 'zchee/deoplete-jedi'
 
+" Lua
+Plug 'xolox/vim-lua-ftplugin'
+Plug 'xolox/vim-misc'
+
 " Docker
 Plug 'ekalinin/Dockerfile.vim'
 

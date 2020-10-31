@@ -63,6 +63,8 @@ Plug 'sbdchd/neoformat'
 Plug 'zchee/deoplete-jedi'
 
 " Lua
+Plug 'Olical/aniseed', { 'tag': 'v3.10.0' }
+Plug 'bakpakin/fennel.vim'
 Plug 'xolox/vim-lua-ftplugin'
 Plug 'xolox/vim-misc'
 

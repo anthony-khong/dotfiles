@@ -242,6 +242,7 @@ nnoremap <Space>i <C-I>
 
 " Ale
 let g:ale_linters = {
+      \ 'ruby': ['rubocop'],
       \ 'python': ['pyflakes', 'mypy'],
       \ 'clojure': ['clj-kondo']
       \}

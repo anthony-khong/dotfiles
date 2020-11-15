@@ -178,3 +178,8 @@ function dec-tar () {
     echo "untar-ing to $PWD"
     tar -xzf "$TMP/$FNAME.tar.gz" -C .
 }
+
+# Babashka
+function bb-nrepl () {
+    bb --nrepl-server 4444
+}

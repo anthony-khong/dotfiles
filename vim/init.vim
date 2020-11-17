@@ -181,6 +181,15 @@ let g:float_preview#max_height = 40
 " Word wrapping
 set wrap
 
+" Filetype based on shebang
+fun! s:DetectFileType()
+    if getline(1) == '#!/usr/bin/env bb'
+        set ft=clojure
+    endif
+endfun
+
+autocmd BufNewFile,BufRead * call s:DetectFileType()
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           Vim Bindings                           "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

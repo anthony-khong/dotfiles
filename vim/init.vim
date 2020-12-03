@@ -1,4 +1,4 @@
-let dark_background = 1
+let dark_background = ($DARK_VIM == "1")
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                          Plugin Settings                          "

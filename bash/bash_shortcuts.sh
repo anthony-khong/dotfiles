@@ -37,6 +37,16 @@ function setup_nvim() {
     nvim +PlugInstall +qall;
 }
 
+function dark_vim() {
+    DARK_VIM=1
+    echo "DARK_VIM set to $DARK_VIM"
+}
+
+function light_vim() {
+    DARK_VIM=0
+    echo "DARK_VIM set to $DARK_VIM"
+}
+
 # Emacs shortcuts
 alias em="emacs -nw"
 alias ec="emacsclient -a '' -nw"

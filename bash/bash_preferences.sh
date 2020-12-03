@@ -17,6 +17,9 @@ export CLOUDSDK_PYTHON=/opt/anaconda/bin/python
 export GPG_TTY=$(tty)
 export INIT_VIM="$HOME/dotfiles/vim/init.vim"
 
+# Vim's dark background
+export DARK_VIM=1
+
 # Don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTSIZE=1000

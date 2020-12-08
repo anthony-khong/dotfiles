@@ -183,7 +183,7 @@ set wrap
 
 " Filetype based on shebang
 fun! s:DetectFileType()
-    if getline(1) == '#!/usr/bin/env bb'
+    if getline(1) =~ '#!/usr/bin/env bb'
         set ft=clojure
     endif
 endfun

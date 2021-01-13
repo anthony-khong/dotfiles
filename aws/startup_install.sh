@@ -45,7 +45,7 @@ wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/
 sudo bash ~/miniconda.sh -b -p /opt/anaconda && sudo rm ~/miniconda.sh
 sudo chown -R $USER /opt/anaconda/
 export PATH="/opt/anaconda/bin:$PATH"
-pip install --upgrade pip
+pip3 install --upgrade pip
 
 echo "Setting up Git..." >> $INSTALL_LOG
 git config --global user.email "anthony.kusumo.khong@gmail.com"
@@ -63,21 +63,14 @@ cd $HOME/dotfiles \
     && /bin/bash $HOME/dotfiles/bash/recreate_symbolic_links
 
 echo "Installing Neovim + dependencies..." >> $INSTALL_LOG
-pip install --upgrade neovim jedi google-api-python-client pyflakes mypy
-sudo apt-get update \
-        && sudo apt-get install -y neovim \
-        && /bin/bash $HOME/dotfiles/tmux/tpm/scripts/install_plugins.sh
+pip3 install --upgrade neovim jedi google-api-python-client pyflakes mypy
+sudo add-apt-repository ppa:neovim-ppa/stable -y \
+    && sudo apt-get update \
+    && sudo apt-get install -y neovim \
+    && /bin/bash $HOME/dotfiles/tmux/tpm/scripts/install_plugins.sh
 sudo mkdir -p $HOME/.local && sudo chown -R $USER "$HOME/.local"
 # nvim +PlugInstall +silent +qall
-
-# TODO: verify
-#echo "Installing Emacs and its dependencies..." >> $INSTALL_LOG
-#sudo add-apt-repository ppa:kelleyk/emacs -y \
-    #&& sudo apt-get update \
-    #&& sudo apt install -y emacs26
-#emacs26 --daemon &
-
-# TODO: build conjure
+# TODO: install vim-slime manually
 
 echo "Installing Ripgrep..." >> $INSTALL_LOG
 curl -LO https://github.com/BurntSushi/ripgrep/releases/download/0.10.0/ripgrep_0.10.0_amd64.deb

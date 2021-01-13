@@ -19,6 +19,9 @@ function tm() {
     fi
 }
 
+# Gcloud
+alias gcurl='curl --header "Authorization: Bearer $(gcloud auth print-identity-token)"'
+
 # Pretty Print JSON
 alias ppj='python -m json.tool'
 

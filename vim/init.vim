@@ -51,6 +51,7 @@ Plug 'tpope/vim-fugitive'
 " Lisp
 Plug 'Olical/conjure', {'tag': 'v4.7.0'}
 Plug 'bakpakin/fennel.vim'
+Plug 'clojure-vim/async-clj-omni'
 Plug 'eraserhd/parinfer-rust'
 Plug 'guns/vim-clojure-highlight'
 Plug 'guns/vim-clojure-static'
@@ -494,3 +495,5 @@ function! s:dim_closing_parens()
 endfunction
 
 autocmd FileType clojure,scheme,lisp,timl call s:dim_closing_parens()
+
+autocmd BufRead,BufNewFile *.htm,*.html,*.yml,*.yaml setlocal tabstop=2 shiftwidth=2 softtabstop=2

@@ -64,6 +64,8 @@ rm install-clj-kondo
 
 bash <(curl -s https://raw.githubusercontent.com/borkdude/babashka/master/install)
 
+go get github.com/cespare/goclj/cljfmt
+
 # Ruby
 brew install rbenv
 rbenv init

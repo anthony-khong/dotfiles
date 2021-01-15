@@ -45,10 +45,6 @@ function aws-terminate-cloud-dev() {
 
 
 
-function aws-get-session-token() {
-    aws sts get-session-token --serial-number $1 --token-code $2 >> ~/.aws/.last_login_token.json
-}
-
 function aws-set-session-token() {
     export AWS_ACCESS_KEY_ID=$(cat ~/.aws/.last_login_token.json | jq '.Credentials.AccessKeyId' | tr -d '"')
     echo "AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID"
@@ -57,3 +53,9 @@ function aws-set-session-token() {
     export AWS_SESSION_TOKEN=$(cat ~/.aws/.last_login_token.json | jq '.Credentials.SessionToken' | tr -d '"')
     echo "AWS_SESSION_TOKEN=$AWS_SESSION_TOKEN"
 }
+
+function aws-get-session-token() {
+    aws sts get-session-token --serial-number $1 --token-code $2 >> ~/.aws/.last_login_token.json
+    aws-set-session-token
+}
+

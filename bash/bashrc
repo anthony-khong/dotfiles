@@ -106,6 +106,7 @@ source ~/dotfiles/bash/bash_python.sh
 source ~/dotfiles/bash/bash_docker.sh
 source ~/dotfiles/bash/bash_preferences.sh
 source ~/dotfiles/google_cloud/bash_gcp.sh
+source ~/dotfiles/aws/bash_aws.sh
 
 export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
 

@@ -42,3 +42,18 @@ function mosh-aws-cloud-dev() {
 function aws-terminate-cloud-dev() {
     aws ec2 terminate-instances --instance-ids $(cloud-dev-instance-id)
 }
+
+
+
+function aws-get-session-token() {
+    aws sts get-session-token --serial-number $1 --token-code $2 >> ~/.aws/.last_login_token.json
+}
+
+function aws-set-session-token() {
+    export AWS_ACCESS_KEY_ID=$(cat ~/.aws/.last_login_token.json | jq '.Credentials.AccessKeyId' | tr -d '"')
+    echo "AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID"
+    export AWS_SECRET_ACCESS_KEY=$(cat ~/.aws/.last_login_token.json | jq '.Credentials.SecretAccessKey' | tr -d '"')
+    echo "AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY"
+    export AWS_SESSION_TOKEN=$(cat ~/.aws/.last_login_token.json | jq '.Credentials.SessionToken' | tr -d '"')
+    echo "AWS_SESSION_TOKEN=$AWS_SESSION_TOKEN"
+}

@@ -5,6 +5,7 @@ export INSTALL_LOG="$HOME/.startup.log"
 
 echo "Installing mosh..." >> $INSTALL_LOG
 sudo apt-get update && sudo apt-get install -y mosh
+# sudo ufw allow 60000:61000/udp
 
 echo "Installing essential apps with apt-get..." >> $INSTALL_LOG
 sudo apt-get update && sudo apt-get install -y \
@@ -21,6 +22,11 @@ sudo apt-get update && sudo apt-get install -y \
     tmux \
     unzip \
     xclip
+sudo apt-get update && sudo apt-get install -y \
+    clang-format clang-tidy clang-tools clang libc++-dev \
+    libc++1 libc++abi-dev libc++abi1 libclang-dev libclang1 \
+    libomp-dev libomp5 lld lldb llvm-dev llvm-runtime llvm
+sudo apt-get install -y cloud-utils
 
 echo "Installing Docker..." >> $INSTALL_LOG
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg \
@@ -100,15 +106,39 @@ cd $HOME/dotfiles \
 sudo usermod -a -G docker $USER
 sudo usermod -aG sudo $USER
 
-# echo "Creating 32G of swap file..." >> $INSTALL_LOG
-# sudo fallocate -l 32G /swapfile
-# sudo chmod 600 /swapfile
-# sudo mkswap /swapfile
-# sudo swapon /swapfile
-# sudo cp /etc/fstab /etc/fstab.bak
-# echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+echo "Installing Java..." >> $INSTALL_LOG
+wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | sudo apt-key add -
+sudo add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/
+sudo apt-get update && sudo apt-get install -y adoptopenjdk-11-hotspot
 
-echo "Installing Xorg.." >> $INSTALL_LOG
-sudo apt-get -y install xorg openbox
+echo "Installing Lein..." >> $INSTALL_LOG
+wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
+sudo mv lein /usr/local/bin/
+chmod a+x /usr/local/bin/lein
+lein || true
+
+echo "Installing Geni and its depencies..." >> $INSTALL_LOG
+wget https://raw.githubusercontent.com/zero-one-group/geni/develop/scripts/geni
+chmod a+x geni
+sudo mv geni /usr/local/bin/
+exit | geni
+git clone https://github.com/anthony-khong/geni.git \
+    && cd geni \
+    && lein deps \
+    && cd $HOME
+
+echo "Installing common Python libraries ..." >> $INSTALL_LOG
+pip install \
+    click cytoolz ipython pdbpp mypy hypothesis pytest pytest-cov \
+    jax jaxlib matplotlib numpy pandas scikit-image scikit-learn scipy \
+    dask[complete] lightgbm pyarrow fastparquet xgboost
+
+ echo "Creating 32G of swap file..." >> $INSTALL_LOG
+ sudo fallocate -l 32G /swapfile
+ sudo chmod 600 /swapfile
+ sudo mkswap /swapfile
+ sudo swapon /swapfile
+ sudo cp /etc/fstab /etc/fstab.bak
+ echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
 
 echo "Setup complete!" >> $INSTALL_LOG

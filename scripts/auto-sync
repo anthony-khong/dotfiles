@@ -1,13 +1,13 @@
 #!/bin/bash
 # Sources:
-# - https://unix.stackexchange.com/questions/2161/rsync-filter-copying-one-pattern-only
+# - https://vishnudevtj.github.io/notes/rsync
 # - https://unix.stackexchange.com/a/42292
 
 set -euo pipefail
 
 print_help() {
     echo "Detects changes in the current directory, and syncs to a destination."
-    echo "Note: does not detect new files and ignores files according to .gitignore!" 
+    echo "Note: does not detect new files and ignores files according to .gitignore!"
     echo -e
     echo "Usage: auto-sync --destination DEST [--port PORT]"
     echo -e
@@ -58,11 +58,15 @@ if [[ "$destination" = null ]]; then
     print_help
     exit 1
 else
-    ls -d * | entr -d \
-        rsync -avz \
-            -e "ssh -p $port" \
-            --filter=':- .gitignore' \
-            --exclude='.git/' \
-            --max-size=1.0m \
-            . "$destination";
+    while true ;do \
+        sleep 2s;
+        find . -not -path "./.git*" | \
+            entr -d \
+                rsync -avz \
+                    -e "ssh -p $port" \
+                    --filter=':- .gitignore' \
+                    --exclude='.git/' \
+                    --max-size=1.0m \
+                    . "$destination";
+    done
 fi

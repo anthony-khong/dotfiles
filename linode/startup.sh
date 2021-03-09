@@ -5,7 +5,7 @@ export INSTALL_LOG="$HOME/.startup.log"
 echo "Installing build-essential..." >> $INSTALL_LOG
 sudo apt-get update && sudo apt-get install -y build-essential git
 
-sudo apt-get update && apt-get install -y \
+sudo apt-get update && sudo apt-get install -y \
     clang-format clang-tidy clang-tools clang clangd libc++-dev \
     libc++1 libc++abi-dev libc++abi1 libclang-dev libclang1 \
     liblldb-dev libllvm-ocaml-dev libomp-dev libomp5 lld lldb \

@@ -39,7 +39,7 @@ sudo apt-get update && sudo apt-get install -y docker-ce
 
 echo "Installing ZSH..." >> $INSTALL_LOG
 sudo apt-get update && sudo apt-get install -y zsh
-wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sudo zsh
+wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
 sudo chsh -s /usr/bin/zsh $USER
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git \
     ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
@@ -79,8 +79,7 @@ sudo mkdir -p $HOME/.local && sudo chown -R $USER "$HOME/.local"
 # TODO: install vim-slime manually
 
 echo "Installing Ripgrep..." >> $INSTALL_LOG
-curl -LO https://github.com/BurntSushi/ripgrep/releases/download/0.10.0/ripgrep_0.10.0_amd64.deb
-sudo dpkg -i ripgrep_0.10.0_amd64.deb && rm ripgrep_0.10.0_amd64.deb
+sudo apt-get update && sudo apt-get install -y ripgrep
 
 echo "Installing Parinfer..." >> $INSTALL_LOG
 curl https://sh.rustup.rs -sSf | sh -s -- -y
@@ -92,11 +91,7 @@ cd ~/dotfiles/vim/plugged/parinfer-rust \
     && cd $HOME
 
 echo "Installing Tmate..." >> $INSTALL_LOG
-curl -LO https://github.com/tmate-io/tmate/releases/download/2.2.1/tmate-2.2.1-static-linux-amd64.tar.gz
-sudo tar -xvf tmate-2.2.1-static-linux-amd64.tar.gz
-sudo mv tmate-2.2.1-static-linux-amd64/tmate /usr/bin
-sudo rm -rf tmate-2.2.1-static-linux-amd64
-sudo rm tmate-2.2.1-static-linux-amd64.tar.gz
+sudo apt-get update && sudo apt-get install -y tmate
 
 echo "Setting up permissions and Docker..." >> $INSTALL_LOG
 sudo chown -R $USER $HOME/dotfiles
@@ -131,10 +126,10 @@ echo "Installing common Python libraries ..." >> $INSTALL_LOG
 pip install \
     click cytoolz ipython pdbpp mypy hypothesis pytest pytest-cov \
     jax jaxlib matplotlib numpy pandas scikit-image scikit-learn scipy \
-    dask[complete] lightgbm pyarrow fastparquet xgboost
+    "dask[complete]" lightgbm pyarrow fastparquet xgboost
 
  echo "Creating 32G of swap file..." >> $INSTALL_LOG
- sudo fallocate -l 32G /swapfile
+ sudo fallocate -l 16G /swapfile
  sudo chmod 600 /swapfile
  sudo mkswap /swapfile
  sudo swapon /swapfile

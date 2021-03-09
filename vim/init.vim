@@ -36,7 +36,6 @@ Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'ncm2/float-preview.nvim'
 Plug 'patstockwell/vim-monokai-tasty'
 Plug 'plasticboy/vim-markdown'
-Plug 'romgrk/github-light.vim'
 
 " Utilities
 Plug 'christoomey/vim-tmux-navigator'
@@ -166,8 +165,7 @@ if dark_background
     silent! colorscheme vim-monokai-tasty
 else
     set background=light
-    "silent! colorscheme akk_light
-    silent! colorscheme github-light
+    silent! colorscheme akk_light
     let $BAT_THEME='gruvbox-light'
 endif
 hi Normal  guibg=NONE ctermbg=NONE

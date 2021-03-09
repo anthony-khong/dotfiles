@@ -1,6 +1,6 @@
 #! /bin/bash
-export USER="ubuntu"
-export HOME="/home/ubuntu"
+export USER="anthonykhong"
+export HOME="/home/anthonykhong"
 export INSTALL_LOG="$HOME/.startup.log"
 
 sudo apt-get update && sudo apt-get install -y build-essential git

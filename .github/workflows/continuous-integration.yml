@@ -9,8 +9,8 @@ on:
       - master
 
 jobs:
-  coverage:
-    runs-on: self-hosted
+  hello:
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: hello

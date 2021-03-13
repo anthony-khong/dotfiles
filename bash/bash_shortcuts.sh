@@ -209,3 +209,4 @@ function ubuntu-bash() {
         -w /home \
         -it ubuntu:20.04 /bin/bash
 }
+alias bush="ubuntu-bash"

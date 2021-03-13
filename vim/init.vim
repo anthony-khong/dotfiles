@@ -44,6 +44,7 @@ Plug 'janko-m/vim-test'
 Plug 'jpalardy/vim-slime'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
 Plug 'scrooloose/nerdtree'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tpope/vim-fugitive'
@@ -52,7 +53,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'Olical/conjure', {'tag': 'v4.7.0'}
 Plug 'bakpakin/fennel.vim'
 Plug 'clojure-vim/async-clj-omni'
-Plug 'eraserhd/parinfer-rust'
+Plug 'eraserhd/parinfer-rust', {'do': 'cargo build --release'}
 Plug 'guns/vim-clojure-highlight'
 Plug 'guns/vim-clojure-static'
 Plug 'guns/vim-sexp'
@@ -306,7 +307,7 @@ let g:EasyMotion_keys = "aoeui'l;z,rqv.cjwyfxbdhtns"
 
 " FuzzySearch
 let g:fzf_layout = { 'window': { 'width': 0.95,
-                               \ 'height': 0.9,
+                               \ 'height': 0.95,
                                \ 'border': 'rounded' } }
 let g:fzf_action = {
             \'enter': 'tabedit',
@@ -316,6 +317,9 @@ command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
   \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
   \   fzf#vim#with_preview('down'), <bang>0)
+
+" Clap
+let g:clap_layout = { 'width': '90%', 'height': '40%', 'row': '10%', 'col': '5%' }
 
 " UltiSnips
 let g:UltiSnipsExpandTrigger = "<Tab>"
@@ -370,8 +374,8 @@ nnoremap <Space>nh :nohlsearch<CR>
 nnoremap <Space>eq :q<CR>
 
 " Tabs (misnamed as buffers)
-nnoremap <Space>be :call fzf#vim#files('', fzf#vim#with_preview('down:60%'))<CR>
-nnoremap <Space>bh :call fzf#vim#files('~', fzf#vim#with_preview('down:60%'))<CR>
+nnoremap <Space>be :call fzf#vim#files('', fzf#vim#with_preview('down:72%'))<CR>
+nnoremap <Space>bh :call fzf#vim#files('~', fzf#vim#with_preview('down:72%'))<CR>
 nnoremap <Space>bf :Rg<CR>
 nnoremap <Space>bj :NERDTreeToggle<CR>
 nnoremap <Space>bn :tabnext<CR>

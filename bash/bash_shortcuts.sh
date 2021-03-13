@@ -204,9 +204,10 @@ function gdrive-dl() {
 }
 
 function ubuntu-bash() {
+    dir=`basename $PWD`
     docker run --rm \
-        -v $PWD:/home \
-        -w /home \
+        -v $PWD:/root/$dir \
+        -w /root/$dir \
         -it ubuntu:20.04 /bin/bash
 }
 alias bush="ubuntu-bash"

@@ -30,12 +30,13 @@ Plug 'w0rp/ale'
 
 " Visualisation
 Plug 'airblade/vim-gitgutter'
-Plug 'chuling/equinusocio-material.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/rainbow_parentheses.vim'
+Plug 'kyazdani42/nvim-web-devicons'
 Plug 'ncm2/float-preview.nvim'
 Plug 'patstockwell/vim-monokai-tasty'
 Plug 'plasticboy/vim-markdown'
+Plug 'romgrk/barbar.nvim'
 
 " Utilities
 Plug 'christoomey/vim-tmux-navigator'
@@ -62,33 +63,8 @@ Plug 'davidhalter/jedi-vim'
 Plug 'sbdchd/neoformat'
 Plug 'zchee/deoplete-jedi'
 
-" Lua
-Plug 'Olical/aniseed', { 'tag': 'v3.10.0' }
-Plug 'bakpakin/fennel.vim'
-Plug 'xolox/vim-lua-ftplugin'
-Plug 'xolox/vim-misc'
-
 " Docker
 Plug 'ekalinin/Dockerfile.vim'
-
-" TSX
-Plug 'leafgarland/typescript-vim'
-Plug 'peitalin/vim-jsx-typescript'
-
-" Ruby
-Plug 'Keithbsmiley/rspec.vim', { 'for': 'ruby' }
-Plug 'kana/vim-textobj-user', { 'for': ['ruby'] }
-Plug 'nelstrom/vim-textobj-rubyblock', { 'for': ['ruby'] }
-Plug 'thoughtbot/vim-rspec', { 'for': 'ruby' }
-Plug 'tpope/vim-bundler', { 'for': 'ruby' }
-Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-rails'
-Plug 'tpope/vim-rake', { 'for': 'ruby' }
-Plug 'tpope/vim-rbenv', { 'for': 'ruby' }
-Plug 'vim-ruby/vim-ruby'
-
-" Haml, Sass, and SCSS
-Plug 'tpope/vim-haml', { 'for': ['haml'] }
 
 call plug#end()
 
@@ -156,12 +132,6 @@ if $USER != "ubuntu"
     endif
 endif
 if dark_background
-    "set background=dark
-    "let g:equinusocio_material_style = 'pure'
-    "let g:equinusocio_material_hide_vertsplit = 1
-    "let g:equinusocio_material_bracket_improved = 1
-    "set fillchars+=vert:│
-    "colorscheme equinusocio_material
     silent! colorscheme vim-monokai-tasty
 else
     set background=light
@@ -284,15 +254,13 @@ augroup load_ultisnips
 augroup END
 
 " Lightline
-if dark_background
-    let g:lightline = {
-    \ 'colorscheme': 'equinusocio_material',
-    \ }
-else
-    let g:lightline = {
-        \ 'colorscheme': 'one',
-        \ }
-endif
+let g:lightline = {
+\ 'colorscheme': 'one',
+\ }
+
+" Barbar
+let bufferline = get(g:, 'bufferline', {})
+let bufferline.closable = v:false
 
 " Tmux Navigator
 if exists('$TMUX')
@@ -415,6 +383,15 @@ if !exists('g:lasttab')
 endif
 nnoremap <Space>bb :exe "tabn ".g:lasttab<CR>
 au TabLeave * let g:lasttab = tabpagenr()
+
+" Tab reordering
+nnoremap <Space>) :BufferMoveNext<CR>
+nnoremap <Space>( :BufferMovePrevious<CR>
+nnoremap <Space>1 :BufferGoto 1<CR>
+nnoremap <Space>2 :BufferGoto 2<CR>
+nnoremap <Space>3 :BufferGoto 3<CR>
+nnoremap <Space>4 :BufferGoto 4<CR>
+nnoremap <Space>5 :BufferGoto 5<CR>
 
 " Remove trailing whitespace
 nnoremap <silent> <Space>rw :keeppatterns %s/\s\+$//<CR>

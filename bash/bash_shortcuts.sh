@@ -208,6 +208,6 @@ function ubuntu-bash() {
     docker run --rm \
         -v $PWD:/root/$dir \
         -w /root/$dir \
-        -it ubuntu:20.04 /bin/bash
+        -it akkhong/dev-env:latest /bin/zsh
 }
 alias bush="ubuntu-bash"

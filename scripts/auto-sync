@@ -1,27 +1,24 @@
 #!/bin/bash
-# Sources:
-# - https://vishnudevtj.github.io/notes/rsync
-# - https://unix.stackexchange.com/a/42292
+
+# References:
+# - https://gist.github.com/JohannesBuchner/62fc88277709bb29f9e7
+# - https://unix.stackexchange.com/questions/50508/reusing-ssh-session-for-repeated-rsync-commands
 
 set -euo pipefail
 
-print_help() {
-    echo "Detects changes in the current directory, and syncs to a destination."
-    echo "Note: does not detect new files and ignores files according to .gitignore!"
-    echo -e
-    echo "Usage: auto-sync --destination DEST [--port PORT]"
-    echo -e
-    echo "Options"
-    echo -e "--destination:\trsync's destination"
-    exit 1
-}
-
+remote=null
 port=22
+src=$PWD
 destination=null
 while [[ $# -gt 0 ]]
 do
     key="$1"
     case $key in
+        --remote)
+            remote="$2"
+            shift
+            shift
+            ;;
         --destination)
             destination="$2"
             shift
@@ -29,6 +26,11 @@ do
             ;;
         --port)
             port="$2"
+            shift
+            shift
+            ;;
+        --source)
+            src="$2"
             shift
             shift
             ;;
@@ -44,29 +46,58 @@ do
     esac
 done
 
-cleanup () {
-    kill -s SIGTERM $!
-    exit 0
-}
-
-trap cleanup SIGINT SIGTERM
-
-
+if [[ "$remote" = null ]]; then
+    echo "Remote hostname must be set!"
+    echo -e
+    print_help
+    exit 1
+fi
 if [[ "$destination" = null ]]; then
     echo "Destination must be set!"
     echo -e
     print_help
     exit 1
-else
-    while true ;do \
-        sleep 2s;
-        find . -not -path "./.git*" | \
-            entr -d \
-                rsync -avz \
-                    -e "ssh -p $port" \
-                    --filter=':- .gitignore' \
-                    --exclude='.git/' \
-                    --max-size=1.0m \
-                    . "$destination";
-    done
 fi
+
+control_dir="$HOME/.ssh/auto-sync/"
+control_path="$control_dir/%L-%r@%h:%p"
+setup-master-ssh-connection() {
+    echo "$(date -u) | Setting up master SSH connection ..."
+    mkdir -p $control_dir
+    ssh -nNf \
+        -o ControlMaster=yes \
+        -o ControlPath=$control_path \
+        -p $port \
+        $remote
+}
+
+sync() {
+    echo "$(date -u) | Syncing files ..."
+    rsync -avz \
+        -e "ssh -o 'ControlPath=$control_path' \
+        -p $port" \
+        --filter=':- .gitignore' \
+        --exclude='.git/' \
+        --max-size=1.0m \
+        $src "$remote:$destination";
+    echo "$(date -u) | Watching for changes ..."
+}
+
+exit-master-ssh-connection() {
+    echo "$(date -u) | Exiting master SSH connection ..."
+    control_path=$(find $control_dir -name "*$remote:$port")
+    ssh -S $control_path \
+        -O exit \
+        -p $port \
+        $remote
+}
+
+cleanup () {
+    exit-master-ssh-connection
+    exit 0
+}
+trap cleanup SIGINT SIGTERM
+
+setup-master-ssh-connection
+sync
+fswatch -r . | while read file event; do sync; done

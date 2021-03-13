@@ -6,21 +6,39 @@
 
 set -euo pipefail
 
+print_help() {
+    echo "$(basename "$0") [--help] [(--source) --remote (--port) --destination]"
+    echo "Syncs a source directory to a remote destination, watches the source directory for changes, then resyncs."
+    echo
+    echo "Options:"
+    echo "--help            prints this help message."
+    echo "--source          the source directory to be synced."
+    echo "--remote          the remote machine to sync to."
+    echo "--port            the SSH port to establish connection to the remote machine."
+    echo "--destination     the destination directory on the remote machine."
+    echo
+    echo "Example:"
+    echo "auto-sync --source ~/repo-name --remote user@server_ip"
+    echo "auto-sync --source ~/dir0/dir1 --remote user@server_ip --port 22 --destination \"~/dir0\""
+    echo
+    exit 0
+}
+
 remote=null
 port=22
 src=$PWD
-destination=null
+destination="~"
 while [[ $# -gt 0 ]]
 do
     key="$1"
     case $key in
-        --remote)
-            remote="$2"
+        --source)
+            src="$2"
             shift
             shift
             ;;
-        --destination)
-            destination="$2"
+        --remote)
+            remote="$2"
             shift
             shift
             ;;
@@ -29,8 +47,8 @@ do
             shift
             shift
             ;;
-        --source)
-            src="$2"
+        --destination)
+            destination="$2"
             shift
             shift
             ;;
@@ -47,13 +65,7 @@ do
 done
 
 if [[ "$remote" = null ]]; then
-    echo "Remote hostname must be set!"
-    echo -e
-    print_help
-    exit 1
-fi
-if [[ "$destination" = null ]]; then
-    echo "Destination must be set!"
+    echo "Remote hostname or IP address must be set!"
     echo -e
     print_help
     exit 1

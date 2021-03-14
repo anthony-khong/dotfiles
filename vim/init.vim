@@ -256,7 +256,7 @@ augroup END
 
 " Lightline
 let g:lightline = {
-\ 'colorscheme': 'one',
+\ 'colorscheme': 'ayu_dark',
 \ }
 
 " Barbar

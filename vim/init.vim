@@ -256,8 +256,20 @@ augroup END
 
 " Lightline
 let g:lightline = {
-\ 'colorscheme': 'ayu_dark',
-\ }
+    \ 'colorscheme': 'ayu_dark',
+    \ }
+let g:lightline.active = {
+    \ 'left': [ [ 'pad-left', 'mode', 'paste' ],
+    \           [ 'readonly', 'filename', 'modified' ] ],
+    \ 'right': [ [ 'lineinfo' ],
+    \            [ 'percent' ],
+    \            [ 'filetype' ] ] }
+let g:lightline.inactive = {
+    \ 'left': [ [ 'filename' ] ],
+    \ 'right': [ [ 'lineinfo' ],
+    \            [ 'percent' ],
+    \            [ 'filetype' ] ] }
+let g:lightline.separator = { 'left': "\uE0B4", 'right': "\uE0B6" }
 
 " Barbar
 let bufferline = get(g:, 'bufferline', {})

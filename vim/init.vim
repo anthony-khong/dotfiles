@@ -36,7 +36,6 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'ncm2/float-preview.nvim'
 Plug 'patstockwell/vim-monokai-tasty'
 Plug 'plasticboy/vim-markdown'
-Plug 'romgrk/barbar.nvim'
 
 " Utilities
 Plug 'christoomey/vim-tmux-navigator'
@@ -255,25 +254,48 @@ augroup load_ultisnips
 augroup END
 
 " Lightline
+source ~/.config/nvim/lightline.vim
 let g:lightline = {
-    \ 'colorscheme': 'ayu_dark',
+    \ 'colorscheme': 'custom_black',
     \ }
 let g:lightline.active = {
-    \ 'left': [ [ 'pad-left', 'mode', 'paste' ],
-    \           [ 'readonly', 'filename', 'modified' ] ],
-    \ 'right': [ [ 'lineinfo' ],
-    \            [ 'percent' ],
-    \            [ 'filetype' ] ] }
-let g:lightline.inactive = {
-    \ 'left': [ [ 'filename' ] ],
-    \ 'right': [ [ 'lineinfo' ],
-    \            [ 'percent' ],
-    \            [ 'filetype' ] ] }
-let g:lightline.separator = { 'left': "\uE0B4", 'right': "\uE0B6" }
+    \ 'left': [ [ 'left-edge' ],
+    \           [ 'readonly', 'filename', 'modified' ],
+    \           [ 'right-edge', 'space', 'left-edge' ],
+    \           [ 'mode', 'paste' ],
+    \           [ 'right-edge', 'space'  ],
+    \           [ 'filetype', 'percent', 'lineinfo' ] ],
+    \ 'right': [ ]
+    \ }
+let g:lightline.component = {
+	\ 'left-edge': "\uE0B6",
+	\ 'right-edge': "\uE0B4",
+    \ 'space': ' ',
+	\ 'mode': '%{lightline#mode()}',
+    \ }
+let g:lightline.component_type = {
+    \ 'left-edge': 'raw',
+    \ 'mode': 'raw',
+    \ 'filename': 'raw',
+    \ 'space': 'raw',
+    \ 'right-edge': 'raw'
+    \ }
+let g:lightline.separator = { 'left': '', 'right': '' }
+let g:lightline.subseparator = { 'left': '', 'right': '' }
+let g:lightline.mode_map = {
+    \ 'n' : 'N',
+    \ 'i' : 'I',
+    \ 'R' : 'R',
+    \ 'v' : 'V',
+    \ 'V' : 'VL',
+    \ "\<C-v>": 'VB',
+    \ 'c' : 'C',
+    \ 's' : 'S',
+    \ 'S' : 'SL',
+    \ "\<C-s>": 'SB',
+    \ 't': 'T',
+    \ }
 
-" Barbar
-let bufferline = get(g:, 'bufferline', {})
-let bufferline.closable = v:false
 
 " Tmux Navigator
 if exists('$TMUX')

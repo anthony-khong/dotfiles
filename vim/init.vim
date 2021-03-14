@@ -36,6 +36,7 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'ncm2/float-preview.nvim'
 Plug 'patstockwell/vim-monokai-tasty'
 Plug 'plasticboy/vim-markdown'
+Plug 'vimpostor/vim-tpipeline'
 
 " Utilities
 Plug 'christoomey/vim-tmux-navigator'
@@ -253,6 +254,9 @@ augroup load_ultisnips
   autocmd InsertEnter * call plug#load('ultisnips') | autocmd! load_ultisnips
 augroup END
 
+" tpipeline
+set stl=%!tpipeline#stl#line()
+
 " Lightline
 source ~/.config/nvim/lightline.vim
 let g:lightline = {
@@ -260,9 +264,9 @@ let g:lightline = {
     \ }
 let g:lightline.active = {
     \ 'left': [ [ 'left-edge' ],
-    \           [ 'readonly', 'filename', 'modified' ],
+    \           [ 'readonly', 'space', 'filename', 'space', 'modified' ],
     \           [ 'right-edge', 'space', 'left-edge' ],
-    \           [ 'mode', 'paste' ],
+    \           [ 'mode' ],
     \           [ 'right-edge', 'space'  ],
     \           [ 'filetype', 'percent', 'lineinfo' ] ],
     \ 'right': [ ]
@@ -277,6 +281,8 @@ let g:lightline.component_type = {
     \ 'left-edge': 'raw',
     \ 'mode': 'raw',
     \ 'filename': 'raw',
+    \ 'readonly': 'raw',
+    \ 'modified': 'raw',
     \ 'space': 'raw',
     \ 'right-edge': 'raw'
     \ }

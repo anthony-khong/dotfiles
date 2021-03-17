@@ -271,6 +271,12 @@ let g:lightline.active = {
     \           [ 'filetype', 'percent', 'lineinfo' ] ],
     \ 'right': [ ]
     \ }
+let g:lightline.tabline = {
+    \ 'left': [ [ 'tabs' ] ],
+    \ 'right': [ ] }
+let g:lightline.tabline_separator = {
+    \ 'left': "\uE0B4",
+    \ 'right': "" }
 let g:lightline.component = {
 	\ 'left-edge': "\uE0B6",
 	\ 'right-edge': "\uE0B4",

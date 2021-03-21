@@ -25,6 +25,7 @@ export SCREEN=xterm-256color
 
 export IP=$(ifconfig en0 | grep inet | awk '$1=="inet" {print $2}')
 
+alias rosetta-brew='arch -x86_64 /usr/local/bin/brew'
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"

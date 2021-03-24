@@ -165,6 +165,7 @@ autocmd BufNewFile,BufRead * call s:DetectFileType()
 inoremap hh <Esc>
 inoremap thhh th<Esc>
 inoremap jj <Esc>
+noremap <C-c> <Esc><Esc>
 tnoremap <Esc> <C-\><C-n>
 
 " Moving up and down physical lines
@@ -269,6 +270,12 @@ let g:lightline.active = {
     \           [ 'filetype', 'percent', 'lineinfo' ] ],
     \ 'right': [ ]
     \ }
+let g:lightline.tabline = {
+    \ 'left': [ [ 'tabs' ] ],
+    \ 'right': [ ] }
+let g:lightline.tabline_separator = {
+    \ 'left': "\uE0B4",
+    \ 'right': "" }
 let g:lightline.component = {
 	\ 'left-edge': "\uE0B6",
 	\ 'right-edge': "\uE0B4",

@@ -167,7 +167,7 @@ autocmd BufNewFile,BufRead * call s:DetectFileType()
 inoremap hh <Esc>
 inoremap thhh th<Esc>
 inoremap jj <Esc>
-inoremap <C-c> <Esc><Esc>
+noremap <C-c> <Esc><Esc>
 tnoremap <Esc> <C-\><C-n>
 
 " Moving up and down physical lines

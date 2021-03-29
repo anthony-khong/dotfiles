@@ -41,7 +41,7 @@ Plug 'vimpostor/vim-tpipeline'
 " Utilities
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'janko-m/vim-test'
-Plug 'jpalardy/vim-slime'
+Plug 'jpalardy/vim-slime', { 'branch': 'main' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }

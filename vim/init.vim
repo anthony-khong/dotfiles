@@ -206,6 +206,10 @@ inoremap <C-e> <C-o>$
 nnoremap ( :tabprevious<CR>
 nnoremap ) :tabnext<CR>
 
+" Moving tabs
+nnoremap <Space>) :tabmove +1<CR>
+nnoremap <Space>( :tabmove -1<CR>
+
 " Jumping between Vim panes
 nnoremap <Space>j <C-W><C-J>
 nnoremap <Space>k <C-W><C-K>
@@ -215,6 +219,10 @@ nnoremap <Space>h <C-W><C-H>
 " Navigating Jumps
 nnoremap <Space>o <C-O>
 nnoremap <Space>i <C-I>
+
+" Move lines up and down
+nnoremap <M-j> :m .+1<CR>==
+nnoremap <M-k> :m .-2<CR>==
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                          Plugin Settings                          "
@@ -434,15 +442,6 @@ if !exists('g:lasttab')
 endif
 nnoremap <Space>bb :exe "tabn ".g:lasttab<CR>
 au TabLeave * let g:lasttab = tabpagenr()
-
-" Tab reordering
-nnoremap <Space>) :BufferMoveNext<CR>
-nnoremap <Space>( :BufferMovePrevious<CR>
-nnoremap <Space>1 :BufferGoto 1<CR>
-nnoremap <Space>2 :BufferGoto 2<CR>
-nnoremap <Space>3 :BufferGoto 3<CR>
-nnoremap <Space>4 :BufferGoto 4<CR>
-nnoremap <Space>5 :BufferGoto 5<CR>
 
 " Remove trailing whitespace
 nnoremap <silent> <Space>rw :keeppatterns %s/\s\+$//<CR>

@@ -211,3 +211,8 @@ function ubuntu-bash() {
         -it akkhong/dev-env:latest /bin/zsh
 }
 alias bush="ubuntu-bash"
+
+function planner() {
+    cd ~/Dropbox/planner
+    tnew
+}

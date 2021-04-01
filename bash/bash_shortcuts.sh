@@ -216,3 +216,4 @@ function planner() {
     cd ~/Dropbox/planner
     tnew
 }
+alias pln=planner

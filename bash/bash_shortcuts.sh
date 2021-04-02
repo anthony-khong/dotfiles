@@ -193,11 +193,11 @@ ubuntu_bash() {
 }
 alias bush="ubuntu_bash"
 
-planner() {
-    cd ~/Dropbox/planner || exit
+mind_diary() {
+    cd ~/Dropbox/mind_diary || exit
     tnew
 }
-alias pln=planner
+alias pln=mind
 
 # Python
 remove_pyc() {

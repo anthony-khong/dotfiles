@@ -55,7 +55,7 @@ alias clear_history='cat /dev/null > ~/.bash_history && history -c'
 
 # Tmux shortcut
 tnew() {
-    tmux new-session -As "basename $PWD"
+    tmux new-session -As "$(basename "$PWD")"
 }
 
 # Pandoc shortcuts

@@ -44,7 +44,7 @@ light_vim() {
 alias em="emacs -nw"
 alias ec="emacsclient -a '' -nw"
 
-kill-emacsclient() {
+kill_emacsclient() {
     emacsclient -e '(kill-emacs)'
 }
 alias kec="kill-emacsclient"
@@ -198,3 +198,12 @@ planner() {
     tnew
 }
 alias pln=planner
+
+# Python
+remove_pyc() {
+    find . -name "*.pyc" -exec rm -rf {} \;
+}
+
+purge_py() {
+    find . | grep -E "(__pycache__|\.pyc|\.pyo$)" | xargs rm -rf
+}

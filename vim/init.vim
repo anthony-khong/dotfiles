@@ -230,6 +230,7 @@ nnoremap <M-k> :m .-2<CR>==
 
 " Ale
 let g:ale_linters = {
+      \ 'sh': ['shellcheck'],
       \ 'ruby': ['rubocop'],
       \ 'python': ['pyflakes', 'mypy'],
       \ 'clojure': ['clj-kondo']

@@ -21,6 +21,8 @@ git clone https://github.com/zsh-users/zsh-autosuggestions \
 
 # Essentials
 brew install bash bat entr gnupg2 mosh node pandoc postgresql ripgrep wget yarn
+brew install fzf
+$(brew --prefix)/opt/fzf/install
 
 # Git LFS
 brew install git-fls

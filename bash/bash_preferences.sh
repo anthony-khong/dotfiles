@@ -14,7 +14,8 @@ export NVIM_PYTHON_LOG_FILE=/tmp/log
 export NVIM_PYTHON_LOG_LEVEL=DEBUG
 export BOTO_CONFIG=/dev/null
 export CLOUDSDK_PYTHON=/opt/anaconda/bin/python
-export GPG_TTY=$(tty)
+GPG_TTY=$(tty)
+export GPG_TTY
 export INIT_VIM="$HOME/dotfiles/vim/init.vim"
 
 # Vim's dark background
@@ -28,9 +29,9 @@ HISTCONTROL=ignoreboth
 HISTIGNORE='ls:bg:fg:history:hh'
 
 # When the shell exits, append to the history file instead of overwriting it
-if [[ "$0" == "bash" ]]; then
+if [ "$0" = "bash" ]; then
     shopt -s histappend
-elif [[ "$0" == "zsh" ]]; then
+elif [ "$0" = "zsh" ]; then
     export PROMPT_COMMAND="history -a; history -n"
     bind 'set show-all-if-ambiguous on'
     bind 'TAB:menu-complete'
@@ -40,7 +41,7 @@ fi
 export TERM="screen-256color"
 
 # Short PS1
-if [[ "$0" == "bash" ]]; then
+if [ "$0" = "bash" ]; then
     # export PS1="\[\033[36m\]\u\[\033[m\]:\[\033[33;1m\]\W\[\033[m\]$ "
     export PS1='\[\e[0;32m\]\u\[\e[m\]:\[\e[1;34m\]\W\[\033[m\]$ '
 fi

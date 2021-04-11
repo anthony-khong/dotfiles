@@ -19,6 +19,7 @@ sudo apt-get update && sudo apt-get install -y \
     make \
     pandoc \
     software-properties-common \
+    shellcheck \
     tmux \
     unzip \
     xclip

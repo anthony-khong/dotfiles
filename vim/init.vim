@@ -41,7 +41,7 @@ Plug 'vimpostor/vim-tpipeline'
 " Utilities
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'janko-m/vim-test'
-Plug 'jpalardy/vim-slime'
+Plug 'jpalardy/vim-slime', { 'branch': 'main' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
@@ -167,6 +167,7 @@ autocmd BufNewFile,BufRead * call s:DetectFileType()
 inoremap hh <Esc>
 inoremap thhh th<Esc>
 inoremap jj <Esc>
+noremap <C-c> <Esc><Esc>
 tnoremap <Esc> <C-\><C-n>
 
 " Moving up and down physical lines
@@ -205,6 +206,10 @@ inoremap <C-e> <C-o>$
 nnoremap ( :tabprevious<CR>
 nnoremap ) :tabnext<CR>
 
+" Moving tabs
+nnoremap <Space>) :tabmove +1<CR>
+nnoremap <Space>( :tabmove -1<CR>
+
 " Jumping between Vim panes
 nnoremap <Space>j <C-W><C-J>
 nnoremap <Space>k <C-W><C-K>
@@ -215,12 +220,17 @@ nnoremap <Space>h <C-W><C-H>
 nnoremap <Space>o <C-O>
 nnoremap <Space>i <C-I>
 
+" Move lines up and down
+nnoremap <M-j> :m .+1<CR>==
+nnoremap <M-k> :m .-2<CR>==
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                          Plugin Settings                          "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Ale
 let g:ale_linters = {
+      \ 'sh': ['shellcheck'],
       \ 'ruby': ['rubocop'],
       \ 'python': ['pyflakes', 'mypy'],
       \ 'clojure': ['clj-kondo']
@@ -433,15 +443,6 @@ if !exists('g:lasttab')
 endif
 nnoremap <Space>bb :exe "tabn ".g:lasttab<CR>
 au TabLeave * let g:lasttab = tabpagenr()
-
-" Tab reordering
-nnoremap <Space>) :BufferMoveNext<CR>
-nnoremap <Space>( :BufferMovePrevious<CR>
-nnoremap <Space>1 :BufferGoto 1<CR>
-nnoremap <Space>2 :BufferGoto 2<CR>
-nnoremap <Space>3 :BufferGoto 3<CR>
-nnoremap <Space>4 :BufferGoto 4<CR>
-nnoremap <Space>5 :BufferGoto 5<CR>
 
 " Remove trailing whitespace
 nnoremap <silent> <Space>rw :keeppatterns %s/\s\+$//<CR>

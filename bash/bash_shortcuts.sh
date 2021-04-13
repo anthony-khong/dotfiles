@@ -197,8 +197,12 @@ mind_diary() {
     cd ~/Dropbox/mind_diary || exit
     tnew
 }
-alias pln=mind_diary
 alias mnd=mind_diary
+planner() {
+    cd ~/Dropbox/mind_diary/Planner || exit
+    tnew
+}
+alias pln=planner
 
 # Python
 remove_pyc() {

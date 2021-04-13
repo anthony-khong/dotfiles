@@ -110,7 +110,7 @@ if [ -f $HOME/google-cloud-sdk/completion.zsh.inc ]; then . $HOME/google-cloud-s
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 
-if ! command -v terraform &> /dev/null
+if command -v terraform &> /dev/null
 then
     autoload -U +X bashcompinit && bashcompinit
     complete -o nospace -C /usr/local/bin/terraform terraform

@@ -19,7 +19,7 @@ export IP=$(ifconfig en0 | grep inet | awk '$1=="inet" {print $2}')
 
 alias rosetta-brew='arch -x86_64 /usr/local/bin/brew'
 
-if ! command -v terraform &> /dev/null
+if command -v terraform &> /dev/null
 then
     complete -C /usr/local/bin/terraform terraform
 fi

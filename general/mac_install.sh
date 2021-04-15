@@ -1,3 +1,6 @@
+# Conda base default
+conda config --set auto_activate_base false
+
 # Agree to T&C
 sudo xcodebuild -license
 
@@ -48,6 +51,7 @@ brew install tmux tmate
 /bin/bash $HOME/dotfiles/tmux/tpm/scripts/install_plugins.sh
 
 # Java
+# M1: https://www.azul.com/downloads/zulu-community/?package=jdk
 brew tap AdoptOpenJDK/openjdk
 brew install adoptopenjdk11
 
@@ -76,6 +80,10 @@ rbenv install 2.7.2 # or check the latest stable version
 # Neovim
 pip install --upgrade neovim jedi google-api-python-client pyflakes mypy msgpack pynvim
 brew install neovim
+# M1:
+# brew install --HEAD tree-sitter
+# brew install --HEAD luajit
+# brew install --HEAD neovim
 nvim +PlugInstall +qall || true
 
 # Rust + Parinfer

@@ -24,10 +24,6 @@ brew install bash bat entr gnupg2 mosh node pandoc postgresql ripgrep wget yarn
 brew install fzf
 $(brew --prefix)/opt/fzf/install
 
-# Git LFS
-brew install git-fls
-sudo git lfs install --system
-
 # SSH keys: GH, GL and Jarwin
 ssh-keygen
 
@@ -45,6 +41,11 @@ pip install lightgbm dask[complete] jax jaxlib xgboost
 pip install click cython cytoolz ipython mypy pdbpp
 pip install pytest pytest-cov
 pip install speedtest-cli youtube-dl
+
+# DVC
+brew install dvc
+pip install "dvc[all]"
+dvc completion -s zsh | sudo tee /usr/local/share/zsh/site-functions/_dvc
 
 # Tmux + Plugins + Tmate
 brew install tmux tmate

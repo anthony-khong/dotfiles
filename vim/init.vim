@@ -64,8 +64,9 @@ Plug 'davidhalter/jedi-vim'
 Plug 'sbdchd/neoformat'
 Plug 'zchee/deoplete-jedi'
 
-" Docker
+" Devops
 Plug 'ekalinin/Dockerfile.vim'
+Plug 'jvirtanen/vim-hcl'
 
 call plug#end()
 
@@ -522,4 +523,4 @@ endfunction
 
 autocmd FileType clojure,scheme,lisp,timl call s:dim_closing_parens()
 
-autocmd BufRead,BufNewFile *.htm,*.html,*.yml,*.yaml setlocal tabstop=2 shiftwidth=2 softtabstop=2
+autocmd BufRead,BufNewFile *.htm,*.html,*.yml,*.yaml,*.hcl,*.tf setlocal tabstop=2 shiftwidth=2 softtabstop=2

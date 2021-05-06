@@ -128,10 +128,8 @@ set signcolumn=yes
 
 " Colorscheme
 runtime! plugin/default.vim
-if $USER != "ubuntu"
-    if (has("termguicolors"))
-        set termguicolors
-    endif
+if (has("termguicolors"))
+    set termguicolors
 endif
 if dark_background
     silent! colorscheme vim-monokai-tasty

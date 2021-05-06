@@ -10,6 +10,7 @@ export PATH="$PATH:/snap/bin/"
 export PATH="$PATH:/opt/spark/bin"
 export PATH="$HOME/.rbenv/shims:$PATH"
 export PATH="$HOME/repos/gitlab-management:$PATH"
+export PATH=$PATH:/usr/local/go/bin
 export NVIM_PYTHON_LOG_FILE=/tmp/log
 export NVIM_PYTHON_LOG_LEVEL=DEBUG
 export BOTO_CONFIG=/dev/null
@@ -17,6 +18,8 @@ export CLOUDSDK_PYTHON=/opt/anaconda/bin/python
 GPG_TTY=$(tty)
 export GPG_TTY
 export INIT_VIM="$HOME/dotfiles/vim/init.vim"
+export GOPATH=$HOME/gopath
+export PATH=$GOPATH:$GOPATH/bin:$PATH
 
 # Vim's dark background
 export DARK_VIM=1

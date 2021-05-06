@@ -8,6 +8,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     curl \
     entr \
     git \
+    jq \
     libssl-dev \
     make \
     pandoc \
@@ -29,7 +30,9 @@ RUN wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -
     && bash ~/miniconda.sh -b -p /opt/anaconda \
     && rm ~/miniconda.sh
 
-RUN PATH="/opt/anaconda/bin:$PATH" pip install \
+ENV PATH="/opt/anaconda/bin:$PATH" 
+
+RUN pip install \
         --upgrade neovim jedi google-api-python-client pyflakes mypy \
     && add-apt-repository ppa:neovim-ppa/stable -y \
     && apt-get update \
@@ -37,7 +40,7 @@ RUN PATH="/opt/anaconda/bin:$PATH" pip install \
     && nvim +PlugInstall +silent +qall || true \
     && /bin/bash $HOME/dotfiles/tmux/tpm/scripts/install_plugins.sh
 
-RUN PATH="/opt/anaconda/bin:$PATH" pip install \
+RUN pip install \
     cytoolz ipython pdbpp mypy pytest pytest-cov \
     matplotlib numpy pandas scikit-learn scipy 
 
@@ -48,4 +51,16 @@ RUN apt-get update \
     && git clone https://github.com/zsh-users/zsh-syntax-highlighting.git \
         ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting \
     && git clone https://github.com/zsh-users/zsh-autosuggestions \
-        ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+        ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions \
+    && /bin/bash $HOME/dotfiles/bash/recreate_symbolic_links
+
+RUN conda install -c conda-forge mamba \
+    && mamba install -c conda-forge dvc dvc-s3 dvc-azure dvc-gdrive dvc-gs dvc-oss dvc-ssh
+
+RUN curl https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip -o awscliv2.zip \
+    && unzip awscliv2.zip \
+    && ./aws/install
+
+RUN curl https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-339.0.0-linux-x86_64.tar.gz -o gcp.zip \
+    && tar -xf gcp.zip \
+    && ./google-cloud-sdk/install.sh

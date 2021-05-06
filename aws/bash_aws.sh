@@ -56,6 +56,7 @@ function aws-set-session-token() {
 }
 
 function aws-get-session-token() {
+    mkdir -p ~/.aws
     aws sts get-session-token --serial-number $1 --token-code $2 > ~/.aws/.last_login_token.json
     aws-set-session-token
 }

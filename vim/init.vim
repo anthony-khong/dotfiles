@@ -64,6 +64,9 @@ Plug 'davidhalter/jedi-vim'
 Plug 'sbdchd/neoformat'
 Plug 'zchee/deoplete-jedi'
 
+" Elixir
+Plug 'elixir-editors/vim-elixir'
+
 " Devops
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'jvirtanen/vim-hcl'

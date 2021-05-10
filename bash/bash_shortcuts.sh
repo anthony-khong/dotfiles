@@ -189,6 +189,7 @@ ubuntu_bash() {
     docker run --rm \
         -v "$HOME/.bash_history":/root/.bash_history \
         -v "$HOME/.aws":/root/.aws \
+        -v "$HOME/.ssh":/root/.ssh \
         -v "$PWD":/root/"$dir" \
         -w /root/"$dir" \
         -it akkhong/dev-env:latest /bin/zsh

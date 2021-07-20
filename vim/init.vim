@@ -26,6 +26,7 @@ Plug 'vim-scripts/ctags.vim'
 
 " Completion + Linting
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'w0rp/ale'
 
 " Visualisation
@@ -226,6 +227,9 @@ nnoremap <Space>i <C-I>
 nnoremap <M-j> :m .+1<CR>==
 nnoremap <M-k> :m .-2<CR>==
 
+" Insert [X] in front of word
+nnoremap <Space>x ^xi* [X]<Esc>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                          Plugin Settings                          "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -266,10 +270,9 @@ augroup load_ultisnips
   autocmd InsertEnter * call plug#load('ultisnips') | autocmd! load_ultisnips
 augroup END
 
-" tpipeline
-set stl=%!tpipeline#stl#line()
-
 " Lightline
+let g:tpipeline_cursormoved = 1
+set guicursor=
 source ~/.config/nvim/lightline.vim
 let g:lightline = {
     \ 'colorscheme': 'custom_black',
@@ -280,7 +283,7 @@ let g:lightline.active = {
     \           [ 'right-edge', 'space', 'left-edge' ],
     \           [ 'mode' ],
     \           [ 'right-edge', 'space'  ],
-    \           [ 'filetype', 'percent', 'lineinfo' ] ],
+    \           [ 'percent', 'lineinfo' ] ],
     \ 'right': [ ]
     \ }
 let g:lightline.tabline = {

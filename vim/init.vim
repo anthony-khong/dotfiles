@@ -114,8 +114,9 @@ vnoremap > >gv
 syntax on
 filetype plugin indent on
 
-" More line buffer
-set so=3
+" Better scrolling experience
+set scrolloff=8
+set scrolljump=1
 
 " Disable stupid backup and swap files - they trigger too many events
 " for file system watchers

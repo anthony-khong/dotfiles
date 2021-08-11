@@ -14,6 +14,7 @@ sudo apt-get update && sudo apt-get install -y \
     ca-certificates \
     curl \
     entr \
+    jq \
     git \
     libssl-dev \
     make \
@@ -28,6 +29,13 @@ sudo apt-get update && sudo apt-get install -y \
     libc++1 libc++abi-dev libc++abi1 libclang-dev libclang1 \
     libomp-dev libomp5 lld lldb llvm-dev llvm-runtime llvm
 sudo apt-get install -y cloud-utils
+
+echo "Installing AWS CLI..." >> $INSTALL_LOG
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+rm -rf aws
+rm awscli*.zip
 
 echo "Installing Docker..." >> $INSTALL_LOG
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg \
@@ -53,6 +61,11 @@ sudo bash ~/miniconda.sh -b -p /opt/anaconda && sudo rm ~/miniconda.sh
 sudo chown -R $USER /opt/anaconda/
 export PATH="/opt/anaconda/bin:$PATH"
 pip3 install --upgrade pip
+
+echo "Installing DVC..." >> $INSTALL_LOG
+conda install -c conda-forge mamba
+mamba install -c conda-forge dvc
+pip3 install "dvc[all]"
 
 echo "Setting up Git..." >> $INSTALL_LOG
 git config --global user.email "anthony.kusumo.khong@gmail.com"
@@ -130,7 +143,7 @@ pip install \
     "dask[complete]" lightgbm pyarrow fastparquet xgboost
 
  echo "Creating 32G of swap file..." >> $INSTALL_LOG
- sudo fallocate -l 16G /swapfile
+ sudo fallocate -l 8G /swapfile
  sudo chmod 600 /swapfile
  sudo mkswap /swapfile
  sudo swapon /swapfile

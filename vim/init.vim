@@ -62,8 +62,11 @@ let g:coc_global_extensions = [
 			\ ]
 nmap <silent> <localleader>cd <Plug>(coc-definition)
 nmap <silent> <localleader>ci <Plug>(coc-implementation)
-nmap <silent> <localleader>cr <Plug>(coc-references)
+nmap <silent> <localleader>cf <Plug>(coc-references)
 nmap <silent> <localleader>ct <Plug>(coc-type-definition)
+nmap <silent> <localleader>cp <Plug>(coc-diagnostic-prev)
+nmap <silent> <localleader>cn <Plug>(coc-diagnostic-next)
+nmap <localleader>cr <Plug>(coc-rename)
 
 " SuperTab
 let g:SuperTabDefaultCompletionType = "<c-n>"

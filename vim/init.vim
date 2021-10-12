@@ -37,6 +37,9 @@ Plug 'pangloss/vim-javascript'
 " Dockerfile
 Plug 'ekalinin/Dockerfile.vim'
 
+" Markdown
+Plug 'plasticboy/vim-markdown'
+
 call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -105,6 +108,12 @@ set signcolumn=yes
 set number
 set relativenumber
 
+" No folding
+set foldlevelstart=1
+
+" One status line
+set laststatus=0
+
 " Colorscheme
 runtime! plugin/default.vim
 if (has("termguicolors"))
@@ -129,3 +138,6 @@ nnoremap <Space>nh :nohlsearch<CR>
 
 " Remove trailing whitespace
 nnoremap <Space>rw :keeppatterns %s/\s\+$//<CR>
+
+" Insert [X] in front of word
+nnoremap <Space>x ^xi* [X]<Esc>

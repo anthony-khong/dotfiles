@@ -14,6 +14,7 @@ Plug 'tanvirtin/monokai.nvim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Editing
+Plug 'ervandew/supertab'
 Plug 'junegunn/vim-easy-align'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-repeat'
@@ -45,8 +46,27 @@ call plug#end()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                         Plugin Settings                        "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Set the leader to comma
+let mapleader = "\<space>"
+let maplocalleader = "\<space>"
+
 " CoC
-let g:coc_global_extensions = ['coc-tsserver']
+let g:coc_global_extensions = [
+			\ 'coc-css',
+			\ 'coc-eslint',
+			\ 'coc-json',
+			\ 'coc-json',
+			\ 'coc-prettier',
+			\ 'coc-pyright',
+			\ 'coc-tsserver',
+			\ ]
+nmap <silent> <localleader>cd <Plug>(coc-definition)
+nmap <silent> <localleader>ci <Plug>(coc-implementation)
+nmap <silent> <localleader>cr <Plug>(coc-references)
+nmap <silent> <localleader>ct <Plug>(coc-type-definition)
+
+" SuperTab
+let g:SuperTabDefaultCompletionType = "<c-n>"
 
 " NERDCommenter
 let g:NERDCreateDefaultMappings = 0
@@ -67,15 +87,19 @@ let g:slime_dont_ask_default = 1
 let g:slime_python_ipython = 1
 
 " FZF
-nnoremap <Space>be :call fzf#vim#files('', fzf#vim#with_preview('down:72%'))<CR>
-nnoremap <Space>bh :call fzf#vim#files('~', fzf#vim#with_preview('down:72%'))<CR>
+let g:fzf_layout = { 'window': { 'width': 0.9,
+                               \ 'height': 0.9,
+                               \ 'border': 'rounded' } }
+let g:fzf_action = {'enter': 'tabedit'}
+nnoremap <localleader>be :call fzf#vim#files('', fzf#vim#with_preview('down:72%'))<CR>
+nnoremap <localleader>bh :call fzf#vim#files('~', fzf#vim#with_preview('down:72%'))<CR>
 
 " NERDTree
-nnoremap <Space>bj :NERDTreeToggle<CR>
+nnoremap <localleader>bj :NERDTreeToggle<CR>
 
 " Fugitive
-nnoremap <Space>gd :Gdiff<CR>
-nnoremap <Space>gb :Gblame<CR>
+nnoremap <localleader>gd :Gdiff<CR>
+nnoremap <localleader>gb :Gblame<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                         Vim Settings                           "
@@ -101,6 +125,11 @@ set nobackup
 set nowritebackup
 set noswapfile
 
+" Ensure that CoC nicely
+set hidden
+set cmdheight=3
+set updatetime=200
+
 " Sign column shows up all the time
 set signcolumn=yes
 
@@ -109,10 +138,7 @@ set number
 set relativenumber
 
 " No folding
-set foldlevelstart=1
-
-" One status line
-set laststatus=0
+set nofoldenable
 
 " Colorscheme
 runtime! plugin/default.vim
@@ -125,6 +151,10 @@ hi LineNr     guibg=NONE ctermbg=NONE
 hi NonText    guibg=NONE ctermbg=NONE
 hi SignColumn guibg=NONE ctermbg=NONE
 hi StatusLine guibg=NONE ctermbg=NONE
+
+" Statusline
+set laststatus=0
+set cmdheight=1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                         Vim Remaps                             "
@@ -141,3 +171,5 @@ nnoremap <Space>rw :keeppatterns %s/\s\+$//<CR>
 
 " Insert [X] in front of word
 nnoremap <Space>x ^xi* [X]<Esc>
+
+" Insert [X] in front of word

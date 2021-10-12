@@ -56,12 +56,7 @@ alias clear_history='cat /dev/null > ~/.bash_history && history -c'
 # Tmux shortcut
 tnew() {
     dir_name="$(basename "$PWD")"
-    if [ "${#dir_name}" -ge 12 ]; then
-        tmux new-session -As \
-            "$(echo $dir_name | head -c 5)~~$(echo $dir_name | tail -c 5)"
-    else
-        tmux new-session -As "$dir_name"
-    fi
+    tmux new-session -As "$dir_name"
 }
 
 # Pandoc shortcuts

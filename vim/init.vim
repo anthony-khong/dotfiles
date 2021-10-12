@@ -7,13 +7,24 @@ set runtimepath^=~/.config/nvim
 call plug#begin()
 
 " Appearance
-Plug 'itchyny/lightline.vim'
+Plug 'airblade/vim-gitgutter'
 Plug 'tanvirtin/monokai.nvim'
-Plug 'vimpostor/vim-tpipeline'
+
+" Completions
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Editing
 Plug 'junegunn/vim-easy-align'
 Plug 'scrooloose/nerdcommenter'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+
+" Utilities
+Plug 'jpalardy/vim-slime', { 'branch': 'main' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'tpope/vim-fugitive'
 
 " Tmux
 Plug 'christoomey/vim-tmux-navigator'
@@ -23,8 +34,8 @@ Plug 'leafgarland/typescript-vim'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'pangloss/vim-javascript'
 
-" Completions
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Dockerfile
+Plug 'ekalinin/Dockerfile.vim'
 
 call plug#end()
 
@@ -43,58 +54,25 @@ vmap gcc <Plug>NERDCommenterToggle
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
-" Lightline
-let g:tpipeline_cursormoved = 1
-set guicursor=
-source ~/.config/nvim/lightline.vim
-let g:lightline = {
-    \ 'colorscheme': 'custom_black',
+" Slime
+let g:slime_target = "tmux"
+silent! let g:slime_default_config = {
+    \ "socket_name": split($TMUX, ",")[0],
+    \ "target_pane": ":0.1"
     \ }
-let g:lightline.active = {
-    \ 'left': [ [ 'left-edge' ],
-    \           [ 'readonly', 'space', 'filename', 'space', 'modified' ],
-    \           [ 'right-edge', 'space', 'left-edge' ],
-    \           [ 'mode' ],
-    \           [ 'right-edge', 'space'  ],
-    \           [ 'percent', 'lineinfo' ] ],
-    \ 'right': [ ]
-    \ }
-let g:lightline.tabline = {
-    \ 'left': [ [ 'tabs' ] ],
-    \ 'right': [ ] }
-let g:lightline.tabline_separator = {
-    \ 'left': "\uE0B4",
-    \ 'right': "" }
-let g:lightline.component = {
-	\ 'left-edge': "\uE0B6",
-	\ 'right-edge': "\uE0B4",
-    \ 'space': ' ',
-	\ 'mode': '%{lightline#mode()}',
-    \ }
-let g:lightline.component_type = {
-    \ 'left-edge': 'raw',
-    \ 'mode': 'raw',
-    \ 'filename': 'raw',
-    \ 'readonly': 'raw',
-    \ 'modified': 'raw',
-    \ 'space': 'raw',
-    \ 'right-edge': 'raw'
-    \ }
-let g:lightline.separator = { 'left': '', 'right': '' }
-let g:lightline.subseparator = { 'left': '', 'right': '' }
-let g:lightline.mode_map = {
-    \ 'n' : 'N',
-    \ 'i' : 'I',
-    \ 'R' : 'R',
-    \ 'v' : 'V',
-    \ 'V' : 'VL',
-    \ "\<C-v>": 'VB',
-    \ 'c' : 'C',
-    \ 's' : 'S',
-    \ 'S' : 'SL',
-    \ "\<C-s>": 'SB',
-    \ 't': 'T',
-    \ }
+let g:slime_dont_ask_default = 1
+let g:slime_python_ipython = 1
+
+" FZF
+nnoremap <Space>be :call fzf#vim#files('', fzf#vim#with_preview('down:72%'))<CR>
+nnoremap <Space>bh :call fzf#vim#files('~', fzf#vim#with_preview('down:72%'))<CR>
+
+" NERDTree
+nnoremap <Space>bj :NERDTreeToggle<CR>
+
+" Fugitive
+nnoremap <Space>gd :Gdiff<CR>
+nnoremap <Space>gb :Gblame<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                         Vim Settings                           "
@@ -102,6 +80,10 @@ let g:lightline.mode_map = {
 " Makes copy and pasting work
 set clipboard=unnamed
 set clipboard+=unnamedplus
+
+" Search case insensitive when all characters are lower case
+set ignorecase
+set smartcase
 
 " Enable syntax highlighting
 syntax on
@@ -133,6 +115,7 @@ hi Normal     guibg=NONE ctermbg=NONE
 hi LineNr     guibg=NONE ctermbg=NONE
 hi NonText    guibg=NONE ctermbg=NONE
 hi SignColumn guibg=NONE ctermbg=NONE
+hi StatusLine guibg=NONE ctermbg=NONE
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                         Vim Remaps                             "

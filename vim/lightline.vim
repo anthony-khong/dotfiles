@@ -38,4 +38,3 @@ let s:p.tabline.tabsel = [
     \ ]
 
 let g:lightline#colorscheme#custom_black#palette = lightline#colorscheme#fill(s:p)
-

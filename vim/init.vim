@@ -67,6 +67,22 @@ nmap <silent> <localleader>ct <Plug>(coc-type-definition)
 nmap <silent> <localleader>cp <Plug>(coc-diagnostic-prev)
 nmap <silent> <localleader>cn <Plug>(coc-diagnostic-next)
 nmap <localleader>cr <Plug>(coc-rename)
+nmap <localleader>cd <Plug>(coc-codeaction)
+
+"" Use K to show documentation in preview window.
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+"" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " SuperTab
 let g:SuperTabDefaultCompletionType = "<c-n>"

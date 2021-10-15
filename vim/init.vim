@@ -36,6 +36,13 @@ Plug 'leafgarland/typescript-vim'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'pangloss/vim-javascript'
 
+" Clojure
+Plug 'Olical/conjure', {'tag': 'v4.25.0'}
+Plug 'eraserhd/parinfer-rust', {'do': 'cargo build --release'}
+Plug 'guns/vim-sexp'
+Plug 'junegunn/rainbow_parentheses.vim'
+Plug 'tpope/vim-sexp-mappings-for-regular-people'
+
 " Dockerfile
 Plug 'ekalinin/Dockerfile.vim'
 
@@ -53,6 +60,7 @@ let maplocalleader = "\<space>"
 
 " CoC
 let g:coc_global_extensions = [
+			\ 'coc-conjure',
 			\ 'coc-css',
 			\ 'coc-eslint',
 			\ 'coc-json',
@@ -168,6 +176,10 @@ set relativenumber
 " No folding
 set nofoldenable
 
+" Tab management
+set splitright
+set splitbelow
+
 " Colorscheme
 runtime! plugin/default.vim
 if (has("termguicolors"))
@@ -199,5 +211,3 @@ nnoremap <Space>rw :keeppatterns %s/\s\+$//<CR>
 
 " Insert [X] in front of word
 nnoremap <Space>x ^xi* [X]<Esc>
-
-" Insert [X] in front of word

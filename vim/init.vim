@@ -14,6 +14,7 @@ Plug 'tanvirtin/monokai.nvim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Editing
+Plug 'SirVer/ultisnips', { 'on': [] }
 Plug 'ervandew/supertab'
 Plug 'junegunn/vim-easy-align'
 Plug 'scrooloose/nerdcommenter'
@@ -119,6 +120,14 @@ nnoremap <localleader>bj :NERDTreeToggle<CR>
 " Fugitive
 nnoremap <localleader>gd :Gdiff<CR>
 nnoremap <localleader>gb :Gblame<CR>
+
+" UltiSnips
+augroup load_ultisnips
+  autocmd!
+  autocmd InsertEnter * call plug#load('ultisnips') | autocmd! load_ultisnips
+augroup END
+let g:UltiSnipsExpandTrigger = "<Tab>"
+let g:UltiSnipsSnippetDirectories = ["UltiSnips", "custom_snippets"]
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                         Vim Settings                           "

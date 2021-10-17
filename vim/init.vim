@@ -211,3 +211,7 @@ nnoremap <Space>rw :keeppatterns %s/\s\+$//<CR>
 
 " Insert [X] in front of word
 nnoremap <Space>x ^xi* [X]<Esc>
+
+" Panes
+nnoremap <Space>sh :split<CR>
+nnoremap <Space>sv :vsplit<CR>

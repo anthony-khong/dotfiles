@@ -64,7 +64,6 @@ let g:coc_global_extensions = [
 			\ 'coc-css',
 			\ 'coc-eslint',
 			\ 'coc-json',
-			\ 'coc-json',
 			\ 'coc-prettier',
 			\ 'coc-pyright',
 			\ 'coc-tsserver',
@@ -119,15 +118,15 @@ let g:fzf_layout = { 'window': { 'width': 0.9,
                                \ 'height': 0.9,
                                \ 'border': 'rounded' } }
 let g:fzf_action = {'enter': 'tabedit'}
-nnoremap <localleader>be :call fzf#vim#files('', fzf#vim#with_preview('down:72%'))<CR>
-nnoremap <localleader>bh :call fzf#vim#files('~', fzf#vim#with_preview('down:72%'))<CR>
+nnoremap <localleader>be :call fzf#vim#gitfiles('', fzf#vim#with_preview('down:72%'))<CR>
+nnoremap <localleader>bh :call fzf#vim#gitfiles('~', fzf#vim#with_preview('down:72%'))<CR>
 
 " NERDTree
 nnoremap <localleader>bj :NERDTreeToggle<CR>
 
 " Fugitive
 nnoremap <localleader>gd :Gdiff<CR>
-nnoremap <localleader>gb :Gblame<CR>
+nnoremap <localleader>gb :Git blame<CR>
 
 " UltiSnips
 augroup load_ultisnips
@@ -195,6 +194,9 @@ hi StatusLine guibg=NONE ctermbg=NONE
 " Statusline
 set laststatus=0
 set cmdheight=1
+
+" Auto-delete trailing white space
+autocmd FileType python,clojure autocmd BufWritePre <buffer> %s/\s\+$//e
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                         Vim Remaps                             "

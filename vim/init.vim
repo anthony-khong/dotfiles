@@ -120,6 +120,8 @@ let g:fzf_layout = { 'window': { 'width': 0.9,
 let g:fzf_action = {'enter': 'tabedit'}
 nnoremap <localleader>be :call fzf#vim#gitfiles('', fzf#vim#with_preview('down:72%'))<CR>
 nnoremap <localleader>bh :call fzf#vim#gitfiles('~', fzf#vim#with_preview('down:72%'))<CR>
+nnoremap <localleader>bE :call fzf#vim#files('', fzf#vim#with_preview('down:72%'))<CR>
+nnoremap <localleader>bH :call fzf#vim#files('~', fzf#vim#with_preview('down:72%'))<CR>
 
 " NERDTree
 nnoremap <localleader>bj :NERDTreeToggle<CR>
@@ -159,6 +161,9 @@ set scrolljump=1
 set nobackup
 set nowritebackup
 set noswapfile
+
+" Expand tab to spaces
+set expandtab
 
 " Ensure that CoC nicely
 set hidden

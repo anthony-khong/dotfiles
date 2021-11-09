@@ -24,3 +24,5 @@ if command -v terraform &> /dev/null
 then
     complete -C /usr/local/bin/terraform terraform
 fi
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"

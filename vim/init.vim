@@ -49,6 +49,9 @@ Plug 'ekalinin/Dockerfile.vim'
 " Markdown
 Plug 'plasticboy/vim-markdown'
 
+" JSON
+Plug 'kevinoid/vim-jsonc'
+
 call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -137,6 +140,9 @@ augroup load_ultisnips
 augroup END
 let g:UltiSnipsExpandTrigger = "<Tab>"
 let g:UltiSnipsSnippetDirectories = ["UltiSnips", "custom_snippets"]
+
+" JSONC
+nnoremap <localleader>jc :set ft=jsonc<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                         Vim Settings                           "

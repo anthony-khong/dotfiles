@@ -144,6 +144,12 @@ let g:UltiSnipsSnippetDirectories = ["UltiSnips", "custom_snippets"]
 " JSONC
 nnoremap <localleader>jc :set ft=jsonc<CR>
 
+" vim-sexp
+let g:sexp_mappings = {
+  \ 'sexp_move_to_prev_bracket': '',
+  \ 'sexp_move_to_next_bracket': ''
+  \ }
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                         Vim Settings                           "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -208,6 +214,10 @@ set cmdheight=1
 
 " Auto-delete trailing white space
 autocmd FileType python,clojure autocmd BufWritePre <buffer> %s/\s\+$//e
+
+" Does not release visual mode during block indentation
+vnoremap < <gv
+vnoremap > >gv
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                         Vim Remaps                             "

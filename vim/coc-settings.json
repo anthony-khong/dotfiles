@@ -1,17 +1,27 @@
 {
   "eslint.autoFixOnSave": true,
 	"eslint.filetypes": [
-		"javascript", 
-		"javascriptreact", 
-		"typescript", 
+		"javascript",
+		"javascriptreact",
+		"typescript",
 		"typescriptreact"
 	],
   "coc.preferences.formatOnSaveFiletypes": [
     "javascript",
     "javascriptreact",
     "typescript",
-    "typescriptreact"
+    "typescriptreact",
+    "rescript"
   ],
   "tsserver.formatOnType": true,
-  "coc.preferences.formatOnType": true
+  "coc.preferences.formatOnType": true,
+  "languageserver": {
+    "rescript": {
+      "enable": true,
+      "module": "~/.config/nvim/plugged/vim-rescript/server/out/server.js",
+      "args": ["--node-ipc"],
+      "filetypes": ["rescript"],
+      "rootPatterns": ["bsconfig.json"]
+    }
+  }
 }

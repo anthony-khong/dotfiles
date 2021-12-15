@@ -35,6 +35,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'leafgarland/typescript-vim'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'pangloss/vim-javascript'
+Plug 'rescript-lang/vim-rescript', {'tag': 'v2.1.0'}
 
 " Clojure
 Plug 'Olical/conjure', {'tag': 'v4.25.0'}
@@ -69,7 +70,7 @@ let g:coc_global_extensions = [
 			\ 'coc-json',
 			\ 'coc-prettier',
 			\ 'coc-pyright',
-			\ 'coc-tsserver',
+			\ 'coc-tsserver'
 			\ ]
 nmap <silent> <localleader>cd <Plug>(coc-definition)
 nmap <silent> <localleader>ci <Plug>(coc-implementation)
@@ -140,6 +141,7 @@ augroup load_ultisnips
 augroup END
 let g:UltiSnipsExpandTrigger = "<Tab>"
 let g:UltiSnipsSnippetDirectories = ["UltiSnips", "custom_snippets"]
+nnoremap <localleader>ku :au! UltiSnips_AutoTrigger<CR>
 
 " JSONC
 nnoremap <localleader>jc :set ft=jsonc<CR>

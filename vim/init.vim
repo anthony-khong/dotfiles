@@ -240,3 +240,7 @@ nnoremap <Space>x ^xi* [X]<Esc>
 " Panes
 nnoremap <Space>sh :split<CR>
 nnoremap <Space>sv :vsplit<CR>
+
+" Writing and quiting
+nnoremap <C-S> :w<CR>
+nnoremap <C-X> :q<CR>

@@ -23,5 +23,13 @@
       "filetypes": ["rescript"],
       "rootPatterns": ["bsconfig.json"]
     }
+  },
+  "diagnostic.floatConfig": {
+    "maxHeight": 24,
+    "maxWidth": 100
+  },
+  "signature.floatConfig": {
+    "maxHeight": 24,
+    "maxWidth": 100
   }
 }

@@ -8,6 +8,7 @@ call plug#begin()
 
 " Appearance
 Plug 'airblade/vim-gitgutter'
+Plug 'rakr/vim-one'
 Plug 'tanvirtin/monokai.nvim'
 
 " Completions
@@ -128,7 +129,9 @@ nnoremap <localleader>bE :call fzf#vim#files('', fzf#vim#with_preview('down:72%'
 nnoremap <localleader>bH :call fzf#vim#files('~', fzf#vim#with_preview('down:72%'))<CR>
 
 " NERDTree
+let g:NERDTreeWinSize=50
 nnoremap <localleader>bj :NERDTreeToggle<CR>
+nnoremap <localleader>bf :NERDTreeFind<CR>
 
 " Fugitive
 nnoremap <localleader>gd :Gdiff<CR>
@@ -209,6 +212,8 @@ hi LineNr     guibg=NONE ctermbg=NONE
 hi NonText    guibg=NONE ctermbg=NONE
 hi SignColumn guibg=NONE ctermbg=NONE
 hi StatusLine guibg=NONE ctermbg=NONE
+"silent! colorscheme one
+"set background=light
 
 " Statusline
 set laststatus=0

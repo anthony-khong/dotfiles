@@ -67,6 +67,7 @@ let maplocalleader = "\<space>"
 let g:coc_global_extensions = [
 			\ 'coc-conjure',
 			\ 'coc-css',
+      \ 'coc-diagnostic',
 			\ 'coc-eslint',
 			\ 'coc-json',
 			\ 'coc-prettier',

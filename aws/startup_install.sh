@@ -63,8 +63,8 @@ export PATH="/opt/anaconda/bin:$PATH"
 pip3 install --upgrade pip
 
 echo "Installing DVC..." >> $INSTALL_LOG
-conda install -c conda-forge mamba
-mamba install -c conda-forge dvc
+conda install -y -c conda-forge mamba
+mamba install -y -c conda-forge dvc
 pip3 install "dvc[all]"
 
 echo "Setting up Git..." >> $INSTALL_LOG
@@ -83,6 +83,9 @@ cd $HOME/dotfiles \
     && /bin/bash $HOME/dotfiles/bash/recreate_symbolic_links
 
 echo "Installing Neovim + dependencies..." >> $INSTALL_LOG
+curl https://get.volta.sh | bash
+volta install node
+curl https://sh.rustup.rs -sSf | sh -s -- -y
 pip3 install --upgrade neovim jedi google-api-python-client pyflakes mypy
 sudo add-apt-repository ppa:neovim-ppa/stable -y \
     && sudo apt-get update \
@@ -90,7 +93,6 @@ sudo add-apt-repository ppa:neovim-ppa/stable -y \
     && /bin/bash $HOME/dotfiles/tmux/tpm/scripts/install_plugins.sh
 sudo mkdir -p $HOME/.local && sudo chown -R $USER "$HOME/.local"
 # nvim +PlugInstall +silent +qall
-# TODO: install vim-slime manually
 
 echo "Installing Ripgrep..." >> $INSTALL_LOG
 sudo apt-get update && sudo apt-get install -y ripgrep

@@ -45,6 +45,9 @@ Plug 'guns/vim-sexp'
 Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'tpope/vim-sexp-mappings-for-regular-people'
 
+" Rust
+Plug 'rust-lang/rust.vim'
+
 " Dockerfile
 Plug 'ekalinin/Dockerfile.vim'
 
@@ -72,6 +75,7 @@ let g:coc_global_extensions = [
 			\ 'coc-json',
 			\ 'coc-prettier',
 			\ 'coc-pyright',
+      \ 'coc-rust-analyzer',
 			\ 'coc-tsserver'
 			\ ]
 nmap <silent> <localleader>cd <Plug>(coc-definition)
@@ -250,3 +254,13 @@ nnoremap <Space>sv :vsplit<CR>
 " Writing and quiting
 nnoremap <C-S> :w<CR>
 nnoremap <C-X> :q<CR>
+
+" Set completeopt to have a better completion experience
+" :help completeopt
+" menuone: popup even when there's only one match
+" noinsert: Do not insert text until a selection is made
+" noselect: Do not select, force user to select one from the menu
+" Source: https://sharksforarms.dev/posts/neovim-rust/
+set completeopt=menuone,noinsert,noselect
+" Avoid showing extra messages when using completion
+set shortmess+=c

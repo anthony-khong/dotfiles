@@ -38,5 +38,6 @@
   "signature.floatConfig": {
     "maxHeight": 24,
     "maxWidth": 100
-  }
+  },
+  "rust-analyzer.checkOnSave.command": "clippy"
 }

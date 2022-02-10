@@ -87,6 +87,9 @@ nmap <silent> <localleader>cn <Plug>(coc-diagnostic-next)
 nmap <localleader>cr <Plug>(coc-rename)
 nmap <localleader>cd <Plug>(coc-codeaction)
 
+nnoremap <nowait><expr> <localleader>cc coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+nnoremap <nowait><expr> <localleader>cC coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+
 "" Use K to show documentation in preview window.
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)

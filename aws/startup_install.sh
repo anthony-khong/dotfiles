@@ -14,8 +14,9 @@ sudo apt-get update && sudo apt-get install -y \
     ca-certificates \
     curl \
     entr \
-    jq \
     git \
+    htop \
+    jq \
     libssl-dev \
     make \
     pandoc \
@@ -84,7 +85,7 @@ cd $HOME/dotfiles \
 
 echo "Installing Neovim + dependencies..." >> $INSTALL_LOG
 curl https://get.volta.sh | bash
-volta install node
+/bin/bash -c "volta install node"
 curl https://sh.rustup.rs -sSf | sh -s -- -y
 pip3 install --upgrade neovim jedi google-api-python-client pyflakes mypy
 sudo add-apt-repository ppa:neovim-ppa/stable -y \

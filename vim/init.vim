@@ -8,7 +8,7 @@ call plug#begin()
 
 " Appearance
 Plug 'airblade/vim-gitgutter'
-Plug 'rakr/vim-one'
+Plug 'projekt0n/github-nvim-theme', { 'branch': 'main' }
 Plug 'tanvirtin/monokai.nvim'
 
 " Completions
@@ -214,14 +214,13 @@ runtime! plugin/default.vim
 if (has("termguicolors"))
     set termguicolors
 endif
-silent! colorscheme monokai_soda
+colorscheme github_light
+"silent! colorscheme monokai_soda
 hi Normal     guibg=NONE ctermbg=NONE
 hi LineNr     guibg=NONE ctermbg=NONE
 hi NonText    guibg=NONE ctermbg=NONE
 hi SignColumn guibg=NONE ctermbg=NONE
 hi StatusLine guibg=NONE ctermbg=NONE
-"silent! colorscheme one
-"set background=light
 
 " Statusline
 set laststatus=0

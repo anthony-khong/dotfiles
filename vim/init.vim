@@ -214,8 +214,15 @@ runtime! plugin/default.vim
 if (has("termguicolors"))
     set termguicolors
 endif
-colorscheme github_light
-"silent! colorscheme monokai_soda
+let dark_background = ($DARK_VIM == "1")
+if dark_background
+  silent! colorscheme github_dark
+  "silent! colorscheme monokai_soda
+else
+  silent! colorscheme github_light
+  let $BAT_THEME='GitHub'
+endif
+
 hi Normal     guibg=NONE ctermbg=NONE
 hi LineNr     guibg=NONE ctermbg=NONE
 hi NonText    guibg=NONE ctermbg=NONE

@@ -29,6 +29,9 @@ mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config};
 rm -rf $XDG_CONFIG_HOME/nvim;
 ln -s ~/dotfiles/vim $XDG_CONFIG_HOME/nvim;
 
+rm -rf $XDG_CONFIG_HOME/alacritty;
+ln -s ~/dotfiles/alacritty $XDG_CONFIG_HOME/alacritty;
+
 rm -rf .tmux.conf;
 ln -s ~/dotfiles/tmux/tmux.conf .tmux.conf;
 

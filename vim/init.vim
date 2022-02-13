@@ -135,6 +135,20 @@ nnoremap <localleader>be :call fzf#vim#gitfiles('', fzf#vim#with_preview('down:7
 nnoremap <localleader>bh :call fzf#vim#gitfiles('~', fzf#vim#with_preview('down:72%'))<CR>
 nnoremap <localleader>bE :call fzf#vim#files('', fzf#vim#with_preview('down:72%'))<CR>
 nnoremap <localleader>bH :call fzf#vim#files('~', fzf#vim#with_preview('down:72%'))<CR>
+let g:fzf_colors = {
+            \ 'fg':      ['fg', 'Normal'],
+            \ 'bg':      ['bg', 'Normal'],
+            \ 'hl':      ['fg', 'Comment'],
+            \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+            \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+            \ 'hl+':     ['fg', 'Statement'],
+            \ 'info':    ['fg', 'PreProc'],
+            \ 'border':  ['fg', 'Ignore'],
+            \ 'prompt':  ['fg', 'Conditional'],
+            \ 'pointer': ['fg', 'Exception'],
+            \ 'marker':  ['fg', 'Keyword'],
+            \ 'spinner': ['fg', 'Label'],
+            \ 'header':  ['fg', 'Comment'] }
 
 " NERDTree
 let g:NERDTreeWinSize=50
@@ -216,8 +230,7 @@ if (has("termguicolors"))
 endif
 let dark_background = ($DARK_VIM == "1")
 if dark_background
-  silent! colorscheme github_dark
-  "silent! colorscheme monokai_soda
+  silent! colorscheme monokai_soda
 else
   silent! colorscheme github_light
   let $BAT_THEME='GitHub'

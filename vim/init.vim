@@ -8,6 +8,7 @@ call plug#begin()
 
 " Appearance
 Plug 'airblade/vim-gitgutter'
+Plug 'Mangeshrex/uwu.vim'
 Plug 'projekt0n/github-nvim-theme', { 'branch': 'main' }
 Plug 'tanvirtin/monokai.nvim'
 
@@ -230,7 +231,8 @@ if (has("termguicolors"))
 endif
 let dark_background = ($DARK_VIM == "1")
 if dark_background
-  silent! colorscheme monokai_soda
+  "silent! colorscheme monokai_soda
+  silent! colorscheme uwu
 else
   silent! colorscheme github_light
   let $BAT_THEME='GitHub'

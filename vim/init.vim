@@ -112,6 +112,7 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 let g:SuperTabDefaultCompletionType = "<c-n>"
 
 " NERDCommenter
+let NERDTreeMinimalUI=1
 let g:NERDCreateDefaultMappings = 0
 nmap gcc <Plug>NERDCommenterToggle
 vmap gcc <Plug>NERDCommenterToggle

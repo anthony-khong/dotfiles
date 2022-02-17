@@ -16,8 +16,9 @@ Plug 'tanvirtin/monokai.nvim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Editing
-Plug 'SirVer/ultisnips', { 'on': [] }
+Plug 'cohama/lexima.vim'
 Plug 'ervandew/supertab'
+Plug 'honza/vim-snippets'  
 Plug 'junegunn/vim-easy-align'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-repeat'
@@ -77,6 +78,7 @@ let g:coc_global_extensions = [
 			\ 'coc-prettier',
 			\ 'coc-pyright',
       \ 'coc-rust-analyzer',
+      \ 'coc-snippets',
 			\ 'coc-tsserver'
 			\ ]
 nmap <silent> <localleader>cd <Plug>(coc-definition)

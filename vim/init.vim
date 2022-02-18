@@ -8,7 +8,7 @@ call plug#begin()
 
 " Appearance
 Plug 'airblade/vim-gitgutter'
-Plug 'Mangeshrex/uwu.vim'
+Plug 'ayu-theme/ayu-vim'
 Plug 'projekt0n/github-nvim-theme', { 'branch': 'main' }
 Plug 'tanvirtin/monokai.nvim'
 
@@ -16,7 +16,7 @@ Plug 'tanvirtin/monokai.nvim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Editing
-Plug 'cohama/lexima.vim'
+Plug 'SirVer/ultisnips'
 Plug 'ervandew/supertab'
 Plug 'honza/vim-snippets'  
 Plug 'junegunn/vim-easy-align'
@@ -48,7 +48,8 @@ Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'tpope/vim-sexp-mappings-for-regular-people'
 
 " Rust
-Plug 'rust-lang/rust.vim'
+Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+Plug 'hrsh7th/vim-vsnip'
 
 " Dockerfile
 Plug 'ekalinin/Dockerfile.vim'
@@ -235,7 +236,9 @@ endif
 let dark_background = ($DARK_VIM == "1")
 if dark_background
   "silent! colorscheme monokai_soda
-  silent! colorscheme uwu
+  let ayucolor="dark"
+  silent! colorscheme ayu
+
 else
   silent! colorscheme github_light
   let $BAT_THEME='GitHub'

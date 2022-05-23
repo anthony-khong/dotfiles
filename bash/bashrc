@@ -109,3 +109,5 @@ source ~/dotfiles/aws/bash_aws.sh
 export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
 
 [ -z "$ZSH_NAME" ] && [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+alias gitlab-runner='docker run --rm -it -v gitlab-runner-config:/etc/gitlab-runner gitlab/gitlab-runner:latest'

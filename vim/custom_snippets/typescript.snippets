@@ -1,13 +1,11 @@
 snippet prn
-println!("{:#?}", ${1:${VISUAL:variable}});
+console.log(JSON.stringify(${1:${VISUAL:variable}}, null, 2));
 endsnippet
 
-snippet fmt
-format!("{:#?}", ${1:${VISUAL:variable}});
-endsnippet
-
-snippet uerr
-use std::error::Error;
+snippet for
+for (const x of ${1:${VISUAL:xs}}) {
+	statement
+}
 endsnippet
 
 snippet sb

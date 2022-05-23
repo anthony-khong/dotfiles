@@ -1,3 +1,17 @@
+### Linux Fresh Install (2022/05/20):
+* Hardware:
+    * Mouse speeds
+    * Keyboard speeds
+* GUI:
+    * Google Chrome
+        * 1Password
+        * GitHub SSH key
+    * Alacritty + Change Font
+* Terminal:
+    * sudo apt-get update && sudo apt-get install -y build-essential git
+    * ssh-keygen + dotfiles clone
+    * dotfiles/aws/startup_install.sh
+
 ### Linux Fresh Install:
     - HDD: swap + home; SSD: root
     - sudo apt-get update

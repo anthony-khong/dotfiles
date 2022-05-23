@@ -28,3 +28,5 @@ export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 
 export DARK_VIM=1
+
+export PATH="/Users/akhong/.local/share/solana/install/active_release/bin:$PATH"

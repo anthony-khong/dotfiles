@@ -60,6 +60,9 @@ Plug 'plasticboy/vim-markdown'
 " JSON
 Plug 'kevinoid/vim-jsonc'
 
+" DBML
+Plug 'jidn/vim-dbml'
+
 call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

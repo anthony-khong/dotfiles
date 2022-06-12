@@ -63,6 +63,10 @@ Plug 'kevinoid/vim-jsonc'
 " DBML
 Plug 'jidn/vim-dbml'
 
+" Dart
+Plug 'dart-lang/dart-vim-plugin'
+Plug 'natebosch/dartlang-snippets'
+
 call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -76,14 +80,16 @@ let maplocalleader = "\<space>"
 let g:coc_global_extensions = [
 			\ 'coc-conjure',
 			\ 'coc-css',
-      \ 'coc-diagnostic',
 			\ 'coc-eslint',
+			\ 'coc-flutter',
 			\ 'coc-json',
 			\ 'coc-prettier',
 			\ 'coc-pyright',
+      \ 'coc-diagnostic',
       \ 'coc-rust-analyzer',
       \ 'coc-snippets',
-			\ 'coc-tsserver'
+			\ 'coc-tsserver',
+			\ 'coc-yaml'
 			\ ]
 nmap <silent> <localleader>cd <Plug>(coc-definition)
 nmap <silent> <localleader>ci <Plug>(coc-implementation)
@@ -92,7 +98,8 @@ nmap <silent> <localleader>ct <Plug>(coc-type-definition)
 nmap <silent> <localleader>cp <Plug>(coc-diagnostic-prev)
 nmap <silent> <localleader>cn <Plug>(coc-diagnostic-next)
 nmap <localleader>cr <Plug>(coc-rename)
-nmap <localleader>cd <Plug>(coc-codeaction)
+xmap <localleader>ca <Plug>(coc-codeaction-selected)
+nmap <localleader>ca <Plug>(coc-codeaction-selected)
 
 nnoremap <nowait><expr> <localleader>cc coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
 nnoremap <nowait><expr> <localleader>cC coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
@@ -297,3 +304,9 @@ nnoremap <C-X> :q<CR>
 set completeopt=menuone,noinsert,noselect
 " Avoid showing extra messages when using completion
 set shortmess+=c
+
+" Flutter
+"let g:dart_format_on_save = 1
+let g:dartfmt_options = ['--fix', '--line-length 120']
+nnoremap <Space>fe :CocCommand flutter.emulators <CR>
+nnoremap <Space>fd :below new output:///flutter-dev <CR>

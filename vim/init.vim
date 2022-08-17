@@ -38,7 +38,6 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'leafgarland/typescript-vim'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'pangloss/vim-javascript'
-Plug 'rescript-lang/vim-rescript', {'tag': 'v2.1.0'}
 
 " Clojure
 Plug 'Olical/conjure', {'tag': 'v4.25.0'}

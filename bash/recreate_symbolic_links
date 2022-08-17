@@ -32,20 +32,14 @@ ln -s ~/dotfiles/vim $XDG_CONFIG_HOME/nvim;
 rm -rf $XDG_CONFIG_HOME/alacritty;
 ln -s ~/dotfiles/alacritty $XDG_CONFIG_HOME/alacritty;
 
+rm -rf $XDG_CONFIG_HOME/zellij;
+ln -s ~/dotfiles/zellij $XDG_CONFIG_HOME/zellij;
+
 rm -rf .tmux.conf;
 ln -s ~/dotfiles/tmux/tmux.conf .tmux.conf;
-
-rm -rf .ghci;
-mkdir -p .ghci
-ln -s ~/dotfiles/ghci .ghci;
 
 mkdir -p .lein
 rm -rf .lein/profiles.clj
 ln -s ~/dotfiles/lein_profiles.clj .lein/profiles.clj
 mkdir -p .config/conjure
 ln -s ~/dotfiles/conjure.edn .config/conjure/.conjure.edn
-
-if [[ -e "$HOME/.config/karabiner/karabiner.json" ]]; then
-    rm ~/.config/karabiner/karabiner.json
-    ln -s ~/dotfiles/bash/karabiner.json .config/karabiner/karabiner.json
-fi

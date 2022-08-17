@@ -39,7 +39,6 @@
     "maxHeight": 24,
     "maxWidth": 100
   },
-  "rust-analyzer.server.path": "~/rust-analyzer-2022-03-07",
   "rust-analyzer.checkOnSave.command": "clippy",
   "rust-analyzer.cargo.allFeatures": true
 }

@@ -20,6 +20,8 @@ export GPG_TTY
 export INIT_VIM="$HOME/dotfiles/vim/init.vim"
 export GOPATH=$HOME/gopath
 export PATH=$GOPATH:$GOPATH/bin:$PATH
+export PNPM_HOME="$HOME/.local/share/pnpm"
+export PATH="$PNPM_HOME:$PATH"
 
 # Vim's dark background
 export DARK_VIM=1

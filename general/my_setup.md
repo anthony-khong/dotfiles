@@ -1,3 +1,7 @@
+### Linux Fresh Install (2022/08/14):
+
+* Fix TP-Link issues: https://github.com/Mange/rtl8192eu-linux-driver
+
 ### Linux Fresh Install (2022/05/20):
 * Hardware:
     * Mouse speeds

@@ -106,7 +106,8 @@ source ~/dotfiles/bash/bash_preferences.sh
 source ~/dotfiles/google_cloud/bash_gcp.sh
 source ~/dotfiles/aws/bash_aws.sh
 
-export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin:$VOLTA_HOME/bin"
 
 [ -z "$ZSH_NAME" ] && [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 

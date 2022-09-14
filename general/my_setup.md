@@ -1,6 +1,7 @@
 ### Linux Fresh Install (2022/08/14):
 
 * Fix TP-Link issues: https://github.com/Mange/rtl8192eu-linux-driver
+* xcape + GitLab CI runner
 
 ### Linux Fresh Install (2022/05/20):
 * Hardware:

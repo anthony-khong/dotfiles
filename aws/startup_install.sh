@@ -31,6 +31,7 @@ sudo apt-get update && sudo apt-get install -y \
     libc++1 libc++abi-dev libc++abi1 libclang-dev libclang1 \
     libomp-dev libomp5 lld lldb llvm-dev llvm-runtime llvm
 sudo apt-get install -y cloud-utils
+sudo apt-get install -y openssh-server && sudo systemctl status ssh && sudo ufw allow ssh
 
 echo "Installing AWS CLI..." >> $INSTALL_LOG
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
@@ -50,7 +51,7 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o 
  echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-sudo apt-get update && sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+sudo apt-get update && sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin docker-compose
 
 echo "Installing ZSH..." >> $INSTALL_LOG
 sudo apt-get update && sudo apt-get install -y zsh

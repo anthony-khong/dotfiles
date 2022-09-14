@@ -1,5 +1,6 @@
 ### Linux Fresh Install (2022/08/14):
 
+* Change hostname
 * Fix TP-Link issues: https://github.com/Mange/rtl8192eu-linux-driver
 * xcape + GitLab CI runner
 
@@ -10,7 +11,7 @@
 * GUI:
     * Google Chrome
         * 1Password
-        * GitHub SSH key
+        * GitHub and GitLab SSH key
     * Alacritty + Change Font
 * Terminal:
     * sudo apt-get update && sudo apt-get install -y build-essential git

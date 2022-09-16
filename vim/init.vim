@@ -17,7 +17,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Editing
 Plug 'SirVer/ultisnips'
-Plug 'ervandew/supertab'
+
 Plug 'honza/vim-snippets'  
 Plug 'junegunn/vim-easy-align'
 Plug 'scrooloose/nerdcommenter'
@@ -117,9 +117,6 @@ nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 "" Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" SuperTab
-let g:SuperTabDefaultCompletionType = "<c-n>"
 
 " NERDCommenter
 let NERDTreeMinimalUI=1
@@ -302,7 +299,7 @@ nnoremap <C-X> :q<CR>
 " Source: https://sharksforarms.dev/posts/neovim-rust/
 set completeopt=menuone,noinsert,noselect
 " Avoid showing extra messages when using completion
-set shortmess+=c
+ set shortmess+=c
 
 " Flutter
 "let g:dart_format_on_save = 1

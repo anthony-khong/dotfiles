@@ -244,7 +244,7 @@ if dark_background
   "silent! colorscheme monokai_soda
   let ayucolor="dark"
   silent! colorscheme ayu
-
+  hi Pmenu guibg=#334351 guifg=#E6E1CF
 else
   silent! colorscheme github_light
   let $BAT_THEME='GitHub'

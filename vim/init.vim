@@ -17,7 +17,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Editing
 Plug 'SirVer/ultisnips'
-
 Plug 'honza/vim-snippets'  
 Plug 'junegunn/vim-easy-align'
 Plug 'scrooloose/nerdcommenter'
@@ -29,6 +28,7 @@ Plug 'jpalardy/vim-slime', { 'branch': 'main' }
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
+Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-fugitive'
 
 " Tmux

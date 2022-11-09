@@ -29,3 +29,4 @@ export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 
 export DARK_VIM=1
+export PATH="$PATH:/opt/homebrew/bin"

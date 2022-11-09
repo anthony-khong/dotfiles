@@ -29,6 +29,10 @@
       "args": ["--node-ipc"],
       "filetypes": ["rescript"],
       "rootPatterns": ["bsconfig.json"]
+    },
+    "erlang": {
+      "command": "erlang_ls",
+      "filetypes": ["erlang"]
     }
   },
   "diagnostic.floatConfig": {
@@ -40,5 +44,6 @@
     "maxWidth": 100
   },
   "rust-analyzer.checkOnSave.command": "clippy",
-  "rust-analyzer.cargo.allFeatures": true
+  "rust-analyzer.cargo.allFeatures": true,
+  "elixir.pathToElixirLS": "~/.elixir-ls/release/language_server.sh"
 }

@@ -14,11 +14,14 @@
   "json.format.enable": true,
   "eslint.autoFixOnSave": true,
   "coc.preferences.formatOnSaveFiletypes": [
+    "html",
     "javascript",
     "javascriptreact",
     "typescript",
     "typescriptreact",
-    "rescript"
+    "rescript",
+    "elixir",
+    "eelixir"
   ],
   "tsserver.formatOnType": true,
   "coc.preferences.formatOnType": true,

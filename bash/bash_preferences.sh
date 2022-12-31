@@ -26,6 +26,11 @@ export PATH="$PNPM_HOME:$PATH"
 # Vim's dark background
 export DARK_VIM=1
 
+# Erlang
+export ERL_AFLAGS="-kernel shell_history enabled -kernel shell_history_file_bytes 1024000"
+
+export ELIXIR_ERL_OPTIONS="-kernel shell_history enabled -kernel shell_history_file_bytes 1024000"
+
 # Don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTSIZE=1000

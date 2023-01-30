@@ -1,0 +1,41 @@
+extends eelixir
+
+snippet sb
+## ---------------------------------------------------------------------------
+## ${1:${VISUAL:Section}}
+## ---------------------------------------------------------------------------
+endsnippet
+
+snippet >
+|> 
+endsnippet
+
+snippet >i
+|> IO.inspect() 
+endsnippet
+
+snippet ins
+IO.inspect() 
+endsnippet
+
+## ---------------------------------------------------------------------------
+## LiveView
+## ---------------------------------------------------------------------------
+snippet mount
+def mount(params, session, socket) do
+	{:ok, assign(socket, ${1:${VISUAL:assigns}})}
+end
+endsnippet
+
+snippet render
+def render(assigns) do
+	~H"""
+	${1:${VISUAL:template}}
+	"""
+end
+endsnippet
+
+snippet event
+def handle_event(${1:${VISUAL:event}}, data, socket) do
+end
+endsnippet

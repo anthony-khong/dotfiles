@@ -40,7 +40,8 @@ Plug 'maxmellon/vim-jsx-pretty'
 Plug 'pangloss/vim-javascript'
 
 " Clojure
-Plug 'Olical/conjure', {'tag': 'v4.25.0'}
+Plug 'Olical/conjure'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'eraserhd/parinfer-rust', {'do': 'cargo build --release'}
 Plug 'guns/vim-sexp'
 Plug 'junegunn/rainbow_parentheses.vim'
@@ -117,6 +118,13 @@ nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 "" Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Conjure
+let g:conjure#mapping#def_word = "d"
+let g:conjure#log#hud#enabled = v:true
+let g:conjure#log#hud#height = 0.95
+nnoremap <Space>cc mwvip:ConjureEval<CR>'wzz
+nmap <Space>cl <Space>lv<C-W><C-H>:exe "vertical resize " . (winwidth(0) * 5/4)<CR>
 
 " NERDCommenter
 let NERDTreeMinimalUI=1

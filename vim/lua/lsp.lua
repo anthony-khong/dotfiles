@@ -127,3 +127,8 @@ require("rust-tools").setup(opts)
 require('lspconfig').pyright.setup {
   on_attach = on_attach
 }
+
+-- TypeScript
+require'lspconfig'.tsserver.setup {
+  on_attach = on_attach
+}

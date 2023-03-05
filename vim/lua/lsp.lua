@@ -92,7 +92,7 @@ require('lspconfig').elixirls.setup {
   capabilities = capabilities
 }
 
-vim.api.nvim_command("au BufWritePost *.ex lua vim.lsp.buf.format()")
+vim.api.nvim_command("au BufWritePost *.ex,*.eex,*.heex lua vim.lsp.buf.format()")
 
 -- Rust
 require'lspconfig'.rust_analyzer.setup{}

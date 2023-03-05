@@ -1,0 +1,6 @@
+require("configs")
+require("plugins")
+require("plugin_configs")
+require("keybindings")
+require("colours")
+-- require("functions")

@@ -17,7 +17,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Editing
 Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'  
+Plug 'honza/vim-snippets'
 Plug 'junegunn/vim-easy-align'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-repeat'
@@ -121,9 +121,10 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Conjure
 let g:conjure#mapping#def_word = "d"
+let g:conjure#mapping#doc_word = "C"
 let g:conjure#log#hud#enabled = v:true
 let g:conjure#log#hud#height = 0.95
-nnoremap <Space>cc mwvip:ConjureEval<CR>'wzz
+nnoremap <Space>C mwvip:ConjureEval<CR>'wzz
 nmap <Space>cl <Space>lv<C-W><C-H>:exe "vertical resize " . (winwidth(0) * 5/4)<CR>
 
 " NERDCommenter

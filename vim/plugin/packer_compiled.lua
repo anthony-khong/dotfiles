@@ -74,6 +74,11 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["Dockerfile.vim"] = {
+    loaded = true,
+    path = "/Users/akhong/.local/share/nvim/site/pack/packer/start/Dockerfile.vim",
+    url = "https://github.com/ekalinin/Dockerfile.vim"
+  },
   ["ayu-vim"] = {
     loaded = true,
     path = "/Users/akhong/.local/share/nvim/site/pack/packer/start/ayu-vim",
@@ -109,10 +114,35 @@ _G.packer_plugins = {
     path = "/Users/akhong/.local/share/nvim/site/pack/packer/start/elixir.nvim",
     url = "https://github.com/mhanberg/elixir.nvim"
   },
+  ["fidget.nvim"] = {
+    loaded = true,
+    path = "/Users/akhong/.local/share/nvim/site/pack/packer/start/fidget.nvim",
+    url = "https://github.com/j-hui/fidget.nvim"
+  },
+  fzf = {
+    loaded = true,
+    path = "/Users/akhong/.local/share/nvim/site/pack/packer/start/fzf",
+    url = "https://github.com/junegunn/fzf"
+  },
+  ["fzf.vim"] = {
+    loaded = true,
+    path = "/Users/akhong/.local/share/nvim/site/pack/packer/start/fzf.vim",
+    url = "https://github.com/junegunn/fzf.vim"
+  },
+  ["lsp-format.nvim"] = {
+    loaded = true,
+    path = "/Users/akhong/.local/share/nvim/site/pack/packer/start/lsp-format.nvim",
+    url = "https://github.com/lukas-reineke/lsp-format.nvim"
+  },
   nerdcommenter = {
     loaded = true,
     path = "/Users/akhong/.local/share/nvim/site/pack/packer/start/nerdcommenter",
     url = "https://github.com/scrooloose/nerdcommenter"
+  },
+  nerdtree = {
+    loaded = true,
+    path = "/Users/akhong/.local/share/nvim/site/pack/packer/start/nerdtree",
+    url = "https://github.com/scrooloose/nerdtree"
   },
   ["nvim-cmp"] = {
     loaded = true,
@@ -139,6 +169,31 @@ _G.packer_plugins = {
     path = "/Users/akhong/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
+  ["rust-tools.nvim"] = {
+    loaded = true,
+    path = "/Users/akhong/.local/share/nvim/site/pack/packer/start/rust-tools.nvim",
+    url = "https://github.com/simrat39/rust-tools.nvim"
+  },
+  ["rust.vim"] = {
+    loaded = true,
+    path = "/Users/akhong/.local/share/nvim/site/pack/packer/start/rust.vim",
+    url = "https://github.com/rust-lang/rust.vim"
+  },
+  ["typescript-vim"] = {
+    loaded = true,
+    path = "/Users/akhong/.local/share/nvim/site/pack/packer/start/typescript-vim",
+    url = "https://github.com/leafgarland/typescript-vim"
+  },
+  ultisnips = {
+    loaded = true,
+    path = "/Users/akhong/.local/share/nvim/site/pack/packer/start/ultisnips",
+    url = "https://github.com/SirVer/ultisnips"
+  },
+  ["vim-dbml"] = {
+    loaded = true,
+    path = "/Users/akhong/.local/share/nvim/site/pack/packer/start/vim-dbml",
+    url = "https://github.com/jidn/vim-dbml"
+  },
   ["vim-easy-align"] = {
     loaded = true,
     path = "/Users/akhong/.local/share/nvim/site/pack/packer/start/vim-easy-align",
@@ -148,6 +203,26 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/akhong/.local/share/nvim/site/pack/packer/start/vim-gitgutter",
     url = "https://github.com/airblade/vim-gitgutter"
+  },
+  ["vim-javascript"] = {
+    loaded = true,
+    path = "/Users/akhong/.local/share/nvim/site/pack/packer/start/vim-javascript",
+    url = "https://github.com/pangloss/vim-javascript"
+  },
+  ["vim-jsonc"] = {
+    loaded = true,
+    path = "/Users/akhong/.local/share/nvim/site/pack/packer/start/vim-jsonc",
+    url = "https://github.com/kevinoid/vim-jsonc"
+  },
+  ["vim-jsx-pretty"] = {
+    loaded = true,
+    path = "/Users/akhong/.local/share/nvim/site/pack/packer/start/vim-jsx-pretty",
+    url = "https://github.com/maxmellon/vim-jsx-pretty"
+  },
+  ["vim-markdown"] = {
+    loaded = true,
+    path = "/Users/akhong/.local/share/nvim/site/pack/packer/start/vim-markdown",
+    url = "https://github.com/plasticboy/vim-markdown"
   },
   ["vim-polyglot"] = {
     loaded = true,
@@ -163,6 +238,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/akhong/.local/share/nvim/site/pack/packer/start/vim-slime",
     url = "https://github.com/jpalardy/vim-slime"
+  },
+  ["vim-snippets"] = {
+    loaded = true,
+    path = "/Users/akhong/.local/share/nvim/site/pack/packer/start/vim-snippets",
+    url = "https://github.com/honza/vim-snippets"
   },
   ["vim-surround"] = {
     loaded = true,

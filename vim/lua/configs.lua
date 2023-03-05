@@ -1,6 +1,6 @@
 -- Leader
-vim.g.mapleader = "<Space>"
-vim.g.maplocalleader = "<Space>"
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 -- Makes copy and pasting work
 vim.opt.clipboard = "unnamed"

@@ -13,6 +13,9 @@ return require("packer").startup {
   function(use)
     use "wbthomason/packer.nvim"
 
+    -- Utilities
+    use 'nvim-lua/plenary.nvim'
+
 		-- Appearance
 		use 'airblade/vim-gitgutter'
 		use 'ayu-theme/ayu-vim'
@@ -29,13 +32,17 @@ return require("packer").startup {
 
     -- IDE
     use 'neovim/nvim-lspconfig'
+    use "lukas-reineke/lsp-format.nvim"
     use 'sheerun/vim-polyglot'
     use 'nvim-treesitter/nvim-treesitter'
-    -- TODO: fzf
-    -- TODO: nerdtree
-    -- TODO: try it on Rust
-    -- TODO: try it on Python
-    -- TODO: try it on TS
+    use 'scrooloose/nerdtree'
+    use 'SirVer/ultisnips'
+    use 'honza/vim-snippets'
+    use 'j-hui/fidget.nvim'
+
+    -- FZF
+    use { 'junegunn/fzf', run = ":call fzf#install()" }
+    use { 'junegunn/fzf.vim' }
 
     -- Completion
     use 'hrsh7th/nvim-cmp'
@@ -48,11 +55,9 @@ return require("packer").startup {
     use 'hrsh7th/vim-vsnip'
     use 'hrsh7th/cmp-vsnip'
 
-    -- Elixir
-    use({ "mhanberg/elixir.nvim", requires = { "nvim-lua/plenary.nvim" }})
-
     -- Rust
     use 'rust-lang/rust.vim'
+    use 'simrat39/rust-tools.nvim'
 
     -- JavaScript and TypeScript
     use 'leafgarland/typescript-vim'

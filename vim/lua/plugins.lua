@@ -39,6 +39,10 @@ return require("packer").startup {
     use 'honza/vim-snippets'
     use 'j-hui/fidget.nvim'
     use 'nvim-tree/nvim-tree.lua'
+    use {
+      'nvim-telescope/telescope.nvim', tag = '0.1.1',
+      requires = { {'nvim-lua/plenary.nvim'} }
+    }
 
     -- FZF
     use { 'junegunn/fzf', run = ":call fzf#install()" }

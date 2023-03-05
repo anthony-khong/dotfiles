@@ -1,11 +1,39 @@
--- NerdTree
+-- Nvim Tree
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+require("nvim-tree").setup({
+  renderer = {
+    icons = {
+      glyphs = {
+        default = "-",
+        symlink = "L",
+        modified = "~",
+        folder = {
+          arrow_closed = "▸",
+          arrow_open = "▾",
+          default = "",
+          open = "",
+        },
+        git = {
+          unstaged = "✗",
+          staged = "✓",
+          unmerged = " ",
+          renamed = "➜",
+          untracked = "★",
+          deleted = " ",
+          ignored = " ",
+        }
+      }
+    }
+  },
+  sort_by = "case_sensitive",
+  view = { width = 30, },
+})
+
 vim.cmd([[
-  let NERDTreeMinimalUI=1
-  let NERDTreeDirArrows = 1
-  let NERDTreeAutoDeleteBuffer = 1
-  let g:NERDTreeWinSize=50
-  nnoremap <localleader>bj :NERDTreeToggle<CR>
-  nnoremap <localleader>bf :NERDTreeFind<CR>
+  nnoremap <localleader>tt :NvimTreeToggle<CR>
+  nnoremap <localleader>tf :NvimTreeFindFile<CR>
+  nnoremap <localleader>tr :NvimTreeRefresh<CR>
 ]])
 
 -- Slime

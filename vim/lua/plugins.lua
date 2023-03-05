@@ -35,10 +35,10 @@ return require("packer").startup {
     use "lukas-reineke/lsp-format.nvim"
     use 'sheerun/vim-polyglot'
     use 'nvim-treesitter/nvim-treesitter'
-    use 'scrooloose/nerdtree'
     use 'SirVer/ultisnips'
     use 'honza/vim-snippets'
     use 'j-hui/fidget.nvim'
+    use 'nvim-tree/nvim-tree.lua'
 
     -- FZF
     use { 'junegunn/fzf', run = ":call fzf#install()" }

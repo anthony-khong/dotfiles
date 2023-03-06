@@ -94,6 +94,7 @@ curl https://get.volta.sh | bash
 /bin/bash -c "volta install node"
 curl https://sh.rustup.rs -sSf | sh -s -- -y
 pip3 install --upgrade neovim jedi google-api-python-client pyflakes mypy
+pip3 install 'python-language-server[all]' jedi-language-server pyright python-lsp-black
 sudo add-apt-repository ppa:neovim-ppa/stable -y \
     && sudo apt-get update \
     && sudo apt-get install -y neovim \

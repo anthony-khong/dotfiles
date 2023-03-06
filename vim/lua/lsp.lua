@@ -128,6 +128,21 @@ require('lspconfig').pyright.setup {
   on_attach = on_attach
 }
 
+require('lspconfig').pylsp.setup {
+  settings = {
+    pylsp = {
+      plugins = {
+        flake8 = {
+          enabled = true,
+          ignore = {},
+          maxLineLength = 90
+        }
+      }
+    }
+  },
+  on_attach = on_attach
+}
+
 -- TypeScript
 require'lspconfig'.tsserver.setup {
   on_attach = on_attach

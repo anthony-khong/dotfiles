@@ -31,6 +31,9 @@ return require("packer").startup {
     use 'christoomey/vim-tmux-navigator'
     use 'jpalardy/vim-slime'
 
+    -- Git
+    use 'tpope/vim-fugitive'
+
     -- IDE
     use 'neovim/nvim-lspconfig'
     use "lukas-reineke/lsp-format.nvim"

@@ -92,7 +92,7 @@ require('lspconfig').elixirls.setup {
   capabilities = capabilities
 }
 
-vim.api.nvim_command("au BufWritePost *.ex,*.eex,*.heex lua vim.lsp.buf.format()")
+vim.api.nvim_command("au BufWritePost *.ex,*.eex,*.exs,*.heex lua vim.lsp.buf.format()")
 
 -- Rust
 require'lspconfig'.rust_analyzer.setup{}
@@ -132,10 +132,13 @@ require('lspconfig').pylsp.setup {
   settings = {
     pylsp = {
       plugins = {
+        pylint = { enabled = false },
+        pycodestyle = { enabled = false },
+        pyflakes = { enabled = false },
         flake8 = {
           enabled = true,
           ignore = {},
-          maxLineLength = 90
+          maxLineLength = 100
         }
       }
     }

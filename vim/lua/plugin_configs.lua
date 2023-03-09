@@ -59,6 +59,13 @@ vim.cmd([[
   nmap ga <Plug>(EasyAlign)
 ]])
 
+-- Fugitive
+vim.cmd([[
+  nnoremap <localleader>gd :Gdiff<CR>
+  nnoremap <localleader>gb :Git blame<CR>
+]])
+
+
 -- Nerd Commenter
 vim.cmd([[
   let g:NERDCreateDefaultMappings = 0

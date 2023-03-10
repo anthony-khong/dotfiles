@@ -39,18 +39,12 @@ return require("packer").startup {
     use "lukas-reineke/lsp-format.nvim"
     use 'sheerun/vim-polyglot'
     use 'nvim-treesitter/nvim-treesitter'
-    use 'SirVer/ultisnips'
-    use 'honza/vim-snippets'
     use 'j-hui/fidget.nvim'
     use 'nvim-tree/nvim-tree.lua'
     use {
       'nvim-telescope/telescope.nvim', tag = '0.1.1',
       requires = { {'nvim-lua/plenary.nvim'} }
     }
-
-    -- FZF
-    use { 'junegunn/fzf', run = ":call fzf#install()" }
-    use { 'junegunn/fzf.vim' }
 
     -- Completion
     use 'hrsh7th/nvim-cmp'
@@ -61,7 +55,9 @@ return require("packer").startup {
 
     -- Snippets
     use 'hrsh7th/vim-vsnip'
+    use 'hrsh7th/vim-vsnip-integ'
     use 'hrsh7th/cmp-vsnip'
+    use "rafamadriz/friendly-snippets"
 
     -- Rust
     use 'rust-lang/rust.vim'

@@ -1,0 +1,6 @@
+{
+  "polars": {
+    "prefix": ["pl"],
+    "body": ["import polars as pl"]
+  }
+}

@@ -18,6 +18,7 @@ rm -rf .vimrc;
 rm -rf .vim;
 ln -s ~/dotfiles/vim/vimrc .vimrc;
 ln -s ~/dotfiles/vim/ .vim;
+ln -s ~/dotfiles/vim/vsnip .vsnip;
 
 cd;
 rm -rf .emacs;

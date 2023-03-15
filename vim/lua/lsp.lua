@@ -1,3 +1,4 @@
+-- LSP Status
 require"fidget".setup{}
 
 -- LSP Config

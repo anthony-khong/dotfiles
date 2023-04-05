@@ -1,6 +1,26 @@
 {
-  "polars": {
+  "import-polars": {
     "prefix": ["pl"],
     "body": ["import polars as pl"]
+  },
+  "import-numpy": {
+    "prefix": ["np"],
+    "body": ["import numpy as np"]
+  },
+  "import-pandas": {
+    "prefix": ["pd"],
+    "body": ["import pandas as pd"]
+  },
+  "import-matplotlib": {
+    "prefix": ["plt"],
+    "body": ["import matplotlib.pyplot as plt"]
+  },
+  "breakpoint": {
+    "prefix": ["bp"],
+    "body": ["breakpoint()"]
+  },
+  "if-main": {
+    "prefix": ["ifm"],
+    "body": ["if __name__ == \"__main__\":", "    ${1:body}"]
   }
 }

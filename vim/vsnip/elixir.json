@@ -1,0 +1,46 @@
+{
+  "pipe->": {
+    "prefix": ">",
+    "body": "|> $0"
+  },
+  "require-explorer-dataframe": {
+    "prefix": "DF",
+    "body": "require Explorer.DataFrame, as: DF"
+  },
+  "alias-explorer-series": {
+    "prefix": "S",
+    "body": "alias Explorer.Series, as: S"
+  },
+  "ash-actions": {
+    "prefix": "act",
+    "body": ["actions do", "  $0", "end"]
+  },
+  "ash-attributes": {
+    "prefix": "attrs",
+    "body": ["attributes do", "  $0", "end"]
+  },
+  "ash-attribute": {
+    "prefix": "attr",
+    "body": "attribute ${1:field}, ${2::type}"
+  },
+  "ash-relationships": {
+    "prefix": "rel",
+    "body": ["relationships do", "  $0", "end"]
+  },
+  "ash-resource": {
+    "prefix": "ashr",
+    "body": "use Ash.Resource"
+  },
+  "recompile": {
+    "prefix": "rec",
+    "body": ["recompile()"]
+  },
+  "section-break": {
+    "prefix": "sb",
+    "body": [
+      "# ---------------------------------------------------------------------------",
+      "# ${1:${VISUAL:Section}}",
+      "# ---------------------------------------------------------------------------"
+    ]
+  }
+}

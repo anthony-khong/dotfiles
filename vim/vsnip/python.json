@@ -3,6 +3,10 @@
     "prefix": ["pl"],
     "body": ["import polars as pl"]
   },
+  "import-dask-bag": {
+    "prefix": ["db"],
+    "body": ["import dask.bag as db"]
+  },
   "import-numpy": {
     "prefix": ["np"],
     "body": ["import numpy as np"]
@@ -22,5 +26,13 @@
   "if-main": {
     "prefix": ["ifm"],
     "body": ["if __name__ == \"__main__\":", "    ${1:body}"]
+  },
+  "section-break": {
+    "prefix": "sb",
+    "body": [
+      "# ---------------------------------------------------------------------------",
+      "# ${1:${VISUAL:Section}}",
+      "# ---------------------------------------------------------------------------"
+    ]
   }
 }

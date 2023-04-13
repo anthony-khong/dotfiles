@@ -1,0 +1,26 @@
+{
+  "println": {
+    "prefix": ["prn"],
+    "body": ["println!(\"{:#?}\", ${1:${VISUAL:variable}});"]
+  },
+  "format-str": {
+    "prefix": ["fmt"],
+    "body": ["format!(\"{:#?}\", ${1:${VISUAL:variable}})"]
+  },
+  "use-std-error": {
+    "prefix": ["uerr"],
+    "body": ["use std::error::Error;"]
+  },
+  "section-break": {
+    "prefix": ["sb"],
+    "body": [
+      "// ---------------------------------------------------------------------------",
+      "// ${1:${VISUAL:Section}}",
+      "// ---------------------------------------------------------------------------"
+    ]
+  },
+  "result-box-dyn-error": {
+    "prefix": ["resd"],
+    "body": ["Result<${1:${VISUAL:Ok}}, Box<dyn Error>>"]
+  }
+}

@@ -26,6 +26,7 @@ return require("packer").startup {
     use 'scrooloose/nerdcommenter'
     use 'tpope/vim-repeat'
     use 'tpope/vim-surround'
+    use 'mattn/emmet-vim'
 
     -- Tmux
     use 'christoomey/vim-tmux-navigator'

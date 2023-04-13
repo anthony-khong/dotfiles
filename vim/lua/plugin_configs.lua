@@ -34,6 +34,9 @@ vim.cmd([[
   nnoremap <localleader>tt :NvimTreeToggle<CR>
   nnoremap <localleader>tf :NvimTreeFindFile<CR>
   nnoremap <localleader>tr :NvimTreeRefresh<CR>
+  nnoremap <localleader>tc :NvimTreeCollapse<CR>
+
+  nnoremap <localleader>tT :tabe<CR>:NvimTreeToggle<CR>
 ]])
 
 -- Indent Line

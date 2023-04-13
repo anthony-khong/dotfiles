@@ -95,6 +95,10 @@ require('lspconfig').elixirls.setup {
 
 vim.api.nvim_command("au BufWritePost *.ex,*.eex,*.exs,*.heex lua vim.lsp.buf.format()")
 
+vim.cmd([[
+  let g:vsnip_filetypes.elixir = ['elixir', 'eelixir', 'html']
+]])
+
 -- Rust
 require'lspconfig'.rust_analyzer.setup{}
 

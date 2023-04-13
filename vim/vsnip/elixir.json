@@ -1,7 +1,40 @@
 {
+  "liveview-mount": {
+    "prefix": "mount",
+    "body": [
+      "def mount(params, session, socket) do",
+      "  {:ok, assign(socket, ${1:${VISUAL:assigns}})}",
+      "end"
+    ]
+  },
+  "liveview-render": {
+    "prefix": "render",
+    "body": [
+      "def render(assigns) do",
+      "  ~H\"\"\"",
+      "  ${1:${VISUAL:template}}",
+      "  \"\"\"",
+      "end"
+    ]
+  },
+  "liveview-event": {
+    "prefix": "event",
+    "body": [
+      "def handle_event(${1:${VISUAL:event}}, data, socket) do",
+      "end"
+    ]
+  },
   "pipe->": {
     "prefix": ">",
     "body": "|> $0"
+  },
+  "pipe-inspect": {
+    "prefix": ">i",
+    "body": "|> IO.inspect()"
+  },
+  "inspect": {
+    "prefix": "ins",
+    "body": "IO.inspect()"
   },
   "require-explorer-dataframe": {
     "prefix": "DF",
@@ -29,7 +62,7 @@
   },
   "ash-resource": {
     "prefix": "ashr",
-    "body": "use Ash.Resource"
+    "body": "use Ash.Resource, data_layer: AshPostgres.DataLayer"
   },
   "recompile": {
     "prefix": "rec",

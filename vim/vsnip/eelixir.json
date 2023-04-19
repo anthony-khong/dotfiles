@@ -2,8 +2,8 @@
   "function-component": {
     "prefix": "fc",
     "body": [
-      "<.${1:${VISUAL:key}}>",
-      "</.${2:${VISUAL:key}}>"
+      "<.${1:${VISUAL:component}}>",
+      "</.${2:${VISUAL:component}}>"
     ]
   }
 }

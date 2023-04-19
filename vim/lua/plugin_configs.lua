@@ -102,12 +102,12 @@ vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 
 -- VSnip
 vim.cmd([[
-  imap <expr> <Tab> vsnip#expandable()  ? '<Plug>(vsnip-expand)' : '<Tab>'
-  smap <expr> <Tab> vsnip#expandable()  ? '<Plug>(vsnip-expand)' : '<Tab>'
-  imap <expr> <C-n>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'    : '<C-n>'
-  smap <expr> <C-n>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'    : '<C-n>'
-  imap <expr> <C-p> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<C-p>'
-  smap <expr> <C-p> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<C-p>'
+  imap <expr> <Tab> vsnip#expandable() ? '<Plug>(vsnip-expand)'    : '<Tab>'
+  smap <expr> <Tab> vsnip#expandable() ? '<Plug>(vsnip-expand)'    : '<Tab>'
+  imap <expr> <C-n> vsnip#jumpable(1)  ? '<Plug>(vsnip-jump-next)' : '<C-n>'
+  smap <expr> <C-n> vsnip#jumpable(1)  ? '<Plug>(vsnip-jump-next)' : '<C-n>'
+  imap <expr> <C-p> vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<C-p>'
+  smap <expr> <C-p> vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<C-p>'
 
   let g:vsnip_filetypes = {}
   let g:vsnip_filetypes.elixir = ['elixir', 'eelixir', 'html']

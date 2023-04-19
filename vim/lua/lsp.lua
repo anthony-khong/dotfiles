@@ -52,7 +52,7 @@ cmp.setup({
     ['<Tab>'] = cmp.mapping.scroll_docs(8),
     ['<C-e>'] = cmp.mapping.abort(),
     ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    ['<CR>'] = cmp.mapping.confirm({ select = true })
   },
   window = {
     completion = cmp.config.window.bordered(),
@@ -72,6 +72,7 @@ cmp.setup({
     end,
   },
   sources = cmp.config.sources({
+    { name = 'emmet_vim' },
     { name = 'nvim_lsp', keyword_length = 3 },
     { name = 'nvim_lsp_signature_help', keyword_length = 3 },
     { name = 'nvim_lua', keyword_length = 3 },

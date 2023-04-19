@@ -1,9 +1,49 @@
 {
+  "empty-map": {
+    "prefix": "m",
+    "body": [
+      "%{\"${1:${VISUAL:key}}\" => }"
+    ]
+  },
+  "heex-template": {
+    "prefix": "heex",
+    "body": [
+      "~H\"\"\"",
+      "${2:body}",
+      "\"\"\""
+    ]
+  },
+  "handle-info": {
+    "prefix": "info",
+    "body": [
+      "def handle_info(${1:${VISUAL:event}}, state) do",
+      "  {:noreply, state}",
+      "end"
+    ]
+  },
+  "liveview-function-component": {
+    "prefix": "fcomp",
+    "body": [
+      "def ${1:${VISUAL:component_name}}(assigns) do",
+      "  ~H\"\"\"",
+      "  ${2:body}",
+      "  \"\"\"",
+      "end"
+    ]
+  },
   "liveview-mount": {
     "prefix": "mount",
     "body": [
       "def mount(params, session, socket) do",
       "  {:ok, assign(socket, ${1:${VISUAL:assigns}})}",
+      "end"
+    ]
+  },
+  "liveview-handle-params": {
+    "prefix": "params",
+    "body": [
+      "def handle_params(params, uri, socket) do",
+      "  {:noreply, socket}",
       "end"
     ]
   },
@@ -21,6 +61,7 @@
     "prefix": "event",
     "body": [
       "def handle_event(${1:${VISUAL:event}}, data, socket) do",
+      "  {:noreply, assign(socket)}",
       "end"
     ]
   },
@@ -34,7 +75,7 @@
   },
   "inspect": {
     "prefix": "ins",
-    "body": "IO.inspect()"
+    "body": "IO.inspect($0)"
   },
   "require-explorer-dataframe": {
     "prefix": "DF",

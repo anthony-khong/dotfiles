@@ -79,7 +79,6 @@ vim.cmd([[
 -- Treesitter
 require 'nvim-treesitter.configs'.setup {
   ensure_installed = {
-    "eex",
     "elixir",
     "erlang",
     "heex",
@@ -105,7 +104,17 @@ vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 vim.cmd([[
   imap <expr> <Tab> vsnip#expandable()  ? '<Plug>(vsnip-expand)' : '<Tab>'
   smap <expr> <Tab> vsnip#expandable()  ? '<Plug>(vsnip-expand)' : '<Tab>'
+  imap <expr> <C-n>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'    : '<C-n>'
+  smap <expr> <C-n>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'    : '<C-n>'
+  imap <expr> <C-p> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<C-p>'
+  smap <expr> <C-p> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<C-p>'
 
   let g:vsnip_filetypes = {}
-  let g:vsnip_filetypes.elixir = ['elixir', 'html']
+  let g:vsnip_filetypes.elixir = ['elixir', 'eelixir', 'html']
+  let g:vsnip_filetypes.eelixir = ['elixir', 'eelixir', 'html']
+]])
+
+-- Emmet
+vim.cmd([[
+  let g:user_emmet_leader_key='<C-E>'
 ]])

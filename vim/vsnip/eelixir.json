@@ -1,0 +1,9 @@
+{
+  "function-component": {
+    "prefix": "fc",
+    "body": [
+      "<.${1:${VISUAL:key}}>",
+      "</.${2:${VISUAL:key}}>"
+    ]
+  }
+}

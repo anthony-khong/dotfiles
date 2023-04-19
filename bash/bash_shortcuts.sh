@@ -20,6 +20,10 @@ alias vi="/usr/bin/vim -p"
 alias vim="nvim -p"
 alias vff="nvim +'FZF ~'"
 
+uuid() {
+    python -c 'import uuid; print(uuid.uuid4())'
+}
+
 ntree() {
     nvim +NERDTree
 }

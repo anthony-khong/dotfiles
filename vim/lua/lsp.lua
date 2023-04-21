@@ -99,6 +99,27 @@ vim.cmd([[
   au BufWritePost *.ex,*.eex,*.exs,*.heex lua vim.lsp.buf.format()
 ]])
 
+-- Tailwind
+require('lspconfig').tailwindcss.setup {
+  init_options = {
+    userLanguages = {
+      elixir = "phoenix-heex",
+      heex = "phoenix-heex",
+      surface = "phoenix-heex"
+    },
+  },
+  settings = {
+    includeLanguages = {
+      ["html-eex"] = "html",
+      ["phoenix-heex"] = "html",
+      heex = "html",
+      eelixir = "html",
+      elixir = "html",
+      surface = "html"
+    },
+  },
+}
+
 -- Rust
 require'lspconfig'.rust_analyzer.setup{}
 

@@ -79,11 +79,18 @@ vim.cmd([[
 -- Treesitter
 require 'nvim-treesitter.configs'.setup {
   ensure_installed = {
+    "css",
     "elixir",
     "erlang",
     "heex",
     "html",
+    "html",
+    "json",
+    "lua",
     "surface",
+    "toml",
+    "tsx",
+    "yaml",
   },
   sync_install = false,
   ignore_install = {},

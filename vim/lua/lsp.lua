@@ -82,16 +82,21 @@ cmp.setup({
 })
 
 -- Elixir
-require('lspconfig').elixirls.setup {
-  cmd = { vim.fn.expand("~/.elixir-ls/release/language_server.sh") },
-  on_attach = on_attach
-}
+local elixir = require("elixir")
+local elixirls = require("elixir.elixirls")
 
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
-require('lspconfig').elixirls.setup {
-  cmd = { vim.fn.expand("~/.elixir-ls/release/language_server.sh") },
-  on_attach = on_attach,
-  capabilities = capabilities
+elixir.setup {
+  elixirls = {
+    cmd = vim.fn.expand("~/.elixir-ls/release/language_server.sh"),
+    on_attach = function(client, bufnr)
+      on_attach(client, bufnr)
+      local map_opts = { buffer = true, noremap = true}
+
+      vim.keymap.set("n", "<space>fp", ":ElixirFromPipe<cr>", map_opts)
+      vim.keymap.set("n", "<space>tp", ":ElixirToPipe<cr>", map_opts)
+      vim.keymap.set("v", "<space>em", ":ElixirExpandMacro<cr>", map_opts)
+    end
+  }
 }
 
 vim.cmd([[

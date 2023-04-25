@@ -61,6 +61,12 @@ return require("packer").startup {
     use 'hrsh7th/cmp-vsnip'
     use "rafamadriz/friendly-snippets"
 
+    -- Elixir
+    use {
+      'elixir-tools/elixir-tools.nvim',
+      requires = { 'nvim-lua/plenary.nvim' }
+    }
+
     -- Rust
     use 'rust-lang/rust.vim'
     use 'simrat39/rust-tools.nvim'

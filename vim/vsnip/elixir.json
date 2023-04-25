@@ -1,8 +1,16 @@
 {
+  "def-module": {
+    "prefix": "defmo",
+    "body": [
+      "defmodule ${VIM:substitute(expand('%:p:h:t'), '\\(\\%(\\<\\l\\+\\)\\%(_\\)\\@=\\)\\|_\\(\\l\\)', '\\u\\1\\2', 'g')}.$VSNIP_CAMELCASE_FILENAME do",
+      "  $0",
+      "end"
+    ]
+  },
   "empty-map": {
     "prefix": "m",
     "body": [
-      "%{\"${1:${VISUAL:key}}\" => }"
+      "%{\"${1:${VISUAL:key}}\" => ${2:value}}"
     ]
   },
   "heex-template": {
@@ -28,6 +36,22 @@
       "  ~H\"\"\"",
       "  ${2:body}",
       "  \"\"\"",
+      "end"
+    ]
+  },
+  "live-component-update": {
+    "prefix": "cupdate",
+    "body": [
+      "def update(assigns, socket) do",
+      "  {:ok, assign(socket, ${1:${VISUAL:assigns}})}",
+      "end"
+    ]
+  },
+  "live-component-mount": {
+    "prefix": "cmount",
+    "body": [
+      "def mount(params) do",
+      "  {:ok, assign(socket, ${1:${VISUAL:assigns}})}",
       "end"
     ]
   },

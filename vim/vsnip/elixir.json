@@ -2,7 +2,7 @@
   "def-module": {
     "prefix": "defmo",
     "body": [
-      "defmodule ${VIM:substitute(expand('%:p:h:t'), '\\(\\%(\\<\\l\\+\\)\\%(_\\)\\@=\\)\\|_\\(\\l\\)', '\\u\\1\\2', 'g')}.$VSNIP_CAMELCASE_FILENAME do",
+      "defmodule $VSNIP_CAMELCASE_FILENAME do",
       "  $0",
       "end"
     ]
@@ -39,6 +39,12 @@
       "end"
     ]
   },
+  "live-component-markup": {
+    "prefix": "lv",
+    "body": [
+      "<.live_component module={${1:${VISUAL:module}}} id={${2:id}} />"
+    ]
+  },
   "live-component-update": {
     "prefix": "cupdate",
     "body": [
@@ -50,7 +56,7 @@
   "live-component-mount": {
     "prefix": "cmount",
     "body": [
-      "def mount(params) do",
+      "def mount(socket) do",
       "  {:ok, assign(socket, ${1:${VISUAL:assigns}})}",
       "end"
     ]

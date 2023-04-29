@@ -48,7 +48,6 @@ return require("packer").startup {
     }
 
     -- Completion
-    use 'dcampos/cmp-emmet-vim'
     use 'hrsh7th/cmp-buffer'
     use 'hrsh7th/cmp-cmdline'
     use 'hrsh7th/cmp-nvim-lsp'

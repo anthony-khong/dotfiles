@@ -27,6 +27,11 @@ return require("packer").startup {
     use 'tpope/vim-repeat'
     use 'tpope/vim-surround'
     use 'mattn/emmet-vim'
+    use {
+      'laytan/tailwind-sorter.nvim',
+      requires = {'nvim-treesitter/nvim-treesitter', 'nvim-lua/plenary.nvim'},
+      run = 'cd formatter && npm i && npm run build',
+    }
 
     -- Tmux
     use 'christoomey/vim-tmux-navigator'

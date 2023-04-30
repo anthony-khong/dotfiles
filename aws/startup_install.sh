@@ -103,6 +103,8 @@ curl -fLO https://github.com/elixir-lsp/elixir-ls/releases/latest/download/elixi
 mkdir -p ~/.elixir-ls
 unzip elixir-ls.zip -d ~/.elixir-ls/release
 chmod +x ~/.elixir-ls/release/language_server.sh
+cd ~/.local/share/nvim/site/pack/packer/start/tailwind-sorter.nvim/formatter \
+    && npm i && npm run build
 sudo add-apt-repository ppa:neovim-ppa/stable -y \
     && sudo apt-get update \
     && sudo apt-get install -y neovim \

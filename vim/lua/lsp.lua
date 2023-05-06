@@ -124,13 +124,18 @@ require('lspconfig').tailwindcss.setup {
       elixir = "html",
       surface = "html"
     },
-  },
+  }
 }
 
 require('tailwind-sorter').setup({
-  on_save_enabled = true,
+  on_save_enabled = false,
   on_save_pattern = { '*.html', '*.js', '*.jsx', '*.tsx', '*.ex', '*.eex', '*.exs', '*.heex' },
   node_path = 'node',
+  on_attach = function(client, bufnr)
+    on_attach(client, bufnr)
+    local map_opts = { buffer = true, noremap = true}
+    vim.keymap.set("n", "<space>tw", ":TailwindSortOnSaveToggle<cr>", map_opts)
+  end
 })
 
 -- Emmet

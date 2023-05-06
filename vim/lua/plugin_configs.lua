@@ -54,6 +54,13 @@ vim.cmd([[
       \ }
   let g:slime_dont_ask_default = 1
   let g:slime_python_ipython = 1
+
+  function! SlimeOverride_EscapeText_elixir(text)
+    if a:text =~ "|>" && len(split(a:text,"\n")) > 1
+      return ["(\n", a:text, ")\n"]
+    end
+    return [a:text]
+  endfunction
 ]])
 
 -- Easy Align

@@ -2,8 +2,8 @@
   "def-module": {
     "prefix": "defmo",
     "body": [
-      "defmodule $VSNIP_CAMELCASE_FILENAME do",
-      "  $0",
+      "defmodule ${1:${VISUAL:$VSNIP_CAMELCASE_FILENAME}} do",
+      "  ${2:body}",
       "end"
     ]
   },
@@ -99,13 +99,54 @@
     "prefix": ">",
     "body": "|> $0"
   },
+  "pipe-map": {
+    "prefix": ">m",
+    "body": "|> Enum.map(fn ${1} -> ${0} end)"
+  },
+  "pipe-map-point-free": {
+    "prefix": ">mpf",
+    "body": "|> Enum.map(&${0})"
+  },
+  "pipe-map-anon": {
+    "prefix": ">ma",
+    "body": "|> Enum.map(&(${0}))"
+  },
+  "pipe-filter": {
+    "prefix": ">f",
+    "body": "|> Enum.filter(fn ${1} -> ${0} end)"
+  },
+  "pipe-reduce": {
+    "prefix": ">r",
+    "body": "|> Enum.reduce(${1:acc}, fn ${2}, ${3:acc} -> ${0} end)"
+  },
   "pipe-inspect": {
     "prefix": ">i",
     "body": "|> IO.inspect()"
   },
+  "pipe-inspect-label": {
+    "prefix": ">il",
+    "body": "|> IO.inspect(label: \"${1:label}\")"
+  },
+  "word-list": {
+    "prefix": "wl",
+    "body": "~w(${0})"
+  },
+  "atom-list": {
+    "prefix": "al",
+    "body": "~w(${0})a"
+  },
   "inspect": {
     "prefix": "ins",
     "body": "IO.inspect($0)"
+  },
+  "implementation": {
+    "prefix": "impl",
+    "body": [
+      "@impl true",
+      "def ${1:name} do",
+      "  ${0}",
+      "end"
+    ]
   },
   "require-explorer-dataframe": {
     "prefix": "DF",
@@ -142,9 +183,9 @@
   "section-break": {
     "prefix": "sb",
     "body": [
-      "# ---------------------------------------------------------------------------",
+      "# =============================================",
       "# ${1:${VISUAL:Section}}",
-      "# ---------------------------------------------------------------------------"
+      "# ============================================="
     ]
   }
 }

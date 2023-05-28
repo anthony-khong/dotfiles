@@ -1,8 +1,27 @@
 {
+  "to-list": {
+    "prefix": ">l",
+    "body": "|> Enum.to_list()"
+  },
+  "pipe-flow-map": {
+    "prefix": ">Fm",
+    "body": "|> Flow.map(fn ${1} -> ${0} end)"
+  },
+  "pipe-flow-filter": {
+    "prefix": ">Ff",
+    "body": "|> Flow.filter(fn ${1} -> ${0} end)"
+  },
+  "pipe-flow": {
+    "prefix": ">F",
+    "body": [
+       "|> Flow.from_enumerable()",
+       "|> Flow.partition(max_demand: ${1:max_demand}, stages: ${2:stages})"
+    ]
+  },
   "def-module": {
     "prefix": "defmo",
     "body": [
-      "defmodule ${1:${VISUAL:$VSNIP_CAMELCASE_FILENAME}} do",
+      "defmodule ${1:${VIM:substitute(substitute(expand('%:t:r'),'\\(\\%(\\<\\l\\+\\)\\%(_\\)\\@=\\)\\|_\\(\\l\\)','\\u\\1\\2','g'),'\\<.','\\u&','g')}} do",
       "  ${2:body}",
       "end"
     ]

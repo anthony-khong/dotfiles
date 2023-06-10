@@ -23,7 +23,11 @@
     "prefix": ">v",
     "body": "|> Vl.${1:function}"
   },
-  "to-list": {
+  "pipe-to-random": {
+    "prefix": ">r",
+    "body": "|> Enum.random()"
+  },
+  "pipe-to-list": {
     "prefix": ">l",
     "body": "|> Enum.to_list()"
   },
@@ -157,10 +161,6 @@
   "pipe-filter": {
     "prefix": ">f",
     "body": "|> Enum.filter(fn ${1} -> ${0} end)"
-  },
-  "pipe-reduce": {
-    "prefix": ">r",
-    "body": "|> Enum.reduce(${1:acc}, fn ${2}, ${3:acc} -> ${0} end)"
   },
   "pipe-inspect": {
     "prefix": ">i",

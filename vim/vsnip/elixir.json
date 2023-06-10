@@ -1,4 +1,28 @@
 {
+  "use-genserver": {
+    "prefix": "genserver",
+    "body": [
+      "use GenServer",
+      "",
+      "@doc false",
+      "def start_link(init_args) do",
+      "  GenServer.start_link(__MODULE__, init_args, name: __MODULE__)",
+      "end",
+      "",
+      "@impl true",
+      "def init(state) do",
+      "  {:ok, state}",
+      "end"
+    ]
+  },
+  "pipe-vega-lite-show": {
+    "prefix": ">vs",
+    "body": "|> VegaLite.Viewer.show()"
+  },
+  "pipe-vega-lite": {
+    "prefix": ">v",
+    "body": "|> Vl.${1:function}"
+  },
   "to-list": {
     "prefix": ">l",
     "body": "|> Enum.to_list()"

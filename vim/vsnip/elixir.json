@@ -1,4 +1,16 @@
 {
+  "pipe-to-floki-text": {
+    "prefix": ">Flt",
+    "body": "|> Floki.text()"
+  },
+  "pipe-to-floki-find": {
+    "prefix": ">Flf",
+    "body": "|> Floki.find(${1:selector})"
+  },
+  "pipe-to-floki-attribute": {
+    "prefix": ">Fla",
+    "body": "|> Floki.attribute(${1:selector}, ${2:attr})"
+  },
   "use-genserver": {
     "prefix": "genserver",
     "body": [

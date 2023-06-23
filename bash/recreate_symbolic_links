@@ -44,3 +44,7 @@ rm -rf .lein/profiles.clj
 ln -s ~/dotfiles/lein_profiles.clj .lein/profiles.clj
 mkdir -p .config/conjure
 ln -s ~/dotfiles/conjure.edn .config/conjure/.conjure.edn
+
+cd;
+rm -rf .iex.exs;
+ln -s ~/dotfiles/elixir/.iex.exs .iex.exs

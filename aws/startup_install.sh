@@ -98,18 +98,18 @@ curl https://get.volta.sh | bash
 curl https://sh.rustup.rs -sSf | sh -s -- -y
 pip3 install --upgrade neovim jedi google-api-python-client pyflakes mypy
 pip3 install 'python-language-server[all]' jedi-language-server pyright python-lsp-black
-curl -fLO https://github.com/elixir-lsp/elixir-ls/releases/latest/download/elixir-ls.zip
+curl -fLO https://github.com/elixir-lsp/elixir-ls/releases/download/v0.15.0/elixir-ls-v0.15.0.zip
 mkdir -p ~/.elixir-ls
-unzip elixir-ls.zip -d ~/.elixir-ls/release
+unzip elixir-ls-v0.15.0.zip -d ~/.elixir-ls/release
 chmod +x ~/.elixir-ls/release/language_server.sh
-cd ~/.local/share/nvim/site/pack/packer/start/tailwind-sorter.nvim/formatter \
-    && npm i && npm run build
 sudo add-apt-repository ppa:neovim-ppa/stable -y \
     && sudo apt-get update \
     && sudo apt-get install -y neovim \
     && /bin/bash $HOME/dotfiles/tmux/tpm/scripts/install_plugins.sh
 sudo mkdir -p $HOME/.local && sudo chown -R $USER "$HOME/.local"
 nvim +PackerInstall +silent +qall
+cd ~/.local/share/nvim/site/pack/packer/start/tailwind-sorter.nvim/formatter \
+    && npm i && npm run build
 
 echo "Installing Erlang and Elixir..." >> $INSTALL_LOG
 sudo apt-get -y install build-essential autoconf m4 libncurses5-dev \
@@ -120,7 +120,7 @@ git clone https://github.com/asdf-vm/asdf.git ~/.asdf
 source ~/.bashrc
 asdf plugin add erlang
 asdf plugin add elixir
-asdf install erlang 25.3
+KERL_BUILD_DOCS=yes KERL_INSTALL_MANPAGES=yes KERL_INSTALL_HTMLDOCS=yes asdf install erlang 25.3
 asdf global erlang 25.3
 asdf install elixir 1.14.4-otp-25
 asdf global elixir 1.14.4-otp-25

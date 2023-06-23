@@ -45,7 +45,8 @@ return require("packer").startup {
     use "lukas-reineke/lsp-format.nvim"
     use 'sheerun/vim-polyglot'
     use 'nvim-treesitter/nvim-treesitter'
-    use 'j-hui/fidget.nvim'
+    use { 'j-hui/fidget.nvim', tag = 'legacy' }
+
     use 'nvim-tree/nvim-tree.lua'
     use {
       'nvim-telescope/telescope.nvim', tag = '0.1.1',

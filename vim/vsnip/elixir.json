@@ -1,4 +1,36 @@
 {
+  "pipe-to-dataframe-table": {
+    "prefix": ">Dt",
+    "body": "|> DF.table(limit: :infinity)"
+  },
+  "pipe-to-dataframe-arrange": {
+    "prefix": ">Da",
+    "body": "|> DF.arrange(desc: ${1:column})"
+  },
+  "pipe-to-dataframe-mutate": {
+    "prefix": ">Dm",
+    "body": "|> DF.mutate(${1:mutation})"
+  },
+  "pipe-to-dataframe-select": {
+    "prefix": ">Dsel",
+    "body": "|> DF.select([${1:column}])"
+  },
+  "pipe-to-dataframe-summarise": {
+    "prefix": ">Dsum",
+    "body": "|> DF.summarise(${1:query})"
+  },
+  "pipe-to-dataframe-filter": {
+    "prefix": ">Df",
+    "body": "|> DF.filter(${1:query})"
+  },
+  "pipe-to-dataframe-group-by": {
+    "prefix": ">Dg",
+    "body": "|> DF.group_by([${1:column}])"
+  },
+  "pipe-to-dataframe-join": {
+    "prefix": ">Dj",
+    "body": "|> DF.join(${1:df}, how: ${2::inner}, on: [${3:column}])"
+  },
   "pipe-to-floki-text": {
     "prefix": ">Flt",
     "body": "|> Floki.text()"

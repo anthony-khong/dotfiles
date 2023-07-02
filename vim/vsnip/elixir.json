@@ -31,6 +31,10 @@
     "prefix": ">Dj",
     "body": "|> DF.join(${1:df}, how: ${2::inner}, on: [${3:column}])"
   },
+  "pipe-to-floki-parse-document": {
+    "prefix": ">Flp",
+    "body": "|> Floki.parse_document!()"
+  },
   "pipe-to-floki-text": {
     "prefix": ">Flt",
     "body": "|> Floki.text()"
@@ -241,7 +245,7 @@
   },
   "alias-explorer-series": {
     "prefix": "S",
-    "body": "alias Explorer.Series, as: S"
+    "body": "alias Explorer.Series, as: Series"
   },
   "ash-actions": {
     "prefix": "act",

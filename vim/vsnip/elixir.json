@@ -47,6 +47,10 @@
     "prefix": ">Fla",
     "body": "|> Floki.attribute(${1:selector}, ${2:attr})"
   },
+  "rustler-apple-silicon-target": {
+    "prefix": "RAS",
+    "body": "target: \"aarch64-apple-darwin\","
+  },
   "use-genserver": {
     "prefix": "genserver",
     "body": [

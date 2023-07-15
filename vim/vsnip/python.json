@@ -1,4 +1,8 @@
 {
+  "import-glob": {
+    "prefix": ["gl"],
+    "body": ["from glob import glob"]
+  },
   "import-polars": {
     "prefix": ["pl"],
     "body": ["import polars as pl"]

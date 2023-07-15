@@ -28,6 +28,3 @@ export PATH="$VOLTA_HOME/bin:$PATH"
 
 export DARK_VIM=1
 export PATH="$PATH:/opt/homebrew/bin"
-
-#export CFLAGS="-arch -arm64"
-#export CXXFLAGS="-arch arm64"

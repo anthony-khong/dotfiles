@@ -186,9 +186,9 @@ local opts = {
 require("rust-tools").setup(opts)
 
 -- Python
-require('lspconfig').pyright.setup {
-  on_attach = on_attach
-}
+-- require('lspconfig').pyright.setup {
+  -- on_attach = on_attach
+-- }
 
 require('lspconfig').pylsp.setup {
   settings = {
@@ -205,7 +205,10 @@ require('lspconfig').pylsp.setup {
       }
     }
   },
-  on_attach = on_attach
+  on_attach = on_attach,
+  flags = {
+    debounce_text_changes = 150,
+  }
 }
 
 -- TypeScript

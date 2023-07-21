@@ -1,0 +1,6 @@
+{
+  "hyrule-threading": {
+    "prefix": ["hyth"],
+    "body": ["(require hyrule [-> ->>])"]
+  }
+}

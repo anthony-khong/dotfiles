@@ -135,3 +135,20 @@ vim.cmd([[
 vim.cmd([[
   let g:user_emmet_leader_key='<C-E>'
 ]])
+
+-- Conjure
+vim.cmd([[
+  nnoremap <leader>cc vip:ConjureEval<CR>
+  nnoremap <leader>cl :ConjureLogVSplit<CR>
+  nmap <Space>cl <Space>lv<C-W><C-H>:exe "vertical resize " . (winwidth(0) * 5/4)<CR>
+
+  let g:conjure#log#wrap = 1
+  let g:conjure#filetypes = ["clojure", "fennel", "janet", "hy", "racket", "scheme", "lisp"]
+]])
+
+-- Parinfer
+vim.cmd([[
+  let g:parinfer_mode = 'smart'
+  let g:parinfer_enabled = 1
+  let g:parinfer_force_balance = 0
+]])

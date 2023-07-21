@@ -81,6 +81,19 @@ return require("packer").startup {
     use 'maxmellon/vim-jsx-pretty'
     use 'pangloss/vim-javascript'
 
+    -- Lisp
+    use 'Olical/conjure'
+    use {
+      'eraserhd/parinfer-rust',
+      run = 'cargo build --release',
+      -- For M1 Macs:
+      -- $ cargo build --target=aarch64-apple-darwin --release
+      -- $ rm -rf target/release && mv target/aarch64-apple-darwin/release target/release
+    }
+    use 'hylang/vim-hy'
+    use 'guns/vim-sexp'
+    use 'tpope/vim-sexp-mappings-for-regular-people'
+
     -- Others
     use 'ekalinin/Dockerfile.vim'
     use 'plasticboy/vim-markdown'

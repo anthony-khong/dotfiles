@@ -71,10 +71,11 @@ cmp.setup({
     end,
   },
   sources = cmp.config.sources({
-    { name = 'nvim_lsp', keyword_length = 3 },
-    { name = 'nvim_lsp_signature_help', keyword_length = 3 },
-    { name = 'nvim_lua', keyword_length = 3 },
-    { name = 'buffer', keyword_length = 3 },
+    { name = 'conjure', keyword_length = 2 },
+    { name = 'nvim_lsp', keyword_length = 2 },
+    { name = 'nvim_lsp_signature_help', keyword_length = 2 },
+    { name = 'nvim_lua', keyword_length = 2 },
+    { name = 'buffer', keyword_length = 2 },
     { name = 'vsnip', keyword_length = 3 },
   })
 })

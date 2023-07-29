@@ -216,3 +216,9 @@ require('lspconfig').pylsp.setup {
 require'lspconfig'.tsserver.setup {
   on_attach = on_attach
 }
+
+-- SQL
+require('lspconfig').sqlls.setup {
+  on_attach = on_attach
+}
+

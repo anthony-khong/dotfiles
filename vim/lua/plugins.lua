@@ -19,6 +19,7 @@ return require("packer").startup {
 		-- Appearance
 		use 'airblade/vim-gitgutter'
 		use 'ayu-theme/ayu-vim'
+    use 'projekt0n/github-nvim-theme'
     use "lukas-reineke/indent-blankline.nvim"
 
     -- Editing

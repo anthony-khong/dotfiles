@@ -1,4 +1,52 @@
 {
+  "fn": {
+    "prefix": ["fn"],
+    "body": [
+      "fn ${1:function_name}(${2})${3} {",
+      " ${0}",
+      "}"
+    ]
+  },
+  "pub-fn": {
+    "prefix": ["pfn"],
+    "body": [
+      "pub fn ${1:function_name}(${2})${3} {",
+      " ${0}",
+      "}"
+    ]
+  },
+  "async-fn": {
+    "prefix": ["afn"],
+    "body": [
+      "async fn ${1:function_name}(${2})${3} {",
+      " ${0}",
+      "}"
+    ]
+  },
+  "pub-async-fn": {
+    "prefix": ["pafn"],
+    "body": [
+      "pub async fn ${1:function_name}(${2})${3} {",
+      " ${0}",
+      "}"
+    ]
+  },
+  "struct": {
+    "prefix": ["st"],
+    "body": [
+      "struct ${1:struct_name} {",
+      " ${0}",
+      "}"
+    ]
+  },
+  "pub-struct": {
+    "prefix": ["pst"],
+    "body": [
+      "pub struct ${1:struct_name} {",
+      " ${0}",
+      "}"
+    ]
+  },
   "println": {
     "prefix": ["prn"],
     "body": ["println!(\"{:#?}\", ${1:${VISUAL:variable}});"]
@@ -11,6 +59,10 @@
     "prefix": ["uerr"],
     "body": ["use std::error::Error;"]
   },
+  "result-box-dyn-error": {
+    "prefix": ["resd"],
+    "body": ["Result<${1:${VISUAL:Ok}}, Box<dyn Error>>"]
+  },
   "section-break": {
     "prefix": ["sb"],
     "body": [
@@ -18,9 +70,5 @@
       "// ${1:${VISUAL:Section}}",
       "// ---------------------------------------------------------------------------"
     ]
-  },
-  "result-box-dyn-error": {
-    "prefix": ["resd"],
-    "body": ["Result<${1:${VISUAL:Ok}}, Box<dyn Error>>"]
   }
 }

@@ -102,10 +102,11 @@ curl -fLO https://github.com/elixir-lsp/elixir-ls/releases/download/v0.15.0/elix
 mkdir -p ~/.elixir-ls
 unzip elixir-ls-v0.15.0.zip -d ~/.elixir-ls/release
 chmod +x ~/.elixir-ls/release/language_server.sh
-sudo add-apt-repository ppa:neovim-ppa/stable -y \
-    && sudo apt-get update \
-    && sudo apt-get install -y neovim \
-    && /bin/bash $HOME/dotfiles/tmux/tpm/scripts/install_plugins.sh
+sudo apt-get update && sudo apt-get install -y fuse libfuse2
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+chmod u+x nvim.appimage
+sudo mv nvim.appimage /usr/local/bin/nvim
+/bin/bash $HOME/dotfiles/tmux/tpm/scripts/install_plugins.sh
 sudo mkdir -p $HOME/.local && sudo chown -R $USER "$HOME/.local"
 nvim +PackerInstall +silent +qall
 cd ~/.local/share/nvim/site/pack/packer/start/tailwind-sorter.nvim/formatter \

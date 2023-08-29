@@ -1,4 +1,8 @@
 {
+  "use-serde-serialize-deserialize": {
+    "prefix": ["usd"],
+    "body": ["use serde::{Deserialize, Serialize};"]
+  },
   "fn": {
     "prefix": ["fn"],
     "body": [
@@ -43,6 +47,14 @@
     "prefix": ["pst"],
     "body": [
       "pub struct ${1:struct_name} {",
+      " ${0}",
+      "}"
+    ]
+  },
+  "impl": {
+    "prefix": ["impl"],
+    "body": [
+      "impl ${1:type_or_trait} {",
       " ${0}",
       "}"
     ]

@@ -53,7 +53,7 @@ echo \
   "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
   "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-sudo apt-get update && sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo apt-get update && sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 echo "Installing ZSH..." >> $INSTALL_LOG
 sudo apt-get update && sudo apt-get install -y zsh
@@ -98,9 +98,9 @@ curl https://get.volta.sh | bash
 curl https://sh.rustup.rs -sSf | sh -s -- -y
 pip3 install --upgrade neovim jedi google-api-python-client pyflakes mypy
 pip3 install 'python-language-server[all]' jedi-language-server pyright python-lsp-black
-curl -fLO https://github.com/elixir-lsp/elixir-ls/releases/download/v0.15.0/elixir-ls-v0.15.0.zip
+curl -fLO https://github.com/elixir-lsp/elixir-ls/releases/download/v0.17.3/elixir-ls-v0.17.3.zip
 mkdir -p ~/.elixir-ls
-unzip elixir-ls-v0.15.0.zip -d ~/.elixir-ls/release
+unzip elixir-ls-v0.17.3.zip -d ~/.elixir-ls/release
 chmod +x ~/.elixir-ls/release/language_server.sh
 sudo apt-get update && sudo apt-get install -y fuse libfuse2
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
@@ -121,10 +121,10 @@ git clone https://github.com/asdf-vm/asdf.git ~/.asdf
 source ~/.bashrc
 asdf plugin add erlang
 asdf plugin add elixir
-KERL_BUILD_DOCS=yes KERL_INSTALL_MANPAGES=yes KERL_INSTALL_HTMLDOCS=yes asdf install erlang 25.3
-asdf global erlang 25.3
-asdf install elixir 1.14.4-otp-25
-asdf global elixir 1.14.4-otp-25
+KERL_BUILD_DOCS=yes KERL_INSTALL_MANPAGES=yes KERL_INSTALL_HTMLDOCS=yes asdf install erlang 26.1
+asdf global erlang 26.1
+asdf install elixir 1.15.7-otp-26
+asdf global elixir 1.15.7-otp-26
 mix local.hex --force
 mix archive.install hex phx_new --force
 

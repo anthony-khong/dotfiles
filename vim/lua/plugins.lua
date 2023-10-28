@@ -95,6 +95,9 @@ return require("packer").startup {
     use 'guns/vim-sexp'
     use 'tpope/vim-sexp-mappings-for-regular-people'
 
+    -- Gleam
+    use 'gleam-lang/gleam.vim'
+
     -- Others
     use 'ekalinin/Dockerfile.vim'
     use 'plasticboy/vim-markdown'

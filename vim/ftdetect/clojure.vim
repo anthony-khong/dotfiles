@@ -1,1 +1,0 @@
-autocmd FileType clojure RainbowParentheses

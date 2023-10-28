@@ -1,7 +1,7 @@
 {
-  "pipe-to-dataframe-table": {
-    "prefix": ">Dt",
-    "body": "|> DF.table(limit: :infinity)"
+  "pipe-to-dataframe-print": {
+    "prefix": ">Dp",
+    "body": "|> DF.print(limit: :infinity)"
   },
   "pipe-to-dataframe-arrange": {
     "prefix": ">Da",

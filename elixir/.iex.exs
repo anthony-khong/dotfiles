@@ -1,5 +1,9 @@
 Application.put_env(:elixir, :ansi_enabled, true)
 
+# if Mix.Project.get() == nil do
+  # Mix.install([ {:explorer, "~> 0.7.0"} ])
+# end
+
 timestamp = fn ->
   {_date, {hour, minute, _second}} = :calendar.local_time
   [hour, minute]

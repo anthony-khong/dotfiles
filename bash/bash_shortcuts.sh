@@ -212,6 +212,12 @@ planner() {
 }
 alias pln=planner
 
+tee7() {
+    cd /Volumes/T7\ Touch/notes || exit
+    tnew
+}
+alias t7=tee7
+
 # Python
 remove_pyc() {
     find . -name "*.pyc" -exec rm -rf {} \;

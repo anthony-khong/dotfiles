@@ -118,3 +118,10 @@ fi
 
 autoload -Uz compinit
 compinit
+
+# bun completions
+[ -s "/Users/akhong/.bun/_bun" ] && source "/Users/akhong/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

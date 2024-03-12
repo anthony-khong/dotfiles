@@ -202,6 +202,10 @@
     "prefix": ">m",
     "body": "|> Enum.map(fn ${1} -> ${0} end)"
   },
+  "pipe-flat-map": {
+    "prefix": ">fm",
+    "body": "|> Enum.flat_map(fn ${1} -> ${0} end)"
+  },
   "pipe-map-point-free": {
     "prefix": ">mpf",
     "body": "|> Enum.map(&${0})"

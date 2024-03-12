@@ -41,7 +41,7 @@ rm -rf aws
 rm awscli*.zip
 
 echo "Installing Docker..." >> $INSTALL_LOG
-sudo apt-get update && sudo apt-get install \
+sudo apt-get update && sudo apt-get install -y \
     ca-certificates \
     curl \
     gnupg \
@@ -121,10 +121,10 @@ git clone https://github.com/asdf-vm/asdf.git ~/.asdf
 source ~/.bashrc
 asdf plugin add erlang
 asdf plugin add elixir
-KERL_BUILD_DOCS=yes KERL_INSTALL_MANPAGES=yes KERL_INSTALL_HTMLDOCS=yes asdf install erlang 26.1
-asdf global erlang 26.1
-asdf install elixir 1.15.7-otp-26
-asdf global elixir 1.15.7-otp-26
+KERL_BUILD_DOCS=yes KERL_INSTALL_MANPAGES=yes KERL_INSTALL_HTMLDOCS=yes asdf install erlang 26.2
+asdf global erlang 26.2
+asdf install elixir 1.16.0-otp-26
+asdf global elixir 1.16.0-otp-26
 mix local.hex --force
 mix archive.install hex phx_new --force
 

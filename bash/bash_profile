@@ -28,3 +28,7 @@ export PATH="$VOLTA_HOME/bin:$PATH"
 
 export DARK_VIM=1
 export PATH="$PATH:/opt/homebrew/bin"
+export PATH="$PATH:/opt/roc"
+
+# opam configuration
+[[ ! -r $HOME/.opam/opam-init/init.zsh ]] || source $HOME/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null

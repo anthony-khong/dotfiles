@@ -68,10 +68,7 @@ return require("packer").startup {
     use "rafamadriz/friendly-snippets"
 
     -- Elixir
-    use {
-      'elixir-tools/elixir-tools.nvim',
-      requires = { 'nvim-lua/plenary.nvim' }
-    }
+    use({ "elixir-tools/elixir-tools.nvim", tag = "stable", requires = { "nvim-lua/plenary.nvim" }})
 
     -- Rust
     use 'rust-lang/rust.vim'

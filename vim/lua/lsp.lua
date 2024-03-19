@@ -86,7 +86,9 @@ local elixirls = require("elixir.elixirls")
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 elixir.setup {
+  credo = {enable = true},
   elixirls = {
+    enable = true,
     cmd = vim.fn.expand("~/.elixir-ls/release/language_server.sh"),
     autostart = true,
     on_attach = function(client, bufnr)

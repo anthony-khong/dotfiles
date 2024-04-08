@@ -224,3 +224,5 @@ require('lspconfig').sqlls.setup {
   on_attach = on_attach
 }
 
+-- Gleam
+require('lspconfig').gleam.setup({})

@@ -1,0 +1,74 @@
+{
+  "import-io": {
+    "prefix": "iio",
+    "body": "import gleam/io"
+  },
+  "import-list": {
+    "prefix": "il",
+    "body": "import gleam/list"
+  },
+  "import-json": {
+    "prefix": "ij",
+    "body": "import gleam/json"
+  },
+  "import-dict": {
+    "prefix": "id",
+    "body": "import gleam/dict"
+  },
+  "import-result": {
+    "prefix": "ir",
+    "body": "import gleam/result"
+  },
+  "import-result-try": {
+    "prefix": "irt",
+    "body": "import gleam/result.{try}"
+  },
+  "import-http-req": {
+    "prefix": "ireq",
+    "body": "import gleam/http/request"
+  },
+  "import-http-res": {
+    "prefix": "ires",
+    "body": "import gleam/http/response"
+  },
+  "import-dynamic-decode": {
+    "prefix": "idd",
+    "body": "import gleam/dynamic/decode"
+  },
+  "import-hackney": {
+    "prefix": "ih",
+    "body": "import gleam/hackney"
+  },
+  "import-simplifile": {
+    "prefix": "isf",
+    "body": "import simplifile"
+  },
+  "import-pprint": {
+    "prefix": "ipp",
+    "body": "import pprint"
+  },
+  "pipe->": {
+    "prefix": ">",
+    "body": "|> $0"
+  },
+  "pipe-map": {
+    "prefix": ">m",
+    "body": "|> list.filter(fn(${1:x}) { ${0:x} })"
+  },
+  "pipe-filter": {
+    "prefix": ">f",
+    "body": "|> list.filter(fn(${1:x}) { ${0:x} })"
+  },
+  "pipe-pprint-debug": {
+    "prefix": ">pp",
+    "body": "|> pprint.debug"
+  },
+  "pipe-debug": {
+    "prefix": ">d",
+    "body": "|> io.debug"
+  },
+  "pipe-print": {
+    "prefix": ">p",
+    "body": "|> io.println"
+  }
+}

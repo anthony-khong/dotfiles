@@ -6,7 +6,6 @@ alias ls='ls -GFh'
 export PATH="$HOME:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
-export PATH="$HOME/.cargo/bin:$PATH"
 export DOCKER_DEFAULT_PLATFORM=linux/amd64
 
 source ~/dotfiles/bash/bash_shortcuts.sh
@@ -32,3 +31,12 @@ export PATH="$PATH:/opt/roc"
 
 # opam configuration
 [[ ! -r $HOME/.opam/opam-init/init.zsh ]] || source $HOME/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+. "$HOME/.cargo/env"
+
+export PATH=/Users/akhong/.volta/tools/image/node/20.13.1/bin:$PATH
+export ANDROID_HOME="/Users/akhong/Library/Android/sdk"
+export ANDROID_SDK_ROOT="/Users/akhong/Library/Android/sdk"
+export PATH="$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH"
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+export JAVA_HOME="/opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home"
+export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"

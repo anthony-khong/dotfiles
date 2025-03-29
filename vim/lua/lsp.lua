@@ -232,3 +232,8 @@ vim.cmd([[
   au BufRead,BufNewFile *.gleam set filetype=gleam
   au BufWritePost *.gleam lua vim.lsp.buf.format()
 ]])
+
+-- OCaml
+require('lspconfig').ocamllsp.setup {
+	on_attach = on_attach
+}

@@ -179,6 +179,14 @@ pip install \
     jax jaxlib matplotlib numpy pandas scikit-image scikit-learn scipy \
     "dask[complete]" lightgbm pyarrow fastparquet xgboost
 
+echo "Installing OCaml..." >> $INSTALL_LOG
+apt-get install -y opam
+opam init -y
+eval $(opam env)
+opam update
+opam install ocaml-lsp-server odoc ocamlformat utop --yes
+opam install merlin --yes
+
  echo "Creating 32G of swap file..." >> $INSTALL_LOG
  sudo fallocate -l 8G /swapfile
  sudo chmod 600 /swapfile

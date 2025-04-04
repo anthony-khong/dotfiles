@@ -47,6 +47,7 @@ return require("packer").startup {
     use 'sheerun/vim-polyglot'
     use 'nvim-treesitter/nvim-treesitter'
     use { 'j-hui/fidget.nvim', tag = 'legacy' }
+    use 'tpope/vim-projectionist'
 
     use 'nvim-tree/nvim-tree.lua'
     use {

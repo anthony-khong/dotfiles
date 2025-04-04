@@ -90,6 +90,13 @@ elixir.setup {
   credo = {enable = true},
   elixirls = {
     enable = true,
+    settings = elixirls.settings {
+          dialyzerEnabled = false,
+          enableTestLenses = false,
+    },
+    projectionist = {
+        enable = true
+    },
     cmd = vim.fn.expand("~/.elixir-ls/release/language_server.sh"),
     autostart = true,
     on_attach = function(client, bufnr)
@@ -142,23 +149,23 @@ require('tailwind-sorter').setup({
 })
 
 -- Emmet
-local lspconfig = require('lspconfig')
-local configs = require('lspconfig/configs')
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
+-- local lspconfig = require('lspconfig')
+-- local configs = require('lspconfig/configs')
+-- local capabilities = vim.lsp.protocol.make_client_capabilities()
+-- capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-lspconfig.emmet_ls.setup({
-    on_attach = on_attach,
-    capabilities = capabilities,
-    filetypes = { "css", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss", "svelte", "pug", "typescriptreact", "vue", "elixir" },
-    init_options = {
-      html = {
-        options = {
-          ["bem.enabled"] = true,
-        },
-      },
-    }
-})
+-- lspconfig.emmet_ls.setup({
+    -- on_attach = on_attach,
+    -- capabilities = capabilities,
+    -- filetypes = { "css", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss", "svelte", "pug", "typescriptreact", "vue", "elixir" },
+    -- init_options = {
+      -- html = {
+        -- options = {
+          -- ["bem.enabled"] = true,
+        -- },
+      -- },
+    -- }
+-- })
 
 -- Rust
 require'lspconfig'.rust_analyzer.setup{}
@@ -237,3 +244,9 @@ vim.cmd([[
 require('lspconfig').ocamllsp.setup {
 	on_attach = on_attach
 }
+
+vim.cmd([[
+  au BufRead,BufNewFile *.ml set filetype=ocaml
+  au BufWritePost *.ml lua vim.lsp.buf.format({ async = false })
+]])
+

@@ -128,3 +128,5 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 # export PATH="$HOME/.jenv/bin:$PATH"
 # eval "$(jenv init -)"
+
+[[ ! -r /Users/akhong/.opam/opam-init/init.zsh ]] || source /Users/akhong/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null

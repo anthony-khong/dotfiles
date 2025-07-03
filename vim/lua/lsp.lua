@@ -250,3 +250,10 @@ vim.cmd([[
   au BufWritePost *.ml lua vim.lsp.buf.format({ async = false })
 ]])
 
+
+-- Shell
+-- require('lspconfig').bashls.setup{}
+
+vim.cmd([[
+  au BufRead,BufNewFile .env* set filetype=sh
+]])

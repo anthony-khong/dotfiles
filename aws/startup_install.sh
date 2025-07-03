@@ -111,6 +111,9 @@ sudo mkdir -p $HOME/.local && sudo chown -R $USER "$HOME/.local"
 nvim +PackerInstall +silent +qall
 cd ~/.local/share/nvim/site/pack/packer/start/tailwind-sorter.nvim/formatter \
     && npm i && npm run build
+sudo apt-get update && sudo apt-get install -y shellcheck
+npm i -g bash-language-server
+go install mvdan.cc/sh/v3/cmd/shfmt@latest
 
 echo "Installing Erlang and Elixir..." >> $INSTALL_LOG
 sudo apt-get -y install build-essential autoconf m4 libncurses5-dev \

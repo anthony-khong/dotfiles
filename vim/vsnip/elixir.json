@@ -79,9 +79,25 @@
     "prefix": ">r",
     "body": "|> Enum.random()"
   },
+  "pipe-to-first": {
+    "prefix": ">1",
+    "body": "|> List.first()"
+  },
+  "pipe-to-last": {
+    "prefix": ">-1",
+    "body": "|> List.last()"
+  },
+  "pipe-to-nth": {
+    "prefix": ">nth",
+    "body": "|> Enum.at(${0})"
+  },
   "pipe-to-list": {
     "prefix": ">l",
     "body": "|> Enum.to_list()"
+  },
+  "pipe-to-async-stream": {
+    "prefix": ">a",
+    "body": "|> Task.async_stream(fn ${1} -> ${0} end)"
   },
   "pipe-flow-map": {
     "prefix": ">Fm",
@@ -197,6 +213,10 @@
   "pipe->": {
     "prefix": ">",
     "body": "|> $0"
+  },
+  "pipe-each": {
+    "prefix": ">e",
+    "body": "|> Enum.each(fn ${1} -> ${0} end)"
   },
   "pipe-map": {
     "prefix": ">m",

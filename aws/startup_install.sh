@@ -96,11 +96,11 @@ curl https://get.volta.sh | bash
 /bin/bash -c "volta install node"
 /bin/bash -c "npm install -g @tailwindcss/language-server emmet-ls prettier prettier-plugin-tailwindcss"
 curl https://sh.rustup.rs -sSf | sh -s -- -y
-pip3 install --upgrade neovim jedi google-api-python-client pyflakes mypy
-pip3 install 'python-language-server[all]' jedi-language-server pyright python-lsp-black
-curl -fLO https://github.com/elixir-lsp/elixir-ls/releases/download/v0.27.2/elixir-ls-v0.27.2.zip
+pip install --upgrade neovim jedi google-api-python-client pyflakes mypy
+pip install 'python-language-server[all]' jedi-language-server pyright python-lsp-black
+curl -fLO https://github.com/elixir-lsp/elixir-ls/releases/download/v0.31.1/elixir-ls-v0.31.1.zip
 mkdir -p ~/.elixir-ls
-unzip elixir-ls-v0.27.2.zip -d ~/.elixir-ls/release
+unzip elixir-ls-v0.31.1.zip -d ~/.elixir-ls/release
 chmod +x ~/.elixir-ls/release/language_server.sh
 sudo apt-get update && sudo apt-get install -y fuse libfuse2
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage

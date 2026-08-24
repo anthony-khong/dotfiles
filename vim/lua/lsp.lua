@@ -116,8 +116,17 @@ vim.cmd([[
   au BufWritePost *.ex,*.eex,*.exs,*.heex lua vim.lsp.buf.format()
 ]])
 
+require("nvim-treesitter").install({ "elixir", "heex", })
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "elixir", "heex" },
+  callback = function()
+    vim.treesitter.start()
+  end,
+})
+
 -- Tailwind
-require('lspconfig').tailwindcss.setup {
+vim.lsp.config('tailwindcss', {
   init_options = {
     userLanguages = {
       elixir = "phoenix-heex",
@@ -135,7 +144,8 @@ require('lspconfig').tailwindcss.setup {
       surface = "html"
     },
   }
-}
+})
+vim.lsp.enable({"tailwindcss"})
 
 require('tailwind-sorter').setup({
   on_save_enabled = false,
@@ -168,7 +178,8 @@ require('tailwind-sorter').setup({
 -- })
 
 -- Rust
-require'lspconfig'.rust_analyzer.setup{}
+vim.lsp.config('rust_analyzer', {})
+vim.lsp.enable({'rust_analyzer'})
 
 local opts = {
   tools = {
@@ -194,14 +205,14 @@ local opts = {
   },
 }
 
-require("rust-tools").setup(opts)
+-- require("rust-tools").setup(opts)
 
 -- Python
 -- require('lspconfig').pyright.setup {
   -- on_attach = on_attach
 -- }
 
-require('lspconfig').pylsp.setup {
+vim.lsp.config('pylsp', {
   settings = {
     pylsp = {
       plugins = {
@@ -220,31 +231,28 @@ require('lspconfig').pylsp.setup {
   flags = {
     debounce_text_changes = 150,
   }
-}
+})
+vim.lsp.enable({"pylsp"})
 
 -- TypeScript
-require'lspconfig'.ts_ls.setup {
-  on_attach = on_attach
-}
+vim.lsp.config('ts_ls', {})
+vim.lsp.enable({"ts_ls"})
 
 -- SQL
-require('lspconfig').sqlls.setup {
-  on_attach = on_attach
-}
+vim.lsp.config('lspconfig', {})
+vim.lsp.enable({"sqlls"})
 
 -- Gleam
-require('lspconfig').gleam.setup({})
-
+vim.lsp.config('gleam', {})
+vim.lsp.enable({"gleam"})
 vim.cmd([[
   au BufRead,BufNewFile *.gleam set filetype=gleam
   au BufWritePost *.gleam lua vim.lsp.buf.format()
 ]])
 
 -- OCaml
-require('lspconfig').ocamllsp.setup {
-	on_attach = on_attach
-}
-
+vim.lsp.config('ocamllsp', {})
+vim.lsp.enable({"ocamllsp"})
 vim.cmd([[
   au BufRead,BufNewFile *.ml set filetype=ocaml
   au BufWritePost *.ml lua vim.lsp.buf.format({ async = false })

@@ -92,9 +92,9 @@ cd $HOME/dotfiles \
     && /bin/bash $HOME/dotfiles/bash/recreate_symbolic_links
 
 echo "Installing Neovim + dependencies..." >> $INSTALL_LOG
-curl https://get.volta.sh | bash
-/bin/bash -c "volta install node"
-/bin/bash -c "npm install -g @tailwindcss/language-server emmet-ls prettier prettier-plugin-tailwindcss"
+sudo apt install -y nodejs npm
+sudo npm install -g @tailwindcss/language-server emmet-ls prettier prettier-plugin-tailwindcss
+sudo npm install -g --allow-scripts=tree-sitter-cli tree-sitter-cli
 curl https://sh.rustup.rs -sSf | sh -s -- -y
 pip install --upgrade neovim jedi google-api-python-client pyflakes mypy
 pip install 'python-language-server[all]' jedi-language-server pyright python-lsp-black
@@ -116,18 +116,19 @@ npm i -g bash-language-server
 go install mvdan.cc/sh/v3/cmd/shfmt@latest
 
 echo "Installing Erlang and Elixir..." >> $INSTALL_LOG
-sudo apt-get -y install build-essential autoconf m4 libncurses5-dev \
-    libwxgtk3.0-gtk3-dev libwxgtk-webview3.0-gtk3-dev libgl1-mesa-dev \
-    libglu1-mesa-dev libpng-dev libssh-dev unixodbc-dev xsltproc fop \
-    libxml2-utils libncurses-dev openjdk-11-jdk
-git clone https://github.com/asdf-vm/asdf.git ~/.asdf
-source ~/.bashrc
+sudo apt-get -y install build-essential autoconf m4 \
+    libwxgtk3.2-dev libwxgtk-webview3.2-dev libgl1-mesa-dev libglu1-mesa-dev \
+    libpng-dev libssh-dev unixodbc-dev xsltproc fop libxml2-utils libncurses-dev \
+    openjdk-11-jdk
+curl -LO https://github.com/asdf-vm/asdf/releases/download/v0.20.0/asdf-v0.20.0-linux-amd64.tar.gz
+tar -xvzf asdf-v0.20.0-linux-amd64.tar.gz
+sudo mv asdf /usr/local/bin/asdf
 asdf plugin add erlang
 asdf plugin add elixir
-KERL_BUILD_DOCS=yes KERL_INSTALL_MANPAGES=yes KERL_INSTALL_HTMLDOCS=yes asdf install erlang 26.2
-asdf global erlang 26.2
-asdf install elixir 1.16.0-otp-26
-asdf global elixir 1.16.0-otp-26
+KERL_BUILD_DOCS=yes KERL_INSTALL_MANPAGES=yes KERL_INSTALL_HTMLDOCS=yes asdf install erlang 29.0
+asdf set --home erlang 29.0
+asdf install elixir 1.20.3-otp-29
+asdf set --home elixir 1.20.3-otp-29
 mix local.hex --force
 mix archive.install hex phx_new --force
 

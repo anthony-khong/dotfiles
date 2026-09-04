@@ -1,4 +1,137 @@
 {
+  "latu-aliases": {
+    "prefix": "LT",
+    "body": [
+      "import Latu.Column",
+      "alias Latu.Functions, as: F",
+      "alias Latu.Window, as: W"
+    ]
+  },
+  "latu-connect": {
+    "prefix": "Lconn",
+    "body": [
+      "{:ok, session} = Latu.connect(\"sc://localhost:${1:15002}\")"
+    ]
+  },
+  "latu-read": {
+    "prefix": "Lread",
+    "body": [
+      "Latu.read(session, format: \"${1:parquet}\", path: \"${2:/data/x.parquet}\")"
+    ]
+  },
+  "latu-table": {"prefix": "Ltable", "body": ["Latu.table(session, \"${1:name}\")"]},
+  "latu-sql": {
+    "prefix": "Lsql",
+    "body": [
+      "{:ok, ${1:df}} = Latu.sql(session, \"${2:SELECT * FROM t}\")"
+    ]
+  },
+  "latu-range": {"prefix": "Lrange", "body": ["Latu.range(session, ${1:10})"]},
+  "latu-create-dataframe": {
+    "prefix": "Lcdf",
+    "body": [
+      "Latu.create_dataframe!(session, [",
+      "  %{${1:id}: ${2:1}}",
+      "], schema: \"${3:id INT}\")"
+    ]
+  },
+
+  "pipe-to-agg": {
+    "prefix": ">La",
+    "body": [
+      "|> Latu.agg(${1:total}: F.${2:sum}(${3::column}))"
+    ]
+  },
+  "pipe-to-collect": {"prefix": ">Lc", "body": ["|> Latu.collect!()"]},
+  "pipe-to-cache": {"prefix": ">Lcache", "body": ["|> Latu.cache!()"]},
+  "pipe-to-checkpoint": {
+    "prefix": ">Lcheck",
+    "body": [
+      "|> Latu.checkpoint!(local: ${1:true})"
+    ]
+  },
+  "pipe-to-distinct": {"prefix": ">Ldist", "body": ["|> Latu.distinct()"]},
+  "pipe-to-drop": {"prefix": ">Ldr", "body": ["|> Latu.drop([${1::column}])"]},
+  "pipe-to-explain": {
+    "prefix": ">Le",
+    "body": [
+      "|> Latu.explain!(mode: ${1::formatted})"
+    ]
+  },
+  "pipe-to-filter": {"prefix": ">Lf", "body": ["|> Latu.filter(${1:predicate})"]},
+  "pipe-to-group-by": {"prefix": ">Lg", "body": ["|> Latu.group_by([${1::column}])"]},
+  "pipe-to-head": {"prefix": ">Lh", "body": ["|> Latu.head!(${1:5})"]},
+  "pipe-to-join": {
+    "prefix": ">Lj",
+    "body": [
+      "|> Latu.join(${1:df}, how: ${2::inner}, on: [${3::column}])"
+    ]
+  },
+  "pipe-to-limit": {"prefix": ">Ll", "body": ["|> Latu.limit(${1:10})"]},
+  "pipe-to-count": {"prefix": ">Ln", "body": ["|> Latu.count!()"]},
+  "pipe-to-sort": {"prefix": ">Lo", "body": ["|> Latu.sort(desc(${1::column}))"]},
+  "pipe-to-observe": {
+    "prefix": ">Lob",
+    "body": [
+      "|> Latu.observe(${1::name}, ${2:count}: F.count(lit(1)))"
+    ]
+  },
+  "pipe-to-persist": {
+    "prefix": ">Lpersist",
+    "body": [
+      "|> Latu.persist!(level: ${1::disk_only})"
+    ]
+  },
+  "pipe-to-print-schema": {"prefix": ">Lps", "body": ["|> Latu.print_schema!()"]},
+  "pipe-to-rename": {"prefix": ">Lr", "body": ["|> Latu.rename(${1:from}: ${2::to})"]},
+  "pipe-to-select": {"prefix": ">Ls", "body": ["|> Latu.select([${1::column}])"]},
+  "pipe-to-show": {"prefix": ">Lsh", "body": ["|> Latu.show!()"]},
+  "pipe-to-write": {
+    "prefix": ">Lw",
+    "body": [
+      "|> Latu.write!(format: \"${1:parquet}\", path: \"${2:/data/out}\", mode: ${3::overwrite})"
+    ]
+  },
+  "pipe-to-with-columns": {
+    "prefix": ">Lwc",
+    "body": [
+      "|> Latu.with_columns(${1:name}: ${2:expr})"
+    ]
+  },
+  "pipe-to-explorer": {"prefix": ">Lx", "body": ["|> Latu.to_explorer!()"]},
+  "latu-progress-handler": {
+    "prefix": "Lprog",
+    "body": [
+      "progress: fn p -> IO.write(\"\\r#{Latu.Progress.percent(p)}%\") end"
+    ]
+  },
+  "latu-over-window": {
+    "prefix": "Lover",
+    "body": [
+      "over(F.${1:rank}(), W.partition_by([${2::column}]) |> W.order_by([desc(${3::column})]))"
+    ]
+  },
+  "latu-when-otherwise": {
+    "prefix": "Lwhen",
+    "body": [
+      "when_(${1:condition}, ${2:value}) |> otherwise(${3:else_value})"
+    ]
+  },
+  "latu-expr": {"prefix": "Lexpr", "body": ["expr(\"${1:a > 1 AND b <> 'x'}\")"]},
+  "latu-fun-escape-hatch": {
+    "prefix": "Lfun",
+    "body": [
+      "fun(\"${1:function_name}\", [${2:args}])"
+    ]
+  },
+  "latu-checkpoint-bracket": {
+    "prefix": "Lcheck",
+    "body": [
+      "Latu.with_checkpoint!(${1:df}, fn ${2:cp} ->",
+      "  ${0}",
+      "end)"
+    ]
+  }
   "pipe-to-dataframe-print": {
     "prefix": ">Dp",
     "body": "|> DF.print(limit: :infinity)"

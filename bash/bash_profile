@@ -6,7 +6,6 @@ alias ls='ls -GFh'
 export PATH="$HOME:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
-export DOCKER_DEFAULT_PLATFORM=linux/amd64
 
 source ~/dotfiles/bash/bash_shortcuts.sh
 source ~/dotfiles/bash/bash_preferences.sh
@@ -37,9 +36,14 @@ export PATH=/Users/akhong/.volta/tools/image/node/20.13.1/bin:$PATH
 export ANDROID_HOME="/Users/akhong/Library/Android/sdk"
 export ANDROID_SDK_ROOT="/Users/akhong/Library/Android/sdk"
 export PATH="$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH"
-export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
-export JAVA_HOME="/opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home"
-export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
+export PATH="/opt/homebrew/opt/openjdk@25/bin:$PATH"
+export JAVA_HOME="/opt/homebrew/opt/openjdk@25/libexec/openjdk.jdk/Contents/Home"
+export CPPFLAGS="-I/opt/homebrew/opt/openjdk@25/include"
 
 alias x86="$env /usr/bin/arch -x86_64 /bin/zsh ---login"
 alias arm="$env /usr/bin/arch -arm64 /bin/zsh ---login"
+
+export SPARK_HOME="$HOME/spark"
+export PATH="$PATH:$HOME/.mix/escripts"
+export SPARK_REMOTE='sc://localhost:15002'
+export PATH="$SPARK_HOME/bin:$SPARK_HOME/sbin:$PATH"

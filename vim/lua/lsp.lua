@@ -116,7 +116,7 @@ vim.cmd([[
   au BufWritePost *.ex,*.eex,*.exs,*.heex lua vim.lsp.buf.format()
 ]])
 
-require("nvim-treesitter").install({ "elixir", "heex", })
+-- require("nvim-treesitter").install({ "elixir", "heex", })
 
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "elixir", "heex" },

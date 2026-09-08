@@ -84,7 +84,7 @@ vim.cmd([[
 ]])
 
 -- Treesitter
-require 'nvim-treesitter.config'.setup {
+require 'nvim-treesitter.configs'.setup {
   ensure_installed = {
     "css",
     "elixir",

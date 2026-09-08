@@ -112,4 +112,5 @@ export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin:$VOLTA_HOME/bin"
 [ -z "$ZSH_NAME" ] && [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 alias gitlab-runner='docker run --rm -it -v gitlab-runner-config:/etc/gitlab-runner gitlab/gitlab-runner:latest'
-. $HOME/.asdf/asdf.sh
+export PATH="$PATH:$HOME/.asdf/shims"
+alias iexmem='MIMALLOC_PURGE_DELAY=0 MIMALLOC_PURGE_DECOMMITS=1 iex -S mix'

@@ -131,7 +131,7 @@
       "  ${0}",
       "end)"
     ]
-  }
+  },
   "pipe-to-dataframe-print": {
     "prefix": ">Dp",
     "body": "|> DF.print(limit: :infinity)"

@@ -94,6 +94,17 @@ elixir.setup {
     settings = elixirls.settings { dialyzerEnabled = false },
     on_attach = function(client, bufnr)
       on_attach(client, bufnr)
+      local request = client.request
+      client.request = function(self, method, params, handler, req_bufnr)
+        if method == "textDocument/completion" and handler then
+          local on_result = handler
+          handler = function(err, result, ...)
+            if type(result) == "table" then result.isIncomplete = false end
+            return on_result(err, result, ...)
+          end
+        end
+        return request(self, method, params, handler, req_bufnr)
+      end
       local map_opts = { buffer = bufnr }
       vim.keymap.set("n", "<space>fp", ":ElixirFromPipe<cr>", map_opts)
       vim.keymap.set("n", "<space>tp", ":ElixirToPipe<cr>", map_opts)
@@ -108,6 +119,7 @@ vim.api.nvim_create_autocmd("FileType", {
   pattern = { "elixir", "heex" },
   callback = function()
     vim.treesitter.start()
+    vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
   end,
 })
 

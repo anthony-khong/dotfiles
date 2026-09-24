@@ -87,6 +87,11 @@ local elixir = require("elixir")
 local elixirls = require("elixir.elixirls")
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
+-- elixir-tools still calls the old API; send it to the 0.12 one
+vim.lsp.codelens.refresh = function(opts)
+  vim.lsp.codelens.enable(true, opts)
+end
+
 elixir.setup {
   credo = { enable = true, version = "0.3.0" },
   elixirls = {

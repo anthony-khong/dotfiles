@@ -16,9 +16,9 @@ return require("packer").startup {
     -- Utilities
     use 'nvim-lua/plenary.nvim'
 
-		-- Appearance
-		use 'airblade/vim-gitgutter'
-		use 'ayu-theme/ayu-vim'
+    -- Appearance
+    use 'airblade/vim-gitgutter'
+    use 'shatur/neovim-ayu'
     use "lukas-reineke/indent-blankline.nvim"
 
     -- Editing
@@ -66,6 +66,7 @@ return require("packer").startup {
 
     -- Elixir
     use({ "elixir-tools/elixir-tools.nvim", tag = "stable", requires = { "nvim-lua/plenary.nvim" }})
+    use 'hrsh7th/cmp-nvim-lsp-signature-help'
 
     -- Rust
     use 'rust-lang/rust.vim'

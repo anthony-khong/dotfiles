@@ -1,6 +1,6 @@
-set tabstop=2
-set shiftwidth=2
-set expandtab
+setlocal tabstop=2
+setlocal shiftwidth=2
+setlocal expandtab
 
 " Set character limiter
 " Taken from: https://github.com/thoughtstream/Damian-Conway-s-Vim-Setup/blob/master/.vimrc

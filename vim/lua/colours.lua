@@ -1,8 +1,7 @@
 vim.opt.termguicolors = true
 
 vim.cmd([[
-  let ayucolor="dark"
-  silent! colorscheme ayu
+  colorscheme ayu-dark
   hi Pmenu guibg=#334351 guifg=#E6E1CF
 
   hi Normal     guibg=NONE ctermbg=NONE

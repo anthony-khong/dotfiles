@@ -74,7 +74,7 @@ cmp.setup({
   sources = cmp.config.sources({
     { name = 'conjure', keyword_length = 2 },
     { name = 'nvim_lsp', keyword_length = 2 },
-    { name = 'nvim_lsp_signature_help', keyword_length = 2 },
+    { name = 'nvim_lsp_signature_help' },
     { name = 'nvim_lua', keyword_length = 2 },
     { name = 'buffer', keyword_length = 2 },
     { name = 'vsnip', keyword_length = 3 },
@@ -87,28 +87,19 @@ local elixirls = require("elixir.elixirls")
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 elixir.setup {
-  credo = {enable = true},
+  credo = { enable = true, version = "0.3.0" },
   elixirls = {
-    enable = true,
-    settings = elixirls.settings {
-          dialyzerEnabled = false,
-          enableTestLenses = false,
-    },
-    projectionist = {
-        enable = true
-    },
     cmd = vim.fn.expand("~/.elixir-ls/release/language_server.sh"),
-    autostart = true,
+    capabilities = capabilities,
+    settings = elixirls.settings { dialyzerEnabled = false },
     on_attach = function(client, bufnr)
       on_attach(client, bufnr)
-      local map_opts = { buffer = true, noremap = true}
-
+      local map_opts = { buffer = bufnr }
       vim.keymap.set("n", "<space>fp", ":ElixirFromPipe<cr>", map_opts)
       vim.keymap.set("n", "<space>tp", ":ElixirToPipe<cr>", map_opts)
       vim.keymap.set("v", "<space>em", ":ElixirExpandMacro<cr>", map_opts)
-    end
+    end,
   },
-  capabilities = capabilities
 }
 
 -- require("nvim-treesitter").install({ "elixir", "heex", })
@@ -119,10 +110,6 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.treesitter.start()
   end,
 })
-
--- Rust
-vim.lsp.config('rust_analyzer', {})
-vim.lsp.enable({'rust_analyzer'})
 
 -- Python
 -- require('lspconfig').pyright.setup {

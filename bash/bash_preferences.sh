@@ -39,9 +39,6 @@ elif [ "$0" = "zsh" ]; then
     bind 'TAB:menu-complete'
 fi
 
-# For tmux colours
-export TERM="screen-256color"
-
 # Short PS1
 if [ "$0" = "bash" ]; then
     # export PS1="\[\033[36m\]\u\[\033[m\]:\[\033[33;1m\]\W\[\033[m\]$ "

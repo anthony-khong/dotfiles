@@ -6,7 +6,7 @@ require('ayu').setup({
   overrides = {
     ['@module'] = { fg = colors.entity },
     ['@variable'] = { fg = '#E0E2EA' },
-    ['@string.special.symbol'] = { fg = colors.regexp },
+    ['@string.special.symbol'] = { fg = '#E6B673' },
     ['@punctuation.bracket'] = { fg = colors.fg },
   },
 })

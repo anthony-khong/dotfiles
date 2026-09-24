@@ -43,3 +43,6 @@ vim.opt.cmdheight = 1
 -- Better Completion
 vim.opt.completeopt = {'menuone', 'noselect', 'noinsert', 'preview'}
 vim.opt.shortmess = vim.opt.shortmess + { c = true }
+
+-- Bordered Window
+vim.o.winborder = 'rounded'

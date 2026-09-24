@@ -84,28 +84,22 @@ vim.cmd([[
 ]])
 
 -- Treesitter
-require 'nvim-treesitter.config'.setup {
-  ensure_installed = {
-    "css",
-    "elixir",
-    "erlang",
-    "heex",
-    "html",
-    "html",
-    "json",
-    "lua",
-    "surface",
-    "toml",
-    "tsx",
-    "yaml",
-  },
-  sync_install = false,
-  ignore_install = {},
-  highlight = {
-    enable = true,
-    disable = {},
-  }
-}
+local treesitter = require("nvim-treesitter")
+treesitter.setup()
+treesitter.install({
+  "css",
+  "elixir",
+  "erlang",
+  "heex",
+  "html",
+  "json",
+  "lua",
+  "surface",
+  "toml",
+  "tsx",
+  "yaml",
+})
+
 
 -- Telescope
 local builtin = require('telescope.builtin')

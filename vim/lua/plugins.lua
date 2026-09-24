@@ -45,7 +45,7 @@ return require("packer").startup {
     use 'neovim/nvim-lspconfig'
     use "lukas-reineke/lsp-format.nvim"
     use 'sheerun/vim-polyglot'
-    use 'nvim-treesitter/nvim-treesitter'
+    use { "nvim-treesitter/nvim-treesitter", branch = "main", }
     use 'j-hui/fidget.nvim'
     use 'tpope/vim-projectionist'
 

@@ -7,6 +7,7 @@ require('ayu').setup({
     ['@module'] = { fg = colors.entity },
     ['@variable'] = { fg = '#E0E2EA' },
     ['@string.special.symbol'] = { fg = '#E6B673' },
+    ['@function.call'] = { fg = '#FFC56B' },
     ['@punctuation.bracket'] = { fg = colors.fg },
   },
 })

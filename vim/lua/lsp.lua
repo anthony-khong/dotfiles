@@ -25,7 +25,7 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
   vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-  vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
+  -- vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
   vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
   vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
   vim.keymap.set('n', '<space>wl', function()
@@ -111,11 +111,6 @@ elixir.setup {
   capabilities = capabilities
 }
 
-vim.cmd([[
-  au BufRead,BufNewFile *.eex,*.heex,*.leex,*.sface,*.lexs set filetype=eelixir
-  au BufWritePost *.ex,*.eex,*.exs,*.heex lua vim.lsp.buf.format()
-]])
-
 -- require("nvim-treesitter").install({ "elixir", "heex", })
 
 vim.api.nvim_create_autocmd("FileType", {
@@ -125,87 +120,9 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
--- Tailwind
-vim.lsp.config('tailwindcss', {
-  init_options = {
-    userLanguages = {
-      elixir = "phoenix-heex",
-      heex = "phoenix-heex",
-      surface = "phoenix-heex"
-    },
-  },
-  settings = {
-    includeLanguages = {
-      ["html-eex"] = "html",
-      ["phoenix-heex"] = "html",
-      heex = "html",
-      eelixir = "html",
-      elixir = "html",
-      surface = "html"
-    },
-  }
-})
-vim.lsp.enable({"tailwindcss"})
-
-require('tailwind-sorter').setup({
-  on_save_enabled = false,
-  on_save_pattern = { '*.html', '*.js', '*.jsx', '*.tsx', '*.ex', '*.eex', '*.exs', '*.heex' },
-  node_path = 'node',
-  on_attach = function(client, bufnr)
-    on_attach(client, bufnr)
-    local map_opts = { buffer = true, noremap = true}
-    vim.keymap.set("n", "<space>tw", ":TailwindSortOnSaveToggle<cr>", map_opts)
-  end
-})
-
--- Emmet
--- local lspconfig = require('lspconfig')
--- local configs = require('lspconfig/configs')
--- local capabilities = vim.lsp.protocol.make_client_capabilities()
--- capabilities.textDocument.completion.completionItem.snippetSupport = true
-
--- lspconfig.emmet_ls.setup({
-    -- on_attach = on_attach,
-    -- capabilities = capabilities,
-    -- filetypes = { "css", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss", "svelte", "pug", "typescriptreact", "vue", "elixir" },
-    -- init_options = {
-      -- html = {
-        -- options = {
-          -- ["bem.enabled"] = true,
-        -- },
-      -- },
-    -- }
--- })
-
 -- Rust
 vim.lsp.config('rust_analyzer', {})
 vim.lsp.enable({'rust_analyzer'})
-
-local opts = {
-  tools = {
-    runnables = {
-      use_telescope = true,
-    },
-    inlay_hints = {
-      auto = true,
-      show_parameter_hints = false,
-      parameter_hints_prefix = "",
-      other_hints_prefix = "",
-    },
-  },
-  server = {
-    on_attach = on_attach,
-    settings = {
-      ["rust-analyzer"] = {
-        checkOnSave = {
-          command = "clippy",
-        },
-      },
-    },
-  },
-}
-
--- require("rust-tools").setup(opts)
 
 -- Python
 -- require('lspconfig').pyright.setup {
@@ -239,7 +156,6 @@ vim.lsp.config('ts_ls', {})
 vim.lsp.enable({"ts_ls"})
 
 -- SQL
-vim.lsp.config('lspconfig', {})
 vim.lsp.enable({"sqlls"})
 
 -- Gleam

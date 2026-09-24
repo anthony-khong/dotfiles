@@ -19,12 +19,10 @@ return require("packer").startup {
 		-- Appearance
 		use 'airblade/vim-gitgutter'
 		use 'ayu-theme/ayu-vim'
-    use 'projekt0n/github-nvim-theme'
     use "lukas-reineke/indent-blankline.nvim"
 
     -- Editing
     use 'junegunn/vim-easy-align'
-    use 'scrooloose/nerdcommenter'
     use 'tpope/vim-repeat'
     use 'tpope/vim-surround'
     use 'mattn/emmet-vim'
@@ -44,7 +42,6 @@ return require("packer").startup {
     -- IDE
     use 'neovim/nvim-lspconfig'
     use "lukas-reineke/lsp-format.nvim"
-    use 'sheerun/vim-polyglot'
     use { "nvim-treesitter/nvim-treesitter", branch = "main", }
     use 'j-hui/fidget.nvim'
     use 'tpope/vim-projectionist'
@@ -64,7 +61,6 @@ return require("packer").startup {
 
     -- Snippets
     use 'hrsh7th/vim-vsnip'
-    use 'hrsh7th/vim-vsnip-integ'
     use 'hrsh7th/cmp-vsnip'
     use "rafamadriz/friendly-snippets"
 
@@ -73,12 +69,7 @@ return require("packer").startup {
 
     -- Rust
     use 'rust-lang/rust.vim'
-    use 'simrat39/rust-tools.nvim'
-
-    -- JavaScript and TypeScript
-    use 'leafgarland/typescript-vim'
-    use 'maxmellon/vim-jsx-pretty'
-    use 'pangloss/vim-javascript'
+    use 'mrcjkb/rustaceanvim'
 
     -- Lisp
     use 'Olical/conjure'
@@ -93,13 +84,8 @@ return require("packer").startup {
     use 'guns/vim-sexp'
     use 'tpope/vim-sexp-mappings-for-regular-people'
 
-    -- Gleam
-    use 'gleam-lang/gleam.vim'
-
     -- Others
-    use 'ekalinin/Dockerfile.vim'
     use 'plasticboy/vim-markdown'
-    use 'kevinoid/vim-jsonc'
     use 'jidn/vim-dbml'
 
     if packer_bootstrap then

@@ -63,6 +63,7 @@ cmp.setup({
     format = function(entry, item)
       local menu_icon ={
         nvim_lsp = 'λ',
+        nvim_lsp_signature_help = 'σ',
         vsnip = '⋗',
         buffer = 'b',
         path = 'p'

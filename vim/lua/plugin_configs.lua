@@ -73,16 +73,6 @@ vim.cmd([[
 ]])
 
 
--- Nerd Commenter
-vim.cmd([[
-  let g:NERDCreateDefaultMappings = 0
-  nmap gcc <Plug>NERDCommenterToggle
-  vmap gcc <Plug>NERDCommenterToggle
-
-  let g:NERDSpaceDelims = 1
-  let g:NERDCompactSexyComs = 1
-]])
-
 -- Treesitter
 local treesitter = require("nvim-treesitter")
 treesitter.setup()

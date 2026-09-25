@@ -5,8 +5,6 @@ require"fidget".setup{}
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 local opts = { noremap=true, silent=true }
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, opts)
 
@@ -100,17 +98,34 @@ elixir.setup {
     settings = elixirls.settings { dialyzerEnabled = false },
     on_attach = function(client, bufnr)
       on_attach(client, bufnr)
-      local request = client.request
-      client.request = function(self, method, params, handler, req_bufnr)
-        if method == "textDocument/completion" and handler then
-          local on_result = handler
-          handler = function(err, result, ...)
-            if type(result) == "table" then result.isIncomplete = false end
-            return on_result(err, result, ...)
+
+      -- Patch once per server. on_attach runs for every Elixir buffer,
+      -- and stacking the wrapper would undo the 300-item cap.
+      if not client._completion_patched then
+        client._completion_patched = true
+        local request = client.request
+        client.request = function(self, method, params, handler, req_bufnr)
+          if method == "textDocument/completion" and handler then
+            local on_result = handler
+            handler = function(err, result, ...)
+              if type(result) == "table" and result.items then
+                if #result.items > 300 then
+                  table.sort(result.items, function(a, b)
+                    return (a.sortText or a.label) < (b.sortText or b.label)
+                  end)
+                  result.items = vim.list_slice(result.items, 1, 300)
+                  result.isIncomplete = true
+                else
+                  result.isIncomplete = false
+                end
+              end
+              return on_result(err, result, ...)
+            end
           end
+          return request(self, method, params, handler, req_bufnr)
         end
-        return request(self, method, params, handler, req_bufnr)
       end
+
       local map_opts = { buffer = bufnr }
       vim.keymap.set("n", "<space>fp", ":ElixirFromPipe<cr>", map_opts)
       vim.keymap.set("n", "<space>tp", ":ElixirToPipe<cr>", map_opts)

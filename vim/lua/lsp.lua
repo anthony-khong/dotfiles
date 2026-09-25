@@ -15,13 +15,17 @@ vim.diagnostic.config({
 })
 
 -- Format on save only for these servers
-local format_on_save = { ElixirLS = true, pylsp = true }
+local format_on_save = { ElixirLS = true, ruff = true }
 
 -- Mappings for every language server, once it attaches to a buffer
 vim.api.nvim_create_autocmd("LspAttach", { callback = function(ev)
   local client = vim.lsp.get_client_by_id(ev.data.client_id)
   if client and format_on_save[client.name] then
     require("lsp-format").on_attach(client, ev.buf)
+  end
+  -- ruff's hover only explains noqa codes; leave K to pyrefly
+  if client and client.name == "ruff" then
+    client.server_capabilities.hoverProvider = false
   end
 
   -- See `:help vim.lsp.*` for documentation on any of the below functions
@@ -46,6 +50,18 @@ vim.api.nvim_create_autocmd("LspAttach", { callback = function(ev)
 end })
 
 -- Completion
+-- pyrefly pads overloaded signatures into wide columns ("axis     : Axis     = 0,"),
+-- which wrap into a mess in the docs window. Squeeze the padding out.
+local function compact_signature(detail)
+  if type(detail) ~= "string" then return detail end
+  local lines = vim.split(detail, "\n")
+  for i, line in ipairs(lines) do
+    local indent, rest = line:match("^(%s*)(.*)$")
+    lines[i] = indent .. rest:gsub("%s+:%s", ": "):gsub("%s%s+=%s", " = ")
+  end
+  return table.concat(lines, "\n")
+end
+
 require("blink.cmp").setup({
   -- Same keys as with nvim-cmp. When blink isn't using a key, "fallback" passes it
   -- to the vsnip maps in plugin_configs.lua (<Tab> expands, <C-n>/<C-p> jump).
@@ -62,7 +78,13 @@ require("blink.cmp").setup({
   completion = {
     -- Nothing selected until <C-n>/<C-p>, like completeopt=noselect
     list = { selection = { preselect = false } },
-    documentation = { auto_show = true, auto_show_delay_ms = 0 },
+    documentation = {
+      auto_show = true,
+      auto_show_delay_ms = 0,
+      draw = function(opts)
+        opts.default_implementation({ detail = compact_signature(opts.item.detail) })
+      end,
+    },
     menu = {
       draw = {
         columns = { { "source_icon" }, { "label", "label_description", gap = 1 }, { "kind" } },
@@ -109,31 +131,17 @@ elixir.setup {
   },
 }
 
--- Python
--- require('lspconfig').pyright.setup {
-  -- on_attach = on_attach
--- }
-
-vim.lsp.config('pylsp', {
-  settings = {
-    pylsp = {
-      plugins = {
-        pylint = { enabled = false },
-        pycodestyle = { enabled = false },
-        pyflakes = { enabled = false },
-        flake8 = {
-          enabled = true,
-          ignore = { 'W503' },
-          maxLineLength = 100
-        }
-      }
-    }
+-- Python: pyrefly for completion, navigation and type errors; ruff for lint and format.
+-- A project's own ruff config (pyproject.toml / ruff.toml) wins over these settings.
+vim.lsp.config('ruff', {
+  init_options = {
+    settings = {
+      configurationPreference = "filesystemFirst",
+      lineLength = 96,
+    },
   },
-  flags = {
-    debounce_text_changes = 150,
-  }
 })
-vim.lsp.enable({"pylsp"})
+vim.lsp.enable({"pyrefly", "ruff"})
 
 -- TypeScript
 vim.lsp.config('ts_ls', {})

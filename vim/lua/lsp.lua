@@ -15,7 +15,7 @@ vim.diagnostic.config({
 })
 
 -- Format on save only for these servers
-local format_on_save = { ElixirLS = true, ruff = true, ["rust-analyzer"] = true }
+local format_on_save = { ElixirLS = true, ruff = true, ["rust-analyzer"] = true, bashls = true }
 
 -- Mappings for every language server, once it attaches to a buffer
 vim.api.nvim_create_autocmd("LspAttach", { callback = function(ev)
@@ -159,5 +159,8 @@ vim.lsp.enable({"ts_ls"})
 -- SQL
 vim.lsp.enable({"sqlls"})
 
--- Shell
--- require('lspconfig').bashls.setup{}
+-- Shell: bash-language-server lints with shellcheck and formats with shfmt
+vim.lsp.enable({"bashls"})
+
+-- YAML: checks files against schemas from schemastore.org (GitHub Actions, docker-compose, ...)
+vim.lsp.enable({"yamlls"})

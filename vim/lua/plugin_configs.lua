@@ -76,8 +76,9 @@ vim.cmd([[
 -- Treesitter
 local treesitter = require("nvim-treesitter")
 treesitter.setup()
-treesitter.install({
+local ts_languages = {
   "css",
+  "eex",
   "elixir",
   "erlang",
   "heex",
@@ -88,6 +89,21 @@ treesitter.install({
   "toml",
   "tsx",
   "yaml",
+}
+treesitter.install(ts_languages)
+
+-- Highlight with treesitter wherever one of these parsers applies;
+-- indent with it only for the Elixir family
+vim.api.nvim_create_autocmd("FileType", {
+  callback = function(ev)
+    local lang = vim.treesitter.language.get_lang(ev.match)
+    if not vim.tbl_contains(ts_languages, lang) or not pcall(vim.treesitter.start, ev.buf, lang) then
+      return
+    end
+    if vim.tbl_contains({ "elixir", "heex", "eex" }, lang) then
+      vim.bo[ev.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+    end
+  end,
 })
 
 
@@ -97,6 +113,7 @@ vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+vim.keymap.set('n', '<leader>fs', builtin.lsp_dynamic_workspace_symbols, {})
 
 -- VSnip
 vim.cmd([[
@@ -119,12 +136,16 @@ vim.cmd([[
 
 -- Conjure
 vim.cmd([[
-  nnoremap <leader>cc vip:ConjureEval<CR>
-  nnoremap <leader>cl :ConjureLogVSplit<CR>
-  nmap <Space>cl <Space>lv<C-W><C-H>:exe "vertical resize " . (winwidth(0) * 5/4)<CR>
-
   let g:conjure#log#wrap = 1
   let g:conjure#filetypes = ["clojure", "fennel", "janet", "hy", "racket", "scheme", "lisp"]
+
+  augroup conjure_mappings
+    autocmd!
+    autocmd FileType clojure,fennel,janet,hy,racket,scheme,lisp
+      \ nnoremap <buffer> <leader>cc vip:ConjureEval<CR>
+    autocmd FileType clojure,fennel,janet,hy,racket,scheme,lisp
+      \ nmap <buffer> <Space>cl <Space>lv<C-W><C-H>:exe "vertical resize " . (winwidth(0) * 5/4)<CR>
+  augroup END
 ]])
 
 -- Parinfer

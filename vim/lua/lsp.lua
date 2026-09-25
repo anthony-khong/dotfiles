@@ -109,16 +109,6 @@ elixir.setup {
   },
 }
 
--- require("nvim-treesitter").install({ "elixir", "heex", })
-
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "elixir", "heex" },
-  callback = function()
-    vim.treesitter.start()
-    vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-  end,
-})
-
 -- Python
 -- require('lspconfig').pyright.setup {
   -- on_attach = on_attach

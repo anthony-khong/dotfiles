@@ -17,6 +17,7 @@ require("lazy").setup({
     "junegunn/vim-easy-align",
     "tpope/vim-repeat",
     "tpope/vim-surround",
+    "tpope/vim-endwise",
     "christoomey/vim-tmux-navigator",
     "jpalardy/vim-slime",
     "neovim/nvim-lspconfig",

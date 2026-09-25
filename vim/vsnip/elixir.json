@@ -379,6 +379,14 @@
     "prefix": ">il",
     "body": "|> IO.inspect(label: \"${1:label}\")"
   },
+  "pipe-dbg": {
+    "prefix": ">d",
+    "body": "|> dbg()"
+  },
+  "dbg": {
+    "prefix": "dbg",
+    "body": "dbg(${0})"
+  },
   "word-list": {
     "prefix": "wl",
     "body": "~w(${0})"

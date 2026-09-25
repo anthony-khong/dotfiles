@@ -1,5 +1,5 @@
 " Conjure
-nnoremap <Space>cb :ConjureConnect 4444<CR>
+nnoremap <buffer> <Space>cb :ConjureConnect 4444<CR>
 
 " Slurps and Barfs
 let g:sexp_filetypes = ''
@@ -26,13 +26,3 @@ function! s:vim_sexp_mappings()
     nmap <buffer> <> <Plug>(sexp_capture_next_element)
 endfunction
 call s:vim_sexp_mappings()
-
-" Parantheses
-let g:rainbow#blacklist = [228, 231, 238, 245]
-function! s:dim_closing_parens()
-    hi link ClosingParens Comment
-    call matchadd('ClosingParens', ')')
-    call matchadd('ClosingParens', ']')
-    call matchadd('ClosingParens', '}')
-endfunction
-call s:dim_closing_parens()

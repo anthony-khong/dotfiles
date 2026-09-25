@@ -26,5 +26,5 @@ syn match math '\$[^$].\{-}\$'
 hi link math Statement
 
 " Moving up and down physical lines
-nnoremap j gj
-nnoremap k gk
+nnoremap <buffer> <expr> j v:count ? 'j' : 'gj'
+nnoremap <buffer> <expr> k v:count ? 'k' : 'gk'

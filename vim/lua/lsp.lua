@@ -46,61 +46,48 @@ vim.api.nvim_create_autocmd("LspAttach", { callback = function(ev)
 end })
 
 -- Completion
-local cmp = require'cmp'
-cmp.setup({
-  snippet = {
-    expand = function(args)
-      vim.fn["vsnip#anonymous"](args.body)
-    end,
+require("blink.cmp").setup({
+  -- Same keys as with nvim-cmp. When blink isn't using a key, "fallback" passes it
+  -- to the vsnip maps in plugin_configs.lua (<Tab> expands, <C-n>/<C-p> jump).
+  keymap = {
+    preset = "none",
+    ["<C-p>"] = { "select_prev", "fallback_to_mappings" },
+    ["<C-n>"] = { "select_next", "fallback_to_mappings" },
+    ["<S-Tab>"] = { function(cmp) return cmp.scroll_documentation_up(8) end, "fallback" },
+    ["<Tab>"] = { function(cmp) return cmp.scroll_documentation_down(8) end, "fallback" },
+    ["<C-e>"] = { "cancel", "fallback" },
+    ["<C-y>"] = { "select_and_accept", "fallback" },
   },
-  mapping = {
-    ['<C-p>'] = cmp.mapping.select_prev_item(),
-    ['<C-n>'] = cmp.mapping.select_next_item(),
-    ['<S-Tab>'] = cmp.mapping.scroll_docs(-8),
-    ['<Tab>'] = cmp.mapping.scroll_docs(8),
-    ['<C-e>'] = cmp.mapping.abort(),
-    ['<C-y>'] = cmp.mapping.confirm({ select = true })
+  snippets = { preset = "vsnip" },
+  completion = {
+    -- Nothing selected until <C-n>/<C-p>, like completeopt=noselect
+    list = { selection = { preselect = false } },
+    documentation = { auto_show = true, auto_show_delay_ms = 0 },
+    menu = {
+      draw = {
+        columns = { { "source_icon" }, { "label", "label_description", gap = 1 }, { "kind" } },
+        components = {
+          source_icon = {
+            text = function(ctx)
+              return ({ lsp = "λ", snippets = "⋗", buffer = "b", path = "p" })[ctx.source_id] or ""
+            end,
+          },
+        },
+      },
+    },
   },
-  window = {
-    completion = cmp.config.window.bordered(),
-    documentation = cmp.config.window.bordered(),
+  -- Like keyword_length = 2 (3 for snippets); "." etc. still open the menu straight away
+  sources = {
+    min_keyword_length = 2,
+    providers = { snippets = { min_keyword_length = 3 } },
   },
-  formatting = {
-    fields = {'menu', 'abbr', 'kind'},
-    format = function(entry, item)
-      local menu_icon ={
-        nvim_lsp = 'λ',
-        nvim_lsp_signature_help = 'σ',
-        vsnip = '⋗',
-        buffer = 'b',
-        path = 'p'
-      }
-      item.menu = menu_icon[entry.source.name]
-      return item
-    end,
-  },
-  sources = cmp.config.sources({
-    { name = 'path', keyword_length = 2 },
-    { name = 'nvim_lsp', keyword_length = 2 },
-    { name = 'nvim_lsp_signature_help', keyword_length = 2 },
-    { name = 'buffer', keyword_length = 2 },
-    { name = 'vsnip', keyword_length = 3 },
-  })
-})
-
-cmp.setup.cmdline({ '/', '?' }, {
-  mapping = cmp.mapping.preset.cmdline(),
-  sources = { { name = 'buffer' } },
-})
-cmp.setup.cmdline(':', {
-  mapping = cmp.mapping.preset.cmdline(),
-  sources = cmp.config.sources({ { name = 'path' } }, { { name = 'cmdline' } }),
+  signature = { enabled = true },
 })
 
 -- Elixir
 local elixir = require("elixir")
 local elixirls = require("elixir.elixirls")
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
+local capabilities = require('blink.cmp').get_lsp_capabilities()
 
 -- elixir-tools still calls the old API; send it to the 0.12 one
 vim.lsp.codelens.refresh = function(opts)
@@ -113,34 +100,7 @@ elixir.setup {
     cmd = vim.fn.expand("~/.elixir-ls/release/language_server.sh"),
     capabilities = capabilities,
     settings = elixirls.settings { dialyzerEnabled = false },
-    on_attach = function(client, bufnr)
-      -- Patch once per server. on_attach runs for every Elixir buffer,
-      -- and stacking the wrapper would undo the 300-item cap.
-      if not client._completion_patched then
-        client._completion_patched = true
-        local request = client.request
-        client.request = function(self, method, params, handler, req_bufnr)
-          if method == "textDocument/completion" and handler then
-            local on_result = handler
-            handler = function(err, result, ...)
-              if type(result) == "table" and result.items then
-                if #result.items > 300 then
-                  table.sort(result.items, function(a, b)
-                    return (a.sortText or a.label) < (b.sortText or b.label)
-                  end)
-                  result.items = vim.list_slice(result.items, 1, 300)
-                  result.isIncomplete = true
-                else
-                  result.isIncomplete = false
-                end
-              end
-              return on_result(err, result, ...)
-            end
-          end
-          return request(self, method, params, handler, req_bufnr)
-        end
-      end
-
+    on_attach = function(_, bufnr)
       local map_opts = { buffer = bufnr }
       vim.keymap.set("n", "<space>fp", ":ElixirFromPipe<cr>", map_opts)
       vim.keymap.set("n", "<space>tp", ":ElixirToPipe<cr>", map_opts)

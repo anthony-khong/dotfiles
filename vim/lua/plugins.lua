@@ -39,8 +39,6 @@ require("lazy").setup({
     -- Loaded only when needed
     { "tpope/vim-fugitive", cmd = { "G", "Git", "Gdiff", "Gvdiffsplit", "Gread", "Gwrite", "Gedit" } },
     { "mattn/emmet-vim", ft = { "html", "heex", "eelixir", "css", "javascriptreact", "typescriptreact" } },
-    { "rust-lang/rust.vim", ft = "rust" },
-    { "plasticboy/vim-markdown", ft = "markdown" },
     { "Olical/conjure", ft = lisps },
     { "eraserhd/parinfer-rust", ft = lisps, build = "cargo build --release" },
     { "hylang/vim-hy", ft = "hy" },

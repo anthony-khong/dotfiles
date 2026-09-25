@@ -77,6 +77,7 @@ vim.cmd([[
 local treesitter = require("nvim-treesitter")
 treesitter.setup()
 local ts_languages = {
+  "bash",
   "css",
   "eex",
   "elixir",
@@ -86,6 +87,7 @@ local ts_languages = {
   "json",
   "lua",
   "python",
+  "rust",
   "surface",
   "toml",
   "tsx",

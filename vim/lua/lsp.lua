@@ -15,7 +15,7 @@ vim.diagnostic.config({
 })
 
 -- Format on save only for these servers
-local format_on_save = { ElixirLS = true, ruff = true }
+local format_on_save = { ElixirLS = true, ruff = true, ["rust-analyzer"] = true }
 
 -- Mappings for every language server, once it attaches to a buffer
 vim.api.nvim_create_autocmd("LspAttach", { callback = function(ev)
@@ -143,6 +143,15 @@ vim.lsp.config('ruff', {
 })
 vim.lsp.enable({"pyrefly", "ruff"})
 
+-- Rust: rustaceanvim starts rust-analyzer; check with clippy instead of `cargo check` on save
+vim.g.rustaceanvim = {
+  server = {
+    default_settings = {
+      ["rust-analyzer"] = { check = { command = "clippy" } },
+    },
+  },
+}
+
 -- TypeScript
 vim.lsp.config('ts_ls', {})
 vim.lsp.enable({"ts_ls"})
@@ -152,7 +161,3 @@ vim.lsp.enable({"sqlls"})
 
 -- Shell
 -- require('lspconfig').bashls.setup{}
-
-vim.cmd([[
-  au BufRead,BufNewFile .env* set filetype=sh
-]])

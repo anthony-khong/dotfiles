@@ -85,6 +85,7 @@ local ts_languages = {
   "html",
   "json",
   "lua",
+  "python",
   "surface",
   "toml",
   "tsx",
@@ -105,6 +106,22 @@ vim.api.nvim_create_autocmd("FileType", {
     end
   end,
 })
+
+-- Treesitter text objects: function (af/if), module or class (ac/ic),
+-- parameter in a definition (aa/ia). Jumps ahead if the cursor isn't in one.
+require("nvim-treesitter-textobjects").setup({ select = { lookahead = true } })
+local select_textobject = require("nvim-treesitter-textobjects.select").select_textobject
+for lhs, capture in pairs({
+  af = "@function.outer", ["if"] = "@function.inner",
+  ac = "@class.outer", ic = "@class.inner",
+  aa = "@parameter.outer", ia = "@parameter.inner",
+}) do
+  vim.keymap.set({ "x", "o" }, lhs, function() select_textobject(capture, "textobjects") end)
+end
+
+-- Built-in optional plugins: clear search highlighting on insert or when idle; :Undotree
+vim.cmd.packadd("nohlsearch")
+vim.cmd.packadd("nvim.undotree")
 
 
 -- Telescope

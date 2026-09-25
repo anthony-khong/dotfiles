@@ -1,6 +1,0 @@
-FROM fsharp:netcore
-
-MAINTAINER Anthony Khong <anthony.kusumo.khong@gmail.com>
-
-# RUN mozroots --import --sync && curl -L https://nuget.org/nuget.exe -o nuget.exe
-

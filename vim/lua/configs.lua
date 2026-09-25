@@ -19,6 +19,9 @@ vim.opt.backup = false
 vim.opt.writebackup = false
 vim.opt.swapfile = false
 
+-- Keep undo history across sessions (saved to ~/.local/state/nvim/undo/ on :w)
+vim.opt.undofile = true
+
 -- Expand tab to spaces
 vim.opt.expandtab = true
 

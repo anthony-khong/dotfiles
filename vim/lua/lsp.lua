@@ -8,17 +8,24 @@ vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, opts)
 
--- Use an on_attach function to only map the following keys
--- after the language server attaches to the current buffer
-local on_attach = function(client, bufnr)
-  require("lsp-format").on_attach(client)
+-- Show the current line's diagnostic message inline, errors first
+vim.diagnostic.config({
+  severity_sort = true,
+  virtual_text = { current_line = true },
+})
 
-  -- Enable completion triggered by <c-x><c-o>
-  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+-- Format on save only for these servers
+local format_on_save = { ElixirLS = true, pylsp = true }
 
-  -- Mappings.
+-- Mappings for every language server, once it attaches to a buffer
+vim.api.nvim_create_autocmd("LspAttach", { callback = function(ev)
+  local client = vim.lsp.get_client_by_id(ev.data.client_id)
+  if client and format_on_save[client.name] then
+    require("lsp-format").on_attach(client, ev.buf)
+  end
+
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  local bufopts = { noremap=true, silent=true, buffer=bufnr }
+  local bufopts = { noremap=true, silent=true, buffer=ev.buf }
   vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
@@ -32,9 +39,11 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
   vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
   vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
-  vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-  vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
-end
+  -- nowait: otherwise `gr` waits 'timeoutlen' for Nvim's built-in grn/grr/gra/gri/grt/grx
+  vim.keymap.set('n', 'gr', vim.lsp.buf.references, vim.tbl_extend('force', bufopts, { nowait = true }))
+  -- Not <space>f, which waited 'timeoutlen' for <space>ff/fg/fb/fh/fp
+  vim.keymap.set('n', '<space>fm', function() vim.lsp.buf.format { async = true } end, bufopts)
+end })
 
 -- Completion
 local cmp = require'cmp'
@@ -105,8 +114,6 @@ elixir.setup {
     capabilities = capabilities,
     settings = elixirls.settings { dialyzerEnabled = false },
     on_attach = function(client, bufnr)
-      on_attach(client, bufnr)
-
       -- Patch once per server. on_attach runs for every Elixir buffer,
       -- and stacking the wrapper would undo the 300-item cap.
       if not client._completion_patched then
@@ -172,7 +179,6 @@ vim.lsp.config('pylsp', {
       }
     }
   },
-  on_attach = on_attach,
   flags = {
     debounce_text_changes = 150,
   }
@@ -185,23 +191,6 @@ vim.lsp.enable({"ts_ls"})
 
 -- SQL
 vim.lsp.enable({"sqlls"})
-
--- Gleam
-vim.lsp.config('gleam', {})
-vim.lsp.enable({"gleam"})
-vim.cmd([[
-  au BufRead,BufNewFile *.gleam set filetype=gleam
-  au BufWritePost *.gleam lua vim.lsp.buf.format()
-]])
-
--- OCaml
-vim.lsp.config('ocamllsp', {})
-vim.lsp.enable({"ocamllsp"})
-vim.cmd([[
-  au BufRead,BufNewFile *.ml set filetype=ocaml
-  au BufWritePost *.ml lua vim.lsp.buf.format({ async = false })
-]])
-
 
 -- Shell
 -- require('lspconfig').bashls.setup{}

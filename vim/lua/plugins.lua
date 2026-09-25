@@ -17,7 +17,7 @@ return require("packer").startup {
     use 'nvim-lua/plenary.nvim'
 
     -- Appearance
-    use 'airblade/vim-gitgutter'
+    use 'lewis6991/gitsigns.nvim'
     use 'shatur/neovim-ayu'
     use "lukas-reineke/indent-blankline.nvim"
 

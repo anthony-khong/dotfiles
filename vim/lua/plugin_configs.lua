@@ -133,3 +133,11 @@ vim.cmd([[
   let g:parinfer_enabled = 1
   let g:parinfer_force_balance = 0
 ]])
+
+-- Git Signs
+require('gitsigns').setup({
+  signs = {
+    add = { text = '+' }, change = { text = '~' }, delete = { text = '_' },
+    topdelete = { text = '‾' }, changedelete = { text = '~' },
+  },
+})

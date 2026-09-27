@@ -58,7 +58,7 @@ tool rustc
 tool cargo
 
 echo "Language servers, linters, formatters"
-tool elixir-ls -
+tool expert
 tool pyrefly
 tool ruff
 tool rust-analyzer

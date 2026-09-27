@@ -15,7 +15,7 @@ vim.diagnostic.config({
 })
 
 -- Format on save only for these servers
-local format_on_save = { ElixirLS = true, ruff = true, ["rust-analyzer"] = true, bashls = true }
+local format_on_save = { expert = true, ruff = true, ["rust-analyzer"] = true, bashls = true }
 
 -- Mappings for every language server, once it attaches to a buffer
 vim.api.nvim_create_autocmd("LspAttach", { callback = function(ev)
@@ -45,7 +45,7 @@ vim.api.nvim_create_autocmd("LspAttach", { callback = function(ev)
   vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
   -- nowait: otherwise `gr` waits 'timeoutlen' for Nvim's built-in grn/grr/gra/gri/grt/grx
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, vim.tbl_extend('force', bufopts, { nowait = true }))
-  -- Not <space>f, which waited 'timeoutlen' for <space>ff/fg/fb/fh/fp
+  -- Not <space>f, which waited 'timeoutlen' for <space>ff/fg/fb/fh
   vim.keymap.set('n', '<space>fm', function() vim.lsp.buf.format { async = true } end, bufopts)
 end })
 
@@ -106,32 +106,13 @@ require("blink.cmp").setup({
   signature = { enabled = true },
 })
 
--- Elixir
-local elixir = require("elixir")
-local elixirls = require("elixir.elixirls")
-local capabilities = require('blink.cmp').get_lsp_capabilities()
-
--- elixir-tools still calls the old API; send it to the 0.12 one
-vim.lsp.codelens.refresh = function(opts)
-  vim.lsp.codelens.enable(true, opts)
-end
-
-elixir.setup {
+-- Elixir: Expert is the language server (nvim-lspconfig's config, binary from mise);
+-- elixir-tools stays for Credo, :Mix and projections
+require("elixir").setup {
   credo = { enable = true, version = "0.3.0" },
-  elixirls = {
-    -- ElixirLS from mise, or else the older manual install
-    cmd = vim.fn.exepath("elixir-ls") ~= "" and vim.fn.exepath("elixir-ls")
-      or vim.fn.expand("~/.elixir-ls/release/language_server.sh"),
-    capabilities = capabilities,
-    settings = elixirls.settings { dialyzerEnabled = false },
-    on_attach = function(_, bufnr)
-      local map_opts = { buffer = bufnr }
-      vim.keymap.set("n", "<space>fp", ":ElixirFromPipe<cr>", map_opts)
-      vim.keymap.set("n", "<space>tp", ":ElixirToPipe<cr>", map_opts)
-      vim.keymap.set("v", "<space>em", ":ElixirExpandMacro<cr>", map_opts)
-    end,
-  },
+  elixirls = { enable = false },
 }
+vim.lsp.enable("expert")
 
 -- Python: pyrefly for completion, navigation and type errors; ruff for lint and format.
 -- A project's own ruff config (pyproject.toml / ruff.toml) wins over these settings.

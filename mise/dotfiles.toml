@@ -19,7 +19,7 @@ jq = "latest"
 uv = "latest"
 
 # Language servers, linters and formatters used by vim/lua/lsp.lua
-elixir-ls = "latest"
+expert = "latest"
 "pipx:pyrefly" = "latest"
 ruff = "latest"
 shellcheck = "latest"

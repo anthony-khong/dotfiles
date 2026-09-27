@@ -1,0 +1,6 @@
+# Read by every zsh, including the non-interactive ones that `ssh host cmd` and mosh start
+# (mosh launches mosh-server that way). PATH only; interactive setup lives in zshrc.
+for dir in /opt/homebrew/bin "$HOME/.cargo/bin" "$HOME/.local/share/mise/shims"; do
+  if [ -d "$dir" ]; then export PATH="$dir:$PATH"; fi
+done
+unset dir

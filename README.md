@@ -11,7 +11,7 @@ git clone https://github.com/anthony-khong/dotfiles.git ~/dotfiles
 
 Then open a new terminal. On macOS, run `xcode-select --install` first; on Ubuntu you need sudo.
 
-- `./install.sh --with jvm,docker`: optional modules in `setup/modules/` (data, docker, gitlab-runner, jvm, swap)
+- `./install.sh --with jvm,docker`: optional modules in `setup/modules/` (data, docker, gitlab-runner, jvm, mac-server, swap, tailscale)
 - `./install.sh --skip packages`: skip steps, e.g. on a box without sudo
 - `./install.sh --doctor`: what's installed and what needs fixing
 
@@ -31,3 +31,4 @@ These stay out of the repo and are loaded if present:
 - `~/.config/local/tmux.conf`
 - `~/.config/local/nvim.lua`
 - `~/.config/mise/config.toml`, which is what `mise use -g` edits
+- `~/.ssh/config`: host aliases go above the include of `ssh/config`, which the link script adds at the end

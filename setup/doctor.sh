@@ -72,9 +72,16 @@ tool sql-language-server -
 echo "Setup"
 if is_mac; then linked "$HOME/.bash_profile" bash/bash_profile; else linked "$HOME/.bashrc" bash/bashrc; fi
 linked "$HOME/.zshrc" bash/zshrc
+linked "$HOME/.zshenv" bash/zshenv
 linked "$HOME/.tmux.conf" tmux/tmux.conf
 linked "$CONFIG/nvim" vim
 linked "$CONFIG/mise/conf.d/dotfiles.toml" mise/dotfiles.toml
+ssh_config=\~/.ssh/config
+if grep -qsF "Include \"$DOTFILES/ssh/config\"" "$HOME/.ssh/config"; then
+  ok "$ssh_config" "includes ssh/config"
+else
+  fix "$ssh_config" "doesn't include ssh/config (run bash/recreate_symbolic_links)"
+fi
 if [ -e "$CONFIG/mise/conf.d/jvm.toml" ]; then linked "$CONFIG/mise/conf.d/jvm.toml" mise/jvm.toml; fi
 
 if is_mac; then
@@ -86,6 +93,11 @@ case "$login_shell" in
 */zsh) ok "login shell" "$login_shell" ;;
 *) fix "login shell" "${login_shell:-unknown}, expected zsh" ;;
 esac
+if have tailscale && tailscale status >/dev/null 2>&1; then
+  ok "tailscale" "$(tailscale ip -4 | head -1)"
+else
+  info "tailscale" "not connected (./install.sh --with tailscale)"
+fi
 if [ -d "$HOME/.oh-my-zsh" ]; then ok "oh-my-zsh" "installed"; else fix "oh-my-zsh" "not installed"; fi
 if [ -n "${MISE_SHELL:-}" ]; then
   ok "mise activated" "in $MISE_SHELL"

@@ -1,0 +1,15 @@
+# Shared SSH defaults. The link script includes this at the end of ~/.ssh/config, so any
+# host entry above it wins. Host aliases stay in ~/.ssh/config, out of this public repo.
+Host *
+  # Notice a dead connection within about two minutes instead of hanging
+  ServerAliveInterval 30
+  ServerAliveCountMax 4
+  # One connection per host, reused by ssh, scp, git and mosh's start-up.
+  # If one goes stale after the laptop sleeps: ssh -O exit <host>
+  ControlMaster auto
+  ControlPath ~/.ssh/control/%C
+  ControlPersist 10m
+  AddKeysToAgent yes
+  # macOS only: keep key passphrases in the Keychain
+  IgnoreUnknown UseKeychain
+  UseKeychain yes

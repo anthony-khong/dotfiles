@@ -6,6 +6,24 @@ vim.g.maplocalleader = " "
 vim.opt.clipboard = "unnamed"
 vim.opt.clipboard = vim.opt.clipboard + "unnamedplus"
 
+-- On a remote box (SSH, mosh, or headless Linux), yanks go to the laptop's clipboard as
+-- OSC 52, through tmux and mosh. `p` pastes Neovim's own last yank: mosh can't carry the
+-- terminal's reply to an OSC 52 paste request, so asking would hang. To paste the laptop's
+-- clipboard, use the terminal's paste (Cmd-V).
+local remote = vim.env.SSH_CONNECTION or vim.env.SSH_TTY
+  or (vim.fn.has("linux") == 1 and not vim.env.DISPLAY and not vim.env.WAYLAND_DISPLAY)
+if remote then
+  local osc52 = require("vim.ui.clipboard.osc52")
+  local function last_yank()
+    return { vim.fn.split(vim.fn.getreg(""), "\n"), vim.fn.getregtype("") }
+  end
+  vim.g.clipboard = {
+    name = "OSC 52 copy, local paste",
+    copy = { ["+"] = osc52.copy("+"), ["*"] = osc52.copy("*") },
+    paste = { ["+"] = last_yank, ["*"] = last_yank },
+  }
+end
+
 -- Search case insensitive when all characters are lower case
 vim.opt.ignorecase = true
 vim.opt.smartcase = true

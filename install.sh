@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Sets up this machine from the dotfiles. Safe to re-run.
 #   ./install.sh                        base setup
-#   ./install.sh --with jvm,docker      plus modules: data docker gitlab-runner jvm swap
+#   ./install.sh --with jvm,docker      plus modules: data docker gitlab-runner jvm mac-server swap tailscale
 #   ./install.sh --skip packages,rust   skip steps: packages link mise rust zsh nvim
 #   ./install.sh --doctor               only report what's installed
 # Supports macOS (Homebrew) and Ubuntu 22.04+, on x86_64 or arm64.

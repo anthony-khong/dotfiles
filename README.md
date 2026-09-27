@@ -14,6 +14,7 @@ Then open a new terminal. On macOS, run `xcode-select --install` first; on Ubunt
 - `./install.sh --with jvm,docker`: optional modules in `setup/modules/` (data, docker, gitlab-runner, jvm, mac-server, swap, tailscale)
 - `./install.sh --skip packages`: skip steps, e.g. on a box without sudo
 - `./install.sh --doctor`: what's installed and what needs fixing
+- `./update.sh` (or `dotfiles-update`): updates everything without sudo; add `--plugins` to also bump Neovim plugins and commit the new `vim/lazy-lock.json`. Shells remind you after 14 days.
 
 It's safe to re-run.
 

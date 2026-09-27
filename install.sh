@@ -132,4 +132,5 @@ if [ -n "$failed" ]; then
   echo "These steps had errors (see above):$failed"
   exit 1
 fi
+mkdir -p "$(dirname "$UPDATE_STAMP")" && touch "$UPDATE_STAMP"
 echo "Open a new terminal so zsh, mise and PATH changes take effect. tmux installs its plugins on first start."

@@ -50,6 +50,10 @@ recreate_symbolic_links() {
     bash ~/dotfiles/bash/recreate_symbolic_links
 }
 
+dotfiles-update() {
+    ~/dotfiles/update.sh "$@"
+}
+
 fix_nvim_tmux_navigator () {
     infocmp "$TERM" | sed 's/kbs=^[hH]/kbs=\\177/' > "$TERM.ti"
     tic "$TERM.ti"

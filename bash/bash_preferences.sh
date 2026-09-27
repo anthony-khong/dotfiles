@@ -70,3 +70,13 @@ fi
 if [ -r "$HOME/.config/local/shell.sh" ]; then
     . "$HOME/.config/local/shell.sh"
 fi
+
+# One line (never a prompt) when dotfiles-update hasn't run for DOTFILES_UPDATE_DAYS days;
+# set that per machine in ~/.config/local/shell.sh
+_dotfiles_stamp="${XDG_STATE_HOME:-$HOME/.local/state}/dotfiles/last-update"
+if [ ! -e "$_dotfiles_stamp" ]; then
+    mkdir -p "${_dotfiles_stamp%/*}" && touch "$_dotfiles_stamp"
+elif [ -n "$(find "$_dotfiles_stamp" -mtime +"${DOTFILES_UPDATE_DAYS:-14}" 2>/dev/null)" ]; then
+    echo "dotfiles: last update over ${DOTFILES_UPDATE_DAYS:-14} days ago; run dotfiles-update"
+fi
+unset _dotfiles_stamp

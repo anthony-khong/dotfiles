@@ -32,7 +32,10 @@ vim.api.nvim_create_autocmd("LspAttach", { callback = function(ev)
   local bufopts = { noremap=true, silent=true, buffer=ev.buf }
   vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-  vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+  -- In Clojure buffers K stays Conjure's (docs from the REPL)
+  if not (client and client.name == "clojure_lsp") then
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+  end
   vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
   -- vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
   vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
@@ -147,3 +150,9 @@ vim.lsp.enable({"bashls"})
 
 -- YAML: checks files against schemas from schemastore.org (GitHub Actions, docker-compose, ...)
 vim.lsp.enable({"yamlls"})
+
+-- JVM, for Spark work: these servers come with `./install.sh --with jvm`, so they're
+-- enabled only where installed. Each starts only for its filetypes (clojure/edn, scala, java).
+for server, cmd in pairs({ clojure_lsp = "clojure-lsp", metals = "metals", jdtls = "jdtls" }) do
+  if vim.fn.executable(cmd) == 1 then vim.lsp.enable(server) end
+end

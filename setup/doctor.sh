@@ -68,6 +68,12 @@ tool bash-language-server
 tool yaml-language-server -
 tool typescript-language-server
 tool sql-language-server -
+if [ -e "$CONFIG/mise/conf.d/jvm.toml" ]; then
+  tool java java -version
+  tool clojure-lsp
+  tool metals -
+  tool jdtls -
+fi
 
 echo "Setup"
 if is_mac; then linked "$HOME/.bash_profile" bash/bash_profile; else linked "$HOME/.bashrc" bash/bashrc; fi

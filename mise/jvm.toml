@@ -1,5 +1,5 @@
-# JVM tools for Spark work, linked into ~/.config/mise/conf.d/ by `./install.sh --with jvm`.
-# Spark 4 needs Java 17 or 21.
+# JVM tools for Spark work, linked into ~/.config/mise/conf.d/ by `./install.sh --with jvm`,
+# which also installs Metals and jdtls (not in mise). Spark 4 needs Java 17 or 21.
 
 [tools]
 java = "temurin-21"
@@ -7,3 +7,8 @@ maven = "latest"
 sbt = "latest"
 clojure = "latest"
 babashka = "latest"
+
+# Language servers. The patterns pick the native binaries: left to itself mise takes
+# coursier's JVM "-sdk" zip, and clojure-lsp also ships jars and a static Linux build.
+"github:coursier/coursier" = { version = "latest", matching_regex = '^cs-[a-z0-9_]+-(pc-linux|apple-darwin)\.gz$', rename_exe = "cs" }
+"github:clojure-lsp/clojure-lsp" = { version = "latest", matching_regex = "^clojure-lsp-native-(linux|macos)" }

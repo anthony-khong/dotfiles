@@ -18,40 +18,10 @@ alias ppj='python -m json.tool'
 # Neovim
 alias vi="/usr/bin/vim -p"
 alias vim="nvim -p"
-alias vff="nvim +'FZF ~'"
 
 uuid() {
     python -c 'import uuid; print(uuid.uuid4())'
 }
-
-ntree() {
-    nvim +NERDTree
-}
-
-setup_nvim() {
-    nvim +PlugInstall +qall;
-    nvim +PlugUpdate +qall;
-    nvim +PlugInstall +qall;
-}
-
-dark_vim() {
-    DARK_VIM=1
-    echo "DARK_VIM set to $DARK_VIM"
-}
-
-light_vim() {
-    DARK_VIM=0
-    echo "DARK_VIM set to $DARK_VIM"
-}
-
-# Emacs shortcuts
-alias em="emacs -nw"
-alias ec="emacsclient -a '' -nw"
-
-kill_emacsclient() {
-    emacsclient -e '(kill-emacs)'
-}
-alias kec="kill-emacsclient"
 
 # History
 alias hh=history
@@ -84,14 +54,10 @@ recreate_symbolic_links() {
 }
 
 clone_dotfiles() {
-    git clone git@github.com:anthony-khong/dotfiles.git;
-    cd dotfiles || exit;
-    gsu;
-
-    recreate_symbolic_links;
-
-    setup_nvim;
-    sbash;
+    git clone git@github.com:anthony-khong/dotfiles.git ~/dotfiles || return
+    recreate_symbolic_links
+    nvim --headless "+Lazy! restore" +qa
+    sbash
 }
 
 fix_nvim_tmux_navigator () {
@@ -101,10 +67,6 @@ fix_nvim_tmux_navigator () {
 
 # Networking shortcuts
 alias renew="sudo ipconfig set en0 BOOTP && sudo ipconfig set en0 DHCP"
-
-draape() {
-    ssh root@128.199.230.91
-}
 
 flush_dns_cache() {
     sudo dscacheutil -flushcache
@@ -119,22 +81,6 @@ check_my_ip() {
 # Karabiner
 alias karabiner="/Applications/Karabiner.app/Contents/Library/bin/karabiner"
 
-# Youtube DL
-alias ytdl_mp3="youtube-dl --extract-audio --audio-format mp3"
-
-# Carvil
-revenue() {
-    ipython ~/carvil/scripts/revenue_cli.py "$@"
-}
-
-start_db() {
-    ~/.dropbox-dist/dropboxd
-}
-
-revenue_breakdown() {
-    ipython ~/carvil/scripts/revenue_check.py "$@"
-}
-
 # Ctags
 rctags() {
     ctags -R -f ./.git/tags .
@@ -143,12 +89,6 @@ rctags() {
 # Trim
 trim_image() {
     convert "$1" -trim "$1"
-}
-
-# Keyboard
-remap_caps() {
-    setxkbmap -option 'caps:ctrl_modifier'
-    xcape -t 150 -e 'Caps_Lock=Escape;Control_L=Escape;Control_R=Escape'
 }
 
 # ZSH
@@ -182,24 +122,6 @@ dec_tar () {
 bb_nrepl () {
     bb --nrepl-server 4444
 }
-
-gdrive_dl() {
-    # source: https://medium.com/@acpanjan/download-google-drive-files-using-wget-3c2c025a8b99
-    wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=$1' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=$1" -O $2
-    rm -rf /tmp/cookies.txt
-}
-
-ubuntu_bash() {
-    dir="basename $PWD"
-    docker run --rm \
-        -v "$HOME/.bash_history":/root/.bash_history \
-        -v "$HOME/.aws":/root/.aws \
-        -v "$HOME/.ssh":/root/.ssh \
-        -v "$PWD":/root/"$dir" \
-        -w /root/"$dir" \
-        -it akkhong/dev-env:latest /bin/zsh
-}
-alias bush="ubuntu_bash"
 
 mind_diary() {
     cd ~/Dropbox/mind_diary || exit

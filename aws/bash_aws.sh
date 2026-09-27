@@ -50,9 +50,8 @@ function aws-set-session-token() {
     export AWS_ACCESS_KEY_ID=$(cat ~/.aws/.last_login_token.json | jq '.Credentials.AccessKeyId' | tr -d '"')
     echo "AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID"
     export AWS_SECRET_ACCESS_KEY=$(cat ~/.aws/.last_login_token.json | jq '.Credentials.SecretAccessKey' | tr -d '"')
-    echo "AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY"
     export AWS_SESSION_TOKEN=$(cat ~/.aws/.last_login_token.json | jq '.Credentials.SessionToken' | tr -d '"')
-    echo "AWS_SESSION_TOKEN=$AWS_SESSION_TOKEN"
+    echo "AWS_SECRET_ACCESS_KEY and AWS_SESSION_TOKEN set"
 }
 
 function aws-get-session-token() {

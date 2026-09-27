@@ -78,16 +78,24 @@ local treesitter = require("nvim-treesitter")
 treesitter.setup()
 local ts_languages = {
   "bash",
+  "clojure",
   "css",
+  "diff",
+  "dockerfile",
   "eex",
   "elixir",
   "erlang",
+  "gitcommit",
   "heex",
   "html",
+  "java",
   "json",
   "lua",
+  "make",
   "python",
   "rust",
+  "scala",
+  "sql",
   "surface",
   "toml",
   "tsx",
@@ -156,13 +164,13 @@ vim.cmd([[
 -- Conjure
 vim.cmd([[
   let g:conjure#log#wrap = 1
-  let g:conjure#filetypes = ["clojure", "fennel", "janet", "hy", "racket", "scheme", "lisp"]
+  let g:conjure#filetypes = ["clojure"]
 
   augroup conjure_mappings
     autocmd!
-    autocmd FileType clojure,fennel,janet,hy,racket,scheme,lisp
+    autocmd FileType clojure
       \ nnoremap <buffer> <leader>cc vip:ConjureEval<CR>
-    autocmd FileType clojure,fennel,janet,hy,racket,scheme,lisp
+    autocmd FileType clojure
       \ nmap <buffer> <Space>cl <Space>lv<C-W><C-H>:exe "vertical resize " . (winwidth(0) * 5/4)<CR>
   augroup END
 ]])

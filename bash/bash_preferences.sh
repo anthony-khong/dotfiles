@@ -5,18 +5,12 @@ export PATH=$PATH:/opt
 export PATH=$PATH:~/.local/bin
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$PATH:/snap/bin/"
-export NVIM_PYTHON_LOG_FILE=/tmp/log
-export NVIM_PYTHON_LOG_LEVEL=DEBUG
 export BOTO_CONFIG=/dev/null
 export CLOUDSDK_PYTHON=/opt/anaconda/bin/python
 GPG_TTY=$(tty)
 export GPG_TTY
-export INIT_VIM="$HOME/dotfiles/vim/init.vim"
 export PNPM_HOME="$HOME/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
-
-# Vim's dark background
-export DARK_VIM=1
 
 # Erlang
 export ERL_AFLAGS="-kernel shell_history enabled -kernel shell_history_file_bytes 1024000"

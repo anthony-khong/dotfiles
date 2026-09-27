@@ -5,7 +5,7 @@ if not vim.uv.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-local lisps = { "clojure", "fennel", "janet", "hy", "racket", "scheme", "lisp" }
+local lisps = { "clojure" }
 
 require("lazy").setup({
   spec = {
@@ -41,7 +41,6 @@ require("lazy").setup({
     { "mattn/emmet-vim", ft = { "html", "heex", "eelixir", "css", "javascriptreact", "typescriptreact" } },
     { "Olical/conjure", ft = lisps },
     { "eraserhd/parinfer-rust", ft = lisps, build = "cargo build --release" },
-    { "hylang/vim-hy", ft = "hy" },
     { "guns/vim-sexp", ft = lisps },
     { "tpope/vim-sexp-mappings-for-regular-people", ft = lisps },
   },

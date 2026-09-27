@@ -54,8 +54,8 @@ dotfiles-update() {
     ~/dotfiles/update.sh "$@"
 }
 
-# Ghostty's terminfo, for a box reached some way other than `ssh` from a Ghostty shell
-# (which does it by itself): ghostty_terminfo_to <host>...
+# Ghostty's terminfo for a box without these dotfiles (boxes with them compile it in the
+# link step): ghostty_terminfo_to <host>...
 ghostty_terminfo_to() {
     for host in "$@"; do
         infocmp -x xterm-ghostty | ssh "$host" -- tic -x - && echo "$host: done"

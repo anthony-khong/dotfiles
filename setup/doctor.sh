@@ -75,6 +75,7 @@ linked "$HOME/.zshrc" bash/zshrc
 linked "$HOME/.zshenv" bash/zshenv
 linked "$HOME/.tmux.conf" tmux/tmux.conf
 if is_mac || have ghostty; then linked "$CONFIG/ghostty/config.ghostty" ghostty/config.ghostty; fi
+if infocmp -x xterm-ghostty >/dev/null 2>&1; then ok "terminfo" "xterm-ghostty"; else fix "terminfo" "no xterm-ghostty (run bash/recreate_symbolic_links)"; fi
 linked "$CONFIG/nvim" vim
 linked "$CONFIG/mise/conf.d/dotfiles.toml" mise/dotfiles.toml
 ssh_config=\~/.ssh/config

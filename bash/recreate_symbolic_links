@@ -30,3 +30,17 @@ if ! grep -qsF "Include \"$DOTFILES/ssh/config\"" "$HOME/.ssh/config"; then
   chmod 600 "$HOME/.ssh/config"
   echo "added the shared defaults to ~/.ssh/config"
 fi
+
+# Ghostty's terminfo (ghostty/xterm-ghostty.terminfo), so TERM=xterm-ghostty works here after
+# a plain `ssh` from Ghostty. Compiled into ~/.terminfo when missing or after the file changes;
+# tic's usual warning about the description field is kept quiet unless it fails.
+# After a Ghostty upgrade, on the laptop: infocmp -x xterm-ghostty > ghostty/xterm-ghostty.terminfo
+terminfo="$DOTFILES/ghostty/xterm-ghostty.terminfo"
+compiled="$(find "$HOME/.terminfo" -name xterm-ghostty 2>/dev/null | head -1 || true)"
+if have tic && { [ -z "$compiled" ] || [ "$terminfo" -nt "$compiled" ]; }; then
+  if out="$(tic -x -o "$HOME/.terminfo" "$terminfo" 2>&1)"; then
+    echo "compiled terminfo: xterm-ghostty"
+  else
+    echo "tic failed on $terminfo: $out" >&2
+  fi
+fi

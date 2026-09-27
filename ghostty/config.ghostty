@@ -4,7 +4,7 @@
 
 font-family = Victor Mono
 font-style = SemiBold
-font-size = 13
+font-size = 15
 # No ligatures, as in Alacritty
 font-feature = -calt, -liga
 
@@ -19,6 +19,11 @@ macos-option-as-alt = left
 # Keep the block cursor at the prompt. On `ssh` from a Ghostty shell (not from inside tmux),
 # install Ghostty's terminfo on the remote the first time, so tmux and nvim there work
 shell-integration-features = no-cursor,ssh-terminfo
+
+# Ctrl-Space shows or hides Ghostty from any app, as in iTerm2 (needs Accessibility access).
+keybind = global:ctrl+space=toggle_visibility
+# Cmd shortcuts by QWERTY key position, for the "Dvorak - QWERTY ⌘" layout
+config-file = ~/dotfiles/ghostty/dvorak-qwerty-cmd
 
 # tmux keeps the session, so closing a window needn't ask
 confirm-close-surface = false

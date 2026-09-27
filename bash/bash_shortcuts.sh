@@ -9,9 +9,6 @@ sbash() {
     fi
 }
 
-# Gcloud
-alias gcurl='curl --header "Authorization: Bearer $(gcloud auth print-identity-token)"'
-
 # Pretty Print JSON
 alias ppj='python -m json.tool'
 
@@ -51,13 +48,6 @@ auto_md_to_pdf() {
 # Dotfiles shortucts
 recreate_symbolic_links() {
     bash ~/dotfiles/bash/recreate_symbolic_links
-}
-
-clone_dotfiles() {
-    git clone git@github.com:anthony-khong/dotfiles.git ~/dotfiles || return
-    recreate_symbolic_links
-    nvim --headless "+Lazy! restore" +qa
-    sbash
 }
 
 fix_nvim_tmux_navigator () {

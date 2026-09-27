@@ -1,0 +1,10 @@
+# What Homebrew installs on macOS. Languages and editor tools come from mise
+# (mise/dotfiles.toml) so they match the Linux boxes.
+brew "mise"
+brew "git"
+brew "tmux"
+brew "mosh"
+brew "entr"
+brew "htop"
+brew "pandoc"
+brew "gnupg"

@@ -6,11 +6,10 @@ alias ls='ls -GFh'
 export PATH="$HOME:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
+export PATH="$PATH:/opt/homebrew/bin"
 
 source ~/dotfiles/bash/bash_shortcuts.sh
 source ~/dotfiles/bash/bash_preferences.sh
-source ~/dotfiles/google_cloud/bash_gcp.sh
-source ~/dotfiles/aws/bash_aws.sh
 
 export SCREEN=xterm-256color
 export IP=$(ifconfig en0 | grep inet | awk '$1=="inet" {print $2}')
@@ -21,18 +20,10 @@ if command -v terraform &> /dev/null
 then
     complete -C /usr/local/bin/terraform terraform
 fi
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
-
-export DARK_VIM=1
-export PATH="$PATH:/opt/homebrew/bin"
 export PATH="$PATH:/opt/roc"
 
-# opam configuration
-[[ ! -r $HOME/.opam/opam-init/init.zsh ]] || source $HOME/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
-. "$HOME/.cargo/env"
+[ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
 
-export PATH=/Users/akhong/.volta/tools/image/node/20.13.1/bin:$PATH
 export ANDROID_HOME="/Users/akhong/Library/Android/sdk"
 export ANDROID_SDK_ROOT="/Users/akhong/Library/Android/sdk"
 export PATH="$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH"

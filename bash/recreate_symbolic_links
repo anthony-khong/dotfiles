@@ -1,31 +1,10 @@
 #!/usr/bin/env bash
-# Symlinks this repo's configs into $HOME. Safe to re-run: links that are already
-# right are left alone, stale links are replaced, and a real file or directory in
-# the way is moved to <name>.bak.<timestamp> first.
+# Symlinks this repo's configs into $HOME. Safe to re-run (see link in setup/lib.sh).
 set -euo pipefail
+# shellcheck source=../setup/lib.sh
+. "$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)/setup/lib.sh"
 
-DOTFILES="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}"
-
-link() {
-  local src="$DOTFILES/$1" dst="$2"
-  if [ ! -e "$src" ]; then
-    echo "skip, not in repo: $1" >&2
-    return
-  fi
-  mkdir -p "$(dirname "$dst")"
-  if [ -L "$dst" ]; then
-    if [ "$dst" -ef "$src" ]; then return; fi
-    rm "$dst"
-  elif [ -e "$dst" ]; then
-    mv "$dst" "$dst.bak.$(date +%Y%m%d%H%M%S)"
-    echo "backed up: $dst"
-  fi
-  ln -s "$src" "$dst"
-  echo "linked: $dst"
-}
-
-if [ "$(uname)" = "Darwin" ]; then
+if is_mac; then
   link bash/bash_profile "$HOME/.bash_profile"
   link bash/bash_profile "$HOME/.bashrc"
 else
@@ -37,3 +16,4 @@ link vim "$CONFIG/nvim"
 link vim/vsnip "$HOME/.vsnip"
 link tmux/tmux.conf "$HOME/.tmux.conf"
 link elixir/.iex.exs "$HOME/.iex.exs"
+link mise/dotfiles.toml "$CONFIG/mise/conf.d/dotfiles.toml"

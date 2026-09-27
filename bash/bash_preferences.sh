@@ -1,16 +1,9 @@
-unset DYLD_FALLBACK_LIBRARY_PATH
-export PYTHONPATH=$PYTHONPATH:~/repos
-export PATH="/opt/anaconda/bin:$PATH"
 export PATH=$PATH:/opt
-export PATH=$PATH:~/.local/bin
+export PATH="$PATH:$HOME/.local/bin"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$PATH:/snap/bin/"
-export BOTO_CONFIG=/dev/null
-export CLOUDSDK_PYTHON=/opt/anaconda/bin/python
 GPG_TTY=$(tty)
 export GPG_TTY
-export PNPM_HOME="$HOME/.local/share/pnpm"
-export PATH="$PNPM_HOME:$PATH"
 
 # Erlang
 export ERL_AFLAGS="-kernel shell_history enabled -kernel shell_history_file_bytes 1024000"
@@ -60,16 +53,20 @@ export FZF_DEFAULT_COMMAND="rg --files\
 export FZF_TMUX=1
 export FZF_TMUX_HEIGHT=20
 
-if [[ -a /opt/anaconda/bin/aws_zsh_completer.sh ]]; then
-    source /opt/anaconda/bin/aws_zsh_completer.sh
-fi
-
 # Fixes some locale error when running mosh
 export LC_ALL="en_US.UTF-8"
 
-# Make FZF search faster
-if [[ "$SHELL" == *"bash"* ]]; then
-    [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-elif [[ "$SHELL" == *"zsh"* ]]; then
-    [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# mise puts the tools from ~/.config/mise on PATH (per directory, following any
+# mise.toml or .tool-versions); fzf adds its Ctrl-T, Ctrl-R and Alt-C key bindings
+if [ -n "${ZSH_VERSION:-}" ]; then
+    command -v mise >/dev/null && eval "$(mise activate zsh)"
+    fzf --zsh >/dev/null 2>&1 && source <(fzf --zsh)
+elif [ -n "${BASH_VERSION:-}" ]; then
+    command -v mise >/dev/null && eval "$(mise activate bash)"
+    fzf --bash >/dev/null 2>&1 && eval "$(fzf --bash)"
+fi
+
+# Per-machine settings that don't belong in the repo
+if [ -r "$HOME/.config/local/shell.sh" ]; then
+    . "$HOME/.config/local/shell.sh"
 fi

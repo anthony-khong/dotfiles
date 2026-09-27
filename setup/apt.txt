@@ -1,0 +1,25 @@
+# What apt installs on Ubuntu. Languages and editor tools come from mise
+# (mise/dotfiles.toml) so they match the Macs.
+
+# Base, and a C compiler for treesitter parsers and Rust
+build-essential
+ca-certificates
+curl
+git
+locales
+unzip
+xz-utils
+
+# Terminal
+zsh
+tmux
+mosh
+entr
+htop
+pandoc
+
+# Only used if mise has to build Erlang from source
+autoconf
+m4
+libncurses-dev
+libssl-dev

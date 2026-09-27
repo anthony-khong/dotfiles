@@ -1,0 +1,27 @@
+-- Parsers that nvim-treesitter installs and highlights with (plugin_configs.lua);
+-- install.sh installs the same list headless.
+return {
+  "bash",
+  "clojure",
+  "css",
+  "diff",
+  "dockerfile",
+  "eex",
+  "elixir",
+  "erlang",
+  "gitcommit",
+  "heex",
+  "html",
+  "java",
+  "json",
+  "lua",
+  "make",
+  "python",
+  "rust",
+  "scala",
+  "sql",
+  "surface",
+  "toml",
+  "tsx",
+  "yaml",
+}

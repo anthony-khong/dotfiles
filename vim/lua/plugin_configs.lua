@@ -76,31 +76,7 @@ vim.cmd([[
 -- Treesitter
 local treesitter = require("nvim-treesitter")
 treesitter.setup()
-local ts_languages = {
-  "bash",
-  "clojure",
-  "css",
-  "diff",
-  "dockerfile",
-  "eex",
-  "elixir",
-  "erlang",
-  "gitcommit",
-  "heex",
-  "html",
-  "java",
-  "json",
-  "lua",
-  "make",
-  "python",
-  "rust",
-  "scala",
-  "sql",
-  "surface",
-  "toml",
-  "tsx",
-  "yaml",
-}
+local ts_languages = require("treesitter_languages")
 treesitter.install(ts_languages)
 
 -- Highlight with treesitter wherever one of these parsers applies;

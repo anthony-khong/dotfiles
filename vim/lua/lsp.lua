@@ -119,7 +119,9 @@ end
 elixir.setup {
   credo = { enable = true, version = "0.3.0" },
   elixirls = {
-    cmd = vim.fn.expand("~/.elixir-ls/release/language_server.sh"),
+    -- ElixirLS from mise, or else the older manual install
+    cmd = vim.fn.exepath("elixir-ls") ~= "" and vim.fn.exepath("elixir-ls")
+      or vim.fn.expand("~/.elixir-ls/release/language_server.sh"),
     capabilities = capabilities,
     settings = elixirls.settings { dialyzerEnabled = false },
     on_attach = function(_, bufnr)

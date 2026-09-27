@@ -1,0 +1,31 @@
+# Languages and tools for every machine, linked to ~/.config/mise/conf.d/dotfiles.toml.
+# Machine-specific additions go in ~/.config/mise/config.toml (what `mise use -g` edits),
+# which takes precedence over this file. Rust comes from rustup, not mise.
+
+[tools]
+# Languages: the newest at install time; `mise upgrade` moves them on
+erlang = "latest"
+elixir = "latest"
+python = "latest"
+node = "lts"
+
+# Editor and terminal tools. Neovim stays on 0.12 until vim/ has been checked against 0.13.
+neovim = "0.12"
+tree-sitter = "latest"
+ripgrep = "latest"
+fd = "latest"
+fzf = "latest"
+jq = "latest"
+uv = "latest"
+
+# Language servers, linters and formatters used by vim/lua/lsp.lua
+elixir-ls = "latest"
+"pipx:pyrefly" = "latest"
+ruff = "latest"
+shellcheck = "latest"
+shfmt = "latest"
+"npm:bash-language-server" = "latest"
+"npm:yaml-language-server" = "latest"
+"npm:typescript" = "latest"
+"npm:typescript-language-server" = "latest"
+"npm:sql-language-server" = "latest"

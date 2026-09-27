@@ -1,0 +1,9 @@
+# JVM tools for Spark work, linked into ~/.config/mise/conf.d/ by `./install.sh --with jvm`.
+# Spark 4 needs Java 17 or 21.
+
+[tools]
+java = "temurin-21"
+maven = "latest"
+sbt = "latest"
+clojure = "latest"
+babashka = "latest"

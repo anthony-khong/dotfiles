@@ -111,6 +111,13 @@ if wanted nvim; then
     nvim --headless "+Lazy! restore" +qa
     nvim --headless \
       -c 'lua require("nvim-treesitter").install(require("treesitter_languages")):wait(900000)' +qa
+    # Spell files for 'spelllang' (plus .sug suggestions where the mirror has them), with
+    # Neovim's own downloader, so nvim never has to ask
+    nvim --headless -c 'lua local s = require("nvim.spellfile"); s.config({ confirm = false })
+      local dir = vim.fn.stdpath("data") .. "/site/spell"
+      for _, l in ipairs(vim.opt.spelllang:get()) do
+        if vim.fn.filereadable(dir .. "/" .. l .. ".utf-8.spl") == 0 then s.get(l) end
+      end' +qa
     echo
   else
     note "no nvim yet: re-run after the mise step succeeds"

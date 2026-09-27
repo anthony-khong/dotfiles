@@ -125,6 +125,17 @@ if [ "$found_parsers" -ge "$wanted_parsers" ]; then
 else
   fix "treesitter parsers" "$found_parsers of $wanted_parsers (re-run with --skip packages,mise,rust,zsh)"
 fi
+if have nvim; then
+  missing_spell="$(nvim --headless -c 'lua local dir = vim.fn.stdpath("data") .. "/site/spell"
+    for _, l in ipairs(vim.opt.spelllang:get()) do
+      if vim.fn.filereadable(dir .. "/" .. l .. ".utf-8.spl") == 0 then io.stdout:write(l .. " ") end
+    end' +qa 2>/dev/null)"
+  if [ -z "$missing_spell" ]; then
+    ok "spell files" "for every 'spelllang'"
+  else
+    fix "spell files" "missing: $missing_spell(re-run with --skip packages,mise,rust,zsh)"
+  fi
+fi
 if [ -d "$HOME/.tmux/plugins/tpm" ]; then
   ok "tmux plugins" "$(find "$HOME/.tmux/plugins" -mindepth 1 -maxdepth 1 -type d | wc -l | tr -d ' ') installed"
 else

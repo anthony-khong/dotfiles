@@ -50,6 +50,11 @@ vim.opt.signcolumn = "yes"
 vim.opt.number = true
 vim.opt.relativenumber = true
 
+-- Spell check: a word passes if it's right in any of these. install.sh fetches the files.
+-- On in markdown and git commits (ftplugin/), <Space>ss elsewhere; where treesitter
+-- highlights, only comments and strings get checked
+vim.opt.spelllang = { "en", "id", "es" }
+
 -- No folding
 vim.opt.foldenable = false
 

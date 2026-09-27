@@ -24,6 +24,9 @@ map("n", "<Space>rw", ":keeppatterns %s/\\s\\+$//<CR>")
 -- Insert [X] in front of word
 map("n", "<Space>x", "^xi* [X]<Esc>")
 
+-- Spell check on/off in this window
+map("n", "<Space>ss", ":setlocal spell!<CR>")
+
 -- Panes
 map("n", "<Space>sh", ":split<CR>")
 map("n", "<Space>sv", ":vsplit<CR>")

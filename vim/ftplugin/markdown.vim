@@ -8,7 +8,7 @@ setlocal shiftwidth=4
 setlocal tabstop=4
 setlocal wrap
 setlocal textwidth=0
-"setlocal spell
+setlocal spell
 
 " Moving up and down physical lines
 nnoremap <buffer> <expr> j v:count ? 'j' : 'gj'

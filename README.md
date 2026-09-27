@@ -22,7 +22,7 @@ It's safe to re-run.
 
 - `install.sh`, `setup/`: installer, Brewfile, apt list, modules
 - `mise/`: languages and CLI tools, linked into `~/.config/mise/conf.d/`
-- `vim/` (Neovim), `tmux/`, `bash/` (bash and zsh), `elixir/` (IEx)
+- `vim/` (Neovim), `tmux/`, `ghostty/`, `bash/` (bash and zsh), `elixir/` (IEx)
 
 ## Per-machine settings
 
@@ -31,5 +31,6 @@ These stay out of the repo and are loaded if present:
 - `~/.config/local/shell.sh`
 - `~/.config/local/tmux.conf`
 - `~/.config/local/nvim.lua`
+- `~/.config/local/ghostty`, e.g. `font-size = 15`
 - `~/.config/mise/config.toml`, which is what `mise use -g` edits
 - `~/.ssh/config`: host aliases go above the include of `ssh/config`, which the link script adds at the end

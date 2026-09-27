@@ -1,0 +1,28 @@
+# Ghostty on macOS and Linux desktops, linked to ~/.config/ghostty/config.ghostty.
+# Reload with Cmd-Shift-, (Ctrl-Shift-, on Linux). Every option, documented:
+#   ghostty +show-config --default --docs
+
+font-family = Victor Mono
+font-style = SemiBold
+font-size = 13
+# No ligatures, as in Alacritty
+font-feature = -calt, -liga
+
+# The same Ayu as Neovim's ayu-dark, whose background is left to the terminal
+theme = Ayu
+cursor-style = block
+cursor-style-blink = true
+
+# Left Option is Alt (fzf's Alt-C, Alt-b/Alt-f in the shell); right Option still types é, ñ, ¿
+macos-option-as-alt = left
+
+# Keep the block cursor at the prompt. On `ssh` from a Ghostty shell (not from inside tmux),
+# install Ghostty's terminfo on the remote the first time, so tmux and nvim there work
+shell-integration-features = no-cursor,ssh-terminfo
+
+# tmux keeps the session, so closing a window needn't ask
+confirm-close-surface = false
+mouse-hide-while-typing = true
+
+# Per-machine settings, e.g. font-size
+config-file = ?~/.config/local/ghostty

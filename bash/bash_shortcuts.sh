@@ -54,6 +54,14 @@ dotfiles-update() {
     ~/dotfiles/update.sh "$@"
 }
 
+# Ghostty's terminfo, for a box reached some way other than `ssh` from a Ghostty shell
+# (which does it by itself): ghostty_terminfo_to <host>...
+ghostty_terminfo_to() {
+    for host in "$@"; do
+        infocmp -x xterm-ghostty | ssh "$host" -- tic -x - && echo "$host: done"
+    done
+}
+
 fix_nvim_tmux_navigator () {
     infocmp "$TERM" | sed 's/kbs=^[hH]/kbs=\\177/' > "$TERM.ti"
     tic "$TERM.ti"

@@ -16,6 +16,7 @@ link bash/inputrc "$HOME/.inputrc"
 link vim "$CONFIG/nvim"
 link vim/vsnip "$HOME/.vsnip"
 link tmux/tmux.conf "$HOME/.tmux.conf"
+link ghostty/config.ghostty "$CONFIG/ghostty/config.ghostty"
 link elixir/.iex.exs "$HOME/.iex.exs"
 link mise/dotfiles.toml "$CONFIG/mise/conf.d/dotfiles.toml"
 

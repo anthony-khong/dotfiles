@@ -1,7 +1,20 @@
-export PATH=$PATH:/opt
-export PATH="$PATH:$HOME/.local/bin"
-export PATH="$HOME/.cargo/bin:$PATH"
-export PATH="$PATH:/snap/bin/"
+# Environment and tool setup, shared by zsh (zshrc) and bash (bashrc). Aliases and functions
+# are in bash_shortcuts.sh; the PATH for non-interactive zsh is in zshenv.
+
+# PATH additions, skipping directories that are missing or already on it
+_path_add() { # _path_add <dir> [end]
+    [ -d "$1" ] || return 0
+    case ":$PATH:" in *":$1:"*) return 0 ;; esac
+    if [ "${2:-}" = end ]; then PATH="$PATH:$1"; else PATH="$1:$PATH"; fi
+}
+_path_add /opt/homebrew/bin
+_path_add "$HOME/.cargo/bin"
+_path_add "$HOME/.local/bin"
+_path_add "$HOME/.mix/escripts" end
+_path_add /snap/bin end
+unset -f _path_add
+export PATH
+
 GPG_TTY=$(tty)
 export GPG_TTY
 
@@ -9,28 +22,6 @@ export GPG_TTY
 export ERL_AFLAGS="-kernel shell_history enabled -kernel shell_history_file_bytes 1024000"
 
 export ELIXIR_ERL_OPTIONS="-kernel shell_history enabled -kernel shell_history_file_bytes 1024000"
-
-# Don't put duplicate lines or lines starting with space in the history.
-# See bash(1) for more options
-HISTSIZE=1000
-HISTFILESIZE=2000
-HISTCONTROL=ignoreboth
-HISTIGNORE='ls:bg:fg:history:hh'
-
-# When the shell exits, append to the history file instead of overwriting it
-if [ "$0" = "bash" ]; then
-    shopt -s histappend
-elif [ "$0" = "zsh" ]; then
-    export PROMPT_COMMAND="history -a; history -n"
-    bind 'set show-all-if-ambiguous on'
-    bind 'TAB:menu-complete'
-fi
-
-# Short PS1
-if [ "$0" = "bash" ]; then
-    # export PS1="\[\033[36m\]\u\[\033[m\]:\[\033[33;1m\]\W\[\033[m\]$ "
-    export PS1='\[\e[0;32m\]\u\[\e[m\]:\[\e[1;34m\]\W\[\033[m\]$ '
-fi
 
 # Make Neovim the default editor
 export VISUAL=nvim
@@ -50,11 +41,15 @@ export FZF_DEFAULT_COMMAND="rg --files\
                             -g '!*Templates/*'\
                             -g '!*Videos/*'
                             "
-export FZF_TMUX=1
-export FZF_TMUX_HEIGHT=20
 
 # Fixes some locale error when running mosh
 export LC_ALL="en_US.UTF-8"
+
+# Terminal colours: BSD ls on macOS; lesspipe on Ubuntu lets less read archives
+case "$OSTYPE" in
+darwin*) export CLICOLOR=1 LSCOLORS=ExFxBxDxCxegedabagacad ;;
+esac
+if [ -x /usr/bin/lesspipe ]; then eval "$(SHELL=/bin/sh lesspipe)"; fi
 
 # mise puts the tools from ~/.config/mise on PATH (per directory, following any
 # mise.toml or .tool-versions); fzf adds its Ctrl-T, Ctrl-R and Alt-C key bindings

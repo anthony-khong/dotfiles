@@ -1,13 +1,20 @@
-# Reload bashrc
+# Aliases and functions, shared by zsh (zshrc) and bash (bashrc). Environment and tool setup
+# are in bash_preferences.sh.
+
+# Reload the shell's config
 sbash() {
-    if [ "$(uname)" = "Darwin" ]; then
-        source ~/.bash_profile;
-        echo 'bash_profile reloaded!'
-    elif [ "$(uname)" = "Linux" ]; then
-        source ~/.bashrc;
-        echo 'bashrc reloaded!'
+    if [ -n "${ZSH_VERSION:-}" ]; then
+        exec zsh
+    else
+        . ~/.bashrc && echo 'bashrc reloaded!'
     fi
 }
+
+# ls; oh-my-zsh adds ll, la and l
+case "$OSTYPE" in
+darwin*) alias ls='ls -GFh' ;;
+*) alias ls='ls --color=auto -Fh' ;;
+esac
 
 # Pretty Print JSON
 alias ppj='python -m json.tool'
@@ -24,11 +31,24 @@ uuid() {
 alias hh=history
 alias clear_history='cat /dev/null > ~/.bash_history && history -c'
 
-# Tmux shortcut
-tnew() {
-    dir_name="$(basename "$PWD")"
-    tmux new-session -As "$dir_name"
+# tmux sessions: tp picks one, or a directory to open one in (tmux/tp.sh; prefix f in tmux).
+# tnew and the note shortcuts below open the session for one directory, in or out of tmux.
+tp() {
+    ~/dotfiles/tmux/tp.sh "$@"
 }
+
+tnew() {
+    tp .
+}
+
+mind_diary() {
+    cd ~/Dropbox/mind_diary && tp .
+}
+alias mnd=mind_diary
+planner() {
+    cd ~/Dropbox/mind_diary/Planner && tp .
+}
+alias pln=planner
 
 # Pandoc shortcuts
 md_to_pdf() {
@@ -62,26 +82,10 @@ ghostty_terminfo_to() {
     done
 }
 
-fix_nvim_tmux_navigator () {
-    infocmp "$TERM" | sed 's/kbs=^[hH]/kbs=\\177/' > "$TERM.ti"
-    tic "$TERM.ti"
-}
-
 # Networking shortcuts
-alias renew="sudo ipconfig set en0 BOOTP && sudo ipconfig set en0 DHCP"
-
-flush_dns_cache() {
-    sudo dscacheutil -flushcache
-    sudo killall -HUP mDNSResponder
-    say cache flushed
-}
-
 check_my_ip() {
     curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/<.*$//'
 }
-
-# Karabiner
-alias karabiner="/Applications/Karabiner.app/Contents/Library/bin/karabiner"
 
 # Ctags
 rctags() {
@@ -125,22 +129,8 @@ bb_nrepl () {
     bb --nrepl-server 4444
 }
 
-mind_diary() {
-    cd ~/Dropbox/mind_diary || exit
-    tnew
-}
-alias mnd=mind_diary
-planner() {
-    cd ~/Dropbox/mind_diary/Planner || exit
-    tnew
-}
-alias pln=planner
-
-tee7() {
-    cd /Volumes/T7\ Touch/notes || exit
-    tnew
-}
-alias t7=tee7
+# Elixir
+alias iexmem='MIMALLOC_PURGE_DELAY=0 MIMALLOC_PURGE_DECOMMITS=1 iex -S mix'
 
 # Python
 remove_pyc() {
@@ -150,3 +140,21 @@ remove_pyc() {
 purge_py() {
     find . | grep -E "(__pycache__|\.pyc|\.pyo$)" | xargs rm -rf
 }
+
+# GitLab runner (the gitlab-runner module), e.g. `gitlab-runner register`
+alias gitlab-runner='docker run --rm -it -v gitlab-runner-config:/etc/gitlab-runner gitlab/gitlab-runner:latest'
+
+# macOS
+case "$OSTYPE" in
+darwin*)
+    alias renew="sudo ipconfig set en0 BOOTP && sudo ipconfig set en0 DHCP"
+    flush_dns_cache() {
+        sudo dscacheutil -flushcache
+        sudo killall -HUP mDNSResponder
+        say cache flushed
+    }
+    alias rosetta-brew='arch -x86_64 /usr/local/bin/brew'
+    alias x86='/usr/bin/arch -x86_64 /bin/zsh --login'
+    alias arm='/usr/bin/arch -arm64 /bin/zsh --login'
+    ;;
+esac

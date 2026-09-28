@@ -4,12 +4,8 @@ set -euo pipefail
 # shellcheck source=../setup/lib.sh
 . "$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)/setup/lib.sh"
 
-if is_mac; then
-  link bash/bash_profile "$HOME/.bash_profile"
-  link bash/bash_profile "$HOME/.bashrc"
-else
-  link bash/bashrc "$HOME/.bashrc"
-fi
+link bash/bashrc "$HOME/.bashrc"
+if is_mac; then link bash/bashrc "$HOME/.bash_profile"; fi
 link bash/zshrc "$HOME/.zshrc"
 link bash/zshenv "$HOME/.zshenv"
 link bash/inputrc "$HOME/.inputrc"

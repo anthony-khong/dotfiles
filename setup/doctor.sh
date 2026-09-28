@@ -76,7 +76,8 @@ if [ -e "$CONFIG/mise/conf.d/jvm.toml" ]; then
 fi
 
 echo "Setup"
-if is_mac; then linked "$HOME/.bash_profile" bash/bash_profile; else linked "$HOME/.bashrc" bash/bashrc; fi
+linked "$HOME/.bashrc" bash/bashrc
+if is_mac; then linked "$HOME/.bash_profile" bash/bashrc; fi
 linked "$HOME/.zshrc" bash/zshrc
 linked "$HOME/.zshenv" bash/zshenv
 linked "$HOME/.tmux.conf" tmux/tmux.conf

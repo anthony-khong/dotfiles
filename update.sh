@@ -67,7 +67,16 @@ update_tmux_plugins() { # tpm itself included; no tmux server needed
 update_rust() { rustup update; }
 
 update_brew() {
+  local tmux_before tmux_after
+  # A running tmux server keeps the old version, which a new client can't attach to
+  tmux_before="$(tmux list-sessions >/dev/null 2>&1 && tmux -V)"
   brew update && brew upgrade || return
+  tmux_after="$(tmux -V 2>/dev/null)"
+  if [ -n "$tmux_before" ] && [ "$tmux_after" != "$tmux_before" ]; then
+    note "tmux went from ${tmux_before#tmux } to ${tmux_after#tmux }, but the running server is still the old"
+    note "one, and a new tmux won't attach to it ('open terminal failed: not a terminal'). When it"
+    note "suits you: save the sessions (prefix C-s), tmux kill-server, start tmux, restore (prefix C-r)."
+  fi
   if /usr/libexec/ApplicationFirewall/socketfilterfw --getglobalstate | grep -q enabled; then
     note "If mosh was upgraded, re-allow it through the firewall: bash setup/modules/mac-server.sh"
   fi

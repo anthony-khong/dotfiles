@@ -47,14 +47,16 @@ update_omz() {
   done
 }
 
-update_nvim() {
-  if [ "$bump_plugins" -eq 1 ]; then
-    nvim --headless "+Lazy! update" +qa || return
-  else
-    nvim --headless "+Lazy! restore" +qa || return
-  fi
-  nvim --headless -c 'lua local ts = require("nvim-treesitter"); ts.install(require("treesitter_languages")):wait(900000); ts.update():wait(900000)' +qa
+update_nvim() { # headless nvim's exit status says little, so check the results too
+  local missing
+  if [ "$bump_plugins" -eq 1 ]; then run_lazy update || return; else run_lazy restore || return; fi
+  nvim --headless -c 'lua local ts = require("nvim-treesitter"); ts.install(require("treesitter_languages")):wait(900000); ts.update():wait(900000)' +qa || return
   echo
+  missing="$(missing_parsers)"
+  if [ -n "$missing" ]; then
+    note "treesitter parsers missing: $missing"
+    return 1
+  fi
 }
 
 update_tmux_plugins() { # tpm itself included; no tmux server needed

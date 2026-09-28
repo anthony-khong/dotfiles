@@ -132,14 +132,11 @@ bb_nrepl () {
 # Elixir
 alias iexmem='MIMALLOC_PURGE_DELAY=0 MIMALLOC_PURGE_DECOMMITS=1 iex -S mix'
 
-# Python
-remove_pyc() {
-    find . -name "*.pyc" -exec rm -rf {} \;
-}
-
+# Python: delete the bytecode below this directory (__pycache__ directories, .pyc and .pyo files)
 purge_py() {
-    find . | grep -E "(__pycache__|\.pyc|\.pyo$)" | xargs rm -rf
+    find . -type d -name __pycache__ -prune -exec rm -rf {} + -o -type f -name '*.py[co]' -exec rm -f {} +
 }
+alias remove_pyc=purge_py
 
 # GitLab runner (the gitlab-runner module), e.g. `gitlab-runner register`
 alias gitlab-runner='docker run --rm -it -v gitlab-runner-config:/etc/gitlab-runner gitlab/gitlab-runner:latest'

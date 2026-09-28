@@ -30,7 +30,10 @@ else
   note "firewall: off, nothing to allow"
 fi
 
+# macOS 26+ on Apple silicon takes the FileVault password over SSH at the unlock screen.
+# Only from the local network: Tailscale lives on the locked disk, so it starts afterwards.
 if fdesetup status | grep -q "is On"; then
-  note "FileVault is on: after a restart the Mac waits at the unlock screen. Unlock it with"
-  note "  ssh <user>@<its address on the local network>   (Ethernet is the most reliable)"
+  note "FileVault is on: after a restart or power cut the Mac waits at its unlock screen, off"
+  note "Tailscale. From its own network (Ethernet is the most reliable): ssh <user>@<name>.local,"
+  note "give the password, and reconnect once it disconnects. Before macOS 26 it needs a keyboard."
 fi

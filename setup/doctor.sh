@@ -41,13 +41,15 @@ linked() { # linked <destination> <path in repo>
 echo "Terminal and editor"
 tool git
 tool tmux tmux -V
-for cmd in mosh zsh mise nvim tree-sitter rg fd fzf jq uv; do tool "$cmd"; done
-if have mosh; then
-  mosh_version="$(mosh --version 2>/dev/null | grep -m1 -Eo '[0-9]+\.[0-9]+' | head -1)"
-  if ! awk -v v="$mosh_version" 'BEGIN { split(v, a, "."); exit !(a[1] > 1 || (a[1] == 1 && a[2] >= 4)) }'; then
-    fix "mosh $mosh_version" "OSC 52 copy and true colour need mosh 1.4+ on both ends"
+for cmd in mosh mosh-server zsh mise nvim tree-sitter rg fd fzf jq uv; do tool "$cmd"; done
+for cmd in mosh mosh-server; do
+  if have "$cmd"; then
+    version="$("$cmd" --version 2>/dev/null | grep -Eo 'mosh [0-9.]+' | head -1 | cut -d' ' -f2)"
+    if ! at_least "$version" 1.4; then
+      fix "$cmd $version" "OSC 52 copy and true colour need mosh 1.4+ on both ends (re-run ./install.sh)"
+    fi
   fi
-fi
+done
 
 echo "Languages"
 tool erl erl -noshell -eval 'io:format("~s~n", [erlang:system_info(otp_release)]), halt().'
@@ -118,24 +120,14 @@ if is_ubuntu; then
   if locale -a 2>/dev/null | grep -qiE '^en_US\.utf-?8$'; then ok "locale" "en_US.UTF-8"; else fix "locale" "en_US.UTF-8 missing (sudo locale-gen en_US.UTF-8)"; fi
 fi
 
-parsers="${XDG_DATA_HOME:-$HOME/.local/share}/nvim/site/parser"
-wanted_parsers="$(grep -c '^ *"' "$DOTFILES/vim/lua/treesitter_languages.lua")"
-found_parsers="$(find "$parsers" -name '*.so' 2>/dev/null | wc -l | tr -d ' ')"
-if [ "$found_parsers" -ge "$wanted_parsers" ]; then
-  ok "treesitter parsers" "$found_parsers"
-else
-  fix "treesitter parsers" "$found_parsers of $wanted_parsers (re-run with --skip packages,mise,rust,zsh)"
-fi
+nvim_retry="re-run with --skip packages,mise,rust,zsh"
+stale="$(stale_plugins)"
+if [ -z "$stale" ]; then ok "Neovim plugins" "at vim/lazy-lock.json"; else fix "Neovim plugins" "not at vim/lazy-lock.json: $stale($nvim_retry)"; fi
+missing="$(missing_parsers)"
+if [ -z "$missing" ]; then ok "treesitter parsers" "all of treesitter_languages.lua"; else fix "treesitter parsers" "missing: $missing($nvim_retry)"; fi
 if have nvim; then
-  missing_spell="$(nvim --headless -c 'lua local dir = vim.fn.stdpath("data") .. "/site/spell"
-    for _, l in ipairs(vim.opt.spelllang:get()) do
-      if vim.fn.filereadable(dir .. "/" .. l .. ".utf-8.spl") == 0 then io.stdout:write(l .. " ") end
-    end' +qa 2>/dev/null)"
-  if [ -z "$missing_spell" ]; then
-    ok "spell files" "for every 'spelllang'"
-  else
-    fix "spell files" "missing: $missing_spell(re-run with --skip packages,mise,rust,zsh)"
-  fi
+  missing="$(missing_spell)"
+  if [ -z "$missing" ]; then ok "spell files" "for every 'spelllang'"; else fix "spell files" "missing: $missing($nvim_retry)"; fi
 fi
 if [ -d "$HOME/.tmux/plugins/tpm" ]; then
   ok "tmux plugins" "$(find "$HOME/.tmux/plugins" -mindepth 1 -maxdepth 1 -type d | wc -l | tr -d ' ') installed"

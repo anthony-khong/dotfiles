@@ -1,6 +1,6 @@
 # Anthony Khong's Dotfiles
 
-Neovim, tmux, zsh and friends, kept the same across macOS and Ubuntu machines.
+Neovim, tmux, zsh and friends, kept the same across macOS and Ubuntu machines. Keys, aliases and commands: [CHEATSHEET.md](CHEATSHEET.md).
 
 ## New machine
 

@@ -32,10 +32,11 @@ vim.opt.smartcase = true
 vim.opt.scrolloff = 8
 vim.opt.scrolljump = 1
 
--- Disable backup and swap files
+-- No backup files. Swap files stay on (Nvim's default), in ~/.local/state/nvim/swap/: after a
+-- crash, a power cut or `tmux kill-server`, reopening the file offers to (R)ecover unsaved edits.
+-- A second Nvim opening the same file only gets a warning, not that prompt.
 vim.opt.backup = false
 vim.opt.writebackup = false
-vim.opt.swapfile = false
 
 -- Keep undo history across sessions (saved to ~/.local/state/nvim/undo/ on :w)
 vim.opt.undofile = true

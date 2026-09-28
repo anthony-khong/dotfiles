@@ -16,6 +16,8 @@ return {
   "json",
   "lua",
   "make",
+  "markdown",
+  "markdown_inline",
   "python",
   "rust",
   "scala",

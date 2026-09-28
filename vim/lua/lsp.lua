@@ -151,6 +151,10 @@ vim.lsp.enable({"bashls"})
 -- YAML: checks files against schemas from schemastore.org (GitHub Actions, docker-compose, ...)
 vim.lsp.enable({"yamlls"})
 
+-- TOML: tombi, also against schemastore.org (Cargo.toml, pyproject.toml, mise.toml, ...).
+-- No format on save; <space>fm formats on demand.
+vim.lsp.enable({"tombi"})
+
 -- JVM, for Spark work: these servers come with `./install.sh --with jvm`, so they're
 -- enabled only where installed. Each starts only for its filetypes (clojure/edn, scala, java).
 for server, cmd in pairs({ clojure_lsp = "clojure-lsp", metals = "metals", jdtls = "jdtls" }) do

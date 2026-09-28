@@ -68,6 +68,7 @@ tool shellcheck
 tool shfmt
 tool bash-language-server
 tool yaml-language-server -
+tool tombi
 tool typescript-language-server
 tool sql-language-server -
 if [ -e "$CONFIG/mise/conf.d/jvm.toml" ]; then

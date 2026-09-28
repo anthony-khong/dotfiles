@@ -41,8 +41,9 @@ vim.opt.writebackup = false
 -- Keep undo history across sessions (saved to ~/.local/state/nvim/undo/ on :w)
 vim.opt.undofile = true
 
--- Expand tab to spaces
+-- Expand tab to spaces; show existing tabs (e.g. .git/config) 2 wide
 vim.opt.expandtab = true
+vim.opt.tabstop = 2
 
 -- Sign column shows up all the time
 vim.opt.signcolumn = "yes"

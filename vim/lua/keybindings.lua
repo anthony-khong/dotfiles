@@ -35,7 +35,7 @@ map("n", "<Space>sv", ":vsplit<CR>")
 -- Format first, synchronously, then write. Plain :w formats after writing, and
 -- async; that result is dropped if you type before the server replies.
 vim.keymap.set("n", "<C-S>", function()
-  vim.cmd("Format sync")
+  require("lsp-format").format({ buf = vim.api.nvim_get_current_buf(), fargs = { "sync" } })
   vim.cmd("update")
 end)
 map("n", "<C-X>", ":q<CR>")

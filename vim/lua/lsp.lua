@@ -17,6 +17,17 @@ vim.diagnostic.config({
 -- Format on save only for these servers
 local format_on_save = { expert = true, ruff = true, ["rust-analyzer"] = true, bashls = true }
 
+-- <C-S>: format with those servers, waiting up to 10s, then write. :w formats
+-- after writing and async, and drops the result if you type before it arrives.
+-- A timeout shows as a warning instead of failing silently.
+vim.keymap.set("n", "<C-S>", function()
+  local filter = function(client) return format_on_save[client.name] end
+  if #vim.tbl_filter(filter, vim.lsp.get_clients({ bufnr = 0 })) > 0 then
+    vim.lsp.buf.format({ async = false, timeout_ms = 10000, filter = filter })
+  end
+  vim.cmd("update")
+end)
+
 -- Mappings for every language server, once it attaches to a buffer
 vim.api.nvim_create_autocmd("LspAttach", { callback = function(ev)
   local client = vim.lsp.get_client_by_id(ev.data.client_id)

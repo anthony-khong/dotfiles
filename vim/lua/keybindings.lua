@@ -32,10 +32,5 @@ map("n", "<Space>sh", ":split<CR>")
 map("n", "<Space>sv", ":vsplit<CR>")
 
 -- Writing and quiting
--- Format first, synchronously, then write. Plain :w formats after writing, and
--- async; that result is dropped if you type before the server replies.
-vim.keymap.set("n", "<C-S>", function()
-  require("lsp-format").format({ buf = vim.api.nvim_get_current_buf(), fargs = { "sync" } })
-  vim.cmd("update")
-end)
+-- <C-S> (format, then write) is in lsp.lua
 map("n", "<C-X>", ":q<CR>")

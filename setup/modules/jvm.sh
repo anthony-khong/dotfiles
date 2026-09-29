@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # JVM tools for Spark work (mise/jvm.toml): Temurin 21, Maven, sbt, Clojure CLI, Babashka,
-# coursier and clojure-lsp; plus Metals and jdtls, which mise doesn't carry.
+# coursier and clojure-lsp; plus Metals, jdtls and rlwrap (for clj's REPL), which mise doesn't carry.
 # To upgrade Metals or jdtls, change its version below and re-run.
 set -euo pipefail
 # shellcheck source=../lib.sh
@@ -13,6 +13,12 @@ JDTLS_BUILD=202609031315
 
 link mise/jvm.toml "$CONFIG/mise/conf.d/jvm.toml"
 cd "$HOME" && mise install --yes
+
+# rlwrap: clj runs the REPL under it (line editing, history); plain `clojure` doesn't need it
+if ! have rlwrap; then
+  note "rlwrap"
+  if is_mac; then brew install rlwrap; else $SUDO apt-get install -y -qq rlwrap; fi
+fi
 
 bin="$HOME/.local/bin"
 share="${XDG_DATA_HOME:-$HOME/.local/share}"

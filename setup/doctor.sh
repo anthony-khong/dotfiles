@@ -74,6 +74,7 @@ tool sql-language-server -
 if [ -e "$CONFIG/mise/conf.d/jvm.toml" ]; then
   tool java java -version
   tool clojure-lsp
+  tool rlwrap rlwrap -v
   tool metals -
   tool jdtls -
 fi

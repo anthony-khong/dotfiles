@@ -1,4 +1,4 @@
-# Ghostty's default Cmd shortcuts, bound to key positions instead of letters.
+# Ghostty's default Cmd shortcuts, bound to key positions instead of letters (plus four Ctrl keys, at the end).
 # With the "Dvorak - QWERTY ⌘" layout, Ghostty 1.3 reads Cmd shortcuts by their Dvorak letter
 # for some keys (Cmd-, and Cmd-W come out swapped), unlike every other Mac app: ghostty-org/ghostty#7315.
 # Each default is unbound, then rebound to where its letter sits on QWERTY.
@@ -84,3 +84,9 @@ keybind = ctrl+super+f=unbind
 keybind = ctrl+super+key_f=toggle_fullscreen
 keybind = shift+super+v=unbind
 keybind = shift+super+key_v=paste_from_selection
+
+# Ctrl+S/V/W/Z sit on QWERTY ; . , / and Ghostty sends those instead; send the Dvorak letter
+keybind = ctrl+semicolon=text:\x13
+keybind = ctrl+period=text:\x16
+keybind = ctrl+comma=text:\x17
+keybind = ctrl+slash=text:\x1a

@@ -32,5 +32,10 @@ map("n", "<Space>sh", ":split<CR>")
 map("n", "<Space>sv", ":vsplit<CR>")
 
 -- Writing and quiting
-map("n", "<C-S>", ":w<CR>")
+-- Format first, synchronously, then write. Plain :w formats after writing, and
+-- async; that result is dropped if you type before the server replies.
+vim.keymap.set("n", "<C-S>", function()
+  vim.cmd("Format sync")
+  vim.cmd("update")
+end)
 map("n", "<C-X>", ":q<CR>")

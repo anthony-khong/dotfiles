@@ -9,6 +9,7 @@ git
 locales
 unzip
 xz-utils
+libomp-dev
 
 # Terminal
 zsh

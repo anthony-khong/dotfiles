@@ -15,6 +15,7 @@ link tmux/tmux.conf "$HOME/.tmux.conf"
 link ghostty/config.ghostty "$CONFIG/ghostty/config.ghostty"
 link elixir/.iex.exs "$HOME/.iex.exs"
 link mise/dotfiles.toml "$CONFIG/mise/conf.d/dotfiles.toml"
+link atuin/config.toml "$CONFIG/atuin/config.toml"
 
 # Shared SSH defaults (ssh/config), included at the end of ~/.ssh/config so that the host
 # entries above them win. ~/.ssh/config itself stays local.

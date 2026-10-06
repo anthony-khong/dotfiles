@@ -25,7 +25,7 @@ It's safe to re-run. When a step fails, the installer names it and exits non-zer
 
 - `install.sh`, `setup/`: installer, Brewfile, apt list, modules
 - `mise/`: languages and CLI tools, linked into `~/.config/mise/conf.d/`
-- `vim/` (Neovim), `tmux/`, `ghostty/`, `elixir/` (IEx)
+- `vim/` (Neovim), `tmux/`, `ghostty/`, `atuin/` (shell history), `elixir/` (IEx)
 - `bash/`: `zshrc` and `bashrc` both load `bash_shortcuts.sh` (aliases and functions) and `bash_preferences.sh` (environment)
 
 ## Per-machine settings

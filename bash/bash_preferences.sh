@@ -52,10 +52,12 @@ esac
 if [ -x /usr/bin/lesspipe ]; then eval "$(SHELL=/bin/sh lesspipe)"; fi
 
 # mise puts the tools from ~/.config/mise on PATH (per directory, following any
-# mise.toml or .tool-versions); fzf adds its Ctrl-T, Ctrl-R and Alt-C key bindings
+# mise.toml or .tool-versions); fzf adds its Ctrl-T, Ctrl-R and Alt-C key bindings. In zsh,
+# Atuin (atuin/config.toml) then takes Ctrl-R; the up arrow stays zsh's own.
 if [ -n "${ZSH_VERSION:-}" ]; then
     command -v mise >/dev/null && eval "$(mise activate zsh)"
     fzf --zsh >/dev/null 2>&1 && source <(fzf --zsh)
+    command -v atuin >/dev/null && eval "$(atuin init zsh --disable-up-arrow)"
 elif [ -n "${BASH_VERSION:-}" ]; then
     command -v mise >/dev/null && eval "$(mise activate bash)"
     fzf --bash >/dev/null 2>&1 && eval "$(fzf --bash)"

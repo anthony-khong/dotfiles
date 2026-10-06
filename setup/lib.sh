@@ -43,6 +43,15 @@ link() {
   echo "linked: $dst"
 }
 
+# Atuin starts from zsh's history, imported once: while Atuin has no database yet. (A shell
+# with Atuin creates it at its first command, after which the import would come too late.)
+import_zsh_history() {
+  local db="${XDG_DATA_HOME:-$HOME/.local/share}/atuin/history.db"
+  if ! have atuin || [ -e "$db" ] || [ ! -s "$HOME/.zsh_history" ]; then return 0; fi
+  note "Atuin: importing ~/.zsh_history"
+  HISTFILE="$HOME/.zsh_history" atuin import zsh
+}
+
 # at_least <version> <minimum>: compares major.minor, so "1.3.2-2.1ubuntu1" counts as 1.3
 at_least() {
   awk -v v="$1" -v m="$2" 'BEGIN {

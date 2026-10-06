@@ -1,0 +1,13 @@
+# Atuin, the shell history search on Ctrl-R (set up in bash/bash_preferences.sh). Linked to
+# ~/.config/atuin/config.toml. Local only: no account and no sync, so history stays on this
+# machine.
+
+# Enter and Tab both put the chosen command on the prompt to edit; neither runs it
+enter_accept = false
+
+# mise upgrades it (update.sh); without sync, this was its only network call
+update_check = false
+
+# Atuin AI sends questions to Atuin's servers. Off, which also leaves `?` unbound
+[ai]
+enabled = false

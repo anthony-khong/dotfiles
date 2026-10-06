@@ -41,7 +41,7 @@ linked() { # linked <destination> <path in repo>
 echo "Terminal and editor"
 tool git
 tool tmux tmux -V
-for cmd in mosh mosh-server zsh mise nvim tree-sitter rg fd fzf jq uv; do tool "$cmd"; done
+for cmd in mosh mosh-server zsh mise nvim tree-sitter rg fd fzf atuin jq uv; do tool "$cmd"; done
 for cmd in mosh mosh-server; do
   if have "$cmd"; then
     version="$("$cmd" --version 2>/dev/null | grep -Eo 'mosh [0-9.]+' | head -1 | cut -d' ' -f2)"
@@ -89,6 +89,7 @@ if is_mac || have ghostty; then linked "$CONFIG/ghostty/config.ghostty" ghostty/
 if infocmp -x xterm-ghostty >/dev/null 2>&1; then ok "terminfo" "xterm-ghostty"; else fix "terminfo" "no xterm-ghostty (run bash/recreate_symbolic_links)"; fi
 linked "$CONFIG/nvim" vim
 linked "$CONFIG/mise/conf.d/dotfiles.toml" mise/dotfiles.toml
+linked "$CONFIG/atuin/config.toml" atuin/config.toml
 ssh_config=\~/.ssh/config
 if grep -qsF "Include \"$DOTFILES/ssh/config\"" "$HOME/.ssh/config"; then
   ok "$ssh_config" "includes ssh/config"

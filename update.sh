@@ -35,7 +35,7 @@ pull_dotfiles() {
 update_mise() {
   # Homebrew's mise updates with `brew upgrade` below
   if [ "$(command -v mise)" = "$HOME/.local/bin/mise" ]; then mise self-update --yes || return; fi
-  mise install --yes && mise upgrade --yes
+  mise install --yes && mise upgrade --yes && import_zsh_history
 }
 
 update_omz() {

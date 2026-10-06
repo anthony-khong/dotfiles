@@ -142,7 +142,7 @@ fi
 
 if wanted zsh; then
   current="zsh"
-  step "zsh with oh-my-zsh, zsh-syntax-highlighting and zsh-autosuggestions"
+  step "zsh with oh-my-zsh, zsh-syntax-highlighting and zsh-autosuggestions; Atuin's history"
   have zsh || die "zsh is missing (it comes with macOS and from setup/apt.txt)"
   if [ ! -d "$HOME/.oh-my-zsh" ]; then
     # KEEP_ZSHRC: leave the ~/.zshrc link from the link step alone
@@ -163,6 +163,7 @@ if wanted zsh; then
     note "changing your login shell to $zsh_path"
     $SUDO chsh -s "$zsh_path" "$(id -un)"
   fi
+  import_zsh_history || failed="$failed atuin"
 fi
 
 setup_nvim() { # plugins, parsers and spell files; headless nvim's exit status says little

@@ -125,7 +125,7 @@ zsh with oh-my-zsh everywhere; the aliases and functions work in bash too.
 | `tp` | Pick a tmux session or a directory in `~/repos` (fzf); attaches outside tmux, switches inside |
 | `tp DIR` / `tnew` | The session for DIR / for the current directory, created if needed |
 | `mnd` / `pln` | Sessions for `~/Dropbox/mind_diary` / its `Planner` |
-| `C-r` | Search history (fzf) |
+| `C-r` | Search history (Atuin; fzf in bash) |
 | `C-t` | Insert file paths (fzf) |
 | `M-c` | cd into a subdirectory (fzf) |
 | `**` then `Tab` | fzf completion, e.g. `vim **`, `cd **`, `kill -9 **` |
@@ -137,6 +137,8 @@ zsh with oh-my-zsh everywhere; the aliases and functions work in bash too.
 | `l` / `ll` / `la` | `ls -lah` / `ls -lh` / `ls -lAh` |
 
 In fzf: `C-n` / `C-p` (or `C-j` / `C-k`) move, `Tab` marks several, `Enter` picks, `Esc` leaves.
+
+In Atuin: moving and `Esc` as in fzf; `Enter` or `Tab` puts the command on the prompt to edit, never runs it. `C-r` again: all history / this machine / this session / this directory; `C-s`: fuzzy / prefix / full text. `C-o`: a command's details, where `C-d` deletes it.
 
 Git (oh-my-zsh aliases; `alias | grep git` for the rest):
 

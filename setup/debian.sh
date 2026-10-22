@@ -1,6 +1,6 @@
-# Ubuntu packages, locale and firewall, sourced by install.sh
+# Debian and Ubuntu packages, locale and firewall, sourced by install.sh
 
-# mosh 1.4+ carries OSC 52 copies and true colour. Where apt's mosh is older (1.3 on 22.04),
+# mosh 1.4+ carries OSC 52 copies and true colour. Where apt's mosh is older (1.3 on Ubuntu 22.04),
 # this release is built into /usr/local instead. To upgrade: bump both lines, re-run install.sh.
 MOSH_VERSION=1.4.0
 MOSH_SHA256=872e4b134e5df29c8933dff12350785054d2fd2839b5ae6b5587b14db1465ddd
@@ -47,8 +47,13 @@ fi
 step "en_US.UTF-8 locale (mosh needs a UTF-8 locale on both ends)"
 if locale -a 2>/dev/null | grep -qiE '^en_US\.utf-?8$'; then
   note "already there"
-else
+elif grep -qx 'ID=ubuntu' /etc/os-release; then
   $SUDO locale-gen en_US.UTF-8
+else
+  # Debian's locale-gen takes no names: it builds the locales that /etc/locale.gen enables
+  grep -qx 'en_US.UTF-8 UTF-8' /etc/locale.gen 2>/dev/null ||
+    echo 'en_US.UTF-8 UTF-8' | $SUDO tee -a /etc/locale.gen >/dev/null
+  $SUDO locale-gen
 fi
 
 if have ufw && $SUDO ufw status 2>/dev/null | grep -q '^Status: active'; then

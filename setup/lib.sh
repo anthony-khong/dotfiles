@@ -21,7 +21,8 @@ die() {
 }
 have() { command -v "$1" >/dev/null 2>&1; }
 is_mac() { [ "$OS" = "Darwin" ]; }
-is_ubuntu() { [ "$OS" = "Linux" ] && grep -qx 'ID=ubuntu' /etc/os-release 2>/dev/null; }
+# Debian or Ubuntu, which share setup/debian.sh
+is_debian() { [ "$OS" = "Linux" ] && grep -Eqx 'ID=(debian|ubuntu)' /etc/os-release 2>/dev/null; }
 
 # link <path in repo> <destination>: leaves a correct link alone, replaces a stale
 # one, and moves a real file or directory aside to <destination>.bak.<timestamp>

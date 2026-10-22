@@ -5,7 +5,7 @@
 #   ./install.sh --skip packages,rust   skip steps: packages link mise rust zsh nvim
 #   ./install.sh --hostname NAME        rename this machine (without asking)
 #   ./install.sh --doctor               only report what's installed
-# Supports macOS (Homebrew) and Ubuntu 22.04+, on x86_64 or arm64.
+# Supports macOS (Homebrew), Debian 12+ and Ubuntu 22.04+, on x86_64 or arm64; on Linux, as root too.
 set -euo pipefail
 
 DOTFILES="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -36,7 +36,7 @@ done
 for m in $modules; do
   [ -f "$DOTFILES/setup/modules/$m.sh" ] || die "unknown module: $m"
 done
-is_mac || is_ubuntu || die "only macOS and Ubuntu are supported"
+is_mac || is_debian || die "only macOS, Debian and Ubuntu are supported"
 
 wanted() { case " $skip " in *" $1 "*) return 1 ;; *) return 0 ;; esac }
 
@@ -89,9 +89,9 @@ if [ -n "$new_hostname" ]; then
   set_hostname "$new_hostname"
 fi
 
-# The prebuilt tree-sitter CLI needs glibc 2.39+ (Ubuntu 24.04); on older boxes cargo builds it
+# The prebuilt tree-sitter CLI needs glibc 2.39+ (Ubuntu 24.04, Debian 13); on older boxes cargo builds it
 old_glibc=0
-if is_ubuntu; then
+if is_debian; then
   glibc="$(getconf GNU_LIBC_VERSION | awk '{print $2}')"
   at_least "$glibc" 2.39 || old_glibc=1
 fi
@@ -101,7 +101,7 @@ cd "$HOME"
 
 if wanted packages; then
   current="packages"
-  if is_mac; then . "$DOTFILES/setup/macos.sh"; else . "$DOTFILES/setup/ubuntu.sh"; fi
+  if is_mac; then . "$DOTFILES/setup/macos.sh"; else . "$DOTFILES/setup/debian.sh"; fi
 fi
 
 if wanted link; then

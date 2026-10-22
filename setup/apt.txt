@@ -1,4 +1,4 @@
-# What apt installs on Ubuntu. Languages and editor tools come from mise
+# What apt installs on Debian and Ubuntu. Languages and editor tools come from mise
 # (mise/dotfiles.toml) so they match the Macs.
 
 # Base, and a C compiler for treesitter parsers and Rust

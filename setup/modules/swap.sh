@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-# A swap file at /swapfile (Ubuntu only). Size: SWAP_SIZE=16G ./install.sh --with swap
+# A swap file at /swapfile (Debian and Ubuntu). Size: SWAP_SIZE=16G ./install.sh --with swap
 set -euo pipefail
 # shellcheck source=../lib.sh
 . "$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)/lib.sh"
 
-is_ubuntu || die "the swap module is for Ubuntu"
+is_debian || die "the swap module is for Debian and Ubuntu"
 if [ -e /swapfile ]; then
   note "/swapfile already exists; leaving it alone"
   exit 0

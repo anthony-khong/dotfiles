@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-# A GitLab runner in Docker (Ubuntu only; needs the docker module)
+# A GitLab runner in Docker (Debian and Ubuntu; needs the docker module)
 set -euo pipefail
 # shellcheck source=../lib.sh
 . "$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)/lib.sh"
 
-is_ubuntu || die "the gitlab-runner module is for Ubuntu"
+is_debian || die "the gitlab-runner module is for Debian and Ubuntu"
 have docker || die "needs Docker: ./install.sh --with docker,gitlab-runner"
 
 # The docker group only applies after logging in again, so fall back to sudo

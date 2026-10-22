@@ -119,8 +119,8 @@ else
   info "mise activated" "not in this shell; new terminals activate it via bash_preferences.sh"
 fi
 
-if is_ubuntu; then
-  if locale -a 2>/dev/null | grep -qiE '^en_US\.utf-?8$'; then ok "locale" "en_US.UTF-8"; else fix "locale" "en_US.UTF-8 missing (sudo locale-gen en_US.UTF-8)"; fi
+if is_debian; then
+  if locale -a 2>/dev/null | grep -qiE '^en_US\.utf-?8$'; then ok "locale" "en_US.UTF-8"; else fix "locale" "en_US.UTF-8 missing (re-run ./install.sh)"; fi
 fi
 
 nvim_retry="re-run with --skip packages,mise,rust,zsh"

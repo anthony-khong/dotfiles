@@ -24,7 +24,7 @@ if tailscale status >/dev/null 2>&1; then
   note "on your tailnet as $(tailscale ip -4 | head -1)"
 else
   note "Log in by opening the URL below, e.g. on your laptop"
-  sudo tailscale up
+  $SUDO tailscale up
 fi
 note "For an always-on box, turn off its key expiry in the admin console"
 note "(Machines > … next to it > Disable key expiry), or it drops off after 180 days."

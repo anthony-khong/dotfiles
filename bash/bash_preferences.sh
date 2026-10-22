@@ -45,7 +45,7 @@ export FZF_DEFAULT_COMMAND="rg --files\
 # Fixes some locale error when running mosh
 export LC_ALL="en_US.UTF-8"
 
-# Terminal colours: BSD ls on macOS; lesspipe on Ubuntu lets less read archives
+# Terminal colours: BSD ls on macOS; lesspipe on Linux lets less read archives
 case "$OSTYPE" in
 darwin*) export CLICOLOR=1 LSCOLORS=ExFxBxDxCxegedabagacad ;;
 esac

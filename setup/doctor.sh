@@ -90,6 +90,7 @@ if infocmp -x xterm-ghostty >/dev/null 2>&1; then ok "terminfo" "xterm-ghostty";
 linked "$CONFIG/nvim" vim
 linked "$CONFIG/mise/conf.d/dotfiles.toml" mise/dotfiles.toml
 linked "$CONFIG/atuin/config.toml" atuin/config.toml
+linked "$HOME/.claude/keybindings.json" claude/keybindings.json
 ssh_config=\~/.ssh/config
 if grep -qsF "Include \"$DOTFILES/ssh/config\"" "$HOME/.ssh/config"; then
   ok "$ssh_config" "includes ssh/config"

@@ -4,7 +4,7 @@ What these dotfiles set up, plus the built-in keys worth remembering. Cmd-F for 
 
 Notation: `C-x` is Ctrl-x, `M-x` is Alt-x (left Option), `S-` is Shift. **prefix** is tmux's `C-a`. **leader** in Neovim is `Space` (so is localleader). Keys are the characters you type; Ghostty's Cmd shortcuts sit where their letter is on QWERTY.
 
-**Contents:** [Dotfiles](#dotfiles) · [Ghostty](#ghostty) · [tmux](#tmux) · [Shell](#shell) · [SSH, mosh and Tailscale](#ssh-mosh-and-tailscale) · [Neovim](#neovim) · [Snippets](#snippets) · [Elixir and IEx](#elixir-and-iex) · [mise](#mise)
+**Contents:** [Dotfiles](#dotfiles) · [Ghostty](#ghostty) · [tmux](#tmux) · [Shell](#shell) · [SSH, mosh and Tailscale](#ssh-mosh-and-tailscale) · [Neovim](#neovim) · [Snippets](#snippets) · [Elixir and IEx](#elixir-and-iex) · [mise](#mise) · [Claude Code](#claude-code)
 
 ## Dotfiles
 
@@ -454,3 +454,13 @@ Python and Rust:
 | `mise doctor` | When something looks off |
 
 Shared tools are in `mise/dotfiles.toml`. Rust comes from `rustup` (`rustup update`).
+
+## Claude Code
+
+`Esc` doesn't interrupt Claude, decline a permission prompt or close a confirmation dialog (`claude/keybindings.json`; the terminal app only).
+
+| Keys | What it does |
+|---|---|
+| `C-c` | Interrupt Claude. With nothing running, clear the prompt; a second `C-c` exits |
+| `C-c` `C-c` in a dialog | Close it |
+| Arrows to **No**, `Enter` | Decline a permission prompt |

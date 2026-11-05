@@ -19,6 +19,17 @@ link atuin/config.toml "$CONFIG/atuin/config.toml"
 link claude/keybindings.json "$HOME/.claude/keybindings.json"
 if is_mac; then link hammerspoon "$HOME/.hammerspoon"; fi
 
+# Rectangle imports RectangleConfig.json from here on launch, then renames it, so it's copied
+# rather than linked, and only while Rectangle has no settings yet. Later changes: export over
+# rectangle/RectangleConfig.json, and on other Macs use Import in Rectangle's settings.
+rectangle_dir="$HOME/Library/Application Support/Rectangle"
+if is_mac && [ -f "$DOTFILES/rectangle/RectangleConfig.json" ] &&
+  ! defaults read com.knollsoft.Rectangle >/dev/null 2>&1; then
+  mkdir -p "$rectangle_dir"
+  cp "$DOTFILES/rectangle/RectangleConfig.json" "$rectangle_dir/"
+  echo "copied: Rectangle's config, imported when Rectangle next starts"
+fi
+
 # Shared SSH defaults (ssh/config), included at the end of ~/.ssh/config so that the host
 # entries above them win. ~/.ssh/config itself stays local.
 mkdir -p "$HOME/.ssh/control"

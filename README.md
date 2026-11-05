@@ -9,7 +9,7 @@ git clone https://github.com/anthony-khong/dotfiles.git ~/dotfiles
 ~/dotfiles/install.sh
 ```
 
-Then open a new terminal. On macOS, run `xcode-select --install` first; on Debian and Ubuntu you need sudo, or to be root. The first run asks for the machine's name.
+Then open a new terminal. On macOS, run `xcode-select --install` first; on Debian and Ubuntu you need sudo, or to be root. The first run asks for the machine's name. On macOS, open Hammerspoon once and allow it under Privacy & Security → Accessibility.
 
 Supported: macOS, Debian 12 or newer, and Ubuntu 22.04 or newer (24.04 for new boxes). On Ubuntu 22.04, whose mosh is too old for OSC 52 copy and true colour, the installer builds mosh 1.4 from source.
 
@@ -25,7 +25,7 @@ It's safe to re-run. When a step fails, the installer names it and exits non-zer
 
 - `install.sh`, `setup/`: installer, Brewfile, apt list, modules
 - `mise/`: languages and CLI tools, linked into `~/.config/mise/conf.d/`
-- `vim/` (Neovim), `tmux/`, `ghostty/`, `atuin/` (shell history), `elixir/` (IEx), `claude/` (Claude Code's keys)
+- `vim/` (Neovim), `tmux/`, `ghostty/`, `atuin/` (shell history), `elixir/` (IEx), `claude/` (Claude Code's keys), `hammerspoon/` (macOS: tap Ctrl for Esc)
 - `bash/`: `zshrc` and `bashrc` both load `bash_shortcuts.sh` (aliases and functions) and `bash_preferences.sh` (environment)
 
 ## Per-machine settings

@@ -30,6 +30,17 @@ if is_mac && [ -f "$DOTFILES/rectangle/RectangleConfig.json" ] &&
   echo "copied: Rectangle's config, imported when Rectangle next starts"
 fi
 
+# Stats (menu bar monitors), seeded while it has no settings yet: CPU as a bar chart, network
+# speed and a temperature, nothing else. Pick the sensor, and launch at login, in its settings.
+if is_mac && ! defaults read eu.exelban.Stats >/dev/null 2>&1; then
+  for m in CPU Network Sensors; do defaults write eu.exelban.Stats "${m}_state" -bool true; done
+  for m in GPU RAM Disk Battery Bluetooth Clock; do defaults write eu.exelban.Stats "${m}_state" -bool false; done
+  defaults write eu.exelban.Stats CPU_widget -string bar_chart
+  defaults write eu.exelban.Stats Network_widget -string speed
+  defaults write eu.exelban.Stats Sensors_widget -string sensors
+  echo "seeded: Stats' menu bar (CPU, network, temperature)"
+fi
+
 # Shared SSH defaults (ssh/config), included at the end of ~/.ssh/config so that the host
 # entries above them win. ~/.ssh/config itself stays local.
 mkdir -p "$HOME/.ssh/control"

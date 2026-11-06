@@ -81,7 +81,7 @@ tmux defaults still in use:
 | `prefix z` | Zoom the pane (**[Z]** in the status line) |
 | `prefix x` | Kill the pane |
 | `prefix w` | Pick a window or session from a tree |
-| `prefix 0`…`prefix 9` | Window N |
+| `prefix 1`…`prefix 9` | Window N (windows and panes count from 1) |
 | `prefix !` | Pane into its own window |
 | `prefix q` | Show pane numbers |
 | `prefix {` / `prefix }` | Swap the pane with the previous / next |
@@ -317,7 +317,7 @@ On in markdown and git commits; `<Space>ss` elsewhere. A word passes in English,
 
 | Keys | What it does |
 |---|---|
-| `C-c C-c` | Send the paragraph, or the selection, to tmux pane 1 of window 0 (vim-slime) |
+| `C-c C-c` | Send the paragraph, or the selection, to tmux pane 2 of window 1 (vim-slime) |
 | `C-c v` | Choose another target pane |
 | `<Space>cc` in Python | Send the `# %%` cell under the cursor (IPython) |
 

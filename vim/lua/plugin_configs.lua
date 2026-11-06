@@ -47,7 +47,7 @@ vim.cmd([[
   let g:slime_target = "tmux"
   silent! let g:slime_default_config = {
       \ "socket_name": split($TMUX, ",")[0],
-      \ "target_pane": ":0.1"
+      \ "target_pane": ":1.2"
       \ }
   let g:slime_dont_ask_default = 1
   let g:slime_python_ipython = 1

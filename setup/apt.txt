@@ -11,10 +11,12 @@ unzip
 xz-utils
 libomp-dev
 
-# Terminal
+# Terminal (procps brings watch)
 zsh
 tmux
 mosh
+rsync
+procps
 entr
 htop
 pandoc

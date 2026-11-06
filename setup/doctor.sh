@@ -41,7 +41,7 @@ linked() { # linked <destination> <path in repo>
 echo "Terminal and editor"
 tool git
 tool tmux tmux -V
-for cmd in mosh mosh-server zsh mise nvim tree-sitter rg fd fzf atuin jq uv; do tool "$cmd"; done
+for cmd in mosh mosh-server rsync watch zsh mise nvim tree-sitter rg fd fzf atuin jq uv; do tool "$cmd"; done
 for cmd in mosh mosh-server; do
   if have "$cmd"; then
     version="$("$cmd" --version 2>/dev/null | grep -Eo 'mosh [0-9.]+' | head -1 | cut -d' ' -f2)"

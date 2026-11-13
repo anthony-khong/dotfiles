@@ -58,6 +58,7 @@ tool python
 tool node
 tool rustc
 tool cargo
+tool sail
 
 echo "Language servers, linters, formatters"
 tool expert

@@ -453,7 +453,7 @@ Python and Rust:
 | `mise x TOOL@VERSION -- CMD` | Run CMD with that version, once |
 | `mise doctor` | When something looks off |
 
-Shared tools are in `mise/dotfiles.toml`. Rust comes from `rustup` (`rustup update`).
+Shared tools are in `mise/dotfiles.toml`, including Sail: `sail spark server` serves Spark Connect on `localhost:50051`. Rust comes from `rustup` (`rustup update`).
 
 ## Claude Code
 
